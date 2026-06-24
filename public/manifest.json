@@ -1,0 +1,29 @@
+{
+  "short_name": "IB Portfolio",
+  "name": "Inayath Basha Portfolio",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0a0f1e",
+  "theme_color": "#0a0f1e",
+  "display": "standalone",
+  "orientation": "portrait"
+}
