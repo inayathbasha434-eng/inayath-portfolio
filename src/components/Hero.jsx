@@ -148,7 +148,7 @@ export default function Hero() {
 
             {/* Subheading */}
             <p className="text-slate-300 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl mb-8 mt-2">
-              Helping brands scale and grow through conversion-focused Shopify stores, custom web design, and digital strategies.
+              From Vision to Execution, Built for Impact
             </p>
 
             {/* CTA Buttons */}
