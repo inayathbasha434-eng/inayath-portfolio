@@ -1,43 +1,53 @@
-import { useState } from 'react'
-import { Plus, Minus, HelpCircle } from 'lucide-react'
+import { HelpCircle, Palette, Globe, Image, Sparkles } from 'lucide-react'
 
 const FAQ_ITEMS = [
   {
-    question: "Why should I hire Inayath Basha as a Shopify Freelancer instead of an agency?",
-    answer: "As an independent Shopify Freelancer, I work directly with you without the agency overhead, layers of project managers, or communication delays. You get direct access to my expertise in Shopify development, customized theme solutions, and conversion-focused web design. I focus on building high-performance, fast-loading stores that directly boost your sales and conversion rates."
+    icon: Palette,
+    question: "What does your Brand & Digital Design service cover?",
+    answer: "I help businesses build a premium visual presence. This includes custom brand identity systems, logo designs, marketing assets, and digital design guides optimized to elevate your business and connect with your target audience.",
+    color: "text-purple-400",
+    bgColor: "bg-purple-500/10",
+    borderColor: "border-purple-500/20 shadow-purple-500/5",
+    glowColor: "rgba(167,139,250,0.15)"
   },
   {
-    question: "What specific Shopify Developer services do you offer?",
-    answer: "I offer full-service Shopify solutions including custom Shopify store setup, premium theme customization, custom section/feature development (using Liquid, HTML, CSS, and JS), app integrations, store migration, and UX/UI design tailored to increase your average order value (AOV)."
+    icon: Globe,
+    question: "How do you approach Shopify & WordPress web design?",
+    answer: "I design fully responsive e-commerce and portfolio websites on Shopify and WordPress. My focus is on combining high-end design aesthetics with clean layout structures that lead to better engagement and sales conversions.",
+    color: "text-blue-400",
+    bgColor: "bg-blue-500/10",
+    borderColor: "border-blue-500/20 shadow-blue-500/5",
+    glowColor: "rgba(59,130,246,0.15)"
   },
   {
-    question: "How do you ensure my Shopify store is SEO optimized and fast?",
-    answer: "Every store I build follows strict SEO best practices: clean semantic HTML, structured data schema, optimized meta descriptions, and image alt tags. For speed, I optimize images (WebP format), lazy-load heavy elements, eliminate unnecessary app scripts, and build clean custom sections to achieve mobile-first, high-performance loading times."
+    icon: Image,
+    question: "What is AI Product Image Generation, and what are its benefits?",
+    answer: "I use advanced AI image generation models to transform simple product photos into studio-quality lifestyle images. This provides your brand with high-end marketing photos without the cost of expensive physical photoshoots.",
+    color: "text-pink-400",
+    bgColor: "bg-pink-500/10",
+    borderColor: "border-pink-500/20 shadow-pink-500/5",
+    glowColor: "rgba(244,63,94,0.15)"
   },
   {
-    question: "Can you customize existing Shopify themes or build features from scratch?",
-    answer: "Yes, both! I can take any existing OS 2.0 Shopify theme (like Dawn, Impulse, or Prestige) and customize it, or code fully custom drag-and-drop sections from scratch. This allows you to update your store content easily from the Shopify Customizer without touching any code."
-  },
-  {
-    question: "What is your typical workflow and turnaround time for a project?",
-    answer: "We start with a discovery phase (defining goals and requirements), followed by UI/UX wireframes in Figma, custom Shopify coding and setup, and finally a rigorous quality assurance (QA) speed test. A standard landing page or custom section takes 3-5 days, while a complete custom Shopify store typically takes 2-3 weeks."
+    icon: Sparkles,
+    question: "How does our collaboration and design workflow work?",
+    answer: "We start with a discovery phase to define your goals, followed by visual designs in Figma. Once approved, I code/configure the website or generate the AI image assets, run thorough quality checks, and launch the project.",
+    color: "text-amber-400",
+    bgColor: "bg-amber-500/10",
+    borderColor: "border-amber-500/20 shadow-amber-500/5",
+    glowColor: "rgba(245,158,11,0.15)"
   }
 ]
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(null)
-
-  const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index)
-  }
-
   return (
     <section id="faq" className="py-20 sm:py-28 relative overflow-hidden bg-[#0c1224] border-t border-slate-900">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12 sm:mb-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="text-center mb-16 sm:mb-20">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wide uppercase mb-4">
             <HelpCircle size={12} />
             Frequently Asked Questions
@@ -46,47 +56,46 @@ export default function FAQ() {
             Got Questions? <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">I've Got Answers</span>
           </h2>
           <p className="mt-4 text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Find answers to common questions about working with a freelance Shopify developer, pricing, timelines, and SEO optimizations.
+            Find answers to common questions about my branding, web design, Shopify & WordPress custom setups, and AI product image services.
           </p>
         </div>
 
-        <div className="space-y-4">
+        {/* 2x2 Grid Layout */}
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
           {FAQ_ITEMS.map((item, idx) => {
-            const isOpen = openIndex === idx
+            const Icon = item.icon
             return (
               <div
                 key={idx}
-                className={`group border rounded-2xl transition-all duration-300 ${
-                  isOpen 
-                    ? 'bg-[#131b30] border-blue-500/30 shadow-lg shadow-blue-500/5' 
-                    : 'bg-[#0f172a]/60 border-slate-800/80 hover:border-slate-700/80'
-                }`}
+                className="group relative bg-[#0d1426]/60 backdrop-blur-sm border border-slate-800/80 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-slate-700/80 hover:shadow-xl"
+                style={{
+                  '--glow-color': item.glowColor
+                }}
               >
-                <button
-                  onClick={() => toggleFAQ(idx)}
-                  className="w-full px-5 py-4 sm:px-6 sm:py-5 flex items-center justify-between text-left gap-4"
-                  aria-expanded={isOpen}
-                >
-                  <span className={`font-bold text-sm sm:text-base leading-snug transition-colors duration-200 ${
-                    isOpen ? 'text-blue-400' : 'text-slate-100 group-hover:text-white'
-                  }`}>
-                    {item.question}
-                  </span>
-                  <div className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-                    isOpen ? 'bg-blue-500/20 text-blue-400' : 'bg-slate-800/60 text-slate-400 group-hover:text-slate-300'
-                  }`}>
-                    {isOpen ? <Minus size={16} /> : <Plus size={16} />}
+                <div>
+                  {/* Icon Wrapper */}
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${item.bgColor} mb-6`}>
+                    <Icon className={`w-6 h-6 ${item.color}`} />
                   </div>
-                </button>
-                <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
-                    isOpen ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'
-                  }`}
-                >
-                  <p className="px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/50 pt-4">
+
+                  {/* Question */}
+                  <h3 className="font-extrabold text-base sm:text-lg text-white mb-3 group-hover:text-blue-400 transition-colors duration-200">
+                    {item.question}
+                  </h3>
+
+                  {/* Answer */}
+                  <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
                     {item.answer}
                   </p>
                 </div>
+
+                {/* Subtly glowing bottom corner decor */}
+                <div 
+                  className="absolute bottom-0 right-0 w-8 h-8 rounded-br-2xl transition-opacity duration-300 opacity-0 group-hover:opacity-100 pointer-events-none"
+                  style={{
+                    background: `radial-gradient(circle at bottom right, ${item.glowColor}, transparent)`
+                  }}
+                />
               </div>
             )
           })}
