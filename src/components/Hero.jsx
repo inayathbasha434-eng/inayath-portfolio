@@ -133,9 +133,42 @@ export default function Hero() {
               visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
             }`}
           >
-            <div className="relative">
+            <div 
+              className="relative cursor-pointer group"
+              style={{ perspective: '1000px' }}
+              onMouseMove={(e) => {
+                const card = e.currentTarget;
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left; // x coordinate within client
+                const y = e.clientY - rect.top;  // y coordinate within client
+                
+                const rotateX = -((y - rect.height / 2) / rect.height) * 30; // Max tilt 30deg
+                const rotateY = ((x - rect.width / 2) / rect.width) * 30;
+                
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+                
+                // Specs specular lighting shine spot
+                const shine = card.querySelector('.specs-glow');
+                if (shine) {
+                  shine.style.background = `radial-gradient(circle 80px at ${x}px ${y}px, rgba(255,255,255,0.18), transparent 80%)`;
+                }
+              }}
+              onMouseLeave={(e) => {
+                const card = e.currentTarget;
+                card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+                card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+                
+                const shine = card.querySelector('.specs-glow');
+                if (shine) {
+                  shine.style.background = 'transparent';
+                }
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transition = 'none';
+              }}
+            >
               {/* Outer glow */}
-              <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-blue-500/30 to-blue-700/20 blur-2xl pointer-events-none animate-glow" />
+              <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-blue-500/30 to-blue-700/20 blur-2xl pointer-events-none animate-glow group-hover:scale-110 transition-transform duration-300" />
 
               {/* Subtle pulsing outer glow ring */}
               <div
@@ -156,15 +189,19 @@ export default function Hero() {
               />
 
               {/* Photo container */}
-              <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full p-[3px] bg-gradient-to-br from-blue-400 via-blue-600 to-blue-800 shadow-2xl shadow-blue-500/20">
-                <div className="w-full h-full rounded-full overflow-hidden bg-[#0d1426]">
+              <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full p-[3px] bg-gradient-to-br from-blue-400 via-blue-600 to-blue-800 shadow-2xl shadow-blue-500/20 overflow-hidden transform transition-all duration-300 group-hover:shadow-blue-500/30">
+                
+                {/* 3D Specular Light reflection layer */}
+                <div className="specs-glow absolute inset-0 z-20 pointer-events-none transition-all duration-100" />
+
+                <div className="w-full h-full rounded-full overflow-hidden bg-[#0d1426] relative z-10">
                   <img
                     src={PHOTO}
                     alt="Inayath Basha A"
                     loading="eager"
                     decoding="async"
                     fetchPriority="high"
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none'
                       e.currentTarget.nextElementSibling.style.display = 'flex'
@@ -187,11 +224,11 @@ export default function Hero() {
               </div>
 
               {/* Accent badges on photo */}
-              <div className="absolute -top-1 -right-1 flex items-center gap-1 bg-blue-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow-lg shadow-blue-500/40">
+              <div className="absolute -top-1 -right-1 flex items-center gap-1 bg-blue-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow-lg shadow-blue-500/40 z-30 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
                 <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
                 Open to Work
               </div>
-              <div className="absolute -bottom-1 -left-2 flex items-center gap-1.5 bg-[#0d1426] border border-white/10 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-full shadow-lg">
+              <div className="absolute -bottom-1 -left-2 flex items-center gap-1.5 bg-[#0d1426] border border-white/10 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-full shadow-lg z-30 transition-transform duration-300 group-hover:-translate-x-1 group-hover:translate-y-1">
                 <ShoppingBag size={11} className="text-blue-400" />
                 Shopify Dev
               </div>
