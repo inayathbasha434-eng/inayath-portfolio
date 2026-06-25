@@ -50,6 +50,17 @@ export default function Contact() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
 
+        {/* Header */}
+        <div className="text-center mb-14 fade-in">
+          <span className="text-blue-400 text-sm font-semibold uppercase tracking-widest">Get In Touch</span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-3">
+            Let's <span className="text-gradient">Talk</span>
+          </h2>
+          <p className="text-slate-400 max-w-sm mx-auto text-sm sm:text-base">
+            Have a project in mind? I'd love to hear about it and help you build it.
+          </p>
+        </div>
+
         {/* Form + Direct Channels Grid */}
         <div className="grid md:grid-cols-12 gap-8 items-start max-w-5xl mx-auto">
           
