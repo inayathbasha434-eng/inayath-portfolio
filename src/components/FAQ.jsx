@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { HelpCircle, Zap, Settings, Shield, Clock, MessageCircle, ChevronDown } from 'lucide-react'
 
 const FAQ_ITEMS = [
@@ -45,10 +45,41 @@ const FAQ_ITEMS = [
 ]
 
 export default function FAQ() {
+  // Desktop Accordion State
   const [openIndex, setOpenIndex] = useState(null)
+
+  // Mobile Chatbot State
+  const [chatHistory, setChatHistory] = useState([
+    { role: 'bot', text: "Hi! I'm Inayath. Tap a question below to learn more about how we can work together! 👇" }
+  ])
+  const [isTyping, setIsTyping] = useState(false)
+  const chatContainerRef = useRef(null)
+
+  // Auto-scroll chat to bottom
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
+    }
+  }, [chatHistory, isTyping])
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index)
+  }
+
+  const handleAskQuestion = (question, answer) => {
+    if (isTyping) return // Prevent spamming
+    
+    // 1. Add user question to history immediately
+    setChatHistory(prev => [...prev, { role: 'user', text: question }])
+    
+    // 2. Trigger typing animation
+    setIsTyping(true)
+
+    // 3. Wait 1.5 seconds, then reveal the bot answer
+    setTimeout(() => {
+      setIsTyping(false)
+      setChatHistory(prev => [...prev, { role: 'bot', text: answer }])
+    }, 1500)
   }
 
   return (
@@ -57,7 +88,7 @@ export default function FAQ() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12 sm:mb-16">
+        <div className="text-center mb-10 sm:mb-16">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wide uppercase mb-4">
             <HelpCircle size={12} />
             Frequently Asked Questions
@@ -70,7 +101,79 @@ export default function FAQ() {
           </p>
         </div>
 
-        <div className="space-y-4 max-w-3xl mx-auto">
+        {/* 
+          ========================================
+          MOBILE LAYOUT: iMessage Chatbot UI 
+          ========================================
+        */}
+        <div className="md:hidden flex flex-col max-w-md mx-auto">
+          {/* Chat Window */}
+          <div className="bg-[#0d1426]/80 backdrop-blur-md border border-white/10 rounded-3xl p-4 h-[380px] flex flex-col mb-4 shadow-xl">
+            <div 
+              ref={chatContainerRef}
+              className="flex-1 overflow-y-auto space-y-5 pr-2 custom-scrollbar pb-2"
+            >
+              {chatHistory.map((msg, idx) => (
+                <div key={idx} className={`flex w-full ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                  {msg.role === 'bot' && (
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mr-2 flex-shrink-0 mt-auto mb-1 shadow-md shadow-blue-500/20">
+                      <span className="text-[9px] font-black text-white">IB</span>
+                    </div>
+                  )}
+                  <div className={`fade-in max-w-[85%] rounded-2xl px-4 py-3 text-[13px] leading-relaxed shadow-sm ${
+                    msg.role === 'user' 
+                      ? 'bg-blue-600 text-white rounded-br-sm shadow-blue-600/20' 
+                      : 'bg-white/5 border border-white/10 text-slate-200 rounded-bl-sm'
+                  }`}>
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
+              
+              {/* Typing Indicator */}
+              {isTyping && (
+                <div className="flex w-full justify-start fade-in">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mr-2 flex-shrink-0 mt-auto mb-1 shadow-md shadow-blue-500/20">
+                    <span className="text-[9px] font-black text-white">IB</span>
+                  </div>
+                  <div className="bg-white/5 border border-white/10 rounded-2xl rounded-bl-sm px-4 py-3 flex items-center gap-1.5 h-[40px] shadow-sm">
+                    <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                    <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                    <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce"></div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Quick Replies Carousel */}
+          <div className="flex overflow-x-auto gap-2.5 pb-2 snap-x snap-mandatory custom-scrollbar-hide -mx-4 px-4 pt-1">
+            {FAQ_ITEMS.map((item, idx) => {
+              const Icon = item.icon
+              return (
+                <button
+                  key={idx}
+                  onClick={() => handleAskQuestion(item.question, item.answer)}
+                  disabled={isTyping}
+                  className="snap-start flex-shrink-0 flex items-center gap-2 bg-[#0d1426]/90 hover:bg-white/10 border border-white/10 rounded-full px-4 py-2.5 text-xs font-semibold text-slate-300 transition-all active:scale-95 disabled:opacity-50 disabled:active:scale-100 shadow-sm"
+                >
+                  <Icon size={14} className={item.colorClass} />
+                  {item.question}
+                </button>
+              )
+            })}
+          </div>
+          <div className="text-center mt-2">
+             <span className="text-[10px] text-slate-500 uppercase tracking-widest">Swipe for more questions →</span>
+          </div>
+        </div>
+
+        {/* 
+          ========================================
+          DESKTOP LAYOUT: Standard Accordion 
+          ========================================
+        */}
+        <div className="hidden md:block space-y-4 max-w-3xl mx-auto">
           {FAQ_ITEMS.map((item, idx) => {
             const isOpen = openIndex === idx
             const Icon = item.icon
@@ -120,6 +223,7 @@ export default function FAQ() {
             )
           })}
         </div>
+
       </div>
     </section>
   )

@@ -136,3 +136,12 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #3b82f6;
 }
+
+/* Hide scrollbar for specific elements but keep functionality */
+.custom-scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.custom-scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
