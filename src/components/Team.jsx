@@ -50,7 +50,7 @@ const TEAM = [
 
 export default function Team() {
   const sectionRef = useRef(null)
-  const [activeMember, setActiveMember] = useState('Azmeer')
+  const [activeMember, setActiveMember] = useState('Roshan')
 
   useEffect(() => {
     const section = sectionRef.current
