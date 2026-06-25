@@ -1,31 +1,26 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { Plus, Minus, HelpCircle } from 'lucide-react'
 
 const FAQ_ITEMS = [
   {
-    question: "What Shopify services do you provide?",
-    answer: "I provide end-to-end Shopify development, including custom OS 2.0 theme design, Liquid template programming, store setup, application integration, payment gateways configuration, speed optimization, and UX audits designed to boost conversions."
+    question: "Why should I hire Inayath Basha as a Shopify Freelancer instead of an agency?",
+    answer: "As an independent Shopify Freelancer, I work directly with you without the agency overhead, layers of project managers, or communication delays. You get direct access to my expertise in Shopify development, customized theme solutions, and conversion-focused web design. I focus on building high-performance, fast-loading stores that directly boost your sales and conversion rates."
   },
   {
-    question: "How long does a Shopify project take?",
-    answer: "Timelines depend on scope. Coding a custom theme section or landing page typically takes 3 to 5 days. Constructing a complete, custom Shopify store from discovery to launch takes approximately 2 to 3 weeks."
+    question: "What specific Shopify Developer services do you offer?",
+    answer: "I offer full-service Shopify solutions including custom Shopify store setup, premium theme customization, custom section/feature development (using Liquid, HTML, CSS, and JS), app integrations, store migration, and UX/UI design tailored to increase your average order value (AOV)."
   },
   {
-    question: "Do you redesign existing stores?",
-    answer: "Yes, I specialize in store redesigns. I migrate old stores to modern OS 2.0 themes, optimize visual assets for faster load speeds, rewrite layouts to improve mobile navigation, and enhance checkout flows to minimize cart abandonment."
+    question: "How do you ensure my Shopify store is SEO optimized and fast?",
+    answer: "Every store I build follows strict SEO best practices: clean semantic HTML, structured data schema, optimized meta descriptions, and image alt tags. For speed, I optimize images (WebP format), lazy-load heavy elements, eliminate unnecessary app scripts, and build clean custom sections to achieve mobile-first, high-performance loading times."
   },
   {
-    question: "Do you provide SEO optimization?",
-    answer: "Yes. Every storefront I develop includes structural SEO implementations, including semantic HTML structure, proper title and description meta tags, XML sitemap generation, Google Search Console setups, and JSON-LD schema markup."
+    question: "Can you customize existing Shopify themes or build features from scratch?",
+    answer: "Yes, both! I can take any existing OS 2.0 Shopify theme (like Dawn, Impulse, or Prestige) and customize it, or code fully custom drag-and-drop sections from scratch. This allows you to update your store content easily from the Shopify Customizer without touching any code."
   },
   {
-    question: "Can you build custom Shopify features?",
-    answer: "Absolutely. I write clean custom Liquid, CSS, and ES6+ JavaScript code to create bespoke features like custom slide carts, product comparison grids, dynamic size charts, or product filters that remain fully editable from your Shopify theme editor."
-  },
-  {
-    question: "How can I contact you?",
-    answer: "You can reach me directly using the contact form below, email me at inayathbasha434@gmail.com, connect with me on LinkedIn (linkedin.com/in/inayathbasha), or start an instant chat on WhatsApp at +91 9345704295."
+    question: "What is your typical workflow and turnaround time for a project?",
+    answer: "We start with a discovery phase (defining goals and requirements), followed by UI/UX wireframes in Figma, custom Shopify coding and setup, and finally a rigorous quality assurance (QA) speed test. A standard landing page or custom section takes 3-5 days, while a complete custom Shopify store typically takes 2-3 weeks."
   }
 ]
 
@@ -36,28 +31,12 @@ export default function FAQ() {
     setOpenIndex(openIndex === index ? null : index)
   }
 
-  // Generate FAQ Schema JSON-LD content dynamically
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": FAQ_ITEMS.map((item) => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  }
-
   return (
     <section id="faq" className="py-20 sm:py-28 relative overflow-hidden bg-[#0c1224] border-t border-slate-900">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Header */}
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold tracking-wide uppercase mb-4">
             <HelpCircle size={12} />
@@ -67,11 +46,10 @@ export default function FAQ() {
             Got Questions? <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">I've Got Answers</span>
           </h2>
           <p className="mt-4 text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Find answers to common questions about custom Shopify store setups, development timelines, speed optimization, and SEO capabilities.
+            Find answers to common questions about working with a freelance Shopify developer, pricing, timelines, and SEO optimizations.
           </p>
         </div>
 
-        {/* Accordions */}
         <div className="space-y-4">
           {FAQ_ITEMS.map((item, idx) => {
             const isOpen = openIndex === idx
@@ -94,47 +72,26 @@ export default function FAQ() {
                   }`}>
                     {item.question}
                   </span>
-                  
-                  {/* Plus/Minus toggle circle */}
-                  <motion.div 
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.2 }}
-                    className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 transition-all ${
-                      isOpen ? 'bg-blue-500/20 text-blue-400' : 'bg-slate-800/60 text-slate-400 group-hover:text-slate-300'
-                    }`}
-                  >
+                  <div className={`w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                    isOpen ? 'bg-blue-500/20 text-blue-400' : 'bg-slate-800/60 text-slate-400 group-hover:text-slate-300'
+                  }`}>
                     {isOpen ? <Minus size={16} /> : <Plus size={16} />}
-                  </motion.div>
+                  </div>
                 </button>
-
-                {/* Content with Framer Motion Collapsible transition */}
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      key="content"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="overflow-hidden"
-                    >
-                      <p className="px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/50 pt-4">
-                        {item.answer}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    isOpen ? 'max-h-60 opacity-100' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <p className="px-5 pb-5 sm:px-6 sm:pb-6 text-xs sm:text-sm text-slate-400 leading-relaxed border-t border-slate-800/50 pt-4">
+                    {item.answer}
+                  </p>
+                </div>
               </div>
             )
           })}
         </div>
       </div>
-
-      {/* FAQ Page Schema Markup */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
     </section>
   )
 }

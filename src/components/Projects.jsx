@@ -1,288 +1,540 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ExternalLink, ShoppingBag, Eye } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { CheckCircle, ExternalLink, Play, Pause } from 'lucide-react'
 
 const PROJECTS = [
   {
     number: '01',
     title: 'Mor Panthal',
-    category: 'E-Commerce Website',
     platform: 'WordPress + WooCommerce',
     description:
-      'A premium food & beverage digital storefront custom-tailored with an engaging yellow visual theme, frictionless mobile shopping cart, and optimized checkout flow.',
-    tags: ['WordPress', 'WooCommerce', 'UI/UX Design', 'Razorpay Gateway'],
+      'Built a food & beverage brand website with a yellow theme, mobile friendly layout, and smooth user experience.',
+    tags: ['WordPress', 'WooCommerce', 'UI/UX', 'Razorpay'],
     link: 'https://sisufoodsupply.unaux.com',
     image: '/mor_panthal_new.png',
-    problem: 'Client lacked a professional digital presence to showcase food and beverage products, leading to manual order placements and high customer drop-offs during checkouts.',
-    solution: 'Designed and built a mobile-first e-commerce store with custom fast-loading layouts, unified Indian payment options (Razorpay), and a simple product search system.',
-    outcome: 'Increased client conversions and automated payment processing, allowing the store to scale inventory management and order fulfillment with zero manual overhead.',
+    problem: 'Client lacked a professional online presence to showcase food and beverage offerings and process digital payments.',
+    solution: 'Built a mobile-first WordPress storefront powered by WooCommerce, integrating a custom fast-loading yellow visual identity.',
+    outcome: 'Launched a high-converting storefront that seamlessly manages client checkouts, payments, and product inventory.',
+    tagColors: [
+      'bg-blue-500/10 text-blue-400 border-blue-500/20',
+      'bg-purple-500/10 text-purple-400 border-purple-500/20',
+      'bg-pink-500/10 text-pink-400 border-pink-500/20',
+      'bg-green-500/10 text-green-400 border-green-500/20',
+    ],
+    checklist: [
+      'WordPress & WooCommerce setup',
+      'Custom theme sections layout',
+      'Razorpay payment gateway',
+      'Product and inventory config',
+    ],
+    accent: 'from-yellow-400 to-orange-500',
     accentColor: '#f59e0b',
-    glowColor: 'rgba(245,158,11,0.15)',
   },
   {
     number: '02',
     title: 'Personal Portfolio',
-    category: 'Developer Platform',
     platform: 'React + Tailwind CSS',
     description:
-      'A high-performance personal agency portfolio built using modern frontend frameworks. Engineered with fluid transition animations, modular component layouts, and strict SEO compliance.',
-    tags: ['React', 'Tailwind CSS', 'Framer Motion', 'SEO Opt'],
+      'A premium developer portfolio with high-performance animations, collapsible timeline cards, and single-card team display.',
+    tags: ['React', 'Tailwind CSS', 'Framer Motion', 'SEO'],
     link: 'https://inayathbasha.vercel.app',
     image: '/portfolio_new.png',
-    problem: 'Needed a premium, ultra-fast portfolio to demonstrate engineering abilities, host client case studies, and convert visitors into leads with premium UX details.',
-    solution: 'Built a lightweight React application styled with glassmorphic cards, optimized image assets, responsive timelines, and direct instant messaging gateways.',
-    outcome: 'Achieved near-perfect 100/100 Lighthouse performance, accessibility, and SEO audit scores, driving increased organic discovery and direct client inquiries.',
+    problem: 'Needed a premium, accessible, and fast developer portfolio that displays skills, projects, and services dynamically.',
+    solution: 'Created a React + Vite single-page application built on Tailwind CSS, styled with fluid Framer Motion animations.',
+    outcome: 'Achieved near-perfect 100/100 Lighthouse performance, accessibility, and SEO audit scores on all devices.',
+    tagColors: [
+      'bg-blue-500/10 text-blue-400 border-blue-500/20',
+      'bg-purple-500/10 text-purple-400 border-purple-500/20',
+      'bg-pink-500/10 text-pink-400 border-pink-500/20',
+      'bg-green-500/10 text-green-400 border-green-500/20',
+    ],
+    checklist: [
+      'Responsive React + Tailwind build',
+      'Smooth transitions & scroll animations',
+      'Vercel hosting & performance audit',
+      'Dynamic interactive sections',
+    ],
+    accent: 'from-blue-500 to-indigo-600',
     accentColor: '#3b82f6',
-    glowColor: 'rgba(59,130,246,0.15)',
   },
   {
     number: '03',
     title: 'AI Image Generation',
-    category: 'Digital Creative Assets',
     platform: 'Stable Diffusion + Midjourney',
     description:
-      'Custom workflow converting low-resolution raw camera photo captures into commercial-grade lifestyle product mockups and marketing assets using generative AI.',
+      'Created high-fidelity commercial product visualizations and marketing assets from raw camera captures using generative AI workflows.',
     tags: ['Generative AI', 'Midjourney', 'Stable Diffusion', 'Photoshop'],
     link: 'https://tintandshade.in/',
+    image: '/tint_shade_after.jpg',
     beforeImage: '/tint_shade_before.jpg',
     afterImage: '/tint_shade_after.jpg',
-    problem: 'High-end advertising campaigns require expensive physical props, studios, studio lighting set-ups, and cameras to create premium product lifestyle photos.',
-    solution: 'Constructed an advanced AI inpainting/outpainting workflow using diffusion models and pixel-perfect retouching in Photoshop to modify base camera assets.',
-    outcome: 'Reduced commercial photography asset production costs by 80% while delivering clean, studio-grade, print-ready high-resolution promotional graphics.',
+    problem: 'Commercial advertising photography setups usually require expensive props, studios, lighting, and cameras.',
+    solution: 'Built a generative AI pipeline utilizing Stable Diffusion, Midjourney, and Photoshop to convert raw capture mockups.',
+    outcome: 'Reduced commercial photo production costs by 80% while delivering studio-grade high-res marketing graphics.',
+    tagColors: [
+      'bg-blue-500/10 text-blue-400 border-blue-500/20',
+      'bg-purple-500/10 text-purple-400 border-purple-500/20',
+      'bg-pink-500/10 text-pink-400 border-pink-500/20',
+      'bg-green-500/10 text-green-400 border-green-500/20',
+    ],
+    checklist: [
+      'Raw camera photo processing',
+      'AI prompt engineering & generation',
+      'Multi-pass inpainting & outpainting',
+      'High-res commercial retouching',
+    ],
+    accent: 'from-purple-500 to-pink-600',
     accentColor: '#a855f7',
-    glowColor: 'rgba(168,85,247,0.15)',
   },
 ]
 
 export default function Projects() {
+  const sectionRef = useRef(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(true)
+  const [fadeState, setFadeState] = useState('opacity-100 translate-y-0') // active transition state
   const [sliderPosition, setSliderPosition] = useState(50)
+  const timerRef = useRef(null)
+
+  // Trigger state transition when changing project
+  const changeProject = (index) => {
+    setFadeState('opacity-0 translate-y-1')
+    setTimeout(() => {
+      setCurrentIndex(index)
+      setSliderPosition(50)
+      setFadeState('opacity-100 translate-y-0')
+    }, 200)
+  }
+
+  // Setup interval cycle for desktop auto-play
+  useEffect(() => {
+    if (isPlaying) {
+      timerRef.current = setInterval(() => {
+        const nextIndex = (currentIndex + 1) % PROJECTS.length
+        changeProject(nextIndex)
+      }, 8000)
+    }
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
+  }, [currentIndex, isPlaying])
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+    const elements = section.querySelectorAll('.fade-in-section')
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('visible')),
+      { threshold: 0.1 }
+    )
+    elements.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
+
+  const currentProject = PROJECTS[currentIndex]
 
   return (
-    <section id="projects" className="py-24 bg-[#0a0f1e] scroll-mt-16 relative overflow-hidden">
+    <section id="projects" ref={sectionRef} className="py-16 sm:py-24 bg-[#0a0f1e] scroll-mt-16 relative overflow-hidden">
       {/* Background glow effects */}
-      <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-600/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-purple-600/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+      {/* Embedded shimmer animations & custom styles */}
+      <style>{`
+        @keyframes shimmer-move {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        .shimmer-line {
+          background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), rgba(168, 85, 247, 0.3), transparent);
+          background-size: 200% 100%;
+          animation: shimmer-move 4s linear infinite;
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+        }
+      `}</style>
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="text-blue-400 text-sm font-semibold uppercase tracking-widest">Portfolio</span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-2 mb-3">
+        <div className="text-center mb-10 fade-in-section">
+          <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest">Portfolio</span>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mt-1.5 mb-3.5">
             Featured <span className="text-gradient">Projects</span>
           </h2>
-          <p className="text-slate-400 max-w-md mx-auto text-sm sm:text-base">
-            Explore recent client works, Shopify storefronts, and design solutions engineered for growth.
+          <p className="text-slate-400 max-w-sm mx-auto text-xs sm:text-sm">
+            Discover real-world projects and design solutions built for global clients.
           </p>
         </div>
 
-        {/* Projects List */}
-        <div className="space-y-20 lg:space-y-28">
-          {PROJECTS.map((proj, idx) => {
-            const isEven = idx % 2 === 0
-            const hasSlider = proj.beforeImage && proj.afterImage
+        {/* ========================================================== */}
+        {/* 1. DESKTOP ONLY PRESENTATION VIEW (lg:block, hidden on mobile) */}
+        {/* ========================================================== */}
+        <div 
+          className="hidden lg:block fade-in-section max-w-4xl mx-auto"
+          onMouseEnter={() => setIsPlaying(false)} // Pause cycling on hover
+          onMouseLeave={() => setIsPlaying(true)}  // Resume cycling on leave
+        >
+          {/* Main Presentation Container */}
+          <div className="relative bg-gradient-to-br from-[#0d1426] via-[#0f1730] to-[#080d1a] border border-white/8 rounded-2xl overflow-hidden shadow-xl">
+            
+            {/* Shimmer top border line */}
+            <div className="absolute top-0 left-0 right-0 h-[2px] shimmer-line" />
 
-            return (
-              <motion.div
-                key={proj.title}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px' }}
-                transition={{ duration: 0.7, ease: 'easeOut' }}
-                className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center"
-              >
-                
-                {/* ── Visual Preview (Column 1) ── */}
-                <div 
-                  className={`lg:col-span-6 w-full ${
-                    isEven ? 'lg:order-first' : 'lg:order-last'
-                  }`}
+            <div className="p-7 relative z-10">
+              
+              {/* Tabs / Selector row */}
+              <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-white/5">
+                <div className="flex items-center gap-1.5">
+                  {PROJECTS.map((proj, idx) => {
+                    const isActive = currentIndex === idx
+                    return (
+                      <button
+                        key={proj.title}
+                        onClick={() => changeProject(idx)}
+                        className={`px-3.5 py-2 rounded-lg text-xs font-bold transition-all duration-300 ${
+                          isActive
+                            ? `text-white bg-gradient-to-r ${proj.accent} shadow-md`
+                            : 'text-slate-400 hover:text-white bg-white/5 border border-white/5'
+                        }`}
+                      >
+                        {proj.number}. {proj.title}
+                      </button>
+                    )
+                  })}
+                </div>
+
+                {/* Auto Cycle control button */}
+                <button
+                  onClick={() => setIsPlaying(!isPlaying)}
+                  className="flex items-center gap-1 text-[10px] text-slate-500 hover:text-slate-300 font-semibold px-2 py-1 rounded bg-white/5 border border-white/5"
                 >
-                  <div 
-                    className="rounded-2xl overflow-hidden border border-white/10 bg-[#0d1426]/50 shadow-2xl relative group"
-                    style={{ boxShadow: `0 20px 50px -15px ${proj.glowColor}` }}
-                  >
-                    {/* Browser chrome header bar */}
-                    <div className="bg-[#0e172e] px-4 py-3 flex items-center gap-2 border-b border-white/5">
-                      <div className="flex gap-1.5">
-                        <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                        <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                  {isPlaying ? <Pause size={9} className="animate-pulse" /> : <Play size={9} />}
+                  <span>{isPlaying ? 'Auto' : 'Paused'}</span>
+                </button>
+              </div>
+
+              {/* Combined Layout columns */}
+              <div className="flex flex-col lg:flex-row gap-6 items-stretch">
+                
+                {/* Browser Viewport Mockup */}
+                <div className={`w-full lg:w-[48%] flex flex-col justify-center transition-all duration-200 transform ${fadeState}`}>
+                  <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-[#080d1a] relative group">
+                    
+                    {/* Browser header chrome bar */}
+                    <div className="bg-[#0e172e] px-3 py-2 flex items-center gap-1.5 border-b border-white/5">
+                      <div className="flex gap-1">
+                        <div className="w-2 h-2 rounded-full bg-red-400/80" />
+                        <div className="w-2 h-2 rounded-full bg-yellow-400/80" />
+                        <div className="w-2 h-2 rounded-full bg-green-400/80" />
                       </div>
-                      <div className="flex-1 mx-4">
-                        <div className="bg-[#080d1a] rounded-lg px-3 py-1 text-[10px] text-slate-500 flex items-center gap-2 max-w-[200px] overflow-hidden truncate">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
-                          {proj.link.replace('https://', '')}
+                      <div className="flex-1 mx-2">
+                        <div className="bg-[#080d1a] rounded px-2 py-0.5 text-[9px] text-slate-500 flex items-center gap-1 max-w-[150px] overflow-hidden truncate">
+                          <div className={`w-1 h-1 rounded-full bg-gradient-to-r ${currentProject.accent} flex-shrink-0`} />
+                          {currentProject.link.replace('https://', '')}
                         </div>
                       </div>
                     </div>
 
-                    {/* Content area: Image OR Before/After Slider */}
-                    {hasSlider ? (
-                      <div className="relative h-[220px] sm:h-[300px] overflow-hidden bg-[#0d1426] select-none">
-                        {/* Before image */}
+                    {/* Viewport container with auto scrolling image on hover OR Before-After slider */}
+                    {currentProject.beforeImage && currentProject.afterImage ? (
+                      <div className="relative h-[200px] sm:h-[250px] overflow-hidden bg-[#0d1426] select-none group">
+                        {/* Before Image (underneath) */}
                         <div className="absolute inset-0">
                           <img
-                            src={proj.beforeImage}
-                            alt="Before AI optimization"
+                            src={currentProject.beforeImage}
+                            alt="Before AI Generation"
                             className="w-full h-full object-cover"
-                            loading="lazy"
                           />
-                          <div className="absolute top-3 left-3 bg-black/85 text-white text-[10px] font-bold px-2.5 py-1 rounded-md border border-white/10 uppercase tracking-wider">
-                            Before AI
+                          <div className="absolute top-2 left-2 bg-black/75 text-white text-[9px] font-bold px-2 py-0.5 rounded border border-white/10 uppercase tracking-wider">
+                            Camera Capture
                           </div>
                         </div>
 
-                        {/* After image (clipped) */}
+                        {/* After Image (clipped width controlled by clipPath) */}
                         <div 
-                          className="absolute inset-0 z-10"
+                          className="absolute inset-0"
                           style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
                         >
                           <img
-                            src={proj.afterImage}
-                            alt="After AI optimization"
+                            src={currentProject.afterImage}
+                            alt="After AI Generation"
                             className="w-full h-full object-cover"
-                            loading="lazy"
                           />
-                          <div className="absolute top-3 right-3 bg-purple-600/90 text-white text-[10px] font-bold px-2.5 py-1 rounded-md border border-purple-500/20 uppercase tracking-wider">
+                          <div className="absolute top-2 right-2 bg-purple-600/90 text-white text-[9px] font-bold px-2 py-0.5 rounded border border-purple-500/20 uppercase tracking-wider">
                             AI Generated
                           </div>
                         </div>
 
-                        {/* Slide bar handle */}
+                        {/* Slider bar line */}
                         <div 
-                          className="absolute inset-y-0 z-20 w-[2.5px] bg-white/90 cursor-ew-resize flex items-center justify-center pointer-events-none"
+                          className="absolute inset-y-0 w-[2px] bg-white/80 cursor-ew-resize flex items-center justify-center pointer-events-none"
                           style={{ left: `${sliderPosition}%` }}
                         >
-                          <div className="w-8 h-8 bg-slate-900 rounded-full shadow-xl border border-white/20 flex items-center justify-center -ml-[15px] pointer-events-auto hover:scale-105 transition-transform">
-                            <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <div className="w-6 h-6 bg-slate-900 rounded-full shadow-lg border border-white/20 flex items-center justify-center -ml-[12px] pointer-events-auto">
+                            <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
                             </svg>
                           </div>
                         </div>
 
-                        {/* Invisible range control */}
+                        {/* Invisible range input for dragging */}
                         <input
                           type="range"
                           min="0"
                           max="100"
                           value={sliderPosition}
                           onChange={(e) => setSliderPosition(Number(e.target.value))}
-                          className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30"
-                          aria-label="Before after slider"
+                          className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
                         />
                       </div>
                     ) : (
                       <a
-                        href={proj.link}
+                        href={currentProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block relative h-[220px] sm:h-[300px] overflow-hidden bg-[#0d1426] cursor-pointer"
+                        className="block relative h-[200px] sm:h-[250px] overflow-hidden bg-[#0d1426] cursor-pointer"
                       >
                         <img
-                          src={proj.image}
-                          alt={`${proj.title} Preview`}
-                          className="w-full h-auto object-cover object-top transition-transform duration-[6s] ease-in-out transform translate-y-0 group-hover:translate-y-[calc(-100%+220px)] sm:group-hover:translate-y-[calc(-100%+300px)]"
-                          loading="lazy"
+                          src={currentProject.image}
+                          alt={`${currentProject.title} Live Preview`}
+                          className="w-full h-auto object-cover object-top transition-transform duration-[6s] ease-in-out transform translate-y-0 group-hover:translate-y-[calc(-100%+200px)] sm:group-hover:translate-y-[calc(-100%+250px)]"
                         />
-                        
-                        {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-blue-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <div className="bg-slate-900/90 text-white font-bold text-xs px-4 py-2 rounded-xl border border-white/10 shadow-lg flex items-center gap-1.5 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                            <Eye size={14} className="text-blue-400" />
-                            <span>Visit Live Website</span>
+
+                        {/* Click to visit hover indicator pill */}
+                        <div className="absolute inset-0 bg-blue-950/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                          <div className="bg-slate-900/90 text-white font-bold text-[10px] px-3 py-1.5 rounded-full border border-white/10 shadow flex items-center gap-1 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300">
+                            <ExternalLink size={10} className="text-blue-400" />
+                            <span>Visit Live Site</span>
                           </div>
                         </div>
+
+                        {/* Vignette overlay */}
+                        <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_20px_rgba(0,0,0,0.35)]" />
                       </a>
                     )}
                   </div>
                 </div>
 
-                {/* ── Case Study Details (Column 2) ── */}
-                <div 
-                  className={`lg:col-span-6 flex flex-col justify-between ${
-                    isEven ? 'lg:order-last' : 'lg:order-first'
-                  }`}
-                >
-                  <div className="space-y-5 text-left">
+                {/* Left column: Content details */}
+                <div className={`w-full lg:w-[52%] flex flex-col justify-between transition-all duration-200 transform ${fadeState}`}>
+                  <div className="space-y-3.5">
                     
-                    {/* Index header */}
-                    <div className="flex items-center gap-4">
-                      <span className="text-4xl font-extrabold opacity-15 text-slate-400 select-none">
-                        {proj.number}
-                      </span>
-                      <div className="h-[1px] flex-1 bg-white/10" />
-                      <span className="text-[10px] font-extrabold text-blue-400 uppercase tracking-widest">
-                        {proj.category}
-                      </span>
-                    </div>
-
-                    {/* Title */}
-                    <div>
-                      <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                        {proj.title}
-                      </h3>
-                      <p className="text-slate-400 font-semibold text-xs mt-1">
-                        Platform: {proj.platform}
-                      </p>
-                    </div>
-
-                    {/* Detailed Paragraph */}
-                    <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                      {proj.description}
-                    </p>
-
-                    {/* Goal & Outcome Grid */}
-                    <div className="grid sm:grid-cols-2 gap-4 bg-white/5 border border-white/5 rounded-2xl p-4 sm:p-5 mt-2">
-                      <div className="space-y-1">
-                        <span className="text-[10px] font-extrabold text-blue-400 uppercase tracking-wider block">
-                          Business Goal
+                    {/* Project Header Title & Number */}
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-3">
+                        <span className={`text-4xl font-bold bg-gradient-to-r ${currentProject.accent} bg-clip-text text-transparent opacity-30 select-none leading-none`}>
+                          {currentProject.number}
                         </span>
-                        <p className="text-slate-350 text-xs sm:text-sm leading-relaxed">
-                          {proj.problem}
-                        </p>
+                        <div className={`h-px flex-1 bg-gradient-to-r ${currentProject.accent} opacity-20`} />
                       </div>
-                      <div className="space-y-1 border-t sm:border-t-0 sm:border-l border-white/10 pt-3 sm:pt-0 sm:pl-4">
-                        <span className="text-[10px] font-extrabold text-green-400 uppercase tracking-wider block">
-                          Business Outcome
-                        </span>
-                        <p className="text-slate-350 text-xs sm:text-sm leading-relaxed">
-                          {proj.outcome}
-                        </p>
+
+                      <div>
+                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-0.5">{currentProject.title}</h3>
+                        <p className="text-blue-400 font-semibold text-[10px] uppercase tracking-wider">{currentProject.platform}</p>
                       </div>
                     </div>
 
-                    {/* Technologies pills */}
-                    <div className="flex flex-wrap gap-2 pt-2">
-                      {proj.tags.map((tag) => (
+                    {/* Short Description */}
+                    <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">{currentProject.description}</p>
+
+                    {/* Case Study Details (Problem, Solution, Outcome) */}
+                    <div className="bg-[#0b1021]/85 rounded-xl p-3.5 border border-white/5 space-y-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div className="space-y-1">
+                          <p className="text-blue-400 font-bold uppercase tracking-wider text-[9px]">Problem</p>
+                          <p className="text-slate-300 text-xs leading-relaxed">{currentProject.problem}</p>
+                        </div>
+                        <div className="space-y-1">
+                          <p className="text-blue-400 font-bold uppercase tracking-wider text-[9px]">Solution</p>
+                          <p className="text-slate-300 text-xs leading-relaxed">{currentProject.solution}</p>
+                        </div>
+                      </div>
+                      <div className="border-t border-white/5 pt-2">
+                        <div className="space-y-1">
+                          <p className="text-green-400 font-bold uppercase tracking-wider text-[9px]">Outcome</p>
+                          <p className="text-slate-300 text-xs leading-relaxed">{currentProject.outcome}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Tag pills */}
+                    <div className="flex flex-wrap gap-1.5">
+                      {currentProject.tags.map((tag, i) => (
                         <span
                           key={tag}
-                          className="text-[10px] font-bold px-3 py-1 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-full"
+                          className={`text-[9px] font-bold px-2 py-0.5 rounded-full border ${currentProject.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    {/* Demo Button */}
-                    <div className="pt-4">
+                  </div>
+
+                  {/* Preview button */}
+                  {currentProject.link && (
+                    <div className="pt-3">
                       <a
-                        href={proj.link}
+                        href={currentProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="shine inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all duration-200 hover:-translate-y-0.5"
+                        className={`shine inline-flex items-center gap-1.5 min-h-[38px] px-4 py-2 bg-gradient-to-r ${currentProject.accent} text-white font-bold text-xs rounded-lg transition-all duration-200 shadow-md hover:-translate-y-0.5 active:translate-y-0`}
                       >
-                        <ExternalLink size={14} />
-                        <span>Live Demo</span>
+                        <ExternalLink size={13} />
+                        <span>Live Preview</span>
                       </a>
                     </div>
+                  )}
+                </div>
 
+              </div>
+
+            </div>
+
+            {/* Shimmer bottom border line */}
+            <div className="absolute bottom-0 left-0 right-0 h-[2px] shimmer-line" />
+          </div>
+        </div>
+
+        {/* ========================================================== */}
+        {/* 2. MOBILE ONLY SWIPE VIEW (lg:hidden, block on smaller devices) */}
+        {/* ========================================================== */}
+        <div className="block lg:hidden w-full overflow-hidden">
+          {/* Swiper track */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 pb-6 scroll-smooth">
+            {PROJECTS.map((proj, index) => (
+              <div 
+                key={proj.title}
+                className="min-w-[85vw] max-w-[85vw] sm:min-w-[70vw] sm:max-w-[70vw] snap-center bg-gradient-to-br from-[#0d1426] via-[#0f1730] to-[#080d1a] border border-white/10 rounded-2xl p-5 flex flex-col justify-between shadow-lg relative"
+              >
+                {/* Visual Number ID */}
+                <div className="absolute top-4 right-5 text-2xl font-black text-white/5 select-none">{proj.number}</div>
+
+                <div className="space-y-4">
+                  {/* Mockup Header */}
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-black text-white">{proj.title}</h3>
+                    <p className={`text-[10px] font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r ${proj.accent}`}>
+                      {proj.platform}
+                    </p>
+                  </div>
+
+                  {/* Browser-like window wrapper */}
+                  <div className="rounded-xl overflow-hidden border border-white/5 bg-[#080d1a] relative">
+                    {/* Before/After AI Image Slider OR Scroll preview */}
+                    {proj.beforeImage && proj.afterImage ? (
+                      <div className="relative h-[160px] overflow-hidden bg-[#0d1426] select-none">
+                        {/* Before Image */}
+                        <div className="absolute inset-0">
+                          <img
+                            src={proj.beforeImage}
+                            alt="Before AI"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+
+                        {/* After Image */}
+                        <div 
+                          className="absolute inset-0"
+                          style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
+                        >
+                          <img
+                            src={proj.afterImage}
+                            alt="After AI"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+
+                        {/* Slider control line */}
+                        <div 
+                          className="absolute inset-y-0 w-[2.5px] bg-white/80 cursor-ew-resize flex items-center justify-center pointer-events-none"
+                          style={{ left: `${sliderPosition}%` }}
+                        >
+                          <div className="w-5 h-5 bg-slate-900 rounded-full shadow-md border border-white/20 flex items-center justify-center -ml-[10px] pointer-events-auto">
+                            <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
+                            </svg>
+                          </div>
+                        </div>
+
+                        {/* Range slider for mobile touch */}
+                        <input
+                          type="range"
+                          min="0"
+                          max="100"
+                          value={sliderPosition}
+                          onChange={(e) => setSliderPosition(Number(e.target.value))}
+                          className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
+                        />
+                      </div>
+                    ) : (
+                      <div className="relative h-[160px] overflow-hidden bg-[#0d1426]">
+                        <img
+                          src={proj.image}
+                          alt={`${proj.title} Preview`}
+                          className="w-full h-full object-cover object-top"
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Summary Description */}
+                  <p className="text-slate-350 text-xs leading-relaxed">{proj.description}</p>
+
+                  {/* Quick stats grid */}
+                  <div className="grid grid-cols-2 gap-2 text-left bg-black/30 rounded-xl p-3 border border-white/5">
+                    <div>
+                      <p className="text-[8px] font-extrabold text-blue-400 uppercase tracking-wider">Solution</p>
+                      <p className="text-[10px] text-slate-300 leading-snug mt-0.5 line-clamp-2">{proj.solution}</p>
+                    </div>
+                    <div>
+                      <p className="text-[8px] font-extrabold text-green-400 uppercase tracking-wider">Outcome</p>
+                      <p className="text-[10px] text-slate-300 leading-snug mt-0.5 line-clamp-2">{proj.outcome}</p>
+                    </div>
+                  </div>
+
+                  {/* Tag pills */}
+                  <div className="flex flex-wrap gap-1">
+                    {proj.tags.slice(0, 3).map((tag, i) => (
+                      <span
+                        key={tag}
+                        className={`text-[8px] font-extrabold px-2 py-0.5 rounded-full border ${proj.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
                   </div>
                 </div>
 
-              </motion.div>
-            )
-          })}
+                {/* View button */}
+                <div className="pt-4 border-t border-white/5 mt-4 flex items-center justify-between">
+                  <a
+                    href={proj.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-1 justify-center min-h-[34px] px-3.5 py-1.5 bg-gradient-to-r ${proj.accent} text-white font-extrabold text-[10px] rounded-lg shadow active:scale-95 transition-transform`}
+                  >
+                    <ExternalLink size={10} />
+                    <span>Live Preview</span>
+                  </a>
+                  <span className="text-[10px] text-slate-500 font-bold">Swipe next →</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Touch instructions */}
+          <div className="flex items-center justify-center gap-2 mt-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-ping" />
+            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Swipe cards left / right</span>
+          </div>
         </div>
 
       </div>
