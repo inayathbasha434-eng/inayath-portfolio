@@ -128,40 +128,72 @@ export default function Team() {
                 </div>
               </div>
 
-              {/* Expandable Avatars Row */}
-              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12">
-                {TEAM.map((member) => {
-                  const isActive = activeMember === member.name
-                  return (
-                    <div
-                      key={member.name}
-                      onMouseEnter={() => setActiveMember(member.name)}
-                      onMouseLeave={() => setActiveMember(null)}
-                      onClick={() => setActiveMember(isActive ? null : member.name)}
-                      className={`relative flex items-center p-1.5 rounded-full cursor-pointer transition-all duration-500 ease-out border shadow-lg ${
-                        isActive ? 'bg-[#15203c] border-blue-500/30 pr-5 sm:pr-6 shadow-blue-500/10' : 'bg-[#0d1426] border-white/5 hover:border-white/10 shadow-black/50'
-                      }`}
-                    >
-                      {/* Avatar Circle */}
-                      <div
-                        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full ${member.bg} flex items-center justify-center text-white font-extrabold text-lg sm:text-xl shrink-0 transition-transform duration-500 ${isActive ? 'rotate-[360deg] scale-95' : 'scale-100'}`}
-                        style={{ boxShadow: `0 4px 12px ${member.shadowColor}` }}
+              {/* Static Avatars Grid */}
+              <div className="flex flex-col items-center gap-5 sm:gap-6 mb-8 mt-6">
+                {/* Top Row (4 members) */}
+                <div className="flex justify-center gap-4 sm:gap-6">
+                  {TEAM.slice(0, 4).map((member) => {
+                    const isActive = activeMember === member.name
+                    return (
+                      <button
+                        key={member.name}
+                        onClick={() => setActiveMember(isActive ? null : member.name)}
+                        onMouseEnter={() => setActiveMember(member.name)}
+                        className="focus:outline-none transition-transform duration-300 hover:scale-105 active:scale-95"
                       >
-                        {member.initials}
-                      </div>
+                        <div
+                          className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full ${member.bg} flex items-center justify-center text-white font-extrabold text-xl sm:text-2xl transition-all duration-300 ${
+                            isActive ? 'ring-4 ring-white/20 scale-110' : 'ring-4 ring-[#0d1426]'
+                          }`}
+                          style={{ boxShadow: isActive ? `0 0 25px ${member.shadowColor}` : `0 4px 15px ${member.shadowColor}` }}
+                        >
+                          {member.initials}
+                        </div>
+                      </button>
+                    )
+                  })}
+                </div>
 
-                      {/* Expandable Text (Name & Role) */}
-                      <div
-                        className={`overflow-hidden transition-all duration-500 ease-out flex flex-col justify-center ${
-                          isActive ? 'w-[100px] sm:w-[130px] opacity-100 ml-3' : 'w-0 opacity-0 ml-0'
-                        }`}
+                {/* Bottom Row (1 member) */}
+                <div className="flex justify-center">
+                  {TEAM.slice(4).map((member) => {
+                    const isActive = activeMember === member.name
+                    return (
+                      <button
+                        key={member.name}
+                        onClick={() => setActiveMember(isActive ? null : member.name)}
+                        onMouseEnter={() => setActiveMember(member.name)}
+                        className="focus:outline-none transition-transform duration-300 hover:scale-105 active:scale-95"
                       >
-                        <span className="text-white font-bold text-sm sm:text-base whitespace-nowrap leading-tight">{member.name}</span>
-                        <span className="text-blue-400 font-semibold text-[9px] sm:text-[10px] whitespace-nowrap uppercase tracking-wider mt-0.5">{member.role}</span>
-                      </div>
+                        <div
+                          className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full ${member.bg} flex items-center justify-center text-white font-extrabold text-xl sm:text-2xl transition-all duration-300 ${
+                            isActive ? 'ring-4 ring-white/20 scale-110' : 'ring-4 ring-[#0d1426]'
+                          }`}
+                          style={{ boxShadow: isActive ? `0 0 25px ${member.shadowColor}` : `0 4px 15px ${member.shadowColor}` }}
+                        >
+                          {member.initials}
+                        </div>
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+
+              {/* Selected Member Info Panel */}
+              <div className="h-16 flex flex-col items-center justify-center mb-10 bg-white/5 border border-white/5 rounded-2xl mx-auto max-w-[200px] transition-all duration-300 shadow-inner">
+                {activeMember ? (() => {
+                  const member = TEAM.find(m => m.name === activeMember)
+                  return (
+                    <div className="text-center transition-all duration-300 animate-in fade-in zoom-in-95">
+                      <p className="text-white font-bold text-sm sm:text-base flex items-center justify-center gap-1.5">
+                        {member.emoji} {member.name}
+                      </p>
+                      <p className="text-blue-400 font-semibold text-[10px] uppercase tracking-wider mt-0.5">{member.role}</p>
                     </div>
                   )
-                })}
+                })() : (
+                  <p className="text-slate-500 text-xs font-semibold animate-pulse tracking-wide">Tap a team member</p>
+                )}
               </div>
 
               {/* Bottom stats strip */}
