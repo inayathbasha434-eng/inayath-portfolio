@@ -92,7 +92,7 @@ export default function Hero() {
             {/* Available badge */}
             <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6">
               <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              Shopify Partner & Entrepreneur
+              Available Freelance Project
             </div>
 
             {/* Greeting line */}
