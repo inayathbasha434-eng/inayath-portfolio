@@ -10,10 +10,10 @@ const PHOTO = "/ChatGPT_Image_Jun_16,_2026,_03_11_34_PM.png"
 
 const ROLES = [
   'Shopify Developer',
+  'Tech Entrepreneur',
   'UI/UX Designer',
-  'Brand Designer',
-  'Creative Freelancer',
   'Digital Strategist',
+  'Brand Builder',
 ]
 
 export default function Hero() {
@@ -90,9 +90,9 @@ export default function Hero() {
             }`}
           >
             {/* Available badge */}
-            <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              Available for Freelance
+            <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6">
+              <span className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+              Shopify Partner & Entrepreneur
             </div>
 
             {/* Greeting line */}
@@ -148,7 +148,7 @@ export default function Hero() {
 
             {/* Subheading */}
             <p className="text-slate-300 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl mb-8 mt-2">
-              Helping businesses grow through modern Shopify stores, web design, branding, and digital experiences.
+              Helping brands scale and grow through conversion-focused Shopify stores, custom web design, and digital strategies.
             </p>
 
             {/* CTA Buttons */}
@@ -294,13 +294,12 @@ export default function Hero() {
               </div>
 
               {/* Accent badges on photo */}
-              <div className="absolute -top-1 -right-1 flex items-center gap-1 bg-blue-600 text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow-lg shadow-blue-500/40 z-30 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-                <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-                Open to Work
+              <div className="absolute -top-1 -right-1 flex items-center gap-1 bg-blue-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg shadow-blue-500/40 z-30 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                <span>Founder & Dev</span>
               </div>
               <div className="absolute -bottom-1 -left-2 flex items-center gap-1.5 bg-[#0d1426] border border-white/10 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-full shadow-lg z-30 transition-transform duration-300 group-hover:-translate-x-1 group-hover:translate-y-1">
                 <ShoppingBag size={11} className="text-blue-400" />
-                Shopify Dev
+                Shopify Expert
               </div>
             </div>
           </div>
