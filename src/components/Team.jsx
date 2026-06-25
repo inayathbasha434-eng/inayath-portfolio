@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const TEAM = [
   {
@@ -50,6 +50,7 @@ const TEAM = [
 
 export default function Team() {
   const sectionRef = useRef(null)
+  const [activeMember, setActiveMember] = useState(null)
 
   useEffect(() => {
     const section = sectionRef.current
@@ -127,62 +128,40 @@ export default function Team() {
                 </div>
               </div>
 
-              {/* Overlapping avatars row */}
-              <div className="flex flex-col items-center justify-center mb-10">
-                <div className="flex items-center justify-center">
-                  {TEAM.map((member, idx) => (
+              {/* Expandable Avatars Row */}
+              <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-12">
+                {TEAM.map((member) => {
+                  const isActive = activeMember === member.name
+                  return (
                     <div
                       key={member.name}
-                      className="relative group"
-                      style={{ marginLeft: idx === 0 ? 0 : '-16px', zIndex: idx }}
+                      onMouseEnter={() => setActiveMember(member.name)}
+                      onMouseLeave={() => setActiveMember(null)}
+                      onClick={() => setActiveMember(isActive ? null : member.name)}
+                      className={`relative flex items-center p-1.5 rounded-full cursor-pointer transition-all duration-500 ease-out border shadow-lg ${
+                        isActive ? 'bg-[#15203c] border-blue-500/30 pr-5 sm:pr-6 shadow-blue-500/10' : 'bg-[#0d1426] border-white/5 hover:border-white/10 shadow-black/50'
+                      }`}
                     >
-                      {/* Avatar circle */}
+                      {/* Avatar Circle */}
                       <div
-                        className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full ${member.bg} border-[3px] border-[#0d1426] flex items-center justify-center text-white font-extrabold text-lg sm:text-xl transition-all duration-300 group-hover:scale-110 group-hover:z-50 cursor-default select-none`}
-                        style={{ boxShadow: `0 4px 16px ${member.shadowColor}` }}
+                        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full ${member.bg} flex items-center justify-center text-white font-extrabold text-lg sm:text-xl shrink-0 transition-transform duration-500 ${isActive ? 'rotate-[360deg] scale-95' : 'scale-100'}`}
+                        style={{ boxShadow: `0 4px 12px ${member.shadowColor}` }}
                       >
                         {member.initials}
                       </div>
 
-                      {/* Hover tooltip */}
-                      <div className="absolute -top-14 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-50 whitespace-nowrap">
-                        <div className="bg-[#0d1426] border border-white/10 rounded-xl px-3 py-2 text-center shadow-xl">
-                          <p className="text-white font-bold text-xs">{member.name}</p>
-                          <p className="text-slate-400 text-[10px]">{member.role}</p>
-                        </div>
-                        <div className="w-2 h-2 bg-[#0d1426] border-b border-r border-white/10 rotate-45 mx-auto -mt-1" />
+                      {/* Expandable Text (Name & Role) */}
+                      <div
+                        className={`overflow-hidden transition-all duration-500 ease-out flex flex-col justify-center ${
+                          isActive ? 'w-[100px] sm:w-[130px] opacity-100 ml-3' : 'w-0 opacity-0 ml-0'
+                        }`}
+                      >
+                        <span className="text-white font-bold text-sm sm:text-base whitespace-nowrap leading-tight">{member.name}</span>
+                        <span className="text-blue-400 font-semibold text-[9px] sm:text-[10px] whitespace-nowrap uppercase tracking-wider mt-0.5">{member.role}</span>
                       </div>
                     </div>
-                  ))}
-
-                  {/* ALL IN bubble */}
-                  <div
-                    className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-white/5 border-[3px] border-[#0d1426] flex items-center justify-center select-none"
-                    style={{ marginLeft: '-16px', zIndex: TEAM.length }}
-                  >
-                    <span className="text-slate-400 text-[10px] font-bold text-center leading-tight px-1">ALL<br/>IN</span>
-                  </div>
-                </div>
-
-                {/* Tooltip guide text */}
-                <p className="text-slate-500 text-[11px] mt-3 font-medium flex items-center gap-1">
-                  <span>↑</span> hover to see name + role tooltip
-                </p>
-              </div>
-
-              {/* Team members list — horizontal pill rows */}
-              <div className="flex flex-wrap justify-center gap-3 mb-10 max-w-xl mx-auto">
-                {TEAM.map((member) => (
-                  <div
-                    key={member.name}
-                    className="flex items-center gap-2 bg-white/4 border border-white/8 rounded-full px-4 py-2 hover:border-white/15 transition-all duration-300 group"
-                  >
-                    <span className="text-xs">{member.emoji}</span>
-                    <span className="text-white font-semibold text-xs">{member.name}</span>
-                    <span className="text-slate-500 text-[10px]">·</span>
-                    <span className="text-slate-400 text-[10px]">{member.role}</span>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
 
               {/* Bottom stats strip */}
