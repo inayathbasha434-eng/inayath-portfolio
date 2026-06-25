@@ -54,6 +54,7 @@ export default function EducationExperience() {
   const sectionRef = useRef(null)
   const [expandedEduIndex, setExpandedEduIndex] = useState(0)
   const [expandedIndex, setExpandedIndex] = useState(0)
+  const [activeTab, setActiveTab] = useState('education')
 
   useEffect(() => {
     const section = sectionRef.current
@@ -91,10 +92,36 @@ export default function EducationExperience() {
           </p>
         </div>
 
+        {/* Mobile Toggle Navigation */}
+        <div className="md:hidden flex bg-[#0d1426] p-1.5 rounded-xl mb-8 border border-white/5 mx-auto max-w-[320px] fade-in">
+          <button
+            onClick={() => setActiveTab('education')}
+            className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs font-bold transition-all duration-300 ${
+              activeTab === 'education' 
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20' 
+                : 'text-slate-400 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <GraduationCap size={15} className={activeTab === 'education' ? 'text-white' : 'text-blue-400'} />
+            Education
+          </button>
+          <button
+            onClick={() => setActiveTab('experience')}
+            className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs font-bold transition-all duration-300 ${
+              activeTab === 'experience' 
+                ? 'bg-amber-500 text-white shadow-lg shadow-amber-500/20' 
+                : 'text-slate-400 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <Briefcase size={15} className={activeTab === 'experience' ? 'text-white' : 'text-amber-400'} />
+            Experience
+          </button>
+        </div>
+
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
           
           {/* Education Timeline */}
-          <div className="fade-in">
+          <div className={`fade-in transition-opacity duration-300 ${activeTab === 'education' ? 'block' : 'hidden'} md:block`}>
             <div className="flex items-center gap-2 mb-5">
               <div className="p-2 rounded-lg bg-blue-500/10 border border-blue-500/20">
                 <GraduationCap size={18} className="text-blue-400" />
@@ -148,7 +175,7 @@ export default function EducationExperience() {
           </div>
 
           {/* Experience Timeline */}
-          <div className="fade-in">
+          <div className={`fade-in transition-opacity duration-300 ${activeTab === 'experience' ? 'block' : 'hidden'} md:block`}>
             <div className="flex items-center gap-2 mb-5">
               <div className="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20">
                 <Briefcase size={18} className="text-amber-400" />
