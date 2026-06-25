@@ -105,7 +105,7 @@ export default function Projects() {
     }, 200)
   }
 
-  // Setup interval cycle
+  // Setup interval cycle for desktop auto-play
   useEffect(() => {
     if (isPlaying) {
       timerRef.current = setInterval(() => {
@@ -133,12 +133,12 @@ export default function Projects() {
   const currentProject = PROJECTS[currentIndex]
 
   return (
-    <section id="projects" ref={sectionRef} className="py-16 bg-[#0a0f1e] scroll-mt-16 relative overflow-hidden">
+    <section id="projects" ref={sectionRef} className="py-16 sm:py-24 bg-[#0a0f1e] scroll-mt-16 relative overflow-hidden">
       {/* Background glow effects */}
       <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-purple-600/5 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Embedded shimmer animations */}
+      {/* Embedded shimmer animations & custom styles */}
       <style>{`
         @keyframes shimmer-move {
           0% { background-position: -200% 0; }
@@ -149,24 +149,35 @@ export default function Projects() {
           background-size: 200% 100%;
           animation: shimmer-move 4s linear infinite;
         }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+        }
       `}</style>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-8 fade-in-section">
+        <div className="text-center mb-10 fade-in-section">
           <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest">Portfolio</span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mt-1.5 mb-2.5">
-            My <span className="text-gradient">Projects</span>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mt-1.5 mb-3.5">
+            Featured <span className="text-gradient">Projects</span>
           </h2>
-          <p className="text-slate-400 max-w-xs mx-auto text-xs sm:text-sm">
-            Real-world projects I built and delivered for clients
+          <p className="text-slate-400 max-w-sm mx-auto text-xs sm:text-sm">
+            Discover real-world projects and design solutions built for global clients.
           </p>
         </div>
 
-        {/* Dynamic Project Presentation Card */}
+        {/* ========================================================== */}
+        {/* 1. DESKTOP ONLY PRESENTATION VIEW (lg:block, hidden on mobile) */}
+        {/* ========================================================== */}
         <div 
-          className="fade-in-section max-w-4xl mx-auto"
+          className="hidden lg:block fade-in-section max-w-4xl mx-auto"
           onMouseEnter={() => setIsPlaying(false)} // Pause cycling on hover
           onMouseLeave={() => setIsPlaying(true)}  // Resume cycling on leave
         >
@@ -176,7 +187,7 @@ export default function Projects() {
             {/* Shimmer top border line */}
             <div className="absolute top-0 left-0 right-0 h-[2px] shimmer-line" />
 
-            <div className="p-5 sm:p-7 relative z-10">
+            <div className="p-7 relative z-10">
               
               {/* Tabs / Selector row */}
               <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-white/5">
@@ -187,7 +198,7 @@ export default function Projects() {
                       <button
                         key={proj.title}
                         onClick={() => changeProject(idx)}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-300 ${
+                        className={`px-3.5 py-2 rounded-lg text-xs font-bold transition-all duration-300 ${
                           isActive
                             ? `text-white bg-gradient-to-r ${proj.accent} shadow-md`
                             : 'text-slate-400 hover:text-white bg-white/5 border border-white/5'
@@ -209,13 +220,11 @@ export default function Projects() {
                 </button>
               </div>
 
-              {/* Combined Layout columns: 
-                  order-1 on right mockup places the image on top in mobile.
-                  order-2 on left details keeps details below in mobile. */}
+              {/* Combined Layout columns */}
               <div className="flex flex-col lg:flex-row gap-6 items-stretch">
                 
-                {/* Browser Viewport Mockup (Right Column -> Top Image in mobile) */}
-                <div className={`w-full lg:w-[48%] flex flex-col justify-center order-1 lg:order-2 transition-all duration-200 transform ${fadeState}`}>
+                {/* Browser Viewport Mockup */}
+                <div className={`w-full lg:w-[48%] flex flex-col justify-center transition-all duration-200 transform ${fadeState}`}>
                   <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-[#080d1a] relative group">
                     
                     {/* Browser header chrome bar */}
@@ -233,7 +242,6 @@ export default function Projects() {
                       </div>
                     </div>
 
-                    {/* Viewport container with auto scrolling image on hover */}
                     {/* Viewport container with auto scrolling image on hover OR Before-After slider */}
                     {currentProject.beforeImage && currentProject.afterImage ? (
                       <div className="relative h-[200px] sm:h-[250px] overflow-hidden bg-[#0d1426] select-none group">
@@ -314,8 +322,8 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Left column: Content details (Below Image in mobile) */}
-                <div className={`w-full lg:w-[52%] flex flex-col justify-between order-2 lg:order-1 transition-all duration-200 transform ${fadeState}`}>
+                {/* Left column: Content details */}
+                <div className={`w-full lg:w-[52%] flex flex-col justify-between transition-all duration-200 transform ${fadeState}`}>
                   <div className="space-y-3.5">
                     
                     {/* Project Header Title & Number */}
@@ -392,6 +400,140 @@ export default function Projects() {
 
             {/* Shimmer bottom border line */}
             <div className="absolute bottom-0 left-0 right-0 h-[2px] shimmer-line" />
+          </div>
+        </div>
+
+        {/* ========================================================== */}
+        {/* 2. MOBILE ONLY SWIPE VIEW (lg:hidden, block on smaller devices) */}
+        {/* ========================================================== */}
+        <div className="block lg:hidden w-full overflow-hidden">
+          {/* Swiper track */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 pb-6 scroll-smooth">
+            {PROJECTS.map((proj, index) => (
+              <div 
+                key={proj.title}
+                className="min-w-[85vw] max-w-[85vw] sm:min-w-[70vw] sm:max-w-[70vw] snap-center bg-gradient-to-br from-[#0d1426] via-[#0f1730] to-[#080d1a] border border-white/10 rounded-2xl p-5 flex flex-col justify-between shadow-lg relative"
+              >
+                {/* Visual Number ID */}
+                <div className="absolute top-4 right-5 text-2xl font-black text-white/5 select-none">{proj.number}</div>
+
+                <div className="space-y-4">
+                  {/* Mockup Header */}
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-black text-white">{proj.title}</h3>
+                    <p className={`text-[10px] font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r ${proj.accent}`}>
+                      {proj.platform}
+                    </p>
+                  </div>
+
+                  {/* Browser-like window wrapper */}
+                  <div className="rounded-xl overflow-hidden border border-white/5 bg-[#080d1a] relative">
+                    {/* Before/After AI Image Slider OR Scroll preview */}
+                    {proj.beforeImage && proj.afterImage ? (
+                      <div className="relative h-[160px] overflow-hidden bg-[#0d1426] select-none">
+                        {/* Before Image */}
+                        <div className="absolute inset-0">
+                          <img
+                            src={proj.beforeImage}
+                            alt="Before AI"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+
+                        {/* After Image */}
+                        <div 
+                          className="absolute inset-0"
+                          style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
+                        >
+                          <img
+                            src={proj.afterImage}
+                            alt="After AI"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+
+                        {/* Slider control line */}
+                        <div 
+                          className="absolute inset-y-0 w-[2.5px] bg-white/80 cursor-ew-resize flex items-center justify-center pointer-events-none"
+                          style={{ left: `${sliderPosition}%` }}
+                        >
+                          <div className="w-5 h-5 bg-slate-900 rounded-full shadow-md border border-white/20 flex items-center justify-center -ml-[10px] pointer-events-auto">
+                            <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
+                            </svg>
+                          </div>
+                        </div>
+
+                        {/* Range slider for mobile touch */}
+                        <input
+                          type="range"
+                          min="0"
+                          max="100"
+                          value={sliderPosition}
+                          onChange={(e) => setSliderPosition(Number(e.target.value))}
+                          className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
+                        />
+                      </div>
+                    ) : (
+                      <div className="relative h-[160px] overflow-hidden bg-[#0d1426]">
+                        <img
+                          src={proj.image}
+                          alt={`${proj.title} Preview`}
+                          className="w-full h-full object-cover object-top"
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Summary Description */}
+                  <p className="text-slate-350 text-xs leading-relaxed">{proj.description}</p>
+
+                  {/* Quick stats grid */}
+                  <div className="grid grid-cols-2 gap-2 text-left bg-black/30 rounded-xl p-3 border border-white/5">
+                    <div>
+                      <p className="text-[8px] font-extrabold text-blue-400 uppercase tracking-wider">Solution</p>
+                      <p className="text-[10px] text-slate-300 leading-snug mt-0.5 line-clamp-2">{proj.solution}</p>
+                    </div>
+                    <div>
+                      <p className="text-[8px] font-extrabold text-green-400 uppercase tracking-wider">Outcome</p>
+                      <p className="text-[10px] text-slate-300 leading-snug mt-0.5 line-clamp-2">{proj.outcome}</p>
+                    </div>
+                  </div>
+
+                  {/* Tag pills */}
+                  <div className="flex flex-wrap gap-1">
+                    {proj.tags.slice(0, 3).map((tag, i) => (
+                      <span
+                        key={tag}
+                        className={`text-[8px] font-extrabold px-2 py-0.5 rounded-full border ${proj.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* View button */}
+                <div className="pt-4 border-t border-white/5 mt-4 flex items-center justify-between">
+                  <a
+                    href={proj.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-1 justify-center min-h-[34px] px-3.5 py-1.5 bg-gradient-to-r ${proj.accent} text-white font-extrabold text-[10px] rounded-lg shadow active:scale-95 transition-transform`}
+                  >
+                    <ExternalLink size={10} />
+                    <span>Live Preview</span>
+                  </a>
+                  <span className="text-[10px] text-slate-500 font-bold">Swipe next →</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Touch instructions */}
+          <div className="flex items-center justify-center gap-2 mt-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-ping" />
+            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Swipe cards left / right</span>
           </div>
         </div>
 
