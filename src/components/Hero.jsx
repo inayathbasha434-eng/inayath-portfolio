@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { ShoppingBag, ArrowDown, MessageSquare, ArrowRight } from 'lucide-react'
 
 const STATS = [
@@ -8,8 +8,55 @@ const STATS = [
 
 const PHOTO = "/ChatGPT_Image_Jun_16,_2026,_03_11_34_PM.png"
 
+const ROLES = [
+  'Shopify Developer',
+  'UI/UX Designer',
+  'Brand Designer',
+  'Creative Freelancer',
+  'Digital Strategist',
+]
+
 export default function Hero() {
   const [visible, setVisible] = useState(false)
+  const [displayText, setDisplayText] = useState('')
+  const [roleIndex, setRoleIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
+  const [isPaused, setIsPaused] = useState(false)
+  const typeRef = useRef(null)
+
+  // Typewriter engine
+  useEffect(() => {
+    const currentRole = ROLES[roleIndex]
+
+    if (isPaused) {
+      typeRef.current = setTimeout(() => {
+        setIsPaused(false)
+        setIsDeleting(true)
+      }, 1800) // pause at full word for 1.8s
+      return () => clearTimeout(typeRef.current)
+    }
+
+    if (isDeleting) {
+      if (displayText.length === 0) {
+        setIsDeleting(false)
+        setRoleIndex((prev) => (prev + 1) % ROLES.length)
+        return
+      }
+      typeRef.current = setTimeout(() => {
+        setDisplayText((prev) => prev.slice(0, -1))
+      }, 45) // delete speed
+    } else {
+      if (displayText.length === currentRole.length) {
+        setIsPaused(true)
+        return
+      }
+      typeRef.current = setTimeout(() => {
+        setDisplayText(currentRole.slice(0, displayText.length + 1))
+      }, 80) // type speed
+    }
+
+    return () => clearTimeout(typeRef.current)
+  }, [displayText, isDeleting, isPaused, roleIndex])
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 100)
@@ -71,9 +118,32 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Role Header */}
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-blue-400 mt-3 mb-2 tracking-wide">
-              Shopify Developer &amp; Creative Digital Designer
+            {/* Role Header — Typewriter */}
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mt-3 mb-2 tracking-wide flex items-center gap-1 justify-center md:justify-start">
+              <span
+                style={{
+                  background: 'linear-gradient(135deg, #60a5fa 0%, #a78bfa 60%, #60a5fa 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                {displayText}
+              </span>
+              {/* Blinking cursor */}
+              <span
+                className="inline-block w-[3px] h-6 sm:h-7 md:h-8 rounded-full ml-0.5 align-middle"
+                style={{
+                  background: 'linear-gradient(180deg, #60a5fa, #a78bfa)',
+                  animation: 'blink-cursor 1s step-end infinite',
+                }}
+              />
+              <style>{`
+                @keyframes blink-cursor {
+                  0%, 100% { opacity: 1; }
+                  50% { opacity: 0; }
+                }
+              `}</style>
             </h2>
 
             {/* Subheading */}
