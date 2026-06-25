@@ -143,7 +143,7 @@ export default function Skills() {
         </div>
 
         {/* Constellation Container */}
-        <div className="fade-in relative bg-[#0a0f1e]/60 border border-white/5 rounded-3xl h-[420px] sm:h-[550px] w-full p-4 overflow-hidden mb-8 backdrop-blur-sm">
+        <div className="fade-in relative bg-[#0a0f1e]/90 border border-white/5 rounded-3xl h-[420px] sm:h-[550px] w-full p-4 overflow-hidden mb-8">
           {/* Subtle star field background */}
           <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:16px_16px] opacity-70 pointer-events-none" />
 
