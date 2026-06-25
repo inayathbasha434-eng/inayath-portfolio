@@ -1,23 +1,26 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import Skills from './components/Skills'
+import TrustStats from './components/TrustStats'
 import About from './components/About'
-import EducationExperience from './components/EducationExperience'
-import Projects from './components/Projects'
 import Services from './components/Services'
+import Skills from './components/Skills'
+import Projects from './components/Projects'
+import EducationExperience from './components/EducationExperience'
 import Team from './components/Team'
 import FAQ from './components/FAQ'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import StickyMobileCTA from './components/StickyMobileCTA'
 
 const WHATSAPP_NUM = '919345704295'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#0a0f1e] text-slate-100 selection:bg-blue-500/30 selection:text-white">
+    <div className="min-h-screen bg-[#0a0f1e] text-slate-100 selection:bg-blue-500/30 selection:text-white pb-16 md:pb-0">
       <Navbar />
       <main>
         <Hero />
+        <TrustStats />
         <About />
         <Services />
         <Skills />
@@ -29,13 +32,16 @@ export default function App() {
       </main>
       <Footer />
 
+      {/* Sticky Mobile CTA */}
+      <StickyMobileCTA />
+
       {/* Floating WhatsApp button */}
       <a
         href={`https://wa.me/${WHATSAPP_NUM}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
-        className="fixed bottom-5 right-5 z-50 flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-400 text-white rounded-full shadow-lg shadow-green-500/40 hover:shadow-green-500/60 transition-all duration-300 hover:-translate-y-1 hover:scale-105 active:scale-95"
+        className="fixed bottom-20 md:bottom-5 right-5 z-50 flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-400 text-white rounded-full shadow-lg shadow-green-500/40 hover:shadow-green-500/60 transition-all duration-300 hover:-translate-y-1 hover:scale-105 active:scale-95"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
