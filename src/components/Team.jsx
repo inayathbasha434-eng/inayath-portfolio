@@ -55,6 +55,15 @@ const TEAM = [
     shadowColor: 'rgba(192,38,211,0.5)',
     bg: 'bg-gradient-to-br from-fuchsia-500 to-purple-600',
   },
+  {
+    name: 'Issac',
+    role: 'Developer',
+    initials: 'I',
+    emoji: '💻',
+    color: 'from-cyan-500 to-blue-600',
+    shadowColor: 'rgba(6,182,212,0.5)',
+    bg: 'bg-gradient-to-br from-cyan-500 to-blue-600',
+  },
 ]
 
 export default function Team() {
@@ -139,9 +148,9 @@ export default function Team() {
 
               {/* 3D Flip Avatars Grid */}
               <div className="flex flex-col items-center gap-6 sm:gap-8 mb-12 mt-6">
-                {/* Top Row (3 members) */}
+                {/* Top Row (4 members) */}
                 <div className="flex justify-center gap-3 sm:gap-6">
-                  {TEAM.slice(0, 3).map((member) => (
+                  {TEAM.slice(0, 4).map((member) => (
                     <FlipCoin 
                       key={member.name} 
                       member={member} 
@@ -153,7 +162,7 @@ export default function Team() {
 
                 {/* Bottom Row (3 members) */}
                 <div className="flex justify-center gap-3 sm:gap-6">
-                  {TEAM.slice(3).map((member) => (
+                  {TEAM.slice(4).map((member) => (
                     <FlipCoin 
                       key={member.name} 
                       member={member} 
@@ -208,6 +217,7 @@ function FlipCoin({ member, isActive, onClick }) {
   if (member.color.includes('teal')) glowColor = '#14b8a6'
   if (member.color.includes('amber')) glowColor = '#f59e0b'
   if (member.color.includes('fuchsia')) glowColor = '#d946ef'
+  if (member.color.includes('cyan')) glowColor = '#06b6d4'
 
   return (
     <div 
