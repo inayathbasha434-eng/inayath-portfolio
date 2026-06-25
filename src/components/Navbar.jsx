@@ -15,15 +15,28 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('home')
+  const [isDockVisible, setIsDockVisible] = useState(true)
 
   useEffect(() => {
+    let lastScrollY = window.scrollY
+
     const onScroll = () => {
-      setScrolled(window.scrollY > 20)
+      const currentScrollY = window.scrollY
+
+      // Smart Auto-Hide Logic
+      if (currentScrollY > lastScrollY && currentScrollY > 200) {
+        setIsDockVisible(false)
+      } else {
+        setIsDockVisible(true)
+      }
+      lastScrollY = currentScrollY
+
+      setScrolled(currentScrollY > 20)
 
       const sections = ['home', 'about', 'services', 'skills', 'projects', 'education-experience', 'team', 'contact']
       for (const id of [...sections].reverse()) {
         const el = document.getElementById(id)
-        if (el && window.scrollY >= el.offsetTop - 100) {
+        if (el && currentScrollY >= el.offsetTop - 100) {
           setActive(id)
           break
         }
@@ -138,7 +151,11 @@ export default function Navbar() {
       </div>
 
       {/* Bottom Floating Dock Navigation (Fixed) */}
-      <div className="hidden md:flex fixed bottom-8 left-1/2 -translate-x-1/2 z-[100]">
+      <div 
+        className={`hidden md:flex fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+          isDockVisible ? 'translate-y-0 opacity-100' : 'translate-y-[150%] opacity-0 pointer-events-none'
+        }`}
+      >
         <div className="glass px-2 py-2 rounded-2xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex items-center gap-1.5 backdrop-blur-xl bg-[#0a0f1e]/80">
           {NAV_LINKS.map(({ label, href, icon: Icon }) => {
             const id = href.replace('#', '')
