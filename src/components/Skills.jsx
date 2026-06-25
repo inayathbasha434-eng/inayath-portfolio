@@ -184,7 +184,7 @@ export default function Skills() {
               <button
                 key={skill.id}
                 onClick={() => setSelectedSkill(skill)}
-                className="absolute -translate-x-1/2 -translate-y-1/2 z-10 focus:outline-none group select-none cursor-pointer"
+                className="absolute -translate-x-1/2 -translate-y-1/2 z-10 focus:outline-none group select-none cursor-pointer p-3 -m-3"
                 style={{ left: `${skill.x}%`, top: `${skill.y}%` }}
               >
                 {/* Node Point */}
@@ -206,7 +206,7 @@ export default function Skills() {
 
                   {/* Core Star */}
                   <div
-                    className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 rounded-full border border-white/40 shadow-lg transition-all duration-300 group-hover:scale-125"
+                    className="w-3.5 h-3.5 sm:w-5 sm:h-5 rounded-full border border-white/40 shadow-lg transition-all duration-300 group-hover:scale-125"
                     style={{
                       backgroundColor: skill.color,
                       boxShadow: `0 0 16px ${skill.color}`,

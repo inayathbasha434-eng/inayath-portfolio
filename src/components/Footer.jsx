@@ -52,7 +52,7 @@ export default function Footer() {
                 <li key={href}>
                   <button
                     onClick={() => scrollTo(href)}
-                    className="text-slate-400 hover:text-blue-400 text-sm transition-colors"
+                    className="text-slate-400 hover:text-blue-400 text-sm transition-colors py-2 block w-full text-left sm:py-0"
                   >
                     {label}
                   </button>
@@ -67,7 +67,7 @@ export default function Footer() {
             <div className="space-y-3">
               <a
                 href={`mailto:${EMAIL}`}
-                className="flex items-center gap-2.5 text-slate-400 hover:text-blue-400 text-sm transition-colors group"
+                className="flex items-center gap-2.5 text-slate-400 hover:text-blue-400 text-sm transition-colors group py-1.5 break-all sm:py-0 sm:break-normal"
               >
                 <div className="p-1.5 rounded-lg bg-blue-500/10 border border-blue-500/20 group-hover:border-blue-500/40 transition-colors">
                   <Mail size={13} className="text-blue-400" />
@@ -79,7 +79,7 @@ export default function Footer() {
                 href={`https://wa.me/${WHATSAPP_NUM}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-slate-400 hover:text-green-400 text-sm transition-colors group"
+                className="flex items-center gap-2.5 text-slate-400 hover:text-green-400 text-sm transition-colors group py-1.5 sm:py-0"
               >
                 <div className="p-1.5 rounded-lg bg-green-500/10 border border-green-500/20 group-hover:border-green-500/40 transition-colors">
                   <Phone size={13} className="text-green-400" />
@@ -91,7 +91,7 @@ export default function Footer() {
                 href={LINKEDIN}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 text-slate-400 hover:text-blue-400 text-sm transition-colors group"
+                className="flex items-center gap-2.5 text-slate-400 hover:text-blue-400 text-sm transition-colors group py-1.5 break-all sm:py-0 sm:break-normal"
               >
                 <div className="p-1.5 rounded-lg bg-blue-500/10 border border-blue-500/20 group-hover:border-blue-500/40 transition-colors">
                   <Linkedin size={13} className="text-blue-400" />

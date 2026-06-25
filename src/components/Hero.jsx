@@ -101,7 +101,7 @@ export default function Hero() {
             </p>
 
             {/* Name */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-4 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.05] mb-4 tracking-tight">
               <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">Inayath</span>
               <br />
               <span

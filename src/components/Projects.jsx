@@ -93,6 +93,7 @@ export default function Projects() {
   const [isPlaying, setIsPlaying] = useState(true)
   const [fadeState, setFadeState] = useState('opacity-100 translate-y-0') // active transition state
   const [sliderPosition, setSliderPosition] = useState(50)
+  const [mobileSliderPositions, setMobileSliderPositions] = useState({})
   const timerRef = useRef(null)
 
   // Trigger state transition when changing project
@@ -421,7 +422,7 @@ export default function Projects() {
                   {/* Mockup Header */}
                   <div className="space-y-1">
                     <h3 className="text-lg font-black text-white">{proj.title}</h3>
-                    <p className={`text-[10px] font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r ${proj.accent}`}>
+                    <p className={`text-xs font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r ${proj.accent}`}>
                       {proj.platform}
                     </p>
                   </div>
@@ -443,7 +444,7 @@ export default function Projects() {
                         {/* After Image */}
                         <div 
                           className="absolute inset-0"
-                          style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
+                          style={{ clipPath: `polygon(0 0, ${mobileSliderPositions[index] ?? 50}% 0, ${mobileSliderPositions[index] ?? 50}% 100%, 0 100%)` }}
                         >
                           <img
                             src={proj.afterImage}
@@ -455,7 +456,7 @@ export default function Projects() {
                         {/* Slider control line */}
                         <div 
                           className="absolute inset-y-0 w-[2.5px] bg-white/80 cursor-ew-resize flex items-center justify-center pointer-events-none"
-                          style={{ left: `${sliderPosition}%` }}
+                          style={{ left: `${mobileSliderPositions[index] ?? 50}%` }}
                         >
                           <div className="w-5 h-5 bg-slate-900 rounded-full shadow-md border border-white/20 flex items-center justify-center -ml-[10px] pointer-events-auto">
                             <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -469,8 +470,8 @@ export default function Projects() {
                           type="range"
                           min="0"
                           max="100"
-                          value={sliderPosition}
-                          onChange={(e) => setSliderPosition(Number(e.target.value))}
+                          value={mobileSliderPositions[index] ?? 50}
+                          onChange={(e) => setMobileSliderPositions(prev => ({ ...prev, [index]: Number(e.target.value) }))}
                           className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
                         />
                       </div>
@@ -491,12 +492,12 @@ export default function Projects() {
                   {/* Quick stats grid */}
                   <div className="grid grid-cols-2 gap-2 text-left bg-black/30 rounded-xl p-3 border border-white/5">
                     <div>
-                      <p className="text-[8px] font-extrabold text-blue-400 uppercase tracking-wider">Solution</p>
-                      <p className="text-[10px] text-slate-300 leading-snug mt-0.5 line-clamp-2">{proj.solution}</p>
+                      <p className="text-[10px] font-extrabold text-blue-400 uppercase tracking-wider">Solution</p>
+                      <p className="text-xs text-slate-300 leading-snug mt-0.5 line-clamp-2">{proj.solution}</p>
                     </div>
                     <div>
-                      <p className="text-[8px] font-extrabold text-green-400 uppercase tracking-wider">Outcome</p>
-                      <p className="text-[10px] text-slate-300 leading-snug mt-0.5 line-clamp-2">{proj.outcome}</p>
+                      <p className="text-[10px] font-extrabold text-green-400 uppercase tracking-wider">Outcome</p>
+                      <p className="text-xs text-slate-300 leading-snug mt-0.5 line-clamp-2">{proj.outcome}</p>
                     </div>
                   </div>
 
@@ -505,7 +506,7 @@ export default function Projects() {
                     {proj.tags.slice(0, 3).map((tag, i) => (
                       <span
                         key={tag}
-                        className={`text-[8px] font-extrabold px-2 py-0.5 rounded-full border ${proj.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}
+                        className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full border ${proj.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}
                       >
                         {tag}
                       </span>
