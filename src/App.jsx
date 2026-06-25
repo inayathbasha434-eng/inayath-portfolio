@@ -24,8 +24,8 @@ export default function App() {
         <Projects />
         <EducationExperience />
         <Team />
-        <FAQ />
         <Contact />
+        <FAQ />
       </main>
       <Footer />
 
