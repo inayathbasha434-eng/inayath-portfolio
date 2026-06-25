@@ -59,8 +59,8 @@ export default function About() {
             </div>
           </div>
 
-          {/* Tile 2: What Drives Me (Square) */}
-          <div className="fade-in group relative overflow-hidden bg-[#0d1426]/80 backdrop-blur-md border border-white/5 rounded-3xl p-8 hover:border-pink-500/30 transition-colors duration-500 flex flex-col items-center justify-center text-center shadow-2xl min-h-[220px]">
+          {/* Tile 2: What Drives Me (Square) - Hidden on Mobile */}
+          <div className="fade-in hidden md:flex group relative overflow-hidden bg-[#0d1426]/80 backdrop-blur-md border border-white/5 rounded-3xl p-8 hover:border-pink-500/30 transition-colors duration-500 flex-col items-center justify-center text-center shadow-2xl min-h-[220px]">
             <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative z-10">
               <div className="w-16 h-16 mx-auto rounded-full bg-pink-500/10 border border-pink-500/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-500">
@@ -71,8 +71,8 @@ export default function About() {
             </div>
           </div>
 
-          {/* Tile 3: Location (Square) */}
-          <div className="fade-in group relative overflow-hidden bg-[#0d1426]/80 backdrop-blur-md border border-white/5 rounded-3xl p-8 hover:border-emerald-500/30 transition-colors duration-500 flex flex-col items-center justify-center text-center shadow-2xl min-h-[220px]">
+          {/* Tile 3: Location (Square) - Hidden on Mobile */}
+          <div className="fade-in hidden md:flex group relative overflow-hidden bg-[#0d1426]/80 backdrop-blur-md border border-white/5 rounded-3xl p-8 hover:border-emerald-500/30 transition-colors duration-500 flex-col items-center justify-center text-center shadow-2xl min-h-[220px]">
              {/* Abstract Radar Background */}
              <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none">
                <div className="w-full h-full border border-emerald-500/30 rounded-full animate-ping" style={{ animationDuration: '3s' }} />
