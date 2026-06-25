@@ -50,7 +50,7 @@ const TEAM = [
 
 export default function Team() {
   const sectionRef = useRef(null)
-  const [activeMember, setActiveMember] = useState(null)
+  const [activeMember, setActiveMember] = useState('Azmeer')
 
   useEffect(() => {
     const section = sectionRef.current
@@ -128,72 +128,31 @@ export default function Team() {
                 </div>
               </div>
 
-              {/* Static Avatars Grid */}
-              <div className="flex flex-col items-center gap-5 sm:gap-6 mb-8 mt-6">
+              {/* 3D Flip Avatars Grid */}
+              <div className="flex flex-col items-center gap-6 sm:gap-8 mb-12 mt-6">
                 {/* Top Row (4 members) */}
-                <div className="flex justify-center gap-4 sm:gap-6">
-                  {TEAM.slice(0, 4).map((member) => {
-                    const isActive = activeMember === member.name
-                    return (
-                      <button
-                        key={member.name}
-                        onClick={() => setActiveMember(isActive ? null : member.name)}
-                        onMouseEnter={() => setActiveMember(member.name)}
-                        className="focus:outline-none transition-transform duration-300 hover:scale-105 active:scale-95"
-                      >
-                        <div
-                          className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full ${member.bg} flex items-center justify-center text-white font-extrabold text-xl sm:text-2xl transition-all duration-300 ${
-                            isActive ? 'ring-4 ring-white/20 scale-110' : 'ring-4 ring-[#0d1426]'
-                          }`}
-                          style={{ boxShadow: isActive ? `0 0 25px ${member.shadowColor}` : `0 4px 15px ${member.shadowColor}` }}
-                        >
-                          {member.initials}
-                        </div>
-                      </button>
-                    )
-                  })}
+                <div className="flex justify-center gap-3 sm:gap-6">
+                  {TEAM.slice(0, 4).map((member) => (
+                    <FlipCoin 
+                      key={member.name} 
+                      member={member} 
+                      isActive={activeMember === member.name} 
+                      onClick={() => setActiveMember(activeMember === member.name ? null : member.name)}
+                    />
+                  ))}
                 </div>
 
                 {/* Bottom Row (1 member) */}
                 <div className="flex justify-center">
-                  {TEAM.slice(4).map((member) => {
-                    const isActive = activeMember === member.name
-                    return (
-                      <button
-                        key={member.name}
-                        onClick={() => setActiveMember(isActive ? null : member.name)}
-                        onMouseEnter={() => setActiveMember(member.name)}
-                        className="focus:outline-none transition-transform duration-300 hover:scale-105 active:scale-95"
-                      >
-                        <div
-                          className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full ${member.bg} flex items-center justify-center text-white font-extrabold text-xl sm:text-2xl transition-all duration-300 ${
-                            isActive ? 'ring-4 ring-white/20 scale-110' : 'ring-4 ring-[#0d1426]'
-                          }`}
-                          style={{ boxShadow: isActive ? `0 0 25px ${member.shadowColor}` : `0 4px 15px ${member.shadowColor}` }}
-                        >
-                          {member.initials}
-                        </div>
-                      </button>
-                    )
-                  })}
+                  {TEAM.slice(4).map((member) => (
+                    <FlipCoin 
+                      key={member.name} 
+                      member={member} 
+                      isActive={activeMember === member.name} 
+                      onClick={() => setActiveMember(activeMember === member.name ? null : member.name)}
+                    />
+                  ))}
                 </div>
-              </div>
-
-              {/* Selected Member Info Panel */}
-              <div className="h-16 flex flex-col items-center justify-center mb-10 bg-white/5 border border-white/5 rounded-2xl mx-auto max-w-[200px] transition-all duration-300 shadow-inner">
-                {activeMember ? (() => {
-                  const member = TEAM.find(m => m.name === activeMember)
-                  return (
-                    <div className="text-center transition-all duration-300 animate-in fade-in zoom-in-95">
-                      <p className="text-white font-bold text-sm sm:text-base flex items-center justify-center gap-1.5">
-                        {member.emoji} {member.name}
-                      </p>
-                      <p className="text-blue-400 font-semibold text-[10px] uppercase tracking-wider mt-0.5">{member.role}</p>
-                    </div>
-                  )
-                })() : (
-                  <p className="text-slate-500 text-xs font-semibold animate-pulse tracking-wide">Tap a team member</p>
-                )}
               </div>
 
               {/* Bottom stats strip */}
@@ -229,5 +188,63 @@ export default function Team() {
 
       </div>
     </section>
+  )
+}
+
+function FlipCoin({ member, isActive, onClick }) {
+  // Extract a solid color for the glowing ring from the gradient classes
+  let glowColor = '#3b82f6' // fallback blue
+  if (member.color.includes('purple')) glowColor = '#a855f7'
+  if (member.color.includes('pink')) glowColor = '#ec4899'
+  if (member.color.includes('teal')) glowColor = '#14b8a6'
+  if (member.color.includes('amber')) glowColor = '#f59e0b'
+
+  return (
+    <div 
+      className="group relative w-16 h-16 sm:w-20 sm:h-20 cursor-pointer [perspective:1000px]"
+      onClick={onClick}
+    >
+      <div 
+        className={`w-full h-full transition-transform duration-700 [transform-style:preserve-3d] ${isActive ? '[transform:rotateY(180deg)]' : 'group-hover:scale-105'}`}
+      >
+        
+        {/* Front of coin: Initials */}
+        <div 
+          className={`absolute inset-0 [backface-visibility:hidden] rounded-full ${member.bg} border-2 border-[#0d1426] flex items-center justify-center text-white font-black text-2xl sm:text-3xl`}
+          style={{ boxShadow: `0 4px 15px ${member.shadowColor}` }}
+        >
+          {member.initials}
+        </div>
+
+        {/* Back of coin: Name & Circular Graph */}
+        <div 
+          className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-full bg-[#0d1426] flex flex-col items-center justify-center shadow-inner overflow-hidden"
+          style={{ boxShadow: isActive ? `0 0 20px ${member.shadowColor}` : 'none' }}
+        >
+          {/* Subtle background glow */}
+          <div className={`absolute inset-0 opacity-20 ${member.bg}`} />
+
+          {/* Activity Ring Graph */}
+          <svg className="absolute inset-0 w-full h-full -rotate-90">
+             {/* Background track */}
+             <circle cx="50%" cy="50%" r="44%" stroke="rgba(255,255,255,0.05)" strokeWidth="3" fill="none" />
+             {/* Animated fill track */}
+             <circle 
+               cx="50%" cy="50%" r="44%" 
+               stroke={glowColor}
+               strokeWidth="3" 
+               fill="none" 
+               strokeDasharray="100" 
+               strokeDashoffset={isActive ? "0" : "100"} 
+               className="transition-all duration-[1500ms] ease-out" 
+             />
+          </svg>
+          
+          <span className="text-white font-bold text-[9px] sm:text-[11px] leading-tight z-10">{member.name}</span>
+          <span className="text-slate-300 font-medium text-[6px] sm:text-[7px] uppercase tracking-widest mt-0.5 z-10 text-center px-1 leading-tight">{member.role}</span>
+        </div>
+
+      </div>
+    </div>
   )
 }
