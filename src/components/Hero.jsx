@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ShoppingBag, ArrowDown, MessageSquare, ArrowRight } from 'lucide-react'
+import { ShoppingBag, ArrowDown, MessageSquare } from 'lucide-react'
 
 const STATS = [
   { value: '3+', label: 'Projects' },
@@ -45,13 +45,10 @@ export default function Hero() {
           >
             {/* Top Badges */}
             <div className="flex flex-col sm:flex-row items-center gap-3 mb-6">
-              {/* Available badge */}
               <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 text-[11px] font-semibold px-3 py-1.5 rounded-full">
                 <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
                 Available for Freelance
               </div>
-              
-              {/* Greeting Badge */}
               <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-slate-300 text-[11px] font-medium px-3 py-1.5 rounded-full backdrop-blur-sm shadow-sm">
                 👋 Hello, I'm
               </div>
@@ -79,7 +76,7 @@ export default function Hero() {
               Your Vision. My Execution. Real Results.
             </p>
 
-            {/* CTA Buttons */}
+            {/* CTA Button */}
             <div className="flex justify-center md:justify-start mb-10 w-full">
               <button
                 onClick={scrollToContact}
@@ -90,7 +87,6 @@ export default function Hero() {
                 <span>Let's Connect</span>
               </button>
             </div>
-
 
             {/* Stats strip */}
             <div className="flex justify-center md:justify-start gap-8 sm:gap-12 w-full">
@@ -122,120 +118,147 @@ export default function Hero() {
               visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
             }`}
           >
-            <div 
-              className="relative cursor-pointer group"
-              style={{ perspective: '1000px' }}
-              onClick={() => setIsFlipped(!isFlipped)}
+            {/* Tilt wrapper — mouse tilt on desktop only */}
+            <div
+              className="relative cursor-pointer group select-none"
+              style={{ perspective: '1200px' }}
               onMouseMove={(e) => {
-                const card = e.currentTarget;
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left; // x coordinate within client
-                const y = e.clientY - rect.top;  // y coordinate within client
-                
-                const rotateX = -((y - rect.height / 2) / rect.height) * 30; // Max tilt 30deg
-                const rotateY = ((x - rect.width / 2) / rect.width) * 30;
-                
-                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-                
-                // Specs specular lighting shine spot
-                const shine = card.querySelector('.specs-glow');
-                if (shine) {
-                  shine.style.background = `radial-gradient(circle 80px at ${x}px ${y}px, rgba(255,255,255,0.18), transparent 80%)`;
-                }
+                if (window.innerWidth < 768) return
+                const card = e.currentTarget
+                const rect = card.getBoundingClientRect()
+                const x = e.clientX - rect.left
+                const y = e.clientY - rect.top
+                const rotateX = -((y - rect.height / 2) / rect.height) * 16
+                const rotateY = ((x - rect.width / 2) / rect.width) * 16
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`
+                const shine = card.querySelector('.specs-glow')
+                if (shine) shine.style.background = `radial-gradient(circle 80px at ${x}px ${y}px, rgba(255,255,255,0.15), transparent 80%)`
               }}
               onMouseLeave={(e) => {
-                const card = e.currentTarget;
-                card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
-                card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
-                
-                const shine = card.querySelector('.specs-glow');
-                if (shine) {
-                  shine.style.background = 'transparent';
-                }
+                const card = e.currentTarget
+                card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)'
+                card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)'
+                const shine = card.querySelector('.specs-glow')
+                if (shine) shine.style.background = 'transparent'
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transition = 'none';
-              }}
+              onMouseEnter={(e) => { e.currentTarget.style.transition = 'none' }}
+              onClick={() => setIsFlipped(f => !f)}
             >
               {/* Outer glow */}
               <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-blue-500/30 to-blue-700/20 blur-2xl pointer-events-none animate-glow group-hover:scale-110 transition-transform duration-300" />
 
-              {/* Subtle pulsing outer glow ring */}
-              <div
-                className="absolute -inset-6 rounded-full border border-blue-500/20 pointer-events-none animate-pulse shadow-[0_0_15px_rgba(59,130,246,0.15)]"
-                style={{ animationDuration: '3s' }}
-              />
+              {/* Pulsing ring */}
+              <div className="absolute -inset-6 rounded-full border border-blue-500/20 pointer-events-none animate-pulse shadow-[0_0_15px_rgba(59,130,246,0.15)]" style={{ animationDuration: '3s' }} />
 
-              {/* Very slow rotating dashed ring */}
-              <div
-                className="absolute -inset-5 rounded-full border border-dashed border-blue-500/15 pointer-events-none animate-spin"
-                style={{ animationDuration: '35s', animationDirection: 'reverse' }}
-              />
+              {/* Slow reverse dashed ring */}
+              <div className="absolute -inset-5 rounded-full border border-dashed border-blue-500/15 pointer-events-none animate-spin" style={{ animationDuration: '35s', animationDirection: 'reverse' }} />
 
-              {/* Spinning dashed ring */}
-              <div
-                className="absolute -inset-3 rounded-full border-2 border-dashed border-blue-500/20 pointer-events-none animate-spin"
-                style={{ animationDuration: '20s' }}
-              />
+              {/* Fast dashed ring */}
+              <div className="absolute -inset-3 rounded-full border-2 border-dashed border-blue-500/20 pointer-events-none animate-spin" style={{ animationDuration: '20s' }} />
 
-              {/* Photo container / 3D Coin */}
-              <div 
-                className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full shadow-2xl shadow-blue-500/20 group-hover:shadow-blue-500/30 transition-transform duration-700 ease-in-out"
-                style={{ transformStyle: 'preserve-3d', transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
+              {/* ── COIN (flip container — completely separate from tilt) ── */}
+              <div
+                className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  transition: 'transform 0.75s cubic-bezier(0.4, 0, 0.2, 1)',
+                  transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                }}
               >
-                {/* 3D Specular Light reflection layer */}
-                <div className="specs-glow absolute inset-0 z-20 pointer-events-none transition-all duration-100 rounded-full" />
+                {/* Specular light */}
+                <div className="specs-glow absolute inset-0 z-20 pointer-events-none rounded-full transition-all duration-100" />
 
-                {/* FRONT FACE (Photo) */}
-                <div 
-                  className="absolute inset-0 rounded-full p-[3px] bg-gradient-to-br from-blue-400 via-blue-600 to-blue-800 overflow-hidden"
+                {/* ── FRONT FACE — Photo ── */}
+                <div
+                  className="absolute inset-0 rounded-full p-[3px] bg-gradient-to-br from-blue-400 via-blue-600 to-blue-800 overflow-hidden shadow-2xl"
                   style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
                 >
-                  <div className="w-full h-full rounded-full overflow-hidden bg-[#0d1426] relative z-10">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-[#0d1426]">
                     <img
                       src={PHOTO}
                       alt="Inayath Basha"
                       loading="eager"
                       decoding="async"
                       fetchPriority="high"
-                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                      className="w-full h-full object-cover object-top"
                       onError={(e) => {
                         e.currentTarget.style.display = 'none'
                         e.currentTarget.nextElementSibling.style.display = 'flex'
                       }}
                     />
                     <div className="w-full h-full items-center justify-center bg-gradient-to-br from-blue-900 to-[#0a0f1e] hidden">
-                      <span className="text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-blue-600">
-                        IB
+                      <span className="text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-blue-600">IB</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ── BACK FACE — Skills ── */}
+                <div
+                  className="absolute inset-0 rounded-full p-[3px] overflow-hidden shadow-2xl"
+                  style={{
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                    transform: 'rotateY(180deg)',
+                    background: 'linear-gradient(135deg, #06b6d4, #8b5cf6, #ec4899, #f97316)',
+                  }}
+                >
+                  <div className="w-full h-full rounded-full bg-[#06091a] flex flex-col items-center justify-center gap-2.5 sm:gap-3 px-4">
+
+                    {/* Shopify Expert — Cyan */}
+                    <div className="flex items-center gap-2 w-full justify-center px-3 py-1.5 rounded-full bg-cyan-500/15 border border-cyan-400/40 shadow-[0_0_10px_rgba(6,182,212,0.2)]">
+                      <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0" />
+                      <span className="text-xs sm:text-sm font-extrabold whitespace-nowrap" style={{ background: 'linear-gradient(90deg,#67e8f9,#60a5fa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                        Shopify Expert
                       </span>
                     </div>
-                  </div>
-                </div>
 
-                {/* BACK FACE (Skills/Titles) */}
-                <div 
-                  className="absolute inset-0 rounded-full p-[3px] bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-500 overflow-hidden"
-                  style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
-                >
-                  <div className="w-full h-full rounded-full overflow-hidden bg-[#080d1a] relative z-10 flex flex-col items-center justify-center p-6 sm:p-8 text-center border border-white/5">
-                    <div className="space-y-3 sm:space-y-4 w-full transform -rotate-y-180">
-                      <h3 className="text-lg sm:text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Shopify Expert</h3>
-                      <div className="w-16 h-px bg-white/10 mx-auto" />
-                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-slate-200">Designer</h3>
-                      <div className="w-12 h-px bg-white/5 mx-auto" />
-                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-slate-200">Web Developer</h3>
-                      <div className="w-12 h-px bg-white/5 mx-auto" />
-                      <h3 className="text-sm sm:text-base font-semibold text-blue-400/80 uppercase tracking-widest">Digital Creative</h3>
+                    {/* Designer — Pink/Purple */}
+                    <div className="flex items-center gap-2 w-full justify-center px-3 py-1.5 rounded-full bg-pink-500/15 border border-pink-400/40 shadow-[0_0_10px_rgba(236,72,153,0.2)]">
+                      <span className="w-2 h-2 rounded-full bg-pink-400 animate-pulse shrink-0" style={{ animationDelay: '0.3s' }} />
+                      <span className="text-xs sm:text-sm font-extrabold whitespace-nowrap" style={{ background: 'linear-gradient(90deg,#f9a8d4,#c084fc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                        Designer
+                      </span>
                     </div>
+
+                    {/* Web Developer — Green */}
+                    <div className="flex items-center gap-2 w-full justify-center px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/40 shadow-[0_0_10px_rgba(52,211,153,0.2)]">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" style={{ animationDelay: '0.6s' }} />
+                      <span className="text-xs sm:text-sm font-extrabold whitespace-nowrap" style={{ background: 'linear-gradient(90deg,#6ee7b7,#34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                        Web Developer
+                      </span>
+                    </div>
+
+                    {/* Digital Creative — Orange */}
+                    <div className="flex items-center gap-2 w-full justify-center px-3 py-1.5 rounded-full bg-orange-500/15 border border-orange-400/40 shadow-[0_0_10px_rgba(251,146,60,0.2)]">
+                      <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse shrink-0" style={{ animationDelay: '0.9s' }} />
+                      <span className="text-xs sm:text-sm font-extrabold whitespace-nowrap" style={{ background: 'linear-gradient(90deg,#fcd34d,#fb923c)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                        Digital Creative
+                      </span>
+                    </div>
+
                   </div>
                 </div>
               </div>
 
-              {/* Accent badges on photo */}
-              <div className="absolute -top-1 -right-1 flex items-center gap-1 bg-blue-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg shadow-blue-500/40 z-30 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+              {/* ── TAP ME hint badge (front) ── */}
+              {!isFlipped && (
+                <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 z-40 flex items-center gap-1.5 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full shadow-lg animate-bounce pointer-events-none">
+                  <span className="text-[10px] text-white font-bold tracking-wider uppercase">👆 Tap Me</span>
+                </div>
+              )}
+
+              {/* ── Flip back hint (back) ── */}
+              {isFlipped && (
+                <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 z-40 flex items-center gap-1.5 bg-purple-500/20 backdrop-blur-md border border-purple-400/30 px-3 py-1 rounded-full shadow-lg animate-bounce pointer-events-none">
+                  <span className="text-[10px] text-purple-200 font-bold tracking-wider uppercase">🔄 Tap again</span>
+                </div>
+              )}
+
+              {/* Accent badges (fade out when flipped) */}
+              <div className={`absolute -top-1 -right-1 flex items-center gap-1 bg-blue-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg shadow-blue-500/40 z-30 transition-all duration-500 ${isFlipped ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 group-hover:translate-x-1 group-hover:-translate-y-1'}`}>
                 <span>Founder & Dev</span>
               </div>
-              <div className="absolute -bottom-1 -left-2 flex items-center gap-1.5 bg-[#0d1426] border border-white/10 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-full shadow-lg z-30 transition-transform duration-300 group-hover:-translate-x-1 group-hover:translate-y-1">
+              <div className={`absolute -bottom-1 -left-2 flex items-center gap-1.5 bg-[#0d1426] border border-white/10 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-full shadow-lg z-30 transition-all duration-500 ${isFlipped ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 group-hover:-translate-x-1 group-hover:translate-y-1'}`}>
                 <ShoppingBag size={11} className="text-blue-400" />
                 Shopify Expert
               </div>
