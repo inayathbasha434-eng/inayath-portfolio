@@ -58,16 +58,10 @@ export default function Hero() {
 
             {/* Name */}
             <h1 className="text-[3.2rem] sm:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.05] mb-5 tracking-tight flex flex-col md:block">
-              <span 
-                className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] italic font-normal"
-                style={{ fontFamily: "'Playfair Display', serif" }}
-              >
-                Inayath 
-              </span>
+              <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">Inayath </span>
               <span
-                className="relative inline-block italic font-normal ml-0 md:ml-3 mt-1 md:mt-0"
+                className="relative inline-block ml-0 md:ml-3 mt-1 md:mt-0"
                 style={{
-                  fontFamily: "'Playfair Display', serif",
                   background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #93c5fd 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
