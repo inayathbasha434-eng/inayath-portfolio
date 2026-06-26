@@ -414,22 +414,22 @@ export default function Services() {
           </div>
 
           {/* Carousel Controls */}
-          <div className="flex items-center gap-6 mt-6 relative z-40">
+          <div className="flex items-center gap-3 sm:gap-6 mt-6 relative z-40">
             <button
               onClick={prevSlide}
               disabled={activeIndex === 0}
-              className={`w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-800 hover:bg-slate-50 transition-all shadow-md hover:scale-105 active:scale-95 ${activeIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`}
+              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-800 hover:bg-slate-50 transition-all shadow-md hover:scale-105 active:scale-95 ${activeIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`}
               aria-label="Previous"
             >
               <ChevronLeft size={18} className="stroke-[2.5]" />
             </button>
 
-            <div className="flex items-center gap-2 bg-[#0c1324] px-4 py-2 rounded-full border border-white/5 shadow-inner">
+            <div className="flex items-center gap-1.5 sm:gap-2 bg-[#0c1324] px-3 sm:px-4 py-2 rounded-full border border-white/5 shadow-inner">
               {SERVICES.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActiveIndex(idx)}
-                  className={`rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-5 h-2 bg-blue-500 shadow-sm shadow-blue-500/50' : 'w-2 h-2 bg-white/20 hover:bg-white/40'}`}
+                  className={`rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-4 h-1.5 sm:w-5 sm:h-2 bg-blue-500 shadow-sm shadow-blue-500/50' : 'w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white/20 hover:bg-white/40'}`}
                   aria-label={`Slide ${idx + 1}`}
                 />
               ))}
@@ -438,7 +438,7 @@ export default function Services() {
             <button
               onClick={nextSlide}
               disabled={activeIndex === SERVICES.length - 1}
-              className={`w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-800 hover:bg-slate-50 transition-all shadow-md hover:scale-105 active:scale-95 ${activeIndex === SERVICES.length - 1 ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`}
+              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-800 hover:bg-slate-50 transition-all shadow-md hover:scale-105 active:scale-95 ${activeIndex === SERVICES.length - 1 ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`}
               aria-label="Next"
             >
               <ChevronRight size={18} className="stroke-[2.5]" />
