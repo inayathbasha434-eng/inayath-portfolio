@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { ShoppingBag, ArrowDown, MessageSquare } from 'lucide-react'
+import { ShoppingBag, ArrowDown, MessageSquare, ArrowRight } from 'lucide-react'
 
 const STATS = [
-  { value: '3+', label: 'Projects' },
-  { value: '100%', label: 'Trust' },
+  { value: '2+', label: 'Projects' },
+  { value: '10+', label: 'Skills' },
+  { value: '100%', label: 'Satisfaction' },
 ]
 
 const PHOTO = "/ChatGPT_Image_Jun_16,_2026,_03_11_34_PM.png"
@@ -58,69 +59,59 @@ export default function Hero() {
           {/* ── Text content ── */}
           <div className="flex-1 text-center md:text-left flex flex-col items-center md:items-start">
             {/* Top Badges */}
-            <div className={`flex flex-col sm:flex-row items-center gap-3 mb-6 transition-all duration-700 ease-out ${revealStep >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 text-[11px] font-semibold px-3 py-1.5 rounded-full">
+            <div className={`flex flex-col sm:flex-row items-center gap-3 mb-4 transition-all duration-700 ease-out ${revealStep >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className="inline-flex items-center gap-2 bg-[#121c2d] border border-white/5 text-green-400 text-[11px] font-semibold px-4 py-1.5 rounded-full shadow-sm">
                 <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
                 Available for Freelance
               </div>
-              <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-slate-300 text-[11px] font-medium px-3 py-1.5 rounded-full backdrop-blur-sm shadow-sm">
-                👋 Hello, I'm
-              </div>
+            </div>
+
+            {/* Greeting */}
+            <div className={`text-slate-300 text-lg md:text-xl font-medium mb-1 transition-all duration-700 ease-out ${revealStep >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              Hello, World! 👋 I'm
             </div>
 
             {/* Name */}
-            <h1 className="text-[3.2rem] sm:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.05] mb-5 tracking-tight flex flex-col md:block overflow-hidden pb-2">
-              <span className={`block md:inline-block text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-transform duration-700 ease-out ${revealStep >= 2 ? 'translate-y-0' : 'translate-y-[120%]'}`}>Inayath </span>
+            <h1 className="text-[3.5rem] sm:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.1] mb-5 tracking-tight overflow-hidden pb-2 text-center md:text-left">
+              <span className={`block text-white transition-transform duration-700 ease-out ${revealStep >= 2 ? 'translate-y-0' : 'translate-y-[120%]'}`}>
+                Inayath
+              </span>
               <span
-                className={`relative block md:inline-block ml-0 md:ml-3 mt-1 md:mt-0 transition-transform duration-700 ease-out ${revealStep >= 3 ? 'translate-y-0' : 'translate-y-[120%]'}`}
-                style={{
-                  background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #93c5fd 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  filter: 'drop-shadow(0 2px 15px rgba(59, 130, 246, 0.4))',
-                }}
+                className={`block text-[#60a5fa] transition-transform duration-700 ease-out ${revealStep >= 3 ? 'translate-y-0' : 'translate-y-[120%]'}`}
               >
-                Basha
+                Basha A
               </span>
             </h1>
 
             {/* Subheading */}
             <p className={`text-slate-300 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl text-center md:text-left mx-auto md:mx-0 mb-8 mt-2 px-4 md:px-0 transition-all duration-700 ease-out ${revealStep >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              Your Vision. My Execution. Real Results.
+              Your ideas. <span className="text-[#60a5fa]">My execution.</span> Real results.
             </p>
 
             {/* CTA Button */}
-            <div className={`flex justify-center md:justify-start mb-10 w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className={`flex justify-center md:justify-start mb-12 w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <button
                 onClick={scrollToContact}
-                aria-label="Let's Connect"
-                className="shine group min-h-[52px] px-10 py-3.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] active:scale-95 text-sm tracking-wider flex items-center gap-2.5"
+                aria-label="Let's Talk"
+                className="group min-h-[50px] px-8 py-3 bg-[#4f75ff] text-white font-bold rounded-xl transition-all duration-300 hover:bg-[#4364db] active:scale-95 text-sm tracking-wide flex items-center gap-3 shadow-lg shadow-blue-500/20"
               >
-                <MessageSquare size={16} className="text-blue-200 group-hover:scale-110 transition-transform" />
-                <span>Let's Connect</span>
+                <MessageSquare size={16} className="text-white opacity-80 group-hover:scale-110 transition-transform" />
+                <span>Let's Talk</span>
+                <ArrowRight size={16} className="text-white opacity-80 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
 
             {/* Stats strip */}
-            <div className={`flex justify-center md:justify-start gap-8 sm:gap-12 w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className={`flex justify-center md:justify-start gap-6 sm:gap-10 w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {STATS.map(({ value, label }, i) => (
                 <div key={label} className="text-center relative">
                   {i > 0 && (
-                    <div className="absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 w-px h-8 bg-white/10" />
+                    <div className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 w-px h-8 bg-white/10" />
                   )}
-                  <div
-                    className="text-2xl sm:text-3xl font-extrabold"
-                    style={{
-                      background: 'linear-gradient(135deg, #60a5fa, #93c5fd)',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                      backgroundClip: 'text',
-                    }}
-                  >
+                  <div className="text-2xl sm:text-3xl font-extrabold text-[#e2e8f0]">
                     {value}
                   </div>
-                  <div className="text-xs text-slate-500 mt-0.5 font-medium uppercase tracking-wider">{label}</div>
+                  <div className="text-[10px] sm:text-xs text-slate-400 mt-1 font-medium tracking-wide">{label}</div>
                 </div>
               ))}
             </div>
