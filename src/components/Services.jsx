@@ -295,24 +295,24 @@ export default function Services() {
                     <div className="flex-1" />
 
                     {/* Bottom content block - button only */}
-                    <div className="relative z-10 px-5 pb-5 w-full">
+                    <div className="relative z-10 px-5 pb-6 w-full flex justify-center">
                       {/* Single CTA button */}
                       {item.pageRoute ? (
                         <button
                           onClick={() => goToPage(item)}
-                          className="w-full py-3.5 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 shadow-lg shadow-black/20"
+                          className="w-auto px-6 py-2.5 rounded-full font-extrabold text-[12px] flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 shadow-xl shadow-black/40 border border-white/10"
                           style={{ backgroundColor: item.accentColor, color: '#fff' }}
                         >
                           See Full Details
-                          <ArrowRight size={15} />
+                          <ArrowRight size={14} />
                         </button>
                       ) : (
                         <button
-                          className="w-full py-3.5 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-black/20"
+                          className="w-auto px-6 py-2.5 rounded-full font-extrabold text-[12px] flex items-center justify-center gap-2 shadow-xl shadow-black/40 border border-white/10"
                           style={{ backgroundColor: item.accentColor, color: '#fff' }}
                         >
                           Let's Talk
-                          <ArrowRight size={15} />
+                          <ArrowRight size={14} />
                         </button>
                       )}
                     </div>
