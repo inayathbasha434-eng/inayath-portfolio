@@ -72,7 +72,7 @@ export default function Hero() {
             </div>
 
             {/* Name */}
-            <h1 className="text-[3.5rem] sm:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.1] mb-5 tracking-tight overflow-hidden pb-2 text-center md:text-left">
+            <h1 className="text-[3rem] sm:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.1] mb-5 tracking-tight overflow-hidden pb-2 text-center md:text-left">
               <span className={`block text-white transition-transform duration-700 ease-out ${revealStep >= 2 ? 'translate-y-0' : 'translate-y-[120%]'}`}>
                 Inayath
               </span>
@@ -89,11 +89,11 @@ export default function Hero() {
             </p>
 
             {/* CTA Button */}
-            <div className={`flex justify-center md:justify-start mb-12 w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className={`flex justify-center md:justify-start mb-10 md:mb-12 w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <button
                 onClick={scrollToContact}
                 aria-label="Let's Talk"
-                className="group min-h-[50px] px-8 py-3 bg-[#4f75ff] text-white font-bold rounded-xl transition-all duration-300 hover:bg-[#4364db] active:scale-95 text-sm tracking-wide flex items-center gap-3 shadow-lg shadow-blue-500/20"
+                className="w-full sm:w-auto justify-center group min-h-[50px] px-8 py-3 bg-[#4f75ff] text-white font-bold rounded-xl transition-all duration-300 hover:bg-[#4364db] active:scale-95 text-sm tracking-wide flex items-center gap-3 shadow-lg shadow-blue-500/20"
               >
                 <MessageSquare size={16} className="text-white opacity-80 group-hover:scale-110 transition-transform" />
                 <span>Let's Talk</span>
@@ -102,11 +102,11 @@ export default function Hero() {
             </div>
 
             {/* Stats strip */}
-            <div className={`flex justify-center md:justify-start gap-6 sm:gap-10 w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className={`flex justify-center md:justify-start items-center gap-6 sm:gap-10 w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} bg-white/[0.03] md:bg-transparent backdrop-blur-md md:backdrop-blur-none border border-white/10 md:border-transparent rounded-2xl py-5 px-2 md:p-0`}>
               {STATS.map(({ value, label }, i) => (
-                <div key={label} className="text-center relative">
+                <div key={label} className="text-center relative flex-1 md:flex-none">
                   {i > 0 && (
-                    <div className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 w-px h-8 bg-white/10" />
+                    <div className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-10 md:h-8 bg-white/10 md:-ml-5" />
                   )}
                   <div className="text-2xl sm:text-3xl font-extrabold text-[#e2e8f0]">
                     {value}
@@ -119,7 +119,7 @@ export default function Hero() {
 
           {/* ── Profile photo ── */}
           <div
-            className={`flex-shrink-0 flex flex-col items-center gap-4 transition-all duration-1000 ease-out ${
+            className={`mt-10 md:mt-0 flex-shrink-0 flex flex-col items-center gap-4 transition-all duration-1000 ease-out ${
               revealStep >= 6 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
             }`}
           >
