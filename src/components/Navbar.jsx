@@ -106,7 +106,7 @@ export default function Navbar() {
                   onClick={() => scrollTo(href)}
                   className={`w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                     isActive
-                      ? 'text-white glow-active-tab'
+                      ? 'text-blue-400 bg-blue-500/15 border border-blue-500/20'
                       : 'text-slate-300 hover:text-white hover:bg-white/5'
                   }`}
                 >
@@ -152,54 +152,65 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Top Floating Navigation Header (Fixed) */}
+      {/* Bottom Floating Dock Navigation (Fixed) */}
       <nav 
-        className={`hidden md:flex fixed top-6 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
-          isDockVisible ? 'translate-y-0 opacity-100' : '-translate-y-[150%] opacity-0 pointer-events-none'
+        className={`hidden md:flex fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+          isDockVisible ? 'translate-y-0 opacity-100' : 'translate-y-[150%] opacity-0 pointer-events-none'
         }`}
         aria-label="Desktop navigation"
       >
-        <div className="glow-navbar p-1.5 rounded-[24px] flex items-center backdrop-blur-xl">
-          {NAV_LINKS.map(({ label, href, icon: Icon }, index) => {
+        <div className="glass px-3 py-2.5 rounded-[32px] border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7),_0_0_30px_rgba(99,102,241,0.15)] flex items-center gap-0 backdrop-blur-2xl bg-[#060a16]/90">
+          {NAV_LINKS.map(({ label, href, icon: Icon }, idx) => {
             const id = href.replace('#', '')
             const isActive = active === id
-            const isNotLast = index < NAV_LINKS.length - 1
-            return (
-              <button
-                key={href}
-                onClick={() => scrollTo(href)}
-                className={`group relative flex flex-col items-center justify-center pt-2.5 pb-2 px-5 rounded-2xl transition-all duration-300 min-w-[76px] sm:min-w-[84px] h-[60px] ${
-                  isNotLast ? 'tab-divider' : ''
-                } ${
-                  isActive
-                    ? 'glow-active-tab text-white'
-                    : 'text-slate-400 hover:text-slate-200 border border-transparent'
-                }`}
-                aria-label={label}
-              >
-                <Icon 
-                  size={18} 
-                  className={`transition-all duration-300 ${
-                    isActive 
-                      ? 'scale-110 text-blue-400 drop-shadow-[0_0_8px_rgba(96,165,250,0.8)]' 
-                      : 'group-hover:scale-110'
-                  }`} 
-                  strokeWidth={isActive ? 2.5 : 2} 
-                />
-                
-                <span 
-                  className={`text-[10px] font-bold mt-1 tracking-wider uppercase transition-colors duration-300 ${
-                    isActive ? 'text-white font-black' : 'text-slate-400'
-                  }`}
-                >
-                  {label}
-                </span>
+            const isNextActive = idx < NAV_LINKS.length - 1 && active === NAV_LINKS[idx + 1].href.replace('#', '')
 
-                {/* Active bottom glowing pill */}
-                {isActive && (
-                  <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-6 h-[2.5px] rounded-full bg-blue-400 glow-active-pill" />
+            return (
+              <div key={href} className="flex items-center">
+                <button
+                  onClick={() => scrollTo(href)}
+                  className={`group relative flex flex-col items-center justify-center w-[84px] h-[76px] transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+                    isActive
+                      ? 'bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 text-white rounded-[20px] shadow-[0_8px_20px_rgba(37,99,235,0.4)] border border-blue-400/20'
+                      : 'text-slate-400 hover:text-white hover:bg-white/5 rounded-[20px]'
+                  }`}
+                  aria-label={label}
+                >
+                  <Icon 
+                    size={20} 
+                    className={`transition-all duration-300 ${
+                      isActive 
+                        ? 'scale-110 text-white mb-0.5' 
+                        : 'group-hover:scale-110 text-slate-400 group-hover:text-white mb-1'
+                    }`} 
+                    strokeWidth={isActive ? 2.5 : 2} 
+                  />
+                  
+                  <span 
+                    className={`text-[10px] tracking-wide transition-all duration-300 ${
+                      isActive 
+                        ? 'font-bold text-white' 
+                        : 'font-medium text-slate-400 group-hover:text-white'
+                    }`}
+                  >
+                    {label}
+                  </span>
+
+                  {/* Active indicator dot/pill */}
+                  {isActive && (
+                    <div className="w-4 h-[3px] rounded-full bg-white mt-1 shadow-[0_0_8px_rgba(255,255,255,1)] animate-fade-in" />
+                  )}
+                </button>
+
+                {/* Divider Line */}
+                {idx < NAV_LINKS.length - 1 && (
+                  <div 
+                    className={`w-[1px] h-8 bg-white/10 mx-1 transition-all duration-300 self-center ${
+                      isActive || isNextActive ? 'opacity-0 scale-y-75' : 'opacity-100'
+                    }`}
+                  />
                 )}
-              </button>
+              </div>
             )
           })}
         </div>
