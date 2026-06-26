@@ -17,6 +17,10 @@ import AIServicePage from './pages/AIServicePage'
 import PortfolioServicePage from './pages/PortfolioServicePage'
 import BusinessServicePage from './pages/BusinessServicePage'
 
+import MorPanthalProjectPage from './pages/MorPanthalProjectPage'
+import PortfolioProjectPage from './pages/PortfolioProjectPage'
+import AIProjectPage from './pages/AIProjectPage'
+
 const WHATSAPP_NUM = '919345704295'
 
 function PortfolioLayout() {
@@ -62,6 +66,11 @@ export default function App() {
       <Route path="/services/ai" element={<AIServicePage />} />
       <Route path="/services/portfolio" element={<PortfolioServicePage />} />
       <Route path="/services/business" element={<BusinessServicePage />} />
+      
+      {/* Project Detail Pages */}
+      <Route path="/projects/mor-panthal" element={<MorPanthalProjectPage />} />
+      <Route path="/projects/portfolio" element={<PortfolioProjectPage />} />
+      <Route path="/projects/ai-image-generation" element={<AIProjectPage />} />
     </Routes>
   )
 }
