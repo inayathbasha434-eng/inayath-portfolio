@@ -5,23 +5,22 @@ const PROJECTS = [
   {
     number: '01',
     title: 'Mor Panthal',
-    platform: 'WordPress + WooCommerce',
+    platform: 'WordPress',
     description:
       'Built a food & beverage brand website with a yellow theme, mobile friendly layout, and smooth user experience.',
-    tags: ['WordPress', 'WooCommerce', 'UI/UX', 'Razorpay'],
+    tags: ['WordPress', 'UI/UX', 'Razorpay'],
     link: 'https://sisufoodsupply.unaux.com',
     image: '/mor_panthal_new.png',
     problem: 'Client lacked a professional online presence to showcase food and beverage offerings and process digital payments.',
-    solution: 'Built a mobile-first WordPress storefront powered by WooCommerce, integrating a custom fast-loading yellow visual identity.',
+    solution: 'Built a mobile-first WordPress storefront, integrating a custom fast-loading yellow visual identity.',
     outcome: 'Launched a high-converting storefront that seamlessly manages client checkouts, payments, and product inventory.',
     tagColors: [
       'bg-blue-500/10 text-blue-400 border-blue-500/20',
-      'bg-purple-500/10 text-purple-400 border-purple-500/20',
       'bg-pink-500/10 text-pink-400 border-pink-500/20',
       'bg-green-500/10 text-green-400 border-green-500/20',
     ],
     checklist: [
-      'WordPress & WooCommerce setup',
+      'WordPress setup',
       'Custom theme sections layout',
       'Razorpay payment gateway',
       'Product and inventory config',
