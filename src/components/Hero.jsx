@@ -86,10 +86,6 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Subheading */}
-            <p className="text-slate-300 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl text-center md:text-left mx-auto md:mx-0 mb-8 px-4 md:px-0">
-              From Vision to Execution, Built for Impact
-            </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-4 mb-10 w-full sm:w-auto px-4 sm:px-0">
