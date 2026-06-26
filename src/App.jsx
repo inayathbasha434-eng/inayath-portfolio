@@ -13,6 +13,8 @@ import Footer from './components/Footer'
 import ShopifyServicePage from './pages/ShopifyServicePage'
 import WordPressServicePage from './pages/WordPressServicePage'
 import ERPServicePage from './pages/ERPServicePage'
+import AIServicePage from './pages/AIServicePage'
+import PortfolioServicePage from './pages/PortfolioServicePage'
 
 const WHATSAPP_NUM = '919345704295'
 
@@ -56,6 +58,8 @@ export default function App() {
       <Route path="/services/shopify" element={<ShopifyServicePage />} />
       <Route path="/services/wordpress" element={<WordPressServicePage />} />
       <Route path="/services/erp" element={<ERPServicePage />} />
+      <Route path="/services/ai" element={<AIServicePage />} />
+      <Route path="/services/portfolio" element={<PortfolioServicePage />} />
     </Routes>
   )
 }
