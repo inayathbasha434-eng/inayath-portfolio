@@ -295,13 +295,13 @@ export default function Services() {
                     <div className="flex-1" />
 
                     {/* Bottom content block */}
-                    <div className="relative z-10 px-4 pb-4 space-y-3">
+                    <div className="relative z-10 px-5 pb-5 space-y-4 flex flex-col items-center text-center">
                       {/* Title */}
-                      <div>
-                        <h4 className="text-white font-extrabold text-[17px] leading-tight tracking-tight">
+                      <div className="max-w-[90%]">
+                        <h4 className="text-white font-extrabold text-[18px] sm:text-[20px] leading-snug tracking-tight drop-shadow-md">
                           {item.heading}
                         </h4>
-                        <p className="text-slate-300 text-[11px] leading-relaxed mt-1.5 font-medium">
+                        <p className="text-slate-200 text-[12px] leading-relaxed mt-2 font-medium drop-shadow-sm">
                           {item.subheading}
                         </p>
                       </div>
