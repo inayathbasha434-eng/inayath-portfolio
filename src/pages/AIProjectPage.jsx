@@ -20,29 +20,8 @@ export default function AIProjectPage() {
             <ArrowLeft size={16} /> Back to Home
           </Link>
 
-          {/* Hero Section */}
-          <div className="mb-16">
-            <div className="flex items-center gap-4 mb-4">
-              <span className="px-3 py-1 bg-pink-500/10 text-pink-400 text-xs font-bold rounded-full border border-pink-500/20 uppercase tracking-wider">
-                Stable Diffusion
-              </span>
-              <span className="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs font-bold rounded-full border border-purple-500/20 uppercase tracking-wider">
-                Midjourney
-              </span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-              AI Image Generation <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600">
-                Commercial Visuals
-              </span>
-            </h1>
-            <p className="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed">
-              Created high-fidelity commercial product visualizations and marketing assets from raw camera captures using generative AI workflows.
-            </p>
-          </div>
-
           {/* Massive Viewport Image */}
-          <div className="rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(168,85,247,0.1)] mb-20 bg-[#0d1426] relative group flex flex-col md:flex-row">
+          <div className="rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(168,85,247,0.1)] mb-12 bg-[#0d1426] relative group flex flex-col md:flex-row">
             
             <div className="w-full md:w-1/2 relative h-[300px] md:h-[500px]">
               <img 
@@ -66,6 +45,27 @@ export default function AIProjectPage() {
               </div>
             </div>
             
+          </div>
+
+          {/* Hero Section */}
+          <div className="mb-20 text-center flex flex-col items-center">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="px-4 py-1.5 bg-pink-500/10 text-pink-400 text-xs font-bold rounded-full border border-pink-500/20 uppercase tracking-wider">
+                Stable Diffusion
+              </span>
+              <span className="px-4 py-1.5 bg-purple-500/10 text-purple-400 text-xs font-bold rounded-full border border-purple-500/20 uppercase tracking-wider">
+                Midjourney
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+              AI Image Generation <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600">
+                Commercial Visuals
+              </span>
+            </h1>
+            <p className="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed">
+              Created high-fidelity commercial product visualizations and marketing assets from raw camera captures using generative AI workflows.
+            </p>
           </div>
 
           {/* Project Details Grid */}

@@ -20,29 +20,8 @@ export default function PortfolioProjectPage() {
             <ArrowLeft size={16} /> Back to Home
           </Link>
 
-          {/* Hero Section */}
-          <div className="mb-16">
-            <div className="flex items-center gap-4 mb-4">
-              <span className="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full border border-blue-500/20 uppercase tracking-wider">
-                React
-              </span>
-              <span className="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs font-bold rounded-full border border-purple-500/20 uppercase tracking-wider">
-                Tailwind CSS
-              </span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
-              Personal Portfolio <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">
-                Premium Web Experience
-              </span>
-            </h1>
-            <p className="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed">
-              A premium developer portfolio with high-performance animations, collapsible timeline cards, and single-card team display.
-            </p>
-          </div>
-
           {/* Massive Viewport Image */}
-          <div className="rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(59,130,246,0.1)] mb-20 bg-[#0d1426] relative group">
+          <div className="rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(59,130,246,0.1)] mb-12 bg-[#0d1426] relative group">
              <div className="bg-[#0e172e] px-4 py-3 flex items-center gap-2 border-b border-white/5">
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-red-400/80" />
@@ -60,6 +39,27 @@ export default function PortfolioProjectPage() {
               alt="Portfolio Project" 
               className="w-full h-auto"
             />
+          </div>
+
+          {/* Hero Section */}
+          <div className="mb-20 text-center flex flex-col items-center">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="px-4 py-1.5 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full border border-blue-500/20 uppercase tracking-wider">
+                React
+              </span>
+              <span className="px-4 py-1.5 bg-purple-500/10 text-purple-400 text-xs font-bold rounded-full border border-purple-500/20 uppercase tracking-wider">
+                Tailwind CSS
+              </span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+              Personal Portfolio <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">
+                Premium Web Experience
+              </span>
+            </h1>
+            <p className="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed">
+              A premium developer portfolio with high-performance animations, collapsible timeline cards, and single-card team display.
+            </p>
           </div>
 
           {/* Project Details Grid */}
