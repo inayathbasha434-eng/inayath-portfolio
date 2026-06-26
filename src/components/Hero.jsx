@@ -53,10 +53,15 @@ export default function Hero() {
           {/* ── Text content ── */}
           <div className="flex-1 text-center md:text-left flex flex-col items-center md:items-start">
             {/* Top Badges */}
-            <div className={`flex flex-col sm:flex-row items-center gap-3 mb-4 transition-all duration-700 ease-out ${revealStep >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className={`flex flex-col sm:flex-row items-center gap-3 mb-5 transition-all duration-700 ease-out ${revealStep >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="inline-flex items-center gap-2 bg-[#121c2d] border border-white/5 text-green-400 text-[11px] font-semibold px-4 py-1.5 rounded-full shadow-sm">
                 <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
                 Available for Freelance
+              </div>
+              
+              <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold px-4 py-1.5 rounded-full shadow-sm shadow-emerald-950/5">
+                <BadgeCheck size={13} className="text-emerald-400 animate-pulse" />
+                100% Client Satisfaction &amp; Trust
               </div>
             </div>
 
@@ -83,7 +88,7 @@ export default function Hero() {
             </p>
 
             {/* CTA Button */}
-            <div className={`flex justify-center md:justify-start mb-12 w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className={`flex justify-center md:justify-start mb-6 w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <button
                 onClick={scrollToContact}
                 aria-label="Let's Talk"
@@ -93,16 +98,6 @@ export default function Hero() {
                 <span>Let's Talk</span>
                 <ArrowRight size={16} className="text-white opacity-80 group-hover:translate-x-1 transition-transform" />
               </button>
-            </div>
-
-            {/* Trust Badge */}
-            <div className={`flex justify-center md:justify-start w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <div className="inline-flex items-center gap-2.5 bg-emerald-500/10 border border-emerald-500/20 px-5 py-2.5 rounded-full shadow-lg shadow-emerald-950/20">
-                <BadgeCheck size={18} className="text-emerald-400 animate-pulse" />
-                <span className="text-emerald-300 text-xs sm:text-sm font-bold tracking-wide">
-                  100% Client Satisfaction &amp; Trust
-                </span>
-              </div>
             </div>
           </div>
 
