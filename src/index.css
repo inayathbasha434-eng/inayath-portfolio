@@ -146,3 +146,43 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Glassmorphic Glowing Navbar Redesign */
+.glow-navbar {
+  background: linear-gradient(rgba(10, 15, 30, 0.85), rgba(10, 15, 30, 0.85)) padding-box,
+              linear-gradient(to right, rgba(59, 130, 246, 0.4), rgba(168, 85, 247, 0.4)) border-box;
+  border: 1px solid transparent;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(59, 130, 246, 0.15),
+    0 0 30px rgba(168, 85, 247, 0.15);
+}
+
+.glow-active-tab {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(147, 51, 234, 0.15) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  box-shadow: 
+    inset 0 0 12px rgba(59, 130, 246, 0.15),
+    0 0 15px rgba(59, 130, 246, 0.2);
+}
+
+.glow-active-pill {
+  box-shadow: 
+    0 0 8px rgba(96, 165, 250, 0.8),
+    0 0 15px rgba(96, 165, 250, 0.4);
+}
+
+.tab-divider {
+  position: relative;
+}
+
+.tab-divider::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(148, 163, 184, 0.15), transparent);
+}
+
