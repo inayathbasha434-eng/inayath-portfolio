@@ -2,7 +2,7 @@ import { Mail, Phone, Linkedin, MapPin, Heart } from 'lucide-react'
 
 const WHATSAPP_NUM = '919345704295'
 const EMAIL = 'inayathbasha434@gmail.com'
-const LINKEDIN = 'https://linkedin.com/in/inayathbasha'
+const LINKEDIN = 'https://www.linkedin.com/in/inayath-basha-a-53051824a/'
 
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },

@@ -35,7 +35,7 @@ function PortfolioLayout() {
         "jobTitle": "Shopify Developer",
         "url": "https://inayathbasha.vercel.app",
         "sameAs": [
-          "https://linkedin.com/in/inayathbasha",
+          "https://www.linkedin.com/in/inayath-basha-a-53051824a/",
           "https://github.com/inayathbasha",
           "https://instagram.com/inayathbasha_a"
         ],
