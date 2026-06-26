@@ -181,21 +181,20 @@ export default function Projects() {
         {/* ========================================================== */}
         <div className="w-full overflow-hidden">
           {/* Swiper / Grid track */}
-          <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto lg:overflow-visible snap-x lg:snap-none snap-mandatory no-scrollbar gap-5 lg:gap-6 xl:gap-8 pb-8 pt-6 px-4 lg:px-6 xl:px-8 max-w-7xl mx-auto">
+          <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto lg:overflow-visible snap-x lg:snap-none snap-mandatory no-scrollbar gap-5 lg:gap-6 pb-8 pt-6 px-4 lg:px-6 max-w-6xl mx-auto">
             {PROJECTS.map((proj, index) => {
               return (
               <div 
                 key={proj.title}
-                className="min-w-[88vw] sm:min-w-[70vw] lg:min-w-0 lg:w-full snap-center lg:snap-align-none bg-[#111623] border border-white/5 rounded-[1.5rem] flex flex-col relative transition-transform duration-300 hover:-translate-y-2 mt-4"
+                className="min-w-[88vw] sm:min-w-[70vw] lg:min-w-0 lg:w-full snap-center lg:snap-align-none bg-[#111623] border border-white/5 rounded-2xl flex flex-col relative transition-transform duration-300 hover:-translate-y-2 mt-4"
               >
-                {/* HIGHLY HIGHLIGHTED PROJECT NUMBER (Offset to top-right) */}
-                <div className={`absolute -top-4 -right-2 w-10 h-10 rounded-full bg-gradient-to-br ${proj.accent} flex items-center justify-center text-white font-black text-sm shadow-[0_4px_15px_rgba(0,0,0,0.5)] z-30`}>
+                {/* Numbered Badge */}
+                <div className={`absolute -top-3.5 -right-2 w-9 h-9 rounded-full bg-gradient-to-br ${proj.accent} flex items-center justify-center text-white font-black text-sm shadow-[0_4px_15px_rgba(0,0,0,0.5)] z-30`}>
                   {parseInt(proj.number)}
                 </div>
 
                 {/* Top Image Area */}
-                <div className="relative h-[240px] w-full rounded-t-[1.5rem] overflow-hidden bg-[#0a0d14]">
-                  {/* Before/After AI Image Slider OR Scroll preview */}
+                <div className="relative h-[200px] w-full rounded-t-2xl overflow-hidden bg-[#0a0d14]">
                   {proj.beforeImage && proj.afterImage ? (
                     <div className="relative w-full h-full select-none">
                       <div className="absolute inset-0">
@@ -219,39 +218,39 @@ export default function Projects() {
                 </div>
 
                 {/* Bottom Content Area */}
-                <div className="p-6 lg:p-8 flex flex-col flex-grow">
-                  <h3 className="text-2xl font-black text-white mb-2">{proj.title}</h3>
-                  <p className="text-sm text-slate-400 mb-6 flex-grow leading-relaxed">
+                <div className="p-5 flex flex-col flex-grow">
+                  <h3 className="text-xl font-black text-white mb-1.5">{proj.title}</h3>
+                  <p className="text-[13px] text-slate-400 mb-4 leading-relaxed flex-grow">
                     {proj.description}
                   </p>
 
                   {/* Tag pills */}
-                  <div className="flex flex-wrap gap-2 mb-8">
+                  <div className="flex flex-wrap gap-1.5 mb-5">
                     {proj.tags.slice(0, 3).map((tag, i) => (
-                      <span key={tag} className={`text-[10px] font-bold px-3 py-1 rounded-full border ${proj.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}>
+                      <span key={tag} className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${proj.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}>
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex flex-col sm:flex-row items-center gap-4 mt-auto">
+                  {/* Action Buttons — always side by side */}
+                  <div className="flex items-center gap-3 mt-auto">
                     <Link
                       to={proj.detailPage}
-                      className="w-full sm:flex-1 py-3.5 rounded-xl border border-white/10 hover:bg-white/5 transition-colors text-white font-bold text-[13px] flex items-center justify-center gap-2 group"
+                      className="flex-1 min-w-0 py-2.5 px-3 rounded-xl border border-white/10 hover:bg-white/5 transition-colors text-white font-bold text-xs flex items-center justify-center gap-1.5 group whitespace-nowrap"
                     >
                       Project Overview
-                      <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                      <span className="group-hover:translate-x-1 transition-transform text-sm leading-none">&rarr;</span>
                     </Link>
                     
                     <a
                       href={proj.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`w-full sm:flex-1 py-3.5 rounded-xl bg-gradient-to-r ${proj.accent} text-white font-bold text-[13px] flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.05)] active:scale-95 hover:-translate-y-0.5 transition-all`}
+                      className={`flex-1 min-w-0 py-2.5 px-3 rounded-xl bg-gradient-to-r ${proj.accent} text-white font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 hover:-translate-y-0.5 transition-all whitespace-nowrap`}
                     >
                       Live Project
-                      <ExternalLink size={15} className="ml-1 opacity-90" />
+                      <ExternalLink size={13} className="opacity-90 shrink-0" />
                     </a>
                   </div>
                 </div>
