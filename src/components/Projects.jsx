@@ -179,7 +179,7 @@ export default function Projects() {
         {/* ========================================================== */}
         <div className="w-full overflow-hidden">
           {/* Swiper track */}
-          <div className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-5 lg:gap-8 pb-8 pt-6 px-4 lg:px-8 scroll-smooth lg:justify-center">
+          <div className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-5 lg:gap-8 pb-8 pt-6 px-4 lg:px-8 scroll-smooth w-max mx-auto max-w-full">
             {PROJECTS.map((proj, index) => {
               const isExpanded = expandedMobileProject === index;
               return (
