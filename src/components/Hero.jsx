@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { ShoppingBag, ArrowDown, MessageSquare, ArrowRight } from 'lucide-react'
 
 const STATS = [
@@ -8,55 +8,8 @@ const STATS = [
 
 const PHOTO = "/ChatGPT_Image_Jun_16,_2026,_03_11_34_PM.png"
 
-const ROLES = [
-  'Shopify Developer',
-  'Tech Entrepreneur',
-  'UI/UX Designer',
-  'Digital Strategist',
-  'Brand Builder',
-]
-
 export default function Hero() {
   const [visible, setVisible] = useState(false)
-  const [displayText, setDisplayText] = useState('')
-  const [roleIndex, setRoleIndex] = useState(0)
-  const [isDeleting, setIsDeleting] = useState(false)
-  const [isPaused, setIsPaused] = useState(false)
-  const typeRef = useRef(null)
-
-  // Typewriter engine
-  useEffect(() => {
-    const currentRole = ROLES[roleIndex]
-
-    if (isPaused) {
-      typeRef.current = setTimeout(() => {
-        setIsPaused(false)
-        setIsDeleting(true)
-      }, 1800) // pause at full word for 1.8s
-      return () => clearTimeout(typeRef.current)
-    }
-
-    if (isDeleting) {
-      if (displayText.length === 0) {
-        setIsDeleting(false)
-        setRoleIndex((prev) => (prev + 1) % ROLES.length)
-        return
-      }
-      typeRef.current = setTimeout(() => {
-        setDisplayText((prev) => prev.slice(0, -1))
-      }, 45) // delete speed
-    } else {
-      if (displayText.length === currentRole.length) {
-        setIsPaused(true)
-        return
-      }
-      typeRef.current = setTimeout(() => {
-        setDisplayText(currentRole.slice(0, displayText.length + 1))
-      }, 80) // type speed
-    }
-
-    return () => clearTimeout(typeRef.current)
-  }, [displayText, isDeleting, isPaused, roleIndex])
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 100)
@@ -89,23 +42,25 @@ export default function Hero() {
               visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
             }`}
           >
-            {/* Available badge */}
-            <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-semibold px-3.5 py-1.5 rounded-full mb-6">
-              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              Available Freelance Project
+            {/* Top Badges */}
+            <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
+              {/* Available badge */}
+              <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 text-[11px] font-semibold px-3 py-1.5 rounded-full">
+                <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+                Available for Freelance
+              </div>
+              
+              {/* Greeting Badge */}
+              <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-slate-300 text-[11px] font-medium px-3 py-1.5 rounded-full backdrop-blur-sm shadow-sm">
+                👋 Hello, I'm
+              </div>
             </div>
 
-            {/* Greeting line */}
-            <p className="text-slate-400 text-base sm:text-lg font-medium mb-1 tracking-wide">
-              Hello, World! 👋 I'm
-            </p>
-
             {/* Name */}
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.05] mb-4 tracking-tight">
-              <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">Inayath</span>
-              <br />
+            <h1 className="text-[2.75rem] sm:text-6xl lg:text-[5rem] font-extrabold leading-[1.1] mb-3 tracking-tight">
+              <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">Inayath </span>
               <span
-                className="relative inline-block mt-1.5"
+                className="relative inline-block"
                 style={{
                   background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #93c5fd 100%)',
                   WebkitBackgroundClip: 'text',
@@ -118,36 +73,13 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Role Header — Typewriter */}
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mt-3 mb-2 tracking-wide flex items-center gap-1 justify-center md:justify-start">
-              <span
-                style={{
-                  background: 'linear-gradient(135deg, #60a5fa 0%, #a78bfa 60%, #60a5fa 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}
-              >
-                {displayText}
-              </span>
-              {/* Blinking cursor */}
-              <span
-                className="inline-block w-[3px] h-6 sm:h-7 md:h-8 rounded-full ml-0.5 align-middle"
-                style={{
-                  background: 'linear-gradient(180deg, #60a5fa, #a78bfa)',
-                  animation: 'blink-cursor 1s step-end infinite',
-                }}
-              />
-              <style>{`
-                @keyframes blink-cursor {
-                  0%, 100% { opacity: 1; }
-                  50% { opacity: 0; }
-                }
-              `}</style>
+            {/* Static Role Header */}
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold mt-2 mb-3 tracking-wide text-slate-200">
+              Shopify Expert & <span className="text-blue-400">Digital Architect</span>
             </h2>
 
             {/* Subheading */}
-            <p className="text-slate-300 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl mb-8 mt-2">
+            <p className="text-slate-400 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl mx-auto md:mx-0 mb-8">
               From Vision to Execution, Built for Impact
             </p>
 
