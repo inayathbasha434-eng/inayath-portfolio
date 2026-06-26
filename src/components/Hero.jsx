@@ -57,20 +57,22 @@ export default function Hero() {
             </div>
 
             {/* Name */}
-            <h1 className="text-[3.2rem] sm:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.05] mb-5 tracking-tight flex flex-col md:block">
-              <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">Inayath </span>
+            <h1 className="mb-5 flex flex-col md:block items-center md:items-start w-full">
               <span
-                className="relative inline-block italic -ml-2 -rotate-2 scale-110 sm:scale-125 md:-ml-4 origin-left"
+                className="relative inline-block -rotate-2 origin-left tracking-wider"
                 style={{
                   fontFamily: "'Caveat', cursive",
-                  background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #93c5fd 100%)',
+                  fontSize: 'clamp(4.5rem, 10vw, 7.5rem)',
+                  lineHeight: '1',
+                  background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
-                  filter: 'drop-shadow(0 2px 10px rgba(59, 130, 246, 0.4))',
+                  filter: 'drop-shadow(0 0 25px rgba(255, 255, 255, 0.3))',
+                  fontWeight: '700'
                 }}
               >
-                Basha
+                Inayath Basha
               </span>
             </h1>
 
