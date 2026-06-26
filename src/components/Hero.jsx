@@ -204,65 +204,65 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* ── BACK FACE — Terminal ── */}
+                {/* ── BACK FACE — Terminal (Portfolio Colors) ── */}
                 <div
                   className="absolute inset-0 rounded-full p-[3px] overflow-hidden shadow-2xl"
                   style={{
                     backfaceVisibility: 'hidden',
                     WebkitBackfaceVisibility: 'hidden',
                     transform: 'rotateY(180deg)',
-                    background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+                    background: 'linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%)',
                   }}
                 >
-                  <div className="w-full h-full rounded-full bg-[#0a0f0a] flex flex-col justify-center px-5 sm:px-7 overflow-hidden" style={{ fontFamily: "'Courier New', monospace" }}>
+                  <div className="w-full h-full rounded-full bg-[#0a0f1e] flex flex-col justify-center px-5 sm:px-7 overflow-hidden" style={{ fontFamily: "'Courier New', monospace" }}>
 
                     {/* Terminal title bar */}
-                    <div className="flex items-center gap-1.5 mb-3 pb-2 border-b border-green-900/60">
+                    <div className="flex items-center gap-1.5 mb-3 pb-2 border-b border-blue-500/20">
                       <div className="w-2 h-2 rounded-full bg-red-500/80" />
                       <div className="w-2 h-2 rounded-full bg-yellow-500/80" />
-                      <div className="w-2 h-2 rounded-full bg-green-500/80" />
-                      <span className="text-[9px] text-green-700 font-bold ml-1 tracking-widest">inayath@portfolio ~ </span>
+                      <div className="w-2 h-2 rounded-full bg-blue-500/80" />
+                      <span className="text-[9px] font-bold ml-1 tracking-widest" style={{ background: 'linear-gradient(90deg,#60a5fa,#a78bfa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>inayath@portfolio ~</span>
                     </div>
 
                     {/* Prompt line */}
-                    <div className="text-[10px] sm:text-[11px] text-green-600 mb-2 font-bold">$ whoami --roles</div>
+                    <div className="text-[10px] sm:text-[11px] mb-2 font-bold" style={{ color: '#60a5fa' }}>$ whoami --roles</div>
 
                     {/* Line 1 */}
                     <div className={`flex items-center gap-2 mb-1.5 transition-all duration-300 ${terminalLines >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
-                      <span className="text-green-400 text-[10px] font-bold shrink-0">▶</span>
-                      <span className="text-[10px] sm:text-[11px] text-green-300 font-bold">Role:</span>
+                      <span className="text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
+                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Role:</span>
                       <span className="text-[10px] sm:text-[11px] text-white font-bold">Shopify Expert</span>
-                      <span className="text-green-500 text-[10px] ml-auto font-black">✓</span>
+                      <span className="text-[10px] ml-auto font-black" style={{ color: '#34d399' }}>✓</span>
                     </div>
 
                     {/* Line 2 */}
                     <div className={`flex items-center gap-2 mb-1.5 transition-all duration-300 ${terminalLines >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
-                      <span className="text-green-400 text-[10px] font-bold shrink-0">▶</span>
-                      <span className="text-[10px] sm:text-[11px] text-green-300 font-bold">Stack:</span>
+                      <span className="text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
+                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Stack:</span>
                       <span className="text-[10px] sm:text-[11px] text-white font-bold">Web Developer</span>
-                      <span className="text-green-500 text-[10px] ml-auto font-black">✓</span>
+                      <span className="text-[10px] ml-auto font-black" style={{ color: '#34d399' }}>✓</span>
                     </div>
 
                     {/* Line 3 */}
                     <div className={`flex items-center gap-2 mb-1.5 transition-all duration-300 ${terminalLines >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
-                      <span className="text-green-400 text-[10px] font-bold shrink-0">▶</span>
-                      <span className="text-[10px] sm:text-[11px] text-green-300 font-bold">Skill:</span>
+                      <span className="text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
+                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Skill:</span>
                       <span className="text-[10px] sm:text-[11px] text-white font-bold">Designer</span>
-                      <span className="text-green-500 text-[10px] ml-auto font-black">✓</span>
+                      <span className="text-[10px] ml-auto font-black" style={{ color: '#34d399' }}>✓</span>
                     </div>
 
                     {/* Line 4 */}
                     <div className={`flex items-center gap-2 mb-3 transition-all duration-300 ${terminalLines >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
-                      <span className="text-green-400 text-[10px] font-bold shrink-0">▶</span>
-                      <span className="text-[10px] sm:text-[11px] text-green-300 font-bold">Mode:</span>
+                      <span className="text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
+                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Mode:</span>
                       <span className="text-[10px] sm:text-[11px] text-white font-bold">Digital Creative</span>
-                      <span className="text-green-500 text-[10px] ml-auto font-black">✓</span>
+                      <span className="text-[10px] ml-auto font-black" style={{ color: '#34d399' }}>✓</span>
                     </div>
 
-                    {/* Blinking cursor line */}
+                    {/* Blinking cursor */}
                     <div className={`flex items-center gap-1 transition-opacity duration-300 ${terminalLines >= 4 ? 'opacity-100' : 'opacity-0'}`}>
-                      <span className="text-[10px] text-green-600 font-bold">$</span>
-                      <span className="w-2 h-3.5 bg-green-400 animate-pulse rounded-sm" style={{ animationDuration: '0.8s' }} />
+                      <span className="text-[10px] font-bold" style={{ color: '#60a5fa' }}>$</span>
+                      <span className="w-2 h-3.5 rounded-sm animate-pulse" style={{ backgroundColor: '#60a5fa', animationDuration: '0.8s' }} />
                     </div>
 
                   </div>
