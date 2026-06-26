@@ -175,214 +175,17 @@ export default function Projects() {
         </div>
 
         {/* ========================================================== */}
-        {/* 1. DESKTOP ONLY PRESENTATION VIEW (lg:block, hidden on mobile) */}
+        {/* UNIFIED RESPONSIVE SWIPE/CARD VIEW */}
         {/* ========================================================== */}
-        <div className="hidden lg:grid grid-cols-2 gap-6 max-w-6xl mx-auto fade-in-section items-stretch">
-          
-          {/* ---------------- PROJECT 1 (Mor Panthal) - Full Width Row ---------------- */}
-          <div className="col-span-2 rounded-[2rem] bg-[#0d1426] border border-white/5 overflow-hidden group relative flex items-center min-h-[400px] shadow-2xl">
-            {/* Background Glow */}
-            <div className={`absolute top-0 left-0 w-1/2 h-full bg-gradient-to-br ${PROJECTS[0].accent} opacity-[0.02]`} />
-            
-            {/* Left Content (45%) */}
-            <div className="w-[45%] p-10 relative z-10 flex flex-col justify-between h-full">
-              <div>
-                <div className="flex items-center gap-3 mb-3">
-                  <span className={`text-5xl font-black bg-gradient-to-br ${PROJECTS[0].accent} bg-clip-text text-transparent opacity-40 leading-none`}>
-                    {PROJECTS[0].number}
-                  </span>
-                  <div className={`h-[2px] w-12 bg-gradient-to-r ${PROJECTS[0].accent} rounded-full`} />
-                </div>
-                <h3 className="text-3xl font-bold text-white mb-1">{PROJECTS[0].title}</h3>
-                <p className="text-blue-400 font-bold text-[10px] uppercase tracking-widest mb-6">{PROJECTS[0].platform}</p>
-                <p className="text-slate-300 text-sm leading-relaxed mb-6">{PROJECTS[0].description}</p>
-                
-                <div className="space-y-3 mb-8">
-                  <div>
-                    <span className="text-xs font-bold text-slate-500 uppercase">Challenge:</span>
-                    <p className="text-xs text-slate-400 mt-1">{PROJECTS[0].problem}</p>
-                  </div>
-                  <div>
-                    <span className="text-xs font-bold text-slate-500 uppercase">Outcome:</span>
-                    <p className="text-xs text-slate-300 mt-1 font-medium">{PROJECTS[0].outcome}</p>
-                  </div>
-                </div>
-                
-                <div className="flex flex-wrap gap-2">
-                  {PROJECTS[0].tags.map((tag, i) => (
-                    <span key={tag} className={`text-[10px] font-bold px-3 py-1 rounded-full border bg-[#0b1021] ${PROJECTS[0].tagColors[i] || 'text-slate-400 border-slate-500/20'}`}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              
-              <div className="mt-8">
-                <a href={PROJECTS[0].link} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${PROJECTS[0].accent} text-white font-bold text-xs rounded-xl transition-all shadow-lg hover:scale-105 active:scale-95`}>
-                  <ExternalLink size={14} /> Visit Project
-                </a>
-              </div>
-            </div>
-            
-            {/* Right Image (55%) */}
-            <div className="absolute right-0 top-0 bottom-0 w-[55%] bg-[#080d1a] border-l border-white/5 shadow-[-20px_0_40px_rgba(0,0,0,0.5)] overflow-hidden">
-              {/* Fake Browser Chrome */}
-              <div className="bg-[#0e172e] px-4 py-2 flex items-center gap-1.5 border-b border-white/5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
-                <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
-                <div className="ml-4 text-[9px] text-slate-500 bg-[#0a0f1e] px-3 py-0.5 rounded-md border border-white/5">{PROJECTS[0].link.replace('https://', '')}</div>
-              </div>
-              <div className="w-full h-[calc(100%-33px)] relative overflow-hidden bg-[#0d1426]">
-                <img src={PROJECTS[0].image} alt="Mor Panthal" className="w-full h-full object-cover object-top transition-transform duration-[8s] ease-in-out group-hover:scale-[1.03]" />
-              </div>
-            </div>
-          </div>
-
-
-          {/* ---------------- PROJECT 2 (Portfolio) - Half Width ---------------- */}
-          <div className="col-span-1 rounded-[2rem] bg-[#0d1426] border border-white/5 overflow-hidden group relative flex flex-col min-h-[500px] shadow-2xl">
-            {/* Top Image (50%) */}
-            <div className="h-[250px] w-full bg-[#080d1a] border-b border-white/5 overflow-hidden relative">
-              <div className="bg-[#0e172e] px-4 py-2 flex items-center gap-1.5 border-b border-white/5 absolute top-0 w-full z-10">
-                <div className="w-2 h-2 rounded-full bg-red-400/80" />
-                <div className="w-2 h-2 rounded-full bg-yellow-400/80" />
-                <div className="w-2 h-2 rounded-full bg-green-400/80" />
-              </div>
-              <div className="w-full h-full pt-[33px] relative overflow-hidden bg-[#0d1426]">
-                <img src={PROJECTS[1].image} alt="Portfolio" className="w-full h-full object-cover object-top transition-transform duration-[8s] ease-in-out group-hover:scale-[1.03]" />
-              </div>
-            </div>
-
-            {/* Bottom Content (50%) */}
-            <div className="p-8 relative z-10 flex flex-col flex-1 justify-between bg-gradient-to-t from-[#0a0f1e] to-[#0d1426]">
-              <div>
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white mb-1">{PROJECTS[1].title}</h3>
-                    <p className="text-purple-400 font-bold text-[9px] uppercase tracking-widest">{PROJECTS[1].platform}</p>
-                  </div>
-                  <span className={`text-4xl font-black bg-gradient-to-br ${PROJECTS[1].accent} bg-clip-text text-transparent opacity-30 leading-none`}>
-                    {PROJECTS[1].number}
-                  </span>
-                </div>
-                
-                <p className="text-slate-300 text-xs leading-relaxed mb-4">{PROJECTS[1].description}</p>
-                
-                <div className="bg-[#0b1021] p-3 rounded-xl border border-white/5 mb-6">
-                  <span className="text-[9px] font-bold text-slate-500 uppercase block mb-1">Outcome:</span>
-                  <p className="text-xs text-slate-300">{PROJECTS[1].outcome}</p>
-                </div>
-              </div>
-              
-              <div className="flex justify-between items-end">
-                <div className="flex flex-wrap gap-1.5 max-w-[60%]">
-                  {PROJECTS[1].tags.slice(0,3).map((tag, i) => (
-                    <span key={tag} className={`text-[9px] font-bold px-2 py-0.5 rounded-full border bg-[#0b1021] ${PROJECTS[1].tagColors[i] || 'text-slate-400 border-slate-500/20'}`}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <a href={PROJECTS[1].link} target="_blank" rel="noopener noreferrer" className={`w-10 h-10 flex items-center justify-center bg-gradient-to-r ${PROJECTS[1].accent} text-white rounded-full transition-all shadow-lg hover:scale-110 active:scale-95`}>
-                  <ExternalLink size={14} />
-                </a>
-              </div>
-            </div>
-          </div>
-
-
-          {/* ---------------- PROJECT 3 (AI Images) - Half Width ---------------- */}
-          <div className="col-span-1 rounded-[2rem] bg-[#0d1426] border border-white/5 overflow-hidden group relative flex flex-col min-h-[500px] shadow-2xl">
-            {/* Top Slider (50%) */}
-            <div className="h-[250px] w-full bg-[#080d1a] border-b border-white/5 overflow-hidden relative select-none">
-              <div className="bg-[#0e172e] px-4 py-2 flex items-center justify-between border-b border-white/5 absolute top-0 w-full z-30 shadow-md">
-                <div className="flex gap-1.5">
-                  <div className="w-2 h-2 rounded-full bg-slate-600" />
-                  <div className="w-2 h-2 rounded-full bg-slate-600" />
-                </div>
-                <div className="text-[9px] text-slate-400 font-medium">Interactive Before / After</div>
-              </div>
-              
-              <div className="w-full h-full pt-[33px] relative overflow-hidden bg-[#0d1426] group/slider">
-                {/* Before Image */}
-                <div className="absolute inset-0 pt-[33px]">
-                  <img src={PROJECTS[2].beforeImage} alt="Before" className="w-full h-full object-cover" />
-                  <div className="absolute bottom-3 left-3 bg-black/75 text-white text-[9px] font-bold px-2 py-0.5 rounded border border-white/10 uppercase tracking-wider backdrop-blur-sm z-10">
-                    Camera
-                  </div>
-                </div>
-
-                {/* After Image */}
-                <div className="absolute inset-0 pt-[33px] z-10" style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}>
-                  <img src={PROJECTS[2].afterImage} alt="After" className="w-full h-full object-cover" />
-                  <div className="absolute bottom-3 right-3 bg-purple-600/90 text-white text-[9px] font-bold px-2 py-0.5 rounded border border-purple-500/20 uppercase tracking-wider shadow-lg backdrop-blur-sm">
-                    AI Gen
-                  </div>
-                </div>
-
-                {/* Slider bar */}
-                <div className="absolute inset-y-0 w-[2px] bg-white/80 cursor-ew-resize flex items-center justify-center pointer-events-none z-20 pt-[33px]" style={{ left: `${sliderPosition}%` }}>
-                  <div className="w-7 h-7 bg-slate-900 rounded-full shadow-xl border-2 border-white/80 flex items-center justify-center -ml-[14px] pointer-events-auto">
-                    <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
-                    </svg>
-                  </div>
-                </div>
-
-                <input type="range" min="0" max="100" value={sliderPosition} onChange={(e) => setSliderPosition(Number(e.target.value))} className="absolute inset-0 pt-[33px] w-full h-full opacity-0 cursor-ew-resize z-30" />
-              </div>
-            </div>
-
-            {/* Bottom Content (50%) */}
-            <div className="p-8 relative z-10 flex flex-col flex-1 justify-between bg-gradient-to-t from-[#0a0f1e] to-[#0d1426]">
-              <div>
-                <div className="flex justify-between items-start mb-2">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white mb-1">{PROJECTS[2].title}</h3>
-                    <p className="text-pink-400 font-bold text-[9px] uppercase tracking-widest">{PROJECTS[2].platform}</p>
-                  </div>
-                  <span className={`text-4xl font-black bg-gradient-to-br ${PROJECTS[2].accent} bg-clip-text text-transparent opacity-30 leading-none`}>
-                    {PROJECTS[2].number}
-                  </span>
-                </div>
-                
-                <p className="text-slate-300 text-xs leading-relaxed mb-4">{PROJECTS[2].description}</p>
-                
-                <div className="bg-[#0b1021] p-3 rounded-xl border border-white/5 mb-6">
-                  <span className="text-[9px] font-bold text-slate-500 uppercase block mb-1">Outcome:</span>
-                  <p className="text-xs text-slate-300">{PROJECTS[2].outcome}</p>
-                </div>
-              </div>
-              
-              <div className="flex justify-between items-end">
-                <div className="flex flex-wrap gap-1.5 max-w-[60%]">
-                  {PROJECTS[2].tags.slice(0,3).map((tag, i) => (
-                    <span key={tag} className={`text-[9px] font-bold px-2 py-0.5 rounded-full border bg-[#0b1021] ${PROJECTS[2].tagColors[i] || 'text-slate-400 border-slate-500/20'}`}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <a href={PROJECTS[2].link} target="_blank" rel="noopener noreferrer" className={`w-10 h-10 flex items-center justify-center bg-gradient-to-r ${PROJECTS[2].accent} text-white rounded-full transition-all shadow-lg hover:scale-110 active:scale-95`}>
-                  <ExternalLink size={14} />
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* ========================================================== */}
-        {/* 2. MOBILE ONLY SWIPE VIEW (lg:hidden, block on smaller devices) */}
-        {/* ========================================================== */}
-        <div className="block lg:hidden w-full overflow-hidden">
+        <div className="w-full overflow-hidden">
           {/* Swiper track */}
-          <div className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-5 pb-8 pt-6 px-4 scroll-smooth">
+          <div className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-5 lg:gap-8 pb-8 pt-6 px-4 lg:px-8 scroll-smooth lg:justify-center">
             {PROJECTS.map((proj, index) => {
               const isExpanded = expandedMobileProject === index;
               return (
               <div 
                 key={proj.title}
-                className="min-w-[88vw] max-w-[88vw] sm:min-w-[70vw] sm:max-w-[70vw] snap-center bg-[#0d1426] border border-white/10 rounded-3xl p-5 flex flex-col shadow-2xl relative"
+                className="min-w-[88vw] max-w-[88vw] sm:min-w-[70vw] sm:max-w-[70vw] lg:min-w-[350px] lg:max-w-[350px] xl:min-w-[380px] xl:max-w-[380px] snap-center bg-[#0d1426] border border-white/10 rounded-3xl p-5 flex flex-col shadow-2xl relative transition-transform duration-300 hover:-translate-y-2"
               >
                 {/* HIGHLY HIGHLIGHTED PROJECT NUMBER */}
                 <div className={`absolute -top-5 -right-2 w-12 h-12 rounded-full bg-gradient-to-br ${proj.accent} flex items-center justify-center text-white font-black text-lg shadow-[0_0_20px_rgba(0,0,0,0.5)] border-4 border-[#0a0f1e] z-30`}>
@@ -475,8 +278,8 @@ export default function Projects() {
                     <span>View Project</span>
                   </a>
                   
-                  {/* Improved Swipe Hint */}
-                  <div className="flex flex-col items-center justify-center w-16 opacity-80 shrink-0">
+                  {/* Improved Swipe Hint - Hidden on Desktop */}
+                  <div className="flex flex-col items-center justify-center w-16 opacity-80 shrink-0 lg:hidden">
                     <span className="text-[9px] text-slate-400 font-extrabold uppercase tracking-widest mb-0.5">Swipe</span>
                     <div className="flex items-center gap-1">
                       <div className="w-1.5 h-1.5 rounded-full bg-white/40 animate-ping" />
@@ -493,7 +296,7 @@ export default function Projects() {
           </div>
 
           {/* Bottom global touch indicator */}
-          <div className="flex items-center justify-center gap-2 mt-2 opacity-50 pb-4">
+          <div className="flex lg:hidden items-center justify-center gap-2 mt-2 opacity-50 pb-4">
             <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Scroll horizontally for more</span>
           </div>
         </div>
