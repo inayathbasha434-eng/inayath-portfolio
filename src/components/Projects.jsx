@@ -93,7 +93,7 @@ export default function Projects() {
   const [fadeState, setFadeState] = useState('opacity-100 translate-y-0') // active transition state
   const [sliderPosition, setSliderPosition] = useState(50)
   const [mobileSliderPositions, setMobileSliderPositions] = useState({})
-  const [expandedMobileProject, setExpandedMobileProject] = useState(null)
+  const [selectedProject, setSelectedProject] = useState(null)
   const timerRef = useRef(null)
 
   // Trigger state transition when changing project
@@ -229,18 +229,14 @@ export default function Projects() {
                 </div>
 
                 {/* 2. CARD CONTENT AREA */}
-                <div className="p-6 lg:p-8 flex flex-col flex-grow relative">
+                <div className="p-6 lg:p-8 flex flex-col flex-grow">
                   
-                  {/* HIGHLY HIGHLIGHTED PROJECT NUMBER (Overlapping the image edge) */}
-                  <div className={`absolute right-6 -top-8 w-16 h-16 rounded-full bg-gradient-to-br ${proj.accent} flex items-center justify-center text-white font-black text-2xl shadow-[0_10px_20px_rgba(0,0,0,0.5)] border-[6px] border-[#0d1426] z-30`}>
-                    {parseInt(proj.number)}
-                  </div>
-
                   {/* Header */}
-                  <div className="mb-5 pr-14">
-                    <h3 className="text-2xl lg:text-3xl font-black text-white leading-tight mb-1.5">{proj.title}</h3>
-                    <p className={`text-[10px] font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r ${proj.accent}`}>
-                      {proj.platform}
+                  <div className="mb-3">
+                    <h3 className="text-2xl font-black text-white leading-tight mb-2">{proj.title}</h3>
+                    {/* Short Description */}
+                    <p className="text-sm text-slate-400 leading-relaxed mb-4">
+                      {proj.description}
                     </p>
                   </div>
 
@@ -253,59 +249,26 @@ export default function Projects() {
                     ))}
                   </div>
 
-                {/* ACCORDION TRIGGER */}
-                <button 
-                  onClick={() => setExpandedMobileProject(isExpanded ? null : index)}
-                  className="w-full py-2.5 mb-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-bold text-slate-300 flex items-center justify-center gap-2 transition-all active:scale-95"
-                >
-                  {isExpanded ? 'Hide Details' : 'Read Case Study'}
-                  <svg className={`w-3.5 h-3.5 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
+                  <div className="flex-grow" />
 
-                {/* ACCORDION CONTENT */}
-                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-[500px] opacity-100 mb-4' : 'max-h-0 opacity-0'}`}>
-                  <div className="space-y-3">
-                    <p className="text-slate-300 text-xs leading-relaxed">{proj.description}</p>
-                    <div className="grid grid-cols-1 gap-2 bg-black/40 rounded-xl p-3 border border-white/5">
-                      <div>
-                        <p className="text-[10px] font-extrabold text-blue-400 uppercase tracking-wider mb-0.5">Problem</p>
-                        <p className="text-[11px] text-slate-400 leading-snug">{proj.problem}</p>
-                      </div>
-                      <div className="border-t border-white/5 pt-2 mt-1">
-                        <p className="text-[10px] font-extrabold text-green-400 uppercase tracking-wider mb-0.5">Outcome</p>
-                        <p className="text-[11px] text-slate-400 leading-snug">{proj.outcome}</p>
-                      </div>
-                    </div>
+                  {/* Buttons */}
+                  <div className="flex items-center gap-4 mt-auto pt-2">
+                    <button 
+                      onClick={() => setSelectedProject(proj)}
+                      className="flex-1 py-3.5 bg-transparent hover:bg-white/5 border border-white/10 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-2 transition-all active:scale-95"
+                    >
+                      Project Overview &rarr;
+                    </button>
+                    <a
+                      href={proj.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex-1 flex items-center justify-center gap-2 py-3.5 bg-gradient-to-r ${proj.accent} text-white font-bold text-xs rounded-xl shadow-[0_0_15px_rgba(255,255,255,0.1)] active:scale-95 transition-transform`}
+                    >
+                      Live Project
+                      <ExternalLink size={14} />
+                    </a>
                   </div>
-                </div>
-
-                <div className="flex-grow" />
-
-                {/* Footer Buttons & Swipe Hint */}
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between mt-auto gap-4">
-                  <a
-                    href={proj.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex-1 flex items-center justify-center gap-2 min-h-[48px] bg-gradient-to-r ${proj.accent} text-white font-extrabold text-[11px] uppercase tracking-wide rounded-xl shadow-[0_0_15px_rgba(255,255,255,0.1)] active:scale-95 transition-transform`}
-                  >
-                    <ExternalLink size={14} />
-                    <span>View Project</span>
-                  </a>
-                  
-                  {/* Improved Swipe Hint - Hidden on Desktop */}
-                  <div className="flex flex-col items-center justify-center w-16 opacity-80 shrink-0 lg:hidden">
-                    <span className="text-[9px] text-slate-400 font-extrabold uppercase tracking-widest mb-0.5">Swipe</span>
-                    <div className="flex items-center gap-1">
-                      <div className="w-1.5 h-1.5 rounded-full bg-white/40 animate-ping" />
-                      <svg className="w-4 h-4 text-white/50 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
 
                 </div>
               </div>
@@ -320,6 +283,92 @@ export default function Projects() {
         </div>
 
       </div>
+
+      {/* ========================================================== */}
+      {/* PROJECT OVERVIEW MODAL */}
+      {/* ========================================================== */}
+      {selectedProject && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-12 overflow-y-auto">
+          {/* Backdrop */}
+          <div 
+            className="fixed inset-0 bg-[#080d1a]/90 backdrop-blur-md transition-opacity"
+            onClick={() => setSelectedProject(null)}
+          />
+          
+          {/* Modal Content */}
+          <div className="relative w-full max-w-4xl bg-[#0d1426] border border-white/10 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.5)] flex flex-col my-auto max-h-[90vh] overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            {/* Close Button */}
+            <button 
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-4 right-4 z-40 w-10 h-10 bg-black/40 hover:bg-black/60 rounded-full flex items-center justify-center text-white backdrop-blur-md transition-colors border border-white/10"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+
+            <div className="overflow-y-auto w-full no-scrollbar">
+              {/* Modal Hero Image */}
+              <div className="w-full h-[250px] sm:h-[350px] relative bg-[#080d1a] border-b border-white/10">
+                <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-cover object-top" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d1426] via-[#0d1426]/60 to-transparent opacity-90" />
+                
+                <div className="absolute bottom-8 left-8 right-8">
+                  <p className={`text-xs font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r ${selectedProject.accent} mb-2`}>
+                    {selectedProject.platform}
+                  </p>
+                  <h2 className="text-3xl sm:text-4xl font-black text-white">{selectedProject.title}</h2>
+                </div>
+              </div>
+
+              {/* Modal Body */}
+              <div className="p-8 sm:p-10 space-y-10">
+                {/* Intro */}
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-4">Overview</h3>
+                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed">{selectedProject.description}</p>
+                </div>
+
+                {/* Problem & Solution Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 bg-white/5 rounded-2xl p-6 lg:p-8 border border-white/5">
+                  <div>
+                    <h4 className="text-[11px] font-black text-blue-400 uppercase tracking-wider mb-2.5">The Challenge</h4>
+                    <p className="text-sm text-slate-400 leading-relaxed">{selectedProject.problem}</p>
+                  </div>
+                  <div>
+                    <h4 className="text-[11px] font-black text-green-400 uppercase tracking-wider mb-2.5">The Solution & Outcome</h4>
+                    <p className="text-sm text-slate-400 leading-relaxed">{selectedProject.solution} {selectedProject.outcome}</p>
+                  </div>
+                </div>
+
+                {/* Tags */}
+                <div>
+                  <h3 className="text-sm font-bold text-white mb-4">Technologies Used</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedProject.tags.map((tag, i) => (
+                      <span key={tag} className={`text-xs font-bold px-4 py-2 rounded-full border ${selectedProject.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <div className="pt-6 border-t border-white/10 flex justify-end">
+                  <a
+                    href={selectedProject.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r ${selectedProject.accent} text-white font-black text-sm uppercase tracking-wide rounded-xl shadow-[0_0_20px_rgba(255,255,255,0.1)] active:scale-95 transition-transform`}
+                  >
+                    <span>Visit Live Website</span>
+                    <ExternalLink size={18} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
     </section>
   )
 }
