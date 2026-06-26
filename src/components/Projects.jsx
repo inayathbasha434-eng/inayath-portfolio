@@ -185,30 +185,18 @@ export default function Projects() {
               return (
               <div 
                 key={proj.title}
-                className="min-w-[88vw] sm:min-w-[70vw] lg:min-w-0 lg:w-full snap-center lg:snap-align-none bg-[#0d1426] border border-white/10 rounded-3xl p-5 lg:p-6 flex flex-col shadow-2xl relative transition-transform duration-300 hover:-translate-y-2"
+                className="min-w-[88vw] sm:min-w-[70vw] lg:min-w-0 lg:w-full snap-center lg:snap-align-none bg-[#0d1426] border border-white/10 rounded-[2rem] flex flex-col shadow-2xl relative transition-transform duration-300 hover:-translate-y-2 overflow-hidden"
               >
-                {/* HIGHLY HIGHLIGHTED PROJECT NUMBER */}
-                <div className={`absolute -top-5 -right-2 w-12 h-12 rounded-full bg-gradient-to-br ${proj.accent} flex items-center justify-center text-white font-black text-lg shadow-[0_0_20px_rgba(0,0,0,0.5)] border-4 border-[#0a0f1e] z-30`}>
-                  {parseInt(proj.number)}
-                </div>
-
-                {/* Mockup Header */}
-                <div className="mb-4 pr-8">
-                  <h3 className="text-xl font-black text-white">{proj.title}</h3>
-                  <p className={`text-[10px] font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r ${proj.accent}`}>
-                    {proj.platform}
-                  </p>
-                </div>
-
-                {/* Browser-like window wrapper */}
-                <div className="rounded-xl overflow-hidden border border-white/10 bg-[#080d1a] relative mb-4 shadow-2xl group/mockup">
-                  {/* Browser Chrome Header */}
-                  <div className="bg-[#0a0f1e] px-3 py-2 flex items-center gap-1.5 border-b border-white/5">
-                    <div className="w-2 h-2 rounded-full bg-red-500/80" />
-                    <div className="w-2 h-2 rounded-full bg-yellow-500/80" />
-                    <div className="w-2 h-2 rounded-full bg-green-500/80" />
+                
+                {/* 1. EDGE-TO-EDGE IMAGE HEADER */}
+                <div className="relative w-full aspect-[4/3] sm:aspect-video lg:aspect-[4/3] overflow-hidden bg-[#080d1a] border-b border-white/10 shrink-0 group/mockup">
+                  {/* Browser Chrome Header (Overlay on Hover) */}
+                  <div className="absolute top-0 w-full z-30 bg-gradient-to-b from-[#0a0f1e]/90 to-transparent px-4 py-4 flex items-center gap-1.5 opacity-0 group-hover/mockup:opacity-100 transition-opacity duration-300">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/90 shadow-sm" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/90 shadow-sm" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/90 shadow-sm" />
                     {proj.link && (
-                      <div className="ml-auto text-[8px] text-slate-500 bg-white/5 px-2 py-0.5 rounded border border-white/5 font-medium tracking-wider hidden sm:block">
+                      <div className="ml-auto text-[9px] text-white bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/20 font-bold tracking-wider shadow-lg">
                         {proj.link.replace('https://', '')}
                       </div>
                     )}
@@ -216,38 +204,54 @@ export default function Projects() {
 
                   {/* Before/After AI Image Slider OR Scroll preview */}
                   {proj.beforeImage && proj.afterImage ? (
-                    <div className="relative h-[200px] sm:h-[220px] lg:h-[240px] xl:h-[260px] overflow-hidden bg-[#0d1426] select-none">
+                    <div className="w-full h-full select-none relative">
                       <div className="absolute inset-0">
                         <img src={proj.beforeImage} alt="Before AI" className="w-full h-full object-cover" />
                       </div>
                       <div className="absolute inset-0" style={{ clipPath: `polygon(0 0, ${mobileSliderPositions[index] ?? 50}% 0, ${mobileSliderPositions[index] ?? 50}% 100%, 0 100%)` }}>
                         <img src={proj.afterImage} alt="After AI" className="w-full h-full object-cover" />
                       </div>
-                      <div className="absolute inset-y-0 w-[3px] bg-white cursor-ew-resize flex items-center justify-center pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.5)]" style={{ left: `${mobileSliderPositions[index] ?? 50}%` }}>
-                        <div className="w-6 h-6 bg-slate-900 rounded-full shadow-lg border-2 border-white flex items-center justify-center -ml-[12px] pointer-events-auto">
-                          <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <div className="absolute inset-y-0 w-[3px] bg-white cursor-ew-resize flex items-center justify-center pointer-events-none shadow-[0_0_15px_rgba(0,0,0,0.8)] z-20" style={{ left: `${mobileSliderPositions[index] ?? 50}%` }}>
+                        <div className="w-8 h-8 bg-slate-900 rounded-full shadow-2xl border-2 border-white flex items-center justify-center -ml-[16px] pointer-events-auto">
+                          <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
                           </svg>
                         </div>
                       </div>
-                      <input type="range" min="0" max="100" value={mobileSliderPositions[index] ?? 50} onChange={(e) => setMobileSliderPositions(prev => ({ ...prev, [index]: Number(e.target.value) }))} className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20" />
+                      <input type="range" min="0" max="100" value={mobileSliderPositions[index] ?? 50} onChange={(e) => setMobileSliderPositions(prev => ({ ...prev, [index]: Number(e.target.value) }))} className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30" />
                     </div>
                   ) : (
-                    <div className="relative h-[200px] sm:h-[220px] lg:h-[240px] xl:h-[260px] overflow-hidden bg-[#0d1426]">
-                      <img src={proj.image} alt={`${proj.title} Preview`} className="w-full h-full object-cover object-top transition-all duration-[6s] ease-in-out group-hover/mockup:object-bottom" />
-                      <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(0,0,0,0.3)] pointer-events-none" />
+                    <div className="w-full h-full relative">
+                      <img src={proj.image} alt={`${proj.title} Preview`} className="w-full h-full object-cover object-top transition-all duration-[8s] ease-in-out group-hover/mockup:object-bottom" />
+                      <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.6)] pointer-events-none" />
                     </div>
                   )}
                 </div>
 
-                {/* Tag pills */}
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {proj.tags.slice(0, 3).map((tag, i) => (
-                    <span key={tag} className={`text-[10px] font-extrabold px-2.5 py-1 rounded-md border ${proj.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}>
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                {/* 2. CARD CONTENT AREA */}
+                <div className="p-6 lg:p-8 flex flex-col flex-grow relative">
+                  
+                  {/* HIGHLY HIGHLIGHTED PROJECT NUMBER (Overlapping the image edge) */}
+                  <div className={`absolute right-6 -top-8 w-16 h-16 rounded-full bg-gradient-to-br ${proj.accent} flex items-center justify-center text-white font-black text-2xl shadow-[0_10px_20px_rgba(0,0,0,0.5)] border-[6px] border-[#0d1426] z-30`}>
+                    {parseInt(proj.number)}
+                  </div>
+
+                  {/* Header */}
+                  <div className="mb-5 pr-14">
+                    <h3 className="text-2xl lg:text-3xl font-black text-white leading-tight mb-1.5">{proj.title}</h3>
+                    <p className={`text-[10px] font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r ${proj.accent}`}>
+                      {proj.platform}
+                    </p>
+                  </div>
+
+                  {/* Tag pills */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {proj.tags.slice(0, 3).map((tag, i) => (
+                      <span key={tag} className={`text-[10px] font-bold px-3 py-1 rounded-full border ${proj.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
                 {/* ACCORDION TRIGGER */}
                 <button 
@@ -303,6 +307,7 @@ export default function Projects() {
                   </div>
                 </div>
 
+                </div>
               </div>
             );
             })}
