@@ -10,6 +10,7 @@ const PHOTO = "/ChatGPT_Image_Jun_16,_2026,_03_11_34_PM.png"
 
 export default function Hero() {
   const [visible, setVisible] = useState(false)
+  const [isFlipped, setIsFlipped] = useState(false)
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 100)
@@ -124,6 +125,7 @@ export default function Hero() {
             <div 
               className="relative cursor-pointer group"
               style={{ perspective: '1000px' }}
+              onClick={() => setIsFlipped(!isFlipped)}
               onMouseMove={(e) => {
                 const card = e.currentTarget;
                 const rect = card.getBoundingClientRect();
@@ -176,37 +178,55 @@ export default function Hero() {
                 style={{ animationDuration: '20s' }}
               />
 
-              {/* Photo container */}
-              <div className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full p-[3px] bg-gradient-to-br from-blue-400 via-blue-600 to-blue-800 shadow-2xl shadow-blue-500/20 overflow-hidden transform transition-all duration-300 group-hover:shadow-blue-500/30">
-                
+              {/* Photo container / 3D Coin */}
+              <div 
+                className="relative w-60 h-60 sm:w-72 sm:h-72 md:w-80 md:h-80 rounded-full shadow-2xl shadow-blue-500/20 group-hover:shadow-blue-500/30 transition-transform duration-700 ease-in-out"
+                style={{ transformStyle: 'preserve-3d', transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)' }}
+              >
                 {/* 3D Specular Light reflection layer */}
-                <div className="specs-glow absolute inset-0 z-20 pointer-events-none transition-all duration-100" />
+                <div className="specs-glow absolute inset-0 z-20 pointer-events-none transition-all duration-100 rounded-full" />
 
-                <div className="w-full h-full rounded-full overflow-hidden bg-[#0d1426] relative z-10">
-                  <img
-                    src={PHOTO}
-                    alt="Inayath Basha"
-                    loading="eager"
-                    decoding="async"
-                    fetchPriority="high"
-                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none'
-                      e.currentTarget.nextElementSibling.style.display = 'flex'
-                    }}
-                  />
-                  <div className="w-full h-full items-center justify-center bg-gradient-to-br from-blue-900 to-[#0a0f1e] hidden">
-                    <span
-                      className="text-7xl font-extrabold"
-                      style={{
-                        background: 'linear-gradient(135deg, #60a5fa, #3b82f6)',
-                        WebkitBackgroundClip: 'text',
-                        WebkitTextFillColor: 'transparent',
-                        backgroundClip: 'text',
+                {/* FRONT FACE (Photo) */}
+                <div 
+                  className="absolute inset-0 rounded-full p-[3px] bg-gradient-to-br from-blue-400 via-blue-600 to-blue-800 overflow-hidden"
+                  style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+                >
+                  <div className="w-full h-full rounded-full overflow-hidden bg-[#0d1426] relative z-10">
+                    <img
+                      src={PHOTO}
+                      alt="Inayath Basha"
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none'
+                        e.currentTarget.nextElementSibling.style.display = 'flex'
                       }}
-                    >
-                      IB
-                    </span>
+                    />
+                    <div className="w-full h-full items-center justify-center bg-gradient-to-br from-blue-900 to-[#0a0f1e] hidden">
+                      <span className="text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-blue-600">
+                        IB
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* BACK FACE (Skills/Titles) */}
+                <div 
+                  className="absolute inset-0 rounded-full p-[3px] bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-500 overflow-hidden"
+                  style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+                >
+                  <div className="w-full h-full rounded-full overflow-hidden bg-[#080d1a] relative z-10 flex flex-col items-center justify-center p-6 sm:p-8 text-center border border-white/5">
+                    <div className="space-y-3 sm:space-y-4 w-full transform -rotate-y-180">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Shopify Expert</h3>
+                      <div className="w-16 h-px bg-white/10 mx-auto" />
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-slate-200">Designer</h3>
+                      <div className="w-12 h-px bg-white/5 mx-auto" />
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-slate-200">Web Developer</h3>
+                      <div className="w-12 h-px bg-white/5 mx-auto" />
+                      <h3 className="text-sm sm:text-base font-semibold text-blue-400/80 uppercase tracking-widest">Digital Creative</h3>
+                    </div>
                   </div>
                 </div>
               </div>
