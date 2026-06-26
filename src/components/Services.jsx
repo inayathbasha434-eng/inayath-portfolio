@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 const BOOKING_TEMPLATES = [
   {
@@ -17,6 +18,7 @@ const BOOKING_TEMPLATES = [
     accentClass: 'bg-pink-500 text-white hover:bg-pink-600 shadow-sm shadow-pink-500/20',
     outlineClass: 'border-pink-500/30 text-pink-400 hover:bg-pink-500/5',
     image: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?auto=format&fit=crop&q=80&w=600',
+    pageRoute: null,
     avatar: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=100',
     providerName: 'Inayath Basha',
     providerTitle: 'AI Specialist',
@@ -48,6 +50,7 @@ const BOOKING_TEMPLATES = [
     accentClass: 'bg-purple-600 text-white hover:bg-purple-700 shadow-sm shadow-purple-500/20',
     outlineClass: 'border-purple-500/30 text-purple-400 hover:bg-purple-500/5',
     image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=600',
+    pageRoute: null,
     avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100',
     providerName: 'Inayath Basha',
     providerTitle: 'Mentor & Developer',
@@ -78,7 +81,8 @@ const BOOKING_TEMPLATES = [
     badgeDot: 'bg-green-500',
     accentClass: 'bg-green-600 text-white hover:bg-green-700 shadow-sm shadow-green-500/20',
     outlineClass: 'border-green-500/30 text-green-400 hover:bg-green-500/5',
-    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=600',
+    image: '/shopify-hero.png',
+    pageRoute: '/services/shopify',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100',
     providerName: 'Inayath Basha',
     providerTitle: 'Shopify Developer',
@@ -109,7 +113,8 @@ const BOOKING_TEMPLATES = [
     badgeDot: 'bg-blue-500',
     accentClass: 'bg-blue-600 text-white hover:bg-blue-700 shadow-sm shadow-blue-500/20',
     outlineClass: 'border-blue-500/30 text-blue-400 hover:bg-blue-500/5',
-    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&q=80&w=600',
+    image: '/wordpress-hero.png',
+    pageRoute: '/services/wordpress',
     avatar: 'https://images.unsplash.com/photo-1540569014015-19a7be504e3a?auto=format&fit=crop&q=80&w=100',
     providerName: 'Inayath Basha',
     providerTitle: 'WordPress Developer',
@@ -141,6 +146,7 @@ const BOOKING_TEMPLATES = [
     accentClass: 'bg-cyan-600 text-white hover:bg-cyan-700 shadow-sm shadow-cyan-500/20',
     outlineClass: 'border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/5',
     image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=600',
+    pageRoute: null,
     avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=100',
     providerName: 'Inayath Basha',
     providerTitle: 'Web Strategist',
@@ -171,7 +177,8 @@ const BOOKING_TEMPLATES = [
     badgeDot: 'bg-orange-500',
     accentClass: 'bg-orange-500 text-white hover:bg-orange-600 shadow-sm shadow-orange-500/20',
     outlineClass: 'border-orange-500/30 text-orange-400 hover:bg-orange-500/5',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600',
+    image: '/erp-hero.png',
+    pageRoute: '/services/erp',
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=100',
     providerName: 'Inayath Basha',
     providerTitle: 'ERP Consultant',
@@ -193,6 +200,7 @@ const BOOKING_TEMPLATES = [
 export default function Services() {
   const sectionRef = useRef(null)
   const [activeIndex, setActiveIndex] = useState(0)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const section = sectionRef.current
@@ -343,14 +351,26 @@ export default function Services() {
                   <div className="flex flex-col md:flex-row min-h-full md:min-h-[320px] relative z-10">
                     
                     {/* Left/Right Column: Image (hidden on mobile, background instead) */}
-                    <div className={`hidden md:block w-full md:w-[42%] relative overflow-hidden bg-slate-900 border-b md:border-b-0 border-black/5 dark:border-white/5 ${
-                      isImageLeft ? 'md:order-first md:border-r' : 'md:order-last md:border-l'
-                    }`}>
+                    <div
+                      className={`hidden md:block w-full md:w-[42%] relative overflow-hidden bg-slate-900 border-b md:border-b-0 border-black/5 dark:border-white/5 ${
+                        isImageLeft ? 'md:order-first md:border-r' : 'md:order-last md:border-l'
+                      } ${item.pageRoute ? 'cursor-pointer group/img' : ''}`}
+                      onClick={() => item.pageRoute && navigate(item.pageRoute)}
+                      title={item.pageRoute ? `Learn more about ${item.title}` : ''}
+                    >
                       <img
                         src={item.image}
                         alt={item.category}
-                        className="w-full h-full object-cover object-center absolute inset-0"
+                        className={`w-full h-full object-cover object-center absolute inset-0 transition-transform duration-500 ${item.pageRoute ? 'group-hover/img:scale-105' : ''}`}
                       />
+                      {/* Hover overlay for clickable images */}
+                      {item.pageRoute && (
+                        <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/30 transition-all duration-300 flex items-center justify-center">
+                          <div className="opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 bg-white/90 text-slate-900 text-xs font-extrabold px-4 py-2 rounded-full shadow-lg flex items-center gap-2">
+                            <span>Learn More →</span>
+                          </div>
+                        </div>
+                      )}
                       
                       {/* Floating pill badge */}
                       <div className="absolute top-3.5 left-3.5 bg-white/95 text-slate-800 text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1.5 border border-slate-100">
