@@ -213,7 +213,9 @@ export default function Projects() {
                       <input type="range" min="0" max="100" value={mobileSliderPositions[index] ?? 50} onChange={(e) => setMobileSliderPositions(prev => ({ ...prev, [index]: Number(e.target.value) }))} className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20" />
                     </div>
                   ) : (
-                    <img src={proj.image} alt={`${proj.title} Preview`} className="w-full h-full object-cover object-top" />
+                    <div className="absolute inset-0 w-full h-full">
+                      <img src={proj.image} alt={`${proj.title} Preview`} className="block w-full h-full object-cover object-center" />
+                    </div>
                   )}
                 </div>
 
