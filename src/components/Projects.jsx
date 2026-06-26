@@ -94,6 +94,7 @@ export default function Projects() {
   const [fadeState, setFadeState] = useState('opacity-100 translate-y-0') // active transition state
   const [sliderPosition, setSliderPosition] = useState(50)
   const [mobileSliderPositions, setMobileSliderPositions] = useState({})
+  const [expandedMobileProject, setExpandedMobileProject] = useState(null)
   const timerRef = useRef(null)
 
   // Trigger state transition when changing project
@@ -409,132 +410,125 @@ export default function Projects() {
         {/* ========================================================== */}
         <div className="block lg:hidden w-full overflow-hidden">
           {/* Swiper track */}
-          <div className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-4 pb-6 scroll-smooth">
-            {PROJECTS.map((proj, index) => (
+          <div className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-5 pb-8 pt-6 px-4 scroll-smooth">
+            {PROJECTS.map((proj, index) => {
+              const isExpanded = expandedMobileProject === index;
+              return (
               <div 
                 key={proj.title}
-                className="min-w-[85vw] max-w-[85vw] sm:min-w-[70vw] sm:max-w-[70vw] snap-center bg-gradient-to-br from-[#0d1426] via-[#0f1730] to-[#080d1a] border border-white/10 rounded-2xl p-5 flex flex-col justify-between shadow-lg relative"
+                className="min-w-[88vw] max-w-[88vw] sm:min-w-[70vw] sm:max-w-[70vw] snap-center bg-[#0d1426] border border-white/10 rounded-3xl p-5 flex flex-col shadow-2xl relative"
               >
-                {/* Visual Number ID */}
-                <div className="absolute top-4 right-5 text-2xl font-black text-white/5 select-none">{proj.number}</div>
+                {/* HIGHLY HIGHLIGHTED PROJECT NUMBER */}
+                <div className={`absolute -top-5 -right-2 w-12 h-12 rounded-full bg-gradient-to-br ${proj.accent} flex items-center justify-center text-white font-black text-lg shadow-[0_0_20px_rgba(0,0,0,0.5)] border-4 border-[#0a0f1e] z-30`}>
+                  {parseInt(proj.number)}
+                </div>
 
-                <div className="space-y-4">
-                  {/* Mockup Header */}
-                  <div className="space-y-1">
-                    <h3 className="text-lg font-black text-white">{proj.title}</h3>
-                    <p className={`text-xs font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r ${proj.accent}`}>
-                      {proj.platform}
-                    </p>
-                  </div>
+                {/* Mockup Header */}
+                <div className="mb-4 pr-8">
+                  <h3 className="text-xl font-black text-white">{proj.title}</h3>
+                  <p className={`text-[10px] font-extrabold uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r ${proj.accent}`}>
+                    {proj.platform}
+                  </p>
+                </div>
 
-                  {/* Browser-like window wrapper */}
-                  <div className="rounded-xl overflow-hidden border border-white/5 bg-[#080d1a] relative">
-                    {/* Before/After AI Image Slider OR Scroll preview */}
-                    {proj.beforeImage && proj.afterImage ? (
-                      <div className="relative h-[160px] overflow-hidden bg-[#0d1426] select-none">
-                        {/* Before Image */}
-                        <div className="absolute inset-0">
-                          <img
-                            src={proj.beforeImage}
-                            alt="Before AI"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-
-                        {/* After Image */}
-                        <div 
-                          className="absolute inset-0"
-                          style={{ clipPath: `polygon(0 0, ${mobileSliderPositions[index] ?? 50}% 0, ${mobileSliderPositions[index] ?? 50}% 100%, 0 100%)` }}
-                        >
-                          <img
-                            src={proj.afterImage}
-                            alt="After AI"
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-
-                        {/* Slider control line */}
-                        <div 
-                          className="absolute inset-y-0 w-[2.5px] bg-white/80 cursor-ew-resize flex items-center justify-center pointer-events-none"
-                          style={{ left: `${mobileSliderPositions[index] ?? 50}%` }}
-                        >
-                          <div className="w-5 h-5 bg-slate-900 rounded-full shadow-md border border-white/20 flex items-center justify-center -ml-[10px] pointer-events-auto">
-                            <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
-                            </svg>
-                          </div>
-                        </div>
-
-                        {/* Range slider for mobile touch */}
-                        <input
-                          type="range"
-                          min="0"
-                          max="100"
-                          value={mobileSliderPositions[index] ?? 50}
-                          onChange={(e) => setMobileSliderPositions(prev => ({ ...prev, [index]: Number(e.target.value) }))}
-                          className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
-                        />
+                {/* Browser-like window wrapper */}
+                <div className="rounded-xl overflow-hidden border border-white/10 bg-[#080d1a] relative mb-4 shadow-inner">
+                  {/* Before/After AI Image Slider OR Scroll preview */}
+                  {proj.beforeImage && proj.afterImage ? (
+                    <div className="relative h-[180px] overflow-hidden bg-[#0d1426] select-none">
+                      <div className="absolute inset-0">
+                        <img src={proj.beforeImage} alt="Before AI" className="w-full h-full object-cover" />
                       </div>
-                    ) : (
-                      <div className="relative h-[160px] overflow-hidden bg-[#0d1426]">
-                        <img
-                          src={proj.image}
-                          alt={`${proj.title} Preview`}
-                          className="w-full h-full object-cover object-top"
-                        />
+                      <div className="absolute inset-0" style={{ clipPath: `polygon(0 0, ${mobileSliderPositions[index] ?? 50}% 0, ${mobileSliderPositions[index] ?? 50}% 100%, 0 100%)` }}>
+                        <img src={proj.afterImage} alt="After AI" className="w-full h-full object-cover" />
                       </div>
-                    )}
-                  </div>
-
-                  {/* Summary Description */}
-                  <p className="text-slate-350 text-xs leading-relaxed">{proj.description}</p>
-
-                  {/* Quick stats grid */}
-                  <div className="grid grid-cols-2 gap-2 text-left bg-black/30 rounded-xl p-3 border border-white/5">
-                    <div>
-                      <p className="text-[10px] font-extrabold text-blue-400 uppercase tracking-wider">Solution</p>
-                      <p className="text-xs text-slate-300 leading-snug mt-0.5 line-clamp-2">{proj.solution}</p>
+                      <div className="absolute inset-y-0 w-[3px] bg-white cursor-ew-resize flex items-center justify-center pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.5)]" style={{ left: `${mobileSliderPositions[index] ?? 50}%` }}>
+                        <div className="w-6 h-6 bg-slate-900 rounded-full shadow-lg border-2 border-white flex items-center justify-center -ml-[12px] pointer-events-auto">
+                          <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
+                          </svg>
+                        </div>
+                      </div>
+                      <input type="range" min="0" max="100" value={mobileSliderPositions[index] ?? 50} onChange={(e) => setMobileSliderPositions(prev => ({ ...prev, [index]: Number(e.target.value) }))} className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20" />
                     </div>
-                    <div>
-                      <p className="text-[10px] font-extrabold text-green-400 uppercase tracking-wider">Outcome</p>
-                      <p className="text-xs text-slate-300 leading-snug mt-0.5 line-clamp-2">{proj.outcome}</p>
+                  ) : (
+                    <div className="relative h-[180px] overflow-hidden bg-[#0d1426]">
+                      <img src={proj.image} alt={`${proj.title} Preview`} className="w-full h-full object-cover object-top" />
                     </div>
-                  </div>
+                  )}
+                </div>
 
-                  {/* Tag pills */}
-                  <div className="flex flex-wrap gap-1">
-                    {proj.tags.slice(0, 3).map((tag, i) => (
-                      <span
-                        key={tag}
-                        className={`text-[10px] font-extrabold px-2 py-0.5 rounded-full border ${proj.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                {/* Tag pills */}
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {proj.tags.slice(0, 3).map((tag, i) => (
+                    <span key={tag} className={`text-[10px] font-extrabold px-2.5 py-1 rounded-md border ${proj.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* ACCORDION TRIGGER */}
+                <button 
+                  onClick={() => setExpandedMobileProject(isExpanded ? null : index)}
+                  className="w-full py-2.5 mb-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-bold text-slate-300 flex items-center justify-center gap-2 transition-all active:scale-95"
+                >
+                  {isExpanded ? 'Hide Details' : 'Read Case Study'}
+                  <svg className={`w-3.5 h-3.5 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {/* ACCORDION CONTENT */}
+                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${isExpanded ? 'max-h-[500px] opacity-100 mb-4' : 'max-h-0 opacity-0'}`}>
+                  <div className="space-y-3">
+                    <p className="text-slate-300 text-xs leading-relaxed">{proj.description}</p>
+                    <div className="grid grid-cols-1 gap-2 bg-black/40 rounded-xl p-3 border border-white/5">
+                      <div>
+                        <p className="text-[10px] font-extrabold text-blue-400 uppercase tracking-wider mb-0.5">Problem</p>
+                        <p className="text-[11px] text-slate-400 leading-snug">{proj.problem}</p>
+                      </div>
+                      <div className="border-t border-white/5 pt-2 mt-1">
+                        <p className="text-[10px] font-extrabold text-green-400 uppercase tracking-wider mb-0.5">Outcome</p>
+                        <p className="text-[11px] text-slate-400 leading-snug">{proj.outcome}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                {/* View button */}
-                <div className="pt-4 border-t border-white/5 mt-4 flex items-center justify-between">
+                <div className="flex-grow" />
+
+                {/* Footer Buttons & Swipe Hint */}
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between mt-auto gap-4">
                   <a
                     href={proj.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center gap-1 justify-center min-h-[34px] px-3.5 py-1.5 bg-gradient-to-r ${proj.accent} text-white font-extrabold text-[10px] rounded-lg shadow active:scale-95 transition-transform`}
+                    className={`flex-1 flex items-center justify-center gap-2 min-h-[48px] bg-gradient-to-r ${proj.accent} text-white font-extrabold text-[11px] uppercase tracking-wide rounded-xl shadow-[0_0_15px_rgba(255,255,255,0.1)] active:scale-95 transition-transform`}
                   >
-                    <ExternalLink size={10} />
-                    <span>Live Preview</span>
+                    <ExternalLink size={14} />
+                    <span>View Project</span>
                   </a>
-                  <span className="text-[10px] text-slate-500 font-bold">Swipe next →</span>
+                  
+                  {/* Improved Swipe Hint */}
+                  <div className="flex flex-col items-center justify-center w-16 opacity-80 shrink-0">
+                    <span className="text-[9px] text-slate-400 font-extrabold uppercase tracking-widest mb-0.5">Swipe</span>
+                    <div className="flex items-center gap-1">
+                      <div className="w-1.5 h-1.5 rounded-full bg-white/40 animate-ping" />
+                      <svg className="w-4 h-4 text-white/50 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
+
               </div>
-            ))}
+            );
+            })}
           </div>
 
-          {/* Touch instructions */}
-          <div className="flex items-center justify-center gap-2 mt-2">
-            <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-ping" />
-            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">Swipe cards left / right</span>
+          {/* Bottom global touch indicator */}
+          <div className="flex items-center justify-center gap-2 mt-2 opacity-50 pb-4">
+            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Scroll horizontally for more</span>
           </div>
         </div>
 
