@@ -1,11 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ShoppingBag, ArrowDown, MessageSquare, ArrowRight } from 'lucide-react'
-
-const STATS = [
-  { value: '2+', label: 'Projects' },
-  { value: '10+', label: 'Skills' },
-  { value: '100%', label: 'Satisfaction' },
-]
+import { ShoppingBag, ArrowDown, MessageSquare, ArrowRight, BadgeCheck } from 'lucide-react'
 
 const PHOTO = "/ChatGPT_Image_Jun_16,_2026,_03_11_34_PM.png"
 
@@ -101,19 +95,14 @@ export default function Hero() {
               </button>
             </div>
 
-            {/* Stats strip */}
-            <div className={`flex justify-center md:justify-start gap-6 sm:gap-10 w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              {STATS.map(({ value, label }, i) => (
-                <div key={label} className="text-center relative">
-                  {i > 0 && (
-                    <div className="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 w-px h-8 bg-white/10" />
-                  )}
-                  <div className="text-2xl sm:text-3xl font-extrabold text-[#e2e8f0]">
-                    {value}
-                  </div>
-                  <div className="text-[10px] sm:text-xs text-slate-400 mt-1 font-medium tracking-wide">{label}</div>
-                </div>
-              ))}
+            {/* Trust Badge */}
+            <div className={`flex justify-center md:justify-start w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className="inline-flex items-center gap-2.5 bg-emerald-500/10 border border-emerald-500/20 px-5 py-2.5 rounded-full shadow-lg shadow-emerald-950/20">
+                <BadgeCheck size={18} className="text-emerald-400 animate-pulse" />
+                <span className="text-emerald-300 text-xs sm:text-sm font-bold tracking-wide">
+                  100% Client Satisfaction &amp; Trust
+                </span>
+              </div>
             </div>
           </div>
 
