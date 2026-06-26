@@ -76,23 +76,14 @@ export default function Hero() {
 
 
             {/* CTA Buttons */}
-            <div className="flex flex-row justify-center md:justify-start gap-3 mb-10 w-full px-4 sm:px-0">
-              <button
-                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                aria-label="View My Work"
-                className="flex-1 sm:flex-none justify-center shine group min-h-[48px] px-2 sm:px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] active:scale-95 text-xs sm:text-sm tracking-wider flex items-center gap-1.5 sm:gap-2.5"
-              >
-                <span>Work</span>
-                <ArrowRight size={14} className="text-blue-200 group-hover:translate-x-1 transition-transform" />
-              </button>
-
+            <div className="flex justify-center md:justify-start mb-10 w-full">
               <button
                 onClick={scrollToContact}
                 aria-label="Let's Connect"
-                className="flex-1 sm:flex-none justify-center group min-h-[48px] px-2 sm:px-8 py-3 bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20 font-bold rounded-xl transition-all duration-300 active:scale-95 text-xs sm:text-sm tracking-wider flex items-center gap-1.5 sm:gap-2.5"
+                className="shine group min-h-[52px] px-10 py-3.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] active:scale-95 text-sm tracking-wider flex items-center gap-2.5"
               >
-                <MessageSquare size={14} className="text-slate-300 group-hover:scale-110 transition-transform" />
-                <span>Connect</span>
+                <MessageSquare size={16} className="text-blue-200 group-hover:scale-110 transition-transform" />
+                <span>Let's Connect</span>
               </button>
             </div>
 
