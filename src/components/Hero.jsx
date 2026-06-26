@@ -192,48 +192,103 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* ── BACK FACE — Skills ── */}
+                {/* ── BACK FACE — Radial Burst HUD ── */}
                 <div
                   className="absolute inset-0 rounded-full p-[3px] overflow-hidden shadow-2xl"
                   style={{
                     backfaceVisibility: 'hidden',
                     WebkitBackfaceVisibility: 'hidden',
                     transform: 'rotateY(180deg)',
-                    background: 'linear-gradient(135deg, #06b6d4, #8b5cf6, #ec4899, #f97316)',
+                    background: 'linear-gradient(135deg, #06b6d4 0%, #8b5cf6 40%, #ec4899 70%, #f97316 100%)',
                   }}
                 >
-                  <div className="w-full h-full rounded-full bg-[#06091a] flex flex-col items-center justify-center gap-2.5 sm:gap-3 px-4">
+                  <div className="w-full h-full rounded-full bg-[#06091a] relative overflow-hidden">
 
-                    {/* Shopify Expert — Cyan */}
-                    <div className="flex items-center gap-2 w-full justify-center px-3 py-1.5 rounded-full bg-cyan-500/15 border border-cyan-400/40 shadow-[0_0_10px_rgba(6,182,212,0.2)]">
-                      <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse shrink-0" />
-                      <span className="text-xs sm:text-sm font-extrabold whitespace-nowrap" style={{ background: 'linear-gradient(90deg,#67e8f9,#60a5fa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                        Shopify Expert
-                      </span>
+                    {/* SVG Radial lines + dots */}
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 240 240" fill="none">
+                      <defs>
+                        {/* Glow filters */}
+                        <filter id="glowCyan"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="glowPink"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="glowGreen"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        <filter id="glowOrange"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                        {/* Animated gradients for lines */}
+                        <linearGradient id="lineCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#06b6d4" stopOpacity="0"/>
+                          <stop offset="100%" stopColor="#67e8f9"/>
+                        </linearGradient>
+                        <linearGradient id="linePink" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#ec4899" stopOpacity="0"/>
+                          <stop offset="100%" stopColor="#f9a8d4"/>
+                        </linearGradient>
+                        <linearGradient id="lineGreen" x1="0%" y1="100%" x2="0%" y2="0%">
+                          <stop offset="0%" stopColor="#10b981" stopOpacity="0"/>
+                          <stop offset="100%" stopColor="#6ee7b7"/>
+                        </linearGradient>
+                        <linearGradient id="lineOrange" x1="100%" y1="0%" x2="0%" y2="0%">
+                          <stop offset="0%" stopColor="#f97316" stopOpacity="0"/>
+                          <stop offset="100%" stopColor="#fcd34d"/>
+                        </linearGradient>
+                      </defs>
+
+                      {/* Subtle outer orbit ring */}
+                      <circle cx="120" cy="120" r="100" stroke="white" strokeOpacity="0.04" strokeWidth="1" fill="none"/>
+                      <circle cx="120" cy="120" r="72" stroke="white" strokeOpacity="0.06" strokeWidth="0.5" strokeDasharray="4 6" fill="none"/>
+
+                      {/* ── TOP: Shopify Expert (Cyan, 12 o'clock) ── */}
+                      <line x1="120" y1="120" x2="120" y2="32" stroke="url(#lineCyan)" strokeWidth="1.5" filter="url(#glowCyan)" strokeLinecap="round"/>
+                      <circle cx="120" cy="32" r="4" fill="#06b6d4" filter="url(#glowCyan)"/>
+                      <circle cx="120" cy="32" r="7" stroke="#06b6d4" strokeOpacity="0.35" strokeWidth="1" fill="none"/>
+
+                      {/* ── RIGHT: Designer (Pink, 3 o'clock) ── */}
+                      <line x1="120" y1="120" x2="208" y2="120" stroke="url(#linePink)" strokeWidth="1.5" filter="url(#glowPink)" strokeLinecap="round"/>
+                      <circle cx="208" cy="120" r="4" fill="#ec4899" filter="url(#glowPink)"/>
+                      <circle cx="208" cy="120" r="7" stroke="#ec4899" strokeOpacity="0.35" strokeWidth="1" fill="none"/>
+
+                      {/* ── BOTTOM: Web Developer (Green, 6 o'clock) ── */}
+                      <line x1="120" y1="120" x2="120" y2="208" stroke="url(#lineGreen)" strokeWidth="1.5" filter="url(#glowGreen)" strokeLinecap="round"/>
+                      <circle cx="120" cy="208" r="4" fill="#10b981" filter="url(#glowGreen)"/>
+                      <circle cx="120" cy="208" r="7" stroke="#10b981" strokeOpacity="0.35" strokeWidth="1" fill="none"/>
+
+                      {/* ── LEFT: Digital Creative (Orange, 9 o'clock) ── */}
+                      <line x1="120" y1="120" x2="32" y2="120" stroke="url(#lineOrange)" strokeWidth="1.5" filter="url(#glowOrange)" strokeLinecap="round"/>
+                      <circle cx="32" cy="120" r="4" fill="#f97316" filter="url(#glowOrange)"/>
+                      <circle cx="32" cy="120" r="7" stroke="#f97316" strokeOpacity="0.35" strokeWidth="1" fill="none"/>
+
+                      {/* Center orb ring */}
+                      <circle cx="120" cy="120" r="26" stroke="white" strokeOpacity="0.08" strokeWidth="1" fill="none"/>
+                      <circle cx="120" cy="120" r="20" stroke="white" strokeOpacity="0.12" strokeWidth="1" fill="none"/>
+                    </svg>
+
+                    {/* Center IB orb */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative flex items-center justify-center w-16 h-16 sm:w-[72px] sm:h-[72px]">
+                        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-600/60 to-purple-600/60 blur-md animate-pulse" />
+                        <div className="relative w-full h-full rounded-full border border-white/15 bg-[#0a0f1e]/90 flex items-center justify-center shadow-[0_0_20px_rgba(99,102,241,0.4)]">
+                          <span className="text-xl sm:text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-br from-blue-300 to-purple-300">IB</span>
+                        </div>
+                      </div>
                     </div>
 
-                    {/* Designer — Pink/Purple */}
-                    <div className="flex items-center gap-2 w-full justify-center px-3 py-1.5 rounded-full bg-pink-500/15 border border-pink-400/40 shadow-[0_0_10px_rgba(236,72,153,0.2)]">
-                      <span className="w-2 h-2 rounded-full bg-pink-400 animate-pulse shrink-0" style={{ animationDelay: '0.3s' }} />
-                      <span className="text-xs sm:text-sm font-extrabold whitespace-nowrap" style={{ background: 'linear-gradient(90deg,#f9a8d4,#c084fc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                        Designer
-                      </span>
+                    {/* ── LABELS ── */}
+                    {/* TOP — Shopify Expert */}
+                    <div className="absolute top-[4px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-0.5">
+                      <span className="text-[9px] sm:text-[10px] font-black tracking-wider uppercase whitespace-nowrap" style={{ color: '#67e8f9', textShadow: '0 0 8px rgba(6,182,212,0.8)' }}>Shopify Expert</span>
                     </div>
 
-                    {/* Web Developer — Green */}
-                    <div className="flex items-center gap-2 w-full justify-center px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/40 shadow-[0_0_10px_rgba(52,211,153,0.2)]">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" style={{ animationDelay: '0.6s' }} />
-                      <span className="text-xs sm:text-sm font-extrabold whitespace-nowrap" style={{ background: 'linear-gradient(90deg,#6ee7b7,#34d399)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                        Web Developer
-                      </span>
+                    {/* RIGHT — Designer */}
+                    <div className="absolute right-[4px] top-1/2 -translate-y-1/2 flex flex-col items-center gap-0.5">
+                      <span className="text-[9px] sm:text-[10px] font-black tracking-wider uppercase whitespace-nowrap" style={{ color: '#f9a8d4', textShadow: '0 0 8px rgba(236,72,153,0.8)' }}>Designer</span>
                     </div>
 
-                    {/* Digital Creative — Orange */}
-                    <div className="flex items-center gap-2 w-full justify-center px-3 py-1.5 rounded-full bg-orange-500/15 border border-orange-400/40 shadow-[0_0_10px_rgba(251,146,60,0.2)]">
-                      <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse shrink-0" style={{ animationDelay: '0.9s' }} />
-                      <span className="text-xs sm:text-sm font-extrabold whitespace-nowrap" style={{ background: 'linear-gradient(90deg,#fcd34d,#fb923c)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                        Digital Creative
-                      </span>
+                    {/* BOTTOM — Web Developer */}
+                    <div className="absolute bottom-[4px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-0.5">
+                      <span className="text-[9px] sm:text-[10px] font-black tracking-wider uppercase whitespace-nowrap" style={{ color: '#6ee7b7', textShadow: '0 0 8px rgba(16,185,129,0.8)' }}>Web Developer</span>
+                    </div>
+
+                    {/* LEFT — Digital Creative */}
+                    <div className="absolute left-[4px] top-1/2 -translate-y-1/2 flex flex-col items-center gap-0.5">
+                      <span className="text-[9px] sm:text-[10px] font-black tracking-wider uppercase whitespace-nowrap" style={{ color: '#fcd34d', textShadow: '0 0 8px rgba(249,115,22,0.8)' }}>Digital Creative</span>
                     </div>
 
                   </div>
