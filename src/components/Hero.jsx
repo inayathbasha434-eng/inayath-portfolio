@@ -38,12 +38,12 @@ export default function Hero() {
 
           {/* ── Text content ── */}
           <div
-            className={`flex-1 text-center md:text-left transition-all duration-700 ${
+            className={`flex-1 text-center md:text-left flex flex-col items-center md:items-start transition-all duration-700 ${
               visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
             }`}
           >
             {/* Top Badges */}
-            <div className="flex flex-col md:flex-row items-center gap-3 mb-6">
+            <div className="flex flex-col sm:flex-row items-center gap-3 mb-6">
               {/* Available badge */}
               <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 text-[11px] font-semibold px-3 py-1.5 rounded-full">
                 <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
@@ -57,7 +57,7 @@ export default function Hero() {
             </div>
 
             {/* Name */}
-            <h1 className="text-[2.75rem] sm:text-6xl lg:text-[5rem] font-extrabold leading-[1.1] mb-3 tracking-tight">
+            <h1 className="text-[3.2rem] sm:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.05] mb-5 tracking-tight flex flex-col md:block">
               <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">Inayath </span>
               <span
                 className="relative inline-block"
@@ -66,29 +66,37 @@ export default function Hero() {
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
-                  filter: 'drop-shadow(0 2px 10px rgba(59, 130, 246, 0.4))',
+                  filter: 'drop-shadow(0 2px 15px rgba(59, 130, 246, 0.5))',
                 }}
               >
-                Basha A
+                Basha
               </span>
             </h1>
 
-            {/* Static Role Header */}
-            <h2 className="text-lg sm:text-xl md:text-2xl font-bold mt-2 mb-3 tracking-wide text-slate-200">
-              Shopify Expert & <span className="text-blue-400">Digital Architect</span>
-            </h2>
+            {/* Glowing Role Header (The "Best Idea") */}
+            <div className="relative inline-block mb-6 w-full md:w-auto">
+              {/* Outer pulsing glow */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-400 rounded-xl blur-[10px] opacity-50 animate-pulse"></div>
+              
+              {/* Glass container */}
+              <div className="relative px-6 py-3 sm:py-4 bg-[#0d1426]/90 border border-white/10 rounded-xl backdrop-blur-md shadow-xl text-center md:text-left">
+                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-wide text-white">
+                  Shopify Expert & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Digital Architect</span>
+                </h2>
+              </div>
+            </div>
 
             {/* Subheading */}
-            <p className="text-slate-400 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl mx-auto md:mx-0 mb-8">
+            <p className="text-slate-300 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl text-center md:text-left mx-auto md:mx-0 mb-8 px-4 md:px-0">
               From Vision to Execution, Built for Impact
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap justify-center md:justify-start gap-4 mb-9">
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-4 mb-10 w-full sm:w-auto px-4 sm:px-0">
               <button
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                 aria-label="View My Work"
-                className="shine group min-h-[52px] px-8 py-3.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] hover:-translate-y-0.5 active:translate-y-0 text-sm tracking-wider flex items-center gap-2.5"
+                className="w-full sm:w-auto justify-center shine group min-h-[52px] px-8 py-3.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] hover:-translate-y-0.5 active:translate-y-0 text-sm tracking-wider flex items-center gap-2.5"
               >
                 <span>View My Work</span>
                 <ArrowRight size={14} className="text-blue-200 group-hover:translate-x-1 transition-transform" />
@@ -97,7 +105,7 @@ export default function Hero() {
               <button
                 onClick={scrollToContact}
                 aria-label="Let's Connect"
-                className="group min-h-[52px] px-8 py-3.5 bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20 font-bold rounded-xl transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 text-sm tracking-wider flex items-center gap-2.5"
+                className="w-full sm:w-auto justify-center group min-h-[52px] px-8 py-3.5 bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20 font-bold rounded-xl transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 text-sm tracking-wider flex items-center gap-2.5"
               >
                 <MessageSquare size={16} className="text-slate-300 group-hover:scale-110 transition-transform" />
                 <span>Let's Connect</span>
@@ -106,7 +114,7 @@ export default function Hero() {
 
 
             {/* Stats strip */}
-            <div className="flex justify-center md:justify-start gap-8 sm:gap-12">
+            <div className="flex justify-center md:justify-start gap-8 sm:gap-12 w-full">
               {STATS.map(({ value, label }, i) => (
                 <div key={label} className="text-center relative">
                   {i > 0 && (
@@ -123,7 +131,7 @@ export default function Hero() {
                   >
                     {value}
                   </div>
-                  <div className="text-xs text-slate-500 mt-0.5 font-medium">{label}</div>
+                  <div className="text-xs text-slate-500 mt-0.5 font-medium uppercase tracking-wider">{label}</div>
                 </div>
               ))}
             </div>
@@ -199,7 +207,7 @@ export default function Hero() {
                 <div className="w-full h-full rounded-full overflow-hidden bg-[#0d1426] relative z-10">
                   <img
                     src={PHOTO}
-                    alt="Inayath Basha A"
+                    alt="Inayath Basha"
                     loading="eager"
                     decoding="async"
                     fetchPriority="high"
