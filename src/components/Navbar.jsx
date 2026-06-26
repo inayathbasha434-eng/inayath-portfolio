@@ -159,60 +159,67 @@ export default function Navbar() {
         }`}
         aria-label="Desktop navigation"
       >
-        <div className="glass p-2 rounded-[24px] border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7),_0_0_30px_rgba(99,102,241,0.15)] flex items-center gap-0 backdrop-blur-2xl bg-[#060a16]/90">
-          {NAV_LINKS.map(({ label, href, icon: Icon }, idx) => {
-            const id = href.replace('#', '')
-            const isActive = active === id
-            const isNextActive = idx < NAV_LINKS.length - 1 && active === NAV_LINKS[idx + 1].href.replace('#', '')
+        {/* Glowing border outer wrapper */}
+        <div className="relative p-[1.5px] rounded-[24px] overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7),_0_0_30px_rgba(99,102,241,0.15)] group transition-all duration-300 hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.8),_0_0_40px_rgba(99,102,241,0.25)]">
+          {/* Animated conic gradient border background */}
+          <div className="absolute inset-[-1000%] bg-[conic-gradient(from_0deg,#3b82f6_0%,#8b5cf6_20%,transparent_40%,transparent_60%,#3b82f6_100%)] animate-spin-slow opacity-60 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          
+          {/* Inner content container */}
+          <div className="relative p-2 rounded-[23px] flex items-center gap-0 backdrop-blur-2xl bg-[#060a16]/95">
+            {NAV_LINKS.map(({ label, href, icon: Icon }, idx) => {
+              const id = href.replace('#', '')
+              const isActive = active === id
+              const isNextActive = idx < NAV_LINKS.length - 1 && active === NAV_LINKS[idx + 1].href.replace('#', '')
 
-            return (
-              <div key={href} className="flex items-center">
-                <button
-                  onClick={() => scrollTo(href)}
-                  className={`group relative flex flex-col items-center justify-center w-[72px] h-[62px] pb-1.5 transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${
-                    isActive
-                      ? 'bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 text-white rounded-[16px] shadow-[0_8px_20px_rgba(37,99,235,0.4)] border border-blue-400/20'
-                      : 'text-slate-400 hover:text-white hover:bg-white/5 rounded-[16px]'
-                  }`}
-                  aria-label={label}
-                >
-                  <Icon 
-                    size={18} 
-                    className={`transition-all duration-300 ${
-                      isActive 
-                        ? 'scale-110 text-white mb-0.5' 
-                        : 'group-hover:scale-110 text-slate-400 group-hover:text-white mb-1'
-                    }`} 
-                    strokeWidth={isActive ? 2.2 : 2} 
-                  />
-                  
-                  <span 
-                    className={`text-[10px] tracking-wide transition-all duration-300 ${
-                      isActive 
-                        ? 'font-bold text-white' 
-                        : 'font-medium text-slate-400 group-hover:text-white'
+              return (
+                <div key={href} className="flex items-center">
+                  <button
+                    onClick={() => scrollTo(href)}
+                    className={`group relative flex flex-col items-center justify-center w-[72px] h-[62px] pb-1.5 transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+                      isActive
+                        ? 'bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 text-white rounded-[16px] shadow-[0_8px_20px_rgba(37,99,235,0.4)] border border-blue-400/20'
+                        : 'text-slate-400 hover:text-white hover:bg-white/5 rounded-[16px]'
                     }`}
+                    aria-label={label}
                   >
-                    {label}
-                  </span>
+                    <Icon 
+                      size={18} 
+                      className={`transition-all duration-300 ${
+                        isActive 
+                          ? 'scale-110 text-white mb-0.5' 
+                          : 'group-hover:scale-110 text-slate-400 group-hover:text-white mb-1'
+                      }`} 
+                      strokeWidth={isActive ? 2.2 : 2} 
+                    />
+                    
+                    <span 
+                      className={`text-[10px] tracking-wide transition-all duration-300 ${
+                        isActive 
+                          ? 'font-bold text-white' 
+                          : 'font-medium text-slate-400 group-hover:text-white'
+                      }`}
+                    >
+                      {label}
+                    </span>
 
-                  {/* Active indicator dot/pill (absolute positioned to prevent vertical shift of the icon/text) */}
-                  {isActive && (
-                    <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-3.5 h-[2.5px] rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)] animate-fade-in" />
+                    {/* Active indicator dot/pill (absolute positioned to prevent vertical shift of the icon/text) */}
+                    {isActive && (
+                      <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-3.5 h-[2.5px] rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)] animate-fade-in" />
+                    )}
+                  </button>
+
+                  {/* Divider Line */}
+                  {idx < NAV_LINKS.length - 1 && (
+                    <div 
+                      className={`w-[1px] h-6 bg-white/10 mx-0.5 transition-all duration-300 self-center ${
+                        isActive || isNextActive ? 'opacity-0 scale-y-75' : 'opacity-100'
+                      }`}
+                    />
                   )}
-                </button>
-
-                {/* Divider Line */}
-                {idx < NAV_LINKS.length - 1 && (
-                  <div 
-                    className={`w-[1px] h-6 bg-white/10 mx-0.5 transition-all duration-300 self-center ${
-                      isActive || isNextActive ? 'opacity-0 scale-y-75' : 'opacity-100'
-                    }`}
-                  />
-                )}
-              </div>
-            )
-          })}
+                </div>
+              )
+            })}
+          </div>
         </div>
       </nav>
     </header>
