@@ -11,6 +11,18 @@ const PHOTO = "/ChatGPT_Image_Jun_16,_2026,_03_11_34_PM.png"
 export default function Hero() {
   const [visible, setVisible] = useState(false)
   const [isFlipped, setIsFlipped] = useState(false)
+  const [terminalLines, setTerminalLines] = useState(0)
+
+  // Sequence terminal lines appearing after flip
+  useEffect(() => {
+    if (!isFlipped) { setTerminalLines(0); return }
+    const timers = []
+    timers.push(setTimeout(() => setTerminalLines(1), 400))
+    timers.push(setTimeout(() => setTerminalLines(2), 900))
+    timers.push(setTimeout(() => setTerminalLines(3), 1400))
+    timers.push(setTimeout(() => setTerminalLines(4), 1900))
+    return () => timers.forEach(clearTimeout)
+  }, [isFlipped])
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 100)
@@ -192,68 +204,71 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* ── BACK FACE — Neon Name Tag ── */}
+                {/* ── BACK FACE — Terminal ── */}
                 <div
-                  className="absolute inset-0 rounded-full overflow-hidden shadow-2xl"
+                  className="absolute inset-0 rounded-full p-[3px] overflow-hidden shadow-2xl"
                   style={{
                     backfaceVisibility: 'hidden',
                     WebkitBackfaceVisibility: 'hidden',
                     transform: 'rotateY(180deg)',
+                    background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
                   }}
                 >
-                  {/* Glowing neon border ring */}
-                  <div className="absolute inset-0 rounded-full p-[3px]" style={{ background: 'linear-gradient(135deg, #60a5fa, #a855f7, #ec4899, #60a5fa)', animation: 'spin 4s linear infinite' }}>
-                    <div className="w-full h-full rounded-full bg-[#06091a] flex flex-col items-center justify-center gap-0 px-6 relative">
+                  <div className="w-full h-full rounded-full bg-[#0a0f0a] flex flex-col justify-center px-5 sm:px-7 overflow-hidden" style={{ fontFamily: "'Courier New', monospace" }}>
 
-                      {/* Subtle inner glow pulse */}
-                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-600/10 via-purple-600/5 to-transparent pointer-events-none" />
-
-                      {/* Name */}
-                      <div className="text-center mb-3">
-                        <p className="text-[9px] font-bold tracking-[0.3em] uppercase text-slate-500 mb-1">Full Stack</p>
-                        <h3
-                          className="text-lg sm:text-xl font-black tracking-tight leading-tight"
-                          style={{
-                            background: 'linear-gradient(135deg, #e2e8f0 0%, #ffffff 50%, #cbd5e1 100%)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            backgroundClip: 'text',
-                            textShadow: 'none',
-                            filter: 'drop-shadow(0 0 12px rgba(255,255,255,0.25))',
-                          }}
-                        >
-                          INAYATH<br/>BASHA
-                        </h3>
-                      </div>
-
-                      {/* Divider */}
-                      <div className="flex items-center gap-2 w-full mb-3">
-                        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-blue-500/60 to-transparent" />
-                        <div className="w-1 h-1 rounded-full bg-blue-400" />
-                        <div className="flex-1 h-px bg-gradient-to-r from-transparent via-blue-500/60 to-transparent" />
-                      </div>
-
-                      {/* Role list */}
-                      <div className="flex flex-col gap-1.5 w-full">
-                        {[
-                          { label: 'Shopify Expert',    color: '#22d3ee' },
-                          { label: 'Web Developer',     color: '#34d399' },
-                          { label: 'Designer',          color: '#f472b6' },
-                          { label: 'Digital Creative',  color: '#fb923c' },
-                        ].map(({ label, color }) => (
-                          <div key={label} className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full flex-shrink-0 animate-pulse" style={{ backgroundColor: color, boxShadow: `0 0 6px ${color}` }} />
-                            <span className="text-[10px] sm:text-[11px] font-bold tracking-wide uppercase whitespace-nowrap" style={{ color, textShadow: `0 0 10px ${color}80` }}>
-                              {label}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-
+                    {/* Terminal title bar */}
+                    <div className="flex items-center gap-1.5 mb-3 pb-2 border-b border-green-900/60">
+                      <div className="w-2 h-2 rounded-full bg-red-500/80" />
+                      <div className="w-2 h-2 rounded-full bg-yellow-500/80" />
+                      <div className="w-2 h-2 rounded-full bg-green-500/80" />
+                      <span className="text-[9px] text-green-700 font-bold ml-1 tracking-widest">inayath@portfolio ~ </span>
                     </div>
+
+                    {/* Prompt line */}
+                    <div className="text-[10px] sm:text-[11px] text-green-600 mb-2 font-bold">$ whoami --roles</div>
+
+                    {/* Line 1 */}
+                    <div className={`flex items-center gap-2 mb-1.5 transition-all duration-300 ${terminalLines >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
+                      <span className="text-green-400 text-[10px] font-bold shrink-0">▶</span>
+                      <span className="text-[10px] sm:text-[11px] text-green-300 font-bold">Role:</span>
+                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Shopify Expert</span>
+                      <span className="text-green-500 text-[10px] ml-auto font-black">✓</span>
+                    </div>
+
+                    {/* Line 2 */}
+                    <div className={`flex items-center gap-2 mb-1.5 transition-all duration-300 ${terminalLines >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
+                      <span className="text-green-400 text-[10px] font-bold shrink-0">▶</span>
+                      <span className="text-[10px] sm:text-[11px] text-green-300 font-bold">Stack:</span>
+                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Web Developer</span>
+                      <span className="text-green-500 text-[10px] ml-auto font-black">✓</span>
+                    </div>
+
+                    {/* Line 3 */}
+                    <div className={`flex items-center gap-2 mb-1.5 transition-all duration-300 ${terminalLines >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
+                      <span className="text-green-400 text-[10px] font-bold shrink-0">▶</span>
+                      <span className="text-[10px] sm:text-[11px] text-green-300 font-bold">Skill:</span>
+                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Designer</span>
+                      <span className="text-green-500 text-[10px] ml-auto font-black">✓</span>
+                    </div>
+
+                    {/* Line 4 */}
+                    <div className={`flex items-center gap-2 mb-3 transition-all duration-300 ${terminalLines >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
+                      <span className="text-green-400 text-[10px] font-bold shrink-0">▶</span>
+                      <span className="text-[10px] sm:text-[11px] text-green-300 font-bold">Mode:</span>
+                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Digital Creative</span>
+                      <span className="text-green-500 text-[10px] ml-auto font-black">✓</span>
+                    </div>
+
+                    {/* Blinking cursor line */}
+                    <div className={`flex items-center gap-1 transition-opacity duration-300 ${terminalLines >= 4 ? 'opacity-100' : 'opacity-0'}`}>
+                      <span className="text-[10px] text-green-600 font-bold">$</span>
+                      <span className="w-2 h-3.5 bg-green-400 animate-pulse rounded-sm" style={{ animationDuration: '0.8s' }} />
+                    </div>
+
                   </div>
                 </div>
               </div>
+
 
               {/* ── TAP ME hint badge (front) ── */}
               {!isFlipped && (
