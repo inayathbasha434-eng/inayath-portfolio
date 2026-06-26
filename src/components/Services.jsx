@@ -277,9 +277,9 @@ export default function Services() {
                       className="absolute inset-0 bg-cover bg-center z-0"
                       style={{ backgroundImage: `url(${item.image})` }}
                     />
-                    {/* Gradient — strong bottom, lighter top */}
+                    {/* Gradient — lighter now that text is removed */}
                     <div className="absolute inset-0 z-0" style={{
-                      background: 'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 35%, rgba(0,0,0,0.75) 65%, rgba(0,0,0,0.97) 100%)'
+                      background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.7) 100%)'
                     }} />
 
                     {/* Top bar — logo + badge only */}
@@ -294,34 +294,25 @@ export default function Services() {
                     {/* Spacer to push content down */}
                     <div className="flex-1" />
 
-                    {/* Bottom content block */}
-                    <div className="relative z-10 px-5 pb-5 space-y-4 flex flex-col items-center text-center">
-                      {/* Title */}
-                      <div className="max-w-[90%]">
-                        <h4 className="text-white font-extrabold text-[18px] sm:text-[20px] leading-snug tracking-tight drop-shadow-md">
-                          {item.heading}
-                        </h4>
-                        <p className="text-slate-200 text-[12px] leading-relaxed mt-2 font-medium drop-shadow-sm">
-                          {item.subheading}
-                        </p>
-                      </div>
-
+                    {/* Bottom content block - button only */}
+                    <div className="relative z-10 px-5 pb-5 w-full">
                       {/* Single CTA button */}
                       {item.pageRoute ? (
                         <button
                           onClick={() => goToPage(item)}
-                          className="w-full py-3 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 transition-all duration-300 active:scale-95"
+                          className="w-full py-3.5 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 shadow-lg shadow-black/20"
                           style={{ backgroundColor: item.accentColor, color: '#fff' }}
                         >
-                          {item.btn1} — See Full Details
+                          See Full Details
                           <ArrowRight size={15} />
                         </button>
                       ) : (
                         <button
-                          className="w-full py-3 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2"
+                          className="w-full py-3.5 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-black/20"
                           style={{ backgroundColor: item.accentColor, color: '#fff' }}
                         >
-                          {item.btn1}
+                          Let's Talk
+                          <ArrowRight size={15} />
                         </button>
                       )}
                     </div>
