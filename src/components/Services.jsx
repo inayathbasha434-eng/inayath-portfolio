@@ -263,137 +263,158 @@ export default function Services() {
                 <div
                   key={item.id}
                   onClick={() => !isActive && setActiveIndex(idx)}
-                  className={`absolute w-[94vw] sm:w-[500px] md:w-[720px] h-[320px] md:h-auto rounded-2xl border transition-all duration-500 ease-in-out overflow-hidden ${item.cardBg} ${isActive ? 'cursor-default pointer-events-auto' : 'cursor-pointer pointer-events-none'}`}
+                  className={`absolute w-[88vw] sm:w-[480px] md:w-[720px] md:h-auto rounded-2xl border transition-all duration-500 ease-in-out overflow-hidden ${item.cardBg} ${isActive ? 'cursor-default pointer-events-auto' : 'cursor-pointer pointer-events-none'}`}
                   style={{ ...transformStyles, boxShadow: isActive ? `0 25px 60px -15px ${item.glowColor}` : 'none', perspective: '1200px' }}
                 >
-                  {/* ── MOBILE: background image + dark overlay ── */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center md:hidden z-0"
-                    style={{ backgroundImage: `url(${item.image})` }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/80 md:hidden z-0" />
 
-                  {/* Header bar */}
-                  <div className={`relative z-10 px-4 sm:px-6 py-3 flex items-center justify-between border-b border-black/5 dark:border-white/5 md:${item.headerBg} bg-transparent md:bg-inherit border-b-0 md:border-b`}>
-                    <div className="flex gap-1.5 items-center">
-                      {renderLogo(item)}
-                      <div className="hidden md:flex items-center gap-1.5 bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-full px-2.5 py-0.5 text-[10px] font-bold">
-                        <span className={`w-1.5 h-1.5 rounded-full ${item.badgeDot}`} />
-                        <span className={item.isDark ? 'text-slate-300' : 'text-slate-600'}>{item.badge}</span>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-4 sm:gap-6">
-                      <div className={`hidden md:flex items-center gap-5 text-[11px] font-bold ${item.headerText}`}>
-                        <span>Home</span>
-                        <span>About Us</span>
-                        <span>Services</span>
-                        <span>Contact</span>
-                      </div>
-                      <button className={`text-[10px] sm:text-[11px] font-extrabold px-3 py-1.5 rounded-full transition-all duration-300 ${item.mobileBtnClass} md:${item.accentClass}`}>
-                        Let's Talk
-                      </button>
-                    </div>
-                  </div>
+                  {/* ══════════════════════════════════════════
+                      MOBILE LAYOUT (hidden on md+)
+                  ══════════════════════════════════════════ */}
+                  <div className="md:hidden flex flex-col h-[380px] relative overflow-hidden">
 
-                  {/* Body */}
-                  <div className="flex flex-col md:flex-row min-h-full md:min-h-[320px] relative z-10">
-
-                    {/* ── DESKTOP image panel ── */}
+                    {/* Full background image */}
                     <div
-                      className={`hidden md:block w-full md:w-[42%] relative overflow-hidden bg-slate-900 border-b md:border-b-0 border-black/5 group/imgpanel ${
-                        isImageLeft ? 'md:order-first md:border-r' : 'md:order-last md:border-l'
-                      } ${item.pageRoute ? 'cursor-pointer' : ''}`}
-                      onClick={() => item.pageRoute && goToPage(item)}
-                    >
-                      <img
-                        src={item.image}
-                        alt={item.category}
-                        className={`w-full h-full object-cover object-center absolute inset-0 transition-transform duration-500 ${item.pageRoute ? 'group-hover/imgpanel:scale-105' : ''}`}
-                      />
-                      {/* Hover overlay */}
-                      {item.pageRoute && (
-                        <div className="absolute inset-0 bg-black/0 group-hover/imgpanel:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                          <div className="opacity-0 group-hover/imgpanel:opacity-100 transition-all duration-300 scale-90 group-hover/imgpanel:scale-100 bg-white text-slate-900 text-xs font-extrabold px-5 py-2.5 rounded-full shadow-xl flex items-center gap-2">
-                            View Full Details <ArrowRight size={13} />
-                          </div>
-                        </div>
-                      )}
-                      {/* Badge pill */}
-                      <div className="absolute top-3.5 left-3.5 bg-white/95 text-slate-800 text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1.5 border border-slate-100">
+                      className="absolute inset-0 bg-cover bg-center z-0"
+                      style={{ backgroundImage: `url(${item.image})` }}
+                    />
+                    {/* Gradient — strong bottom, lighter top */}
+                    <div className="absolute inset-0 z-0" style={{
+                      background: 'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.2) 35%, rgba(0,0,0,0.75) 65%, rgba(0,0,0,0.97) 100%)'
+                    }} />
+
+                    {/* Top bar — logo + badge only */}
+                    <div className="relative z-10 flex items-center justify-between px-4 pt-4">
+                      {renderLogo(item)}
+                      <div className="flex items-center gap-1.5 bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1">
                         <span className={`w-1.5 h-1.5 rounded-full ${item.badgeDot}`} />
-                        {item.badge}
-                      </div>
-                      {/* Bottom label */}
-                      <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/85 via-black/40 to-transparent pt-12 text-left">
-                        <p className="text-white font-black text-sm sm:text-base leading-none">{item.title}</p>
-                        <p className="text-slate-300 text-[10px] sm:text-xs mt-0.5 font-medium">{item.subtitle}</p>
+                        <span className="text-white text-[10px] font-bold">{item.badge}</span>
                       </div>
                     </div>
 
-                    {/* ── Content right/left panel ── */}
-                    <div className={`flex-1 p-5 sm:p-7 flex flex-col justify-between text-center md:text-left space-y-3 md:space-y-4 ${isImageLeft ? 'md:order-last' : 'md:order-first'}`}>
+                    {/* Spacer to push content down */}
+                    <div className="flex-1" />
 
-                      {/* Mobile badge */}
-                      <div className="mx-auto md:mx-0 bg-white/95 text-slate-800 text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1.5 border border-slate-100 w-fit md:hidden">
-                        <span className={`w-1.5 h-1.5 rounded-full ${item.badgeDot}`} />
-                        {item.badge}
-                      </div>
-
-                      {/* Heading */}
-                      <div className="space-y-2 md:space-y-3">
-                        <h4 className={`font-black text-[15px] sm:text-lg md:text-2xl leading-snug tracking-tight text-white md:${item.textColor}`}>
+                    {/* Bottom content block */}
+                    <div className="relative z-10 px-4 pb-4 space-y-3">
+                      {/* Title */}
+                      <div>
+                        <h4 className="text-white font-extrabold text-[17px] leading-tight tracking-tight">
                           {item.heading}
                         </h4>
-                        <p className={`text-[10px] sm:text-xs leading-relaxed max-w-xs sm:max-w-md font-medium text-slate-300 md:${item.subTextColor} mx-auto md:mx-0`}>
+                        <p className="text-slate-300 text-[11px] leading-relaxed mt-1.5 font-medium">
                           {item.subheading}
                         </p>
                       </div>
 
-                      {/* Action buttons */}
-                      <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-2.5 pt-1">
-                        {/* Primary CTA */}
+                      {/* Single CTA button */}
+                      {item.pageRoute ? (
                         <button
-                          onClick={() => item.pageRoute && goToPage(item)}
-                          className={`w-full sm:w-auto px-5 py-2.5 rounded-xl text-[11px] sm:text-xs font-extrabold transition-all duration-300 flex items-center justify-center gap-2 ${item.accentClass} ${item.pageRoute ? '' : 'opacity-80 cursor-default'}`}
+                          onClick={() => goToPage(item)}
+                          className="w-full py-3 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2 transition-all duration-300 active:scale-95"
+                          style={{ backgroundColor: item.accentColor, color: '#fff' }}
+                        >
+                          {item.btn1} — See Full Details
+                          <ArrowRight size={15} />
+                        </button>
+                      ) : (
+                        <button
+                          className="w-full py-3 rounded-xl font-extrabold text-sm flex items-center justify-center gap-2"
+                          style={{ backgroundColor: item.accentColor, color: '#fff' }}
                         >
                           {item.btn1}
-                          {item.pageRoute && <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />}
                         </button>
-
-                        {/* Mobile "Learn More" — only if has a page */}
-                        {item.pageRoute && (
-                          <button
-                            onClick={() => goToPage(item)}
-                            className="w-full sm:w-auto md:hidden px-5 py-2.5 rounded-xl text-[11px] font-extrabold bg-white/10 border border-white/20 text-white flex items-center justify-center gap-2 backdrop-blur-sm"
-                          >
-                            See What We Offer <ArrowRight size={12} />
-                          </button>
-                        )}
-                      </div>
-
-                      {/* Footer strip */}
-                      <div className="hidden md:flex pt-3 border-t border-black/5 dark:border-white/5 items-center justify-between text-[9px] sm:text-[10px]">
-                        <div className="flex items-center gap-1">
-                          <Star size={11} className="text-yellow-400 fill-yellow-400" />
-                          <span className={`font-bold ${item.subTextColor}`}>4.9 (120+ reviews)</span>
-                        </div>
-                        <span className={`font-semibold uppercase tracking-wider ${item.subTextColor}`}>Tap image to explore</span>
-                      </div>
-
+                      )}
                     </div>
                   </div>
 
-                  {/* Mobile bottom bar */}
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-left md:hidden z-20 pointer-events-none">
-                    <div>
-                      <p className="text-white font-black text-xs leading-none">{item.title}</p>
-                      <p className="text-slate-300 text-[9px] mt-0.5 font-medium">{item.subtitle}</p>
+                  {/* ══════════════════════════════════════════
+                      DESKTOP LAYOUT (hidden on mobile)
+                  ══════════════════════════════════════════ */}
+                  <div className="hidden md:block">
+
+                    {/* Header bar */}
+                    <div className={`relative z-10 px-6 py-3.5 flex items-center justify-between ${item.headerBg}`}>
+                      <div className="flex gap-1.5 items-center">
+                        {renderLogo(item)}
+                        <div className="flex items-center gap-1.5 bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-full px-2.5 py-0.5 text-[10px] font-bold">
+                          <span className={`w-1.5 h-1.5 rounded-full ${item.badgeDot}`} />
+                          <span className={item.isDark ? 'text-slate-300' : 'text-slate-600'}>{item.badge}</span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-6">
+                        <div className={`flex items-center gap-5 text-[11px] font-bold ${item.headerText}`}>
+                          <span>Home</span>
+                          <span>About Us</span>
+                          <span>Services</span>
+                          <span>Contact</span>
+                        </div>
+                        <button className={`text-[11px] font-extrabold px-3 py-1.5 rounded-full transition-all duration-300 ${item.accentClass}`}>
+                          Let's Talk
+                        </button>
+                      </div>
                     </div>
-                    {item.pageRoute && (
-                      <span className="text-[9px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full border border-white/20 text-white/70 bg-white/5">
-                        Tap to explore
-                      </span>
-                    )}
+
+                    {/* Desktop body */}
+                    <div className="flex flex-row min-h-[320px]">
+
+                      {/* Image panel */}
+                      <div
+                        className={`w-[42%] relative overflow-hidden bg-slate-900 group/imgpanel ${
+                          isImageLeft ? 'order-first border-r' : 'order-last border-l'
+                        } border-black/5 dark:border-white/5 ${item.pageRoute ? 'cursor-pointer' : ''}`}
+                        onClick={() => item.pageRoute && goToPage(item)}
+                      >
+                        <img
+                          src={item.image}
+                          alt={item.category}
+                          className={`w-full h-full object-cover object-center absolute inset-0 transition-transform duration-500 ${item.pageRoute ? 'group-hover/imgpanel:scale-105' : ''}`}
+                        />
+                        {item.pageRoute && (
+                          <div className="absolute inset-0 bg-black/0 group-hover/imgpanel:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                            <div className="opacity-0 group-hover/imgpanel:opacity-100 transition-all duration-300 scale-90 group-hover/imgpanel:scale-100 bg-white text-slate-900 text-xs font-extrabold px-5 py-2.5 rounded-full shadow-xl flex items-center gap-2">
+                              View Full Details <ArrowRight size={13} />
+                            </div>
+                          </div>
+                        )}
+                        <div className="absolute top-3.5 left-3.5 bg-white/95 text-slate-800 text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1.5 border border-slate-100">
+                          <span className={`w-1.5 h-1.5 rounded-full ${item.badgeDot}`} />
+                          {item.badge}
+                        </div>
+                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/85 via-black/40 to-transparent pt-12 text-left">
+                          <p className="text-white font-black text-sm leading-none">{item.title}</p>
+                          <p className="text-slate-300 text-[10px] mt-0.5 font-medium">{item.subtitle}</p>
+                        </div>
+                      </div>
+
+                      {/* Content panel */}
+                      <div className={`flex-1 p-7 flex flex-col justify-between text-left space-y-4 ${isImageLeft ? 'order-last' : 'order-first'}`}>
+                        <div className="space-y-3">
+                          <h4 className={`font-black text-2xl leading-snug tracking-tight ${item.textColor}`}>
+                            {item.heading}
+                          </h4>
+                          <p className={`text-xs leading-relaxed max-w-sm font-medium ${item.subTextColor}`}>
+                            {item.subheading}
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <button
+                            onClick={() => item.pageRoute && goToPage(item)}
+                            className={`px-5 py-2 rounded-lg text-xs font-extrabold transition-all duration-300 flex items-center gap-2 ${item.accentClass}`}
+                          >
+                            {item.btn1}
+                            {item.pageRoute && <ArrowRight size={12} />}
+                          </button>
+                        </div>
+                        <div className="flex pt-3 border-t border-black/5 dark:border-white/5 items-center justify-between text-[10px]">
+                          <div className="flex items-center gap-1">
+                            <Star size={11} className="text-yellow-400 fill-yellow-400" />
+                            <span className={`font-bold ${item.subTextColor}`}>4.9 (120+ reviews)</span>
+                          </div>
+                          <span className={`font-semibold uppercase tracking-wider ${item.subTextColor}`}>Tap image to explore</span>
+                        </div>
+                      </div>
+
+                    </div>
                   </div>
 
                 </div>
