@@ -178,14 +178,14 @@ export default function Projects() {
         {/* UNIFIED RESPONSIVE SWIPE/CARD VIEW */}
         {/* ========================================================== */}
         <div className="w-full overflow-hidden">
-          {/* Swiper track */}
-          <div className="flex overflow-x-auto snap-x snap-mandatory no-scrollbar gap-5 lg:gap-8 pb-8 pt-6 px-4 lg:px-8 scroll-smooth w-max mx-auto max-w-full">
+          {/* Swiper / Grid track */}
+          <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto lg:overflow-visible snap-x lg:snap-none snap-mandatory no-scrollbar gap-5 lg:gap-6 xl:gap-8 pb-8 pt-6 px-4 lg:px-6 xl:px-8 max-w-7xl mx-auto">
             {PROJECTS.map((proj, index) => {
               const isExpanded = expandedMobileProject === index;
               return (
               <div 
                 key={proj.title}
-                className="min-w-[88vw] max-w-[88vw] sm:min-w-[70vw] sm:max-w-[70vw] lg:min-w-[350px] lg:max-w-[350px] xl:min-w-[380px] xl:max-w-[380px] snap-center bg-[#0d1426] border border-white/10 rounded-3xl p-5 flex flex-col shadow-2xl relative transition-transform duration-300 hover:-translate-y-2"
+                className="min-w-[88vw] sm:min-w-[70vw] lg:min-w-0 lg:w-full snap-center lg:snap-align-none bg-[#0d1426] border border-white/10 rounded-3xl p-5 lg:p-6 flex flex-col shadow-2xl relative transition-transform duration-300 hover:-translate-y-2"
               >
                 {/* HIGHLY HIGHLIGHTED PROJECT NUMBER */}
                 <div className={`absolute -top-5 -right-2 w-12 h-12 rounded-full bg-gradient-to-br ${proj.accent} flex items-center justify-center text-white font-black text-lg shadow-[0_0_20px_rgba(0,0,0,0.5)] border-4 border-[#0a0f1e] z-30`}>
