@@ -159,7 +159,7 @@ export default function Navbar() {
         }`}
         aria-label="Desktop navigation"
       >
-        <div className="glass px-3 py-2.5 rounded-[32px] border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7),_0_0_30px_rgba(99,102,241,0.15)] flex items-center gap-0 backdrop-blur-2xl bg-[#060a16]/90">
+        <div className="glass p-2 rounded-[24px] border border-white/10 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.7),_0_0_30px_rgba(99,102,241,0.15)] flex items-center gap-0 backdrop-blur-2xl bg-[#060a16]/90">
           {NAV_LINKS.map(({ label, href, icon: Icon }, idx) => {
             const id = href.replace('#', '')
             const isActive = active === id
@@ -169,21 +169,21 @@ export default function Navbar() {
               <div key={href} className="flex items-center">
                 <button
                   onClick={() => scrollTo(href)}
-                  className={`group relative flex flex-col items-center justify-center w-[84px] h-[76px] transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+                  className={`group relative flex flex-col items-center justify-center w-[72px] h-[62px] pb-1.5 transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${
                     isActive
-                      ? 'bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 text-white rounded-[20px] shadow-[0_8px_20px_rgba(37,99,235,0.4)] border border-blue-400/20'
-                      : 'text-slate-400 hover:text-white hover:bg-white/5 rounded-[20px]'
+                      ? 'bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 text-white rounded-[16px] shadow-[0_8px_20px_rgba(37,99,235,0.4)] border border-blue-400/20'
+                      : 'text-slate-400 hover:text-white hover:bg-white/5 rounded-[16px]'
                   }`}
                   aria-label={label}
                 >
                   <Icon 
-                    size={20} 
+                    size={18} 
                     className={`transition-all duration-300 ${
                       isActive 
                         ? 'scale-110 text-white mb-0.5' 
                         : 'group-hover:scale-110 text-slate-400 group-hover:text-white mb-1'
                     }`} 
-                    strokeWidth={isActive ? 2.5 : 2} 
+                    strokeWidth={isActive ? 2.2 : 2} 
                   />
                   
                   <span 
@@ -196,16 +196,16 @@ export default function Navbar() {
                     {label}
                   </span>
 
-                  {/* Active indicator dot/pill */}
+                  {/* Active indicator dot/pill (absolute positioned to prevent vertical shift of the icon/text) */}
                   {isActive && (
-                    <div className="w-4 h-[3px] rounded-full bg-white mt-1 shadow-[0_0_8px_rgba(255,255,255,1)] animate-fade-in" />
+                    <div className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-3.5 h-[2.5px] rounded-full bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)] animate-fade-in" />
                   )}
                 </button>
 
                 {/* Divider Line */}
                 {idx < NAV_LINKS.length - 1 && (
                   <div 
-                    className={`w-[1px] h-8 bg-white/10 mx-1 transition-all duration-300 self-center ${
+                    className={`w-[1px] h-6 bg-white/10 mx-0.5 transition-all duration-300 self-center ${
                       isActive || isNextActive ? 'opacity-0 scale-y-75' : 'opacity-100'
                     }`}
                   />
