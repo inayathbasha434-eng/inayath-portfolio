@@ -179,229 +179,213 @@ export default function Projects() {
         {/* 1. DESKTOP ONLY PRESENTATION VIEW (lg:block, hidden on mobile) */}
         {/* ========================================================== */}
         <div 
-          className="hidden lg:block fade-in-section max-w-4xl mx-auto"
-          onMouseEnter={() => setIsPlaying(false)} // Pause cycling on hover
-          onMouseLeave={() => setIsPlaying(true)}  // Resume cycling on leave
+          className="hidden lg:grid grid-cols-12 gap-8 max-w-6xl mx-auto fade-in-section items-start"
+          onMouseEnter={() => setIsPlaying(false)}
+          onMouseLeave={() => setIsPlaying(true)}
         >
-          {/* Main Presentation Container */}
-          <div className="relative bg-gradient-to-br from-[#0d1426] via-[#0f1730] to-[#080d1a] border border-white/8 rounded-2xl overflow-hidden shadow-xl">
-            
-            {/* Shimmer top border line */}
-            <div className="absolute top-0 left-0 right-0 h-[2px] shimmer-line" />
-
-            <div className="p-7 relative z-10">
-              
-              {/* Tabs / Selector row */}
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-6 pb-4 border-b border-white/5">
-                <div className="flex items-center gap-1.5">
-                  {PROJECTS.map((proj, idx) => {
-                    const isActive = currentIndex === idx
-                    return (
-                      <button
-                        key={proj.title}
-                        onClick={() => changeProject(idx)}
-                        className={`px-3.5 py-2 rounded-lg text-xs font-bold transition-all duration-300 ${
-                          isActive
-                            ? `text-white bg-gradient-to-r ${proj.accent} shadow-md`
-                            : 'text-slate-400 hover:text-white bg-white/5 border border-white/5'
-                        }`}
-                      >
-                        {proj.number}. {proj.title}
-                      </button>
-                    )
-                  })}
-                </div>
-
-                {/* Auto Cycle control button */}
+          {/* LEFT COLUMN: Project Selector (Col span 4) */}
+          <div className="col-span-4 sticky top-24 flex flex-col gap-3 relative z-20">
+            {PROJECTS.map((proj, idx) => {
+              const isActive = currentIndex === idx;
+              return (
                 <button
-                  onClick={() => setIsPlaying(!isPlaying)}
-                  className="flex items-center gap-1 text-[10px] text-slate-500 hover:text-slate-300 font-semibold px-2 py-1 rounded bg-white/5 border border-white/5"
+                  key={proj.title}
+                  onClick={() => changeProject(idx)}
+                  className={`group relative p-5 text-left rounded-2xl transition-all duration-500 overflow-hidden ${isActive ? 'bg-[#0d1426] border border-white/10 shadow-2xl scale-[1.02]' : 'hover:bg-white/5 border border-transparent'}`}
                 >
-                  {isPlaying ? <Pause size={9} className="animate-pulse" /> : <Play size={9} />}
-                  <span>{isPlaying ? 'Auto' : 'Paused'}</span>
+                  {/* Active Background Glow */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${proj.accent} opacity-0 transition-opacity duration-500 ${isActive ? 'opacity-[0.03]' : 'group-hover:opacity-[0.02]'}`} />
+                  
+                  {/* Left Active Indicator Bar */}
+                  <div className={`absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1/2 bg-gradient-to-b ${proj.accent} rounded-r-full transition-all duration-500 ${isActive ? 'opacity-100' : 'opacity-0 scale-y-0'}`} />
+
+                  <div className="relative z-10 flex items-center gap-4">
+                    <div className={`text-4xl font-black transition-all duration-500 ${isActive ? 'text-transparent bg-clip-text bg-gradient-to-br ' + proj.accent : 'text-slate-600 group-hover:text-slate-400'}`}>
+                      {proj.number}
+                    </div>
+                    <div>
+                      <h3 className={`text-lg font-bold transition-colors duration-300 ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'}`}>{proj.title}</h3>
+                      <p className={`text-[10px] uppercase tracking-wider mt-0.5 font-bold transition-colors duration-300 ${isActive ? 'text-transparent bg-clip-text bg-gradient-to-r ' + proj.accent : 'text-slate-600'}`}>{proj.platform}</p>
+                    </div>
+                  </div>
                 </button>
+              )
+            })}
+
+            {/* Auto Cycle control button */}
+            <div className="mt-4 flex justify-end pr-2">
+              <button
+                onClick={() => setIsPlaying(!isPlaying)}
+                className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-white font-semibold px-3 py-1.5 rounded-full bg-white/5 border border-white/5 transition-colors shadow-inner"
+              >
+                {isPlaying ? <Pause size={12} className="animate-pulse text-blue-400" /> : <Play size={12} className="text-slate-400" />}
+                <span>{isPlaying ? 'Auto-Playing' : 'Paused'}</span>
+              </button>
+            </div>
+          </div>
+
+          {/* RIGHT COLUMN: Project Details (Col span 8) */}
+          <div className="col-span-8 bg-[#0d1426] rounded-[2rem] border border-white/5 p-8 shadow-2xl relative overflow-hidden">
+            {/* Large background watermark number */}
+            <div className="absolute -top-12 -right-6 text-[250px] leading-none font-black text-white/[0.02] pointer-events-none select-none z-0">
+              {currentProject.number}
+            </div>
+
+            {/* Content wrapper with fade transition */}
+            <div className={`relative z-10 transition-all duration-300 transform ${fadeState}`}>
+              
+              {/* Header inside details */}
+              <div className="mb-6 flex justify-between items-end">
+                <div>
+                  <h3 className="text-3xl font-black text-white mb-2">{currentProject.title}</h3>
+                  <p className="text-slate-400 text-sm max-w-xl">{currentProject.description}</p>
+                </div>
               </div>
 
-              {/* Combined Layout columns */}
-              <div className="flex flex-col lg:flex-row gap-6 items-stretch">
-                
-                {/* Browser Viewport Mockup */}
-                <div className={`w-full lg:w-[48%] flex flex-col justify-center transition-all duration-200 transform ${fadeState}`}>
-                  <div className="rounded-xl overflow-hidden border border-white/10 shadow-lg bg-[#080d1a] relative group">
-                    
-                    {/* Browser header chrome bar */}
-                    <div className="bg-[#0e172e] px-3 py-2 flex items-center gap-1.5 border-b border-white/5">
-                      <div className="flex gap-1">
-                        <div className="w-2 h-2 rounded-full bg-red-400/80" />
-                        <div className="w-2 h-2 rounded-full bg-yellow-400/80" />
-                        <div className="w-2 h-2 rounded-full bg-green-400/80" />
-                      </div>
-                      <div className="flex-1 mx-2">
-                        <div className="bg-[#080d1a] rounded px-2 py-0.5 text-[9px] text-slate-500 flex items-center gap-1 max-w-[150px] overflow-hidden truncate">
-                          <div className={`w-1 h-1 rounded-full bg-gradient-to-r ${currentProject.accent} flex-shrink-0`} />
-                          {currentProject.link.replace('https://', '')}
-                        </div>
+              {/* Browser Viewport Mockup */}
+              <div className="rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-[#080d1a] relative group mb-6">
+                {/* Browser header chrome bar */}
+                <div className="bg-[#0e172e] px-4 py-2.5 flex items-center gap-2 border-b border-white/5">
+                  <div className="flex gap-1.5">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
+                  </div>
+                  <div className="flex-1 flex justify-center">
+                    <div className="bg-[#080d1a] rounded-md px-3 py-1 text-[10px] text-slate-500 flex items-center gap-1.5 min-w-[200px] max-w-[300px] overflow-hidden truncate justify-center border border-white/5">
+                      <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${currentProject.accent} flex-shrink-0`} />
+                      {currentProject.link.replace('https://', '')}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Viewport container */}
+                {currentProject.beforeImage && currentProject.afterImage ? (
+                  <div className="relative h-[320px] overflow-hidden bg-[#0d1426] select-none group">
+                    {/* Before Image (underneath) */}
+                    <div className="absolute inset-0">
+                      <img
+                        src={currentProject.beforeImage}
+                        alt="Before AI Generation"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-3 left-3 bg-black/75 text-white text-[10px] font-bold px-2 py-1 rounded border border-white/10 uppercase tracking-wider backdrop-blur-sm">
+                        Camera Capture
                       </div>
                     </div>
 
-                    {/* Viewport container with auto scrolling image on hover OR Before-After slider */}
-                    {currentProject.beforeImage && currentProject.afterImage ? (
-                      <div className="relative h-[200px] sm:h-[250px] overflow-hidden bg-[#0d1426] select-none group">
-                        {/* Before Image (underneath) */}
-                        <div className="absolute inset-0">
-                          <img
-                            src={currentProject.beforeImage}
-                            alt="Before AI Generation"
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute top-2 left-2 bg-black/75 text-white text-[9px] font-bold px-2 py-0.5 rounded border border-white/10 uppercase tracking-wider">
-                            Camera Capture
-                          </div>
-                        </div>
-
-                        {/* After Image (clipped width controlled by clipPath) */}
-                        <div 
-                          className="absolute inset-0"
-                          style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
-                        >
-                          <img
-                            src={currentProject.afterImage}
-                            alt="After AI Generation"
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute top-2 right-2 bg-purple-600/90 text-white text-[9px] font-bold px-2 py-0.5 rounded border border-purple-500/20 uppercase tracking-wider">
-                            AI Generated
-                          </div>
-                        </div>
-
-                        {/* Slider bar line */}
-                        <div 
-                          className="absolute inset-y-0 w-[2px] bg-white/80 cursor-ew-resize flex items-center justify-center pointer-events-none"
-                          style={{ left: `${sliderPosition}%` }}
-                        >
-                          <div className="w-6 h-6 bg-slate-900 rounded-full shadow-lg border border-white/20 flex items-center justify-center -ml-[12px] pointer-events-auto">
-                            <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
-                            </svg>
-                          </div>
-                        </div>
-
-                        {/* Invisible range input for dragging */}
-                        <input
-                          type="range"
-                          min="0"
-                          max="100"
-                          value={sliderPosition}
-                          onChange={(e) => setSliderPosition(Number(e.target.value))}
-                          className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
-                        />
+                    {/* After Image (clipped) */}
+                    <div 
+                      className="absolute inset-0"
+                      style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}
+                    >
+                      <img
+                        src={currentProject.afterImage}
+                        alt="After AI Generation"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-3 right-3 bg-purple-600/90 text-white text-[10px] font-bold px-2 py-1 rounded border border-purple-500/20 uppercase tracking-wider shadow-lg backdrop-blur-sm">
+                        AI Generated
                       </div>
-                    ) : (
+                    </div>
+
+                    {/* Slider bar line */}
+                    <div 
+                      className="absolute inset-y-0 w-[2px] bg-white/80 cursor-ew-resize flex items-center justify-center pointer-events-none"
+                      style={{ left: `${sliderPosition}%` }}
+                    >
+                      <div className="w-8 h-8 bg-slate-900 rounded-full shadow-xl border-2 border-white/80 flex items-center justify-center -ml-[16px] pointer-events-auto">
+                        <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={sliderPosition}
+                      onChange={(e) => setSliderPosition(Number(e.target.value))}
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
+                    />
+                  </div>
+                ) : (
+                  <a
+                    href={currentProject.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block relative h-[320px] overflow-hidden bg-[#0d1426] cursor-pointer"
+                  >
+                    <img
+                      src={currentProject.image}
+                      alt={`${currentProject.title} Live Preview`}
+                      className="w-full h-auto object-cover object-top transition-transform duration-[6s] ease-in-out transform translate-y-0 group-hover:translate-y-[calc(-100%+320px)]"
+                    />
+                    <div className="absolute inset-0 bg-blue-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[1px]">
+                      <div className="bg-slate-900/95 text-white font-bold text-xs px-4 py-2 rounded-full border border-white/20 shadow-2xl flex items-center gap-2 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        <ExternalLink size={14} className="text-blue-400" />
+                        <span>Launch Live Preview</span>
+                      </div>
+                    </div>
+                  </a>
+                )}
+              </div>
+
+              {/* Bento Box Grid for Info */}
+              <div className="grid grid-cols-2 gap-4">
+                {/* Problem Box */}
+                <div className="bg-[#0b1021] rounded-2xl p-5 border border-white/5 hover:border-blue-500/30 transition-colors shadow-inner relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-blue-500/5 rounded-bl-full transition-transform group-hover:scale-110" />
+                  <h5 className="text-[10px] font-black text-blue-400 uppercase tracking-widest mb-2 relative z-10">The Challenge</h5>
+                  <p className="text-xs text-slate-300 leading-relaxed relative z-10">{currentProject.problem}</p>
+                </div>
+
+                {/* Solution Box */}
+                <div className="bg-[#0b1021] rounded-2xl p-5 border border-white/5 hover:border-purple-500/30 transition-colors shadow-inner relative overflow-hidden group">
+                  <div className="absolute top-0 right-0 w-16 h-16 bg-purple-500/5 rounded-bl-full transition-transform group-hover:scale-110" />
+                  <h5 className="text-[10px] font-black text-purple-400 uppercase tracking-widest mb-2 relative z-10">The Solution</h5>
+                  <p className="text-xs text-slate-300 leading-relaxed relative z-10">{currentProject.solution}</p>
+                </div>
+
+                {/* Outcome & Tags Box */}
+                <div className={`col-span-2 rounded-2xl p-5 border border-white/5 bg-gradient-to-br ${currentProject.accent} relative overflow-hidden`}>
+                  {/* Deep darken overlay to make text readable over accent gradient */}
+                  <div className="absolute inset-0 bg-[#0d1426]/90" />
+                  
+                  <div className="relative z-10 flex flex-col sm:flex-row justify-between items-center gap-6">
+                    <div className="flex-1">
+                      <h5 className="text-[10px] font-black text-green-400 uppercase tracking-widest mb-1.5">Impact & Outcome</h5>
+                      <p className="text-sm font-semibold text-white leading-relaxed">{currentProject.outcome}</p>
+                      
+                      <div className="flex flex-wrap gap-1.5 mt-4">
+                        {currentProject.tags.map((tag, i) => (
+                          <span
+                            key={tag}
+                            className={`text-[10px] font-bold px-2 py-0.5 rounded-full border bg-[#0b1021] shadow-sm ${currentProject.tagColors[i] || 'text-slate-400 border-slate-500/20'}`}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {currentProject.link && (
                       <a
                         href={currentProject.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block relative h-[200px] sm:h-[250px] overflow-hidden bg-[#0d1426] cursor-pointer"
+                        className="flex-shrink-0 group/btn relative overflow-hidden rounded-xl bg-white text-slate-900 font-bold text-xs px-5 py-3 transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.15)] flex items-center gap-2"
                       >
-                        <img
-                          src={currentProject.image}
-                          alt={`${currentProject.title} Live Preview`}
-                          className="w-full h-auto object-cover object-top transition-transform duration-[6s] ease-in-out transform translate-y-0 group-hover:translate-y-[calc(-100%+200px)] sm:group-hover:translate-y-[calc(-100%+250px)]"
-                        />
-
-                        {/* Click to visit hover indicator pill */}
-                        <div className="absolute inset-0 bg-blue-950/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <div className="bg-slate-900/90 text-white font-bold text-[10px] px-3 py-1.5 rounded-full border border-white/10 shadow flex items-center gap-1 transform translate-y-1 group-hover:translate-y-0 transition-all duration-300">
-                            <ExternalLink size={10} className="text-blue-400" />
-                            <span>Visit Live Site</span>
-                          </div>
-                        </div>
-
-                        {/* Vignette overlay */}
-                        <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_20px_rgba(0,0,0,0.35)]" />
+                        <span className="relative z-10">Visit Project</span>
+                        <ExternalLink size={14} className="relative z-10 group-hover/btn:scale-110 transition-transform" />
                       </a>
                     )}
                   </div>
                 </div>
-
-                {/* Left column: Content details */}
-                <div className={`w-full lg:w-[52%] flex flex-col justify-between transition-all duration-200 transform ${fadeState}`}>
-                  <div className="space-y-3.5">
-                    
-                    {/* Project Header Title & Number */}
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-3">
-                        <span className={`text-4xl font-bold bg-gradient-to-r ${currentProject.accent} bg-clip-text text-transparent opacity-30 select-none leading-none`}>
-                          {currentProject.number}
-                        </span>
-                        <div className={`h-px flex-1 bg-gradient-to-r ${currentProject.accent} opacity-20`} />
-                      </div>
-
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-white mb-0.5">{currentProject.title}</h3>
-                        <p className="text-blue-400 font-semibold text-[10px] uppercase tracking-wider">{currentProject.platform}</p>
-                      </div>
-                    </div>
-
-                    {/* Short Description */}
-                    <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">{currentProject.description}</p>
-
-                    {/* Case Study Details (Problem, Solution, Outcome) */}
-                    <div className="bg-[#0b1021]/85 rounded-xl p-3.5 border border-white/5 space-y-3">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        <div className="space-y-1">
-                          <p className="text-blue-400 font-bold uppercase tracking-wider text-[9px]">Problem</p>
-                          <p className="text-slate-300 text-xs leading-relaxed">{currentProject.problem}</p>
-                        </div>
-                        <div className="space-y-1">
-                          <p className="text-blue-400 font-bold uppercase tracking-wider text-[9px]">Solution</p>
-                          <p className="text-slate-300 text-xs leading-relaxed">{currentProject.solution}</p>
-                        </div>
-                      </div>
-                      <div className="border-t border-white/5 pt-2">
-                        <div className="space-y-1">
-                          <p className="text-green-400 font-bold uppercase tracking-wider text-[9px]">Outcome</p>
-                          <p className="text-slate-300 text-xs leading-relaxed">{currentProject.outcome}</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Tag pills */}
-                    <div className="flex flex-wrap gap-1.5">
-                      {currentProject.tags.map((tag, i) => (
-                        <span
-                          key={tag}
-                          className={`text-[9px] font-bold px-2 py-0.5 rounded-full border ${currentProject.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                  </div>
-
-                  {/* Preview button */}
-                  {currentProject.link && (
-                    <div className="pt-3">
-                      <a
-                        href={currentProject.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`shine inline-flex items-center gap-1.5 min-h-[38px] px-4 py-2 bg-gradient-to-r ${currentProject.accent} text-white font-bold text-xs rounded-lg transition-all duration-200 shadow-md hover:-translate-y-0.5 active:translate-y-0`}
-                      >
-                        <ExternalLink size={13} />
-                        <span>Live Preview</span>
-                      </a>
-                    </div>
-                  )}
-                </div>
-
               </div>
 
             </div>
-
-            {/* Shimmer bottom border line */}
-            <div className="absolute bottom-0 left-0 right-0 h-[2px] shimmer-line" />
           </div>
         </div>
 
