@@ -59,8 +59,8 @@ export default function Hero() {
                 Available for Freelance
               </div>
               
-              <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-[11px] font-semibold px-4 py-1.5 rounded-full shadow-sm shadow-emerald-950/5">
-                <BadgeCheck size={13} className="text-emerald-400 animate-pulse" />
+              <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 text-amber-300 text-[11px] font-semibold px-4 py-1.5 rounded-full shadow-sm shadow-amber-950/5">
+                <BadgeCheck size={13} className="text-amber-400 animate-pulse" />
                 100% Client Satisfaction &amp; Trust
               </div>
             </div>
