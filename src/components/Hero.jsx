@@ -9,7 +9,7 @@ const STATS = [
 const PHOTO = "/ChatGPT_Image_Jun_16,_2026,_03_11_34_PM.png"
 
 export default function Hero() {
-  const [visible, setVisible] = useState(false)
+  const [revealStep, setRevealStep] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
   const [terminalLines, setTerminalLines] = useState(0)
 
@@ -25,8 +25,14 @@ export default function Hero() {
   }, [isFlipped])
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 100)
-    return () => clearTimeout(t)
+    const timers = []
+    timers.push(setTimeout(() => setRevealStep(1), 100))  // Badges
+    timers.push(setTimeout(() => setRevealStep(2), 300))  // Inayath
+    timers.push(setTimeout(() => setRevealStep(3), 500))  // Basha
+    timers.push(setTimeout(() => setRevealStep(4), 700))  // Subheading
+    timers.push(setTimeout(() => setRevealStep(5), 900))  // Buttons & Stats
+    timers.push(setTimeout(() => setRevealStep(6), 1100)) // Photo
+    return () => timers.forEach(clearTimeout)
   }, [])
 
   const scrollToContact = () => {
@@ -50,13 +56,9 @@ export default function Hero() {
         <div className="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16">
 
           {/* ── Text content ── */}
-          <div
-            className={`flex-1 text-center md:text-left flex flex-col items-center md:items-start transition-all duration-700 ${
-              visible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-            }`}
-          >
+          <div className="flex-1 text-center md:text-left flex flex-col items-center md:items-start">
             {/* Top Badges */}
-            <div className="flex flex-col sm:flex-row items-center gap-3 mb-6">
+            <div className={`flex flex-col sm:flex-row items-center gap-3 mb-6 transition-all duration-700 ease-out ${revealStep >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 text-green-400 text-[11px] font-semibold px-3 py-1.5 rounded-full">
                 <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
                 Available for Freelance
@@ -67,10 +69,10 @@ export default function Hero() {
             </div>
 
             {/* Name */}
-            <h1 className="text-[3.2rem] sm:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.05] mb-5 tracking-tight flex flex-col md:block">
-              <span className="text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">Inayath </span>
+            <h1 className="text-[3.2rem] sm:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.05] mb-5 tracking-tight flex flex-col md:block overflow-hidden pb-2">
+              <span className={`block md:inline-block text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-transform duration-700 ease-out ${revealStep >= 2 ? 'translate-y-0' : 'translate-y-[120%]'}`}>Inayath </span>
               <span
-                className="relative inline-block ml-0 md:ml-3 mt-1 md:mt-0"
+                className={`relative block md:inline-block ml-0 md:ml-3 mt-1 md:mt-0 transition-transform duration-700 ease-out ${revealStep >= 3 ? 'translate-y-0' : 'translate-y-[120%]'}`}
                 style={{
                   background: 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 50%, #93c5fd 100%)',
                   WebkitBackgroundClip: 'text',
@@ -84,12 +86,12 @@ export default function Hero() {
             </h1>
 
             {/* Subheading */}
-            <p className="text-slate-300 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl text-center md:text-left mx-auto md:mx-0 mb-8 mt-2 px-4 md:px-0">
+            <p className={`text-slate-300 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl text-center md:text-left mx-auto md:mx-0 mb-8 mt-2 px-4 md:px-0 transition-all duration-700 ease-out ${revealStep >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Your Vision. My Execution. Real Results.
             </p>
 
             {/* CTA Button */}
-            <div className="flex justify-center md:justify-start mb-10 w-full">
+            <div className={`flex justify-center md:justify-start mb-10 w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <button
                 onClick={scrollToContact}
                 aria-label="Let's Connect"
@@ -101,7 +103,7 @@ export default function Hero() {
             </div>
 
             {/* Stats strip */}
-            <div className="flex justify-center md:justify-start gap-8 sm:gap-12 w-full">
+            <div className={`flex justify-center md:justify-start gap-8 sm:gap-12 w-full transition-all duration-700 ease-out ${revealStep >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               {STATS.map(({ value, label }, i) => (
                 <div key={label} className="text-center relative">
                   {i > 0 && (
@@ -126,8 +128,8 @@ export default function Hero() {
 
           {/* ── Profile photo ── */}
           <div
-            className={`flex-shrink-0 flex flex-col items-center gap-4 transition-all duration-700 delay-200 ${
-              visible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+            className={`flex-shrink-0 flex flex-col items-center gap-4 transition-all duration-1000 ease-out ${
+              revealStep >= 6 ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
             }`}
           >
             {/* Tilt wrapper — mouse tilt on desktop only */}
