@@ -96,6 +96,7 @@ export default function Projects() {
   const [sliderPosition, setSliderPosition] = useState(50)
   const [mobileSliderPositions, setMobileSliderPositions] = useState({})
   const [expandedMobileProject, setExpandedMobileProject] = useState(null)
+  const [activeDesktopCard, setActiveDesktopCard] = useState(1) // Middle card active by default
   const timerRef = useRef(null)
 
   // Trigger state transition when changing project
@@ -180,13 +181,24 @@ export default function Projects() {
         {/* UNIFIED RESPONSIVE SWIPE/CARD VIEW */}
         {/* ========================================================== */}
         <div className="w-full overflow-hidden">
-          {/* Swiper / Grid track */}
-          <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto lg:overflow-visible snap-x lg:snap-none snap-mandatory no-scrollbar gap-5 lg:gap-6 pb-8 pt-6 px-4 lg:px-6 max-w-6xl mx-auto">
+          {/* Swiper / Flex track */}
+          <div className="flex lg:flex overflow-x-auto lg:overflow-visible snap-x lg:snap-none snap-mandatory no-scrollbar gap-5 lg:gap-4 xl:gap-6 pb-8 pt-6 px-4 lg:px-6 max-w-6xl mx-auto items-stretch h-full min-h-[480px]">
             {PROJECTS.map((proj, index) => {
+              const isActive = activeDesktopCard === index;
               return (
               <div 
                 key={proj.title}
-                className="min-w-[88vw] sm:min-w-[70vw] lg:min-w-0 lg:w-full snap-center lg:snap-align-none bg-[#111623] border border-white/5 rounded-2xl flex flex-col relative transition-transform duration-300 hover:-translate-y-2 mt-4"
+                onClick={() => {
+                  if (window.innerWidth >= 1024) setActiveDesktopCard(index);
+                }}
+                className={`
+                  min-w-[88vw] sm:min-w-[70vw] lg:min-w-0 
+                  snap-center lg:snap-align-none bg-[#111623] border border-white/5 rounded-2xl flex flex-col relative transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] mt-4 overflow-hidden
+                  ${isActive 
+                    ? 'lg:flex-[1.4] lg:shadow-[0_0_40px_rgba(255,255,255,0.05)] lg:-translate-y-2 lg:scale-100 lg:opacity-100 ring-1 ring-white/10 cursor-default' 
+                    : 'lg:flex-[0.8] lg:scale-[0.95] lg:opacity-60 hover:opacity-80 lg:hover:scale-[0.97] cursor-pointer'
+                  }
+                `}
               >
                 {/* Numbered Badge */}
                 <div className={`absolute -top-3.5 -right-2 w-9 h-9 rounded-full bg-gradient-to-br ${proj.accent} flex items-center justify-center text-white font-black text-sm shadow-[0_4px_15px_rgba(0,0,0,0.5)] z-30`}>
