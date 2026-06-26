@@ -177,148 +177,198 @@ export default function Projects() {
         {/* ========================================================== */}
         {/* 1. DESKTOP ONLY PRESENTATION VIEW (lg:block, hidden on mobile) */}
         {/* ========================================================== */}
-        {/* 1. DESKTOP ONLY PRESENTATION VIEW (Alternating Rows) */}
-        {/* ========================================================== */}
-        <div className="hidden lg:flex flex-col gap-32 mt-12 max-w-7xl mx-auto px-6">
-          {PROJECTS.map((proj, idx) => {
-            const isEven = idx % 2 === 0;
-            return (
-              <div key={proj.title} className={`flex items-center gap-16 fade-in-section ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
+        <div className="hidden lg:grid grid-cols-2 gap-6 max-w-6xl mx-auto fade-in-section items-stretch">
+          
+          {/* ---------------- PROJECT 1 (Mor Panthal) - Full Width Row ---------------- */}
+          <div className="col-span-2 rounded-[2rem] bg-[#0d1426] border border-white/5 overflow-hidden group relative flex items-center min-h-[400px] shadow-2xl">
+            {/* Background Glow */}
+            <div className={`absolute top-0 left-0 w-1/2 h-full bg-gradient-to-br ${PROJECTS[0].accent} opacity-[0.02]`} />
+            
+            {/* Left Content (45%) */}
+            <div className="w-[45%] p-10 relative z-10 flex flex-col justify-between h-full">
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <span className={`text-5xl font-black bg-gradient-to-br ${PROJECTS[0].accent} bg-clip-text text-transparent opacity-40 leading-none`}>
+                    {PROJECTS[0].number}
+                  </span>
+                  <div className={`h-[2px] w-12 bg-gradient-to-r ${PROJECTS[0].accent} rounded-full`} />
+                </div>
+                <h3 className="text-3xl font-bold text-white mb-1">{PROJECTS[0].title}</h3>
+                <p className="text-blue-400 font-bold text-[10px] uppercase tracking-widest mb-6">{PROJECTS[0].platform}</p>
+                <p className="text-slate-300 text-sm leading-relaxed mb-6">{PROJECTS[0].description}</p>
                 
-                {/* Visual Side (Mockup) */}
-                <div className="w-[55%] relative group perspective-1000">
-                  <div className={`rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] bg-[#080d1a] relative transition-transform duration-700 transform group-hover:scale-[1.02] ${isEven ? 'hover:-rotate-1' : 'hover:rotate-1'}`}>
-                    
-                    {/* Browser header chrome bar */}
-                    <div className="bg-[#0e172e] px-4 py-3 flex items-center gap-2 border-b border-white/5">
-                      <div className="flex gap-1.5">
-                        <div className="w-3 h-3 rounded-full bg-red-400/80" />
-                        <div className="w-3 h-3 rounded-full bg-yellow-400/80" />
-                        <div className="w-3 h-3 rounded-full bg-green-400/80" />
-                      </div>
-                      <div className="flex-1 flex justify-center">
-                        <div className="bg-[#080d1a] rounded-md px-4 py-1 text-xs text-slate-500 flex items-center gap-2 min-w-[200px] max-w-[400px] overflow-hidden truncate justify-center border border-white/5">
-                          <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${proj.accent} flex-shrink-0`} />
-                          {proj.link ? proj.link.replace('https://', '') : 'portfolio.local'}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Viewport container */}
-                    {proj.beforeImage && proj.afterImage ? (
-                      <div className="relative h-[450px] overflow-hidden bg-[#0d1426] select-none">
-                        <div className="absolute inset-0">
-                          <img src={proj.beforeImage} alt="Before AI" className="w-full h-full object-cover" />
-                          <div className="absolute top-4 left-4 bg-black/75 text-white text-xs font-bold px-3 py-1.5 rounded border border-white/10 uppercase tracking-wider backdrop-blur-sm shadow-xl">
-                            Camera Capture
-                          </div>
-                        </div>
-
-                        <div 
-                          className="absolute inset-0"
-                          style={{ clipPath: `polygon(0 0, ${mobileSliderPositions[idx] ?? 50}% 0, ${mobileSliderPositions[idx] ?? 50}% 100%, 0 100%)` }}
-                        >
-                          <img src={proj.afterImage} alt="After AI" className="w-full h-full object-cover" />
-                          <div className="absolute top-4 right-4 bg-purple-600/90 text-white text-xs font-bold px-3 py-1.5 rounded border border-purple-500/20 uppercase tracking-wider shadow-xl backdrop-blur-sm">
-                            AI Generated
-                          </div>
-                        </div>
-
-                        <div 
-                          className="absolute inset-y-0 w-[2px] bg-white/80 cursor-ew-resize flex items-center justify-center pointer-events-none"
-                          style={{ left: `${mobileSliderPositions[idx] ?? 50}%` }}
-                        >
-                          <div className="w-10 h-10 bg-slate-900 rounded-full shadow-2xl border-[3px] border-white/90 flex items-center justify-center -ml-[20px] pointer-events-auto transition-transform hover:scale-110">
-                            <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
-                            </svg>
-                          </div>
-                        </div>
-
-                        <input
-                          type="range"
-                          min="0"
-                          max="100"
-                          value={mobileSliderPositions[idx] ?? 50}
-                          onChange={(e) => updateMobileSlider(idx, Number(e.target.value))}
-                          className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
-                        />
-                      </div>
-                    ) : (
-                      <a href={proj.link} target="_blank" rel="noopener noreferrer" className="block relative h-[450px] overflow-hidden bg-[#0d1426] cursor-pointer">
-                        <img
-                          src={proj.image}
-                          alt={`${proj.title} Live Preview`}
-                          className="w-full h-auto object-cover object-top transition-transform duration-[8s] ease-in-out transform translate-y-0 group-hover:translate-y-[calc(-100%+450px)]"
-                        />
-                        <div className="absolute inset-0 bg-blue-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                          <div className="bg-slate-900/95 text-white font-bold text-sm px-6 py-3 rounded-full border border-white/20 shadow-2xl flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                            <ExternalLink size={16} className="text-blue-400" />
-                            <span>Launch Live Preview</span>
-                          </div>
-                        </div>
-                      </a>
-                    )}
+                <div className="space-y-3 mb-8">
+                  <div>
+                    <span className="text-xs font-bold text-slate-500 uppercase">Challenge:</span>
+                    <p className="text-xs text-slate-400 mt-1">{PROJECTS[0].problem}</p>
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-slate-500 uppercase">Outcome:</span>
+                    <p className="text-xs text-slate-300 mt-1 font-medium">{PROJECTS[0].outcome}</p>
                   </div>
                 </div>
-
-                {/* Content Side */}
-                <div className="w-[45%] flex flex-col space-y-8 relative">
-                  {/* Huge watermark number */}
-                  <div className={`absolute -top-24 ${isEven ? '-left-12' : '-right-12'} text-[280px] leading-none font-black text-white/[0.03] pointer-events-none select-none z-0`}>
-                    {proj.number}
-                  </div>
-                  
-                  <div className="relative z-10">
-                    <div className="flex items-center gap-4 mb-5">
-                      <span className={`text-xl font-black bg-gradient-to-r ${proj.accent} bg-clip-text text-transparent`}>
-                        {proj.number}
-                      </span>
-                      <div className={`h-px w-12 bg-gradient-to-r ${proj.accent} opacity-50`} />
-                      <span className="text-blue-400 font-bold text-xs uppercase tracking-widest">{proj.platform}</span>
-                    </div>
-                    
-                    <h3 className="text-4xl sm:text-5xl font-black text-white mb-5 leading-tight">{proj.title}</h3>
-                    <p className="text-slate-300 text-lg leading-relaxed">{proj.description}</p>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4 relative z-10">
-                    <div className="bg-[#0b1021] rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-colors shadow-inner">
-                      <h5 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-3">The Challenge</h5>
-                      <p className="text-sm text-slate-300 leading-relaxed">{proj.problem}</p>
-                    </div>
-                    <div className="bg-[#0b1021] rounded-2xl p-6 border border-white/5 hover:border-white/10 transition-colors shadow-inner">
-                      <h5 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-3">The Solution</h5>
-                      <p className="text-sm text-slate-300 leading-relaxed">{proj.solution}</p>
-                    </div>
-                  </div>
-
-                  <div className="relative z-10 flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6 p-6 rounded-2xl border border-white/5 bg-gradient-to-br from-white/[0.02] to-transparent">
-                    <div className="flex-1">
-                      <h5 className="text-xs font-black text-green-400 uppercase tracking-widest mb-2">Impact & Outcome</h5>
-                      <p className="text-base font-semibold text-white leading-relaxed">{proj.outcome}</p>
-                      
-                      <div className="flex flex-wrap gap-2 mt-4">
-                        {proj.tags.map((tag, i) => (
-                          <span key={tag} className={`text-xs font-bold px-3 py-1 rounded-full border bg-[#080d1a] ${proj.tagColors[i] || 'text-slate-400 border-slate-500/20'}`}>
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {proj.link && (
-                      <a href={proj.link} target="_blank" rel="noopener noreferrer" className={`flex-shrink-0 group relative overflow-hidden rounded-xl bg-gradient-to-r ${proj.accent} text-white font-bold text-sm px-6 py-4 transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.1)] flex items-center gap-2`}>
-                        <span className="relative z-10">View Project</span>
-                        <ExternalLink size={16} className="relative z-10 group-hover:translate-x-1 transition-transform" />
-                      </a>
-                    )}
-                  </div>
-                  
+                
+                <div className="flex flex-wrap gap-2">
+                  {PROJECTS[0].tags.map((tag, i) => (
+                    <span key={tag} className={`text-[10px] font-bold px-3 py-1 rounded-full border bg-[#0b1021] ${PROJECTS[0].tagColors[i] || 'text-slate-400 border-slate-500/20'}`}>
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
-            )
-          })}
+              
+              <div className="mt-8">
+                <a href={PROJECTS[0].link} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r ${PROJECTS[0].accent} text-white font-bold text-xs rounded-xl transition-all shadow-lg hover:scale-105 active:scale-95`}>
+                  <ExternalLink size={14} /> Visit Project
+                </a>
+              </div>
+            </div>
+            
+            {/* Right Image (55%) */}
+            <div className="absolute right-0 top-0 bottom-0 w-[55%] bg-[#080d1a] border-l border-white/5 shadow-[-20px_0_40px_rgba(0,0,0,0.5)] overflow-hidden">
+              {/* Fake Browser Chrome */}
+              <div className="bg-[#0e172e] px-4 py-2 flex items-center gap-1.5 border-b border-white/5">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
+                <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
+                <div className="ml-4 text-[9px] text-slate-500 bg-[#0a0f1e] px-3 py-0.5 rounded-md border border-white/5">{PROJECTS[0].link.replace('https://', '')}</div>
+              </div>
+              <div className="w-full h-[calc(100%-33px)] relative overflow-hidden bg-[#0d1426]">
+                <img src={PROJECTS[0].image} alt="Mor Panthal" className="w-full h-full object-cover object-top transition-transform duration-[8s] ease-in-out group-hover:scale-[1.03]" />
+              </div>
+            </div>
+          </div>
+
+
+          {/* ---------------- PROJECT 2 (Portfolio) - Half Width ---------------- */}
+          <div className="col-span-1 rounded-[2rem] bg-[#0d1426] border border-white/5 overflow-hidden group relative flex flex-col min-h-[500px] shadow-2xl">
+            {/* Top Image (50%) */}
+            <div className="h-[250px] w-full bg-[#080d1a] border-b border-white/5 overflow-hidden relative">
+              <div className="bg-[#0e172e] px-4 py-2 flex items-center gap-1.5 border-b border-white/5 absolute top-0 w-full z-10">
+                <div className="w-2 h-2 rounded-full bg-red-400/80" />
+                <div className="w-2 h-2 rounded-full bg-yellow-400/80" />
+                <div className="w-2 h-2 rounded-full bg-green-400/80" />
+              </div>
+              <div className="w-full h-full pt-[33px] relative overflow-hidden bg-[#0d1426]">
+                <img src={PROJECTS[1].image} alt="Portfolio" className="w-full h-full object-cover object-top transition-transform duration-[8s] ease-in-out group-hover:scale-[1.03]" />
+              </div>
+            </div>
+
+            {/* Bottom Content (50%) */}
+            <div className="p-8 relative z-10 flex flex-col flex-1 justify-between bg-gradient-to-t from-[#0a0f1e] to-[#0d1426]">
+              <div>
+                <div className="flex justify-between items-start mb-2">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-1">{PROJECTS[1].title}</h3>
+                    <p className="text-purple-400 font-bold text-[9px] uppercase tracking-widest">{PROJECTS[1].platform}</p>
+                  </div>
+                  <span className={`text-4xl font-black bg-gradient-to-br ${PROJECTS[1].accent} bg-clip-text text-transparent opacity-30 leading-none`}>
+                    {PROJECTS[1].number}
+                  </span>
+                </div>
+                
+                <p className="text-slate-300 text-xs leading-relaxed mb-4">{PROJECTS[1].description}</p>
+                
+                <div className="bg-[#0b1021] p-3 rounded-xl border border-white/5 mb-6">
+                  <span className="text-[9px] font-bold text-slate-500 uppercase block mb-1">Outcome:</span>
+                  <p className="text-xs text-slate-300">{PROJECTS[1].outcome}</p>
+                </div>
+              </div>
+              
+              <div className="flex justify-between items-end">
+                <div className="flex flex-wrap gap-1.5 max-w-[60%]">
+                  {PROJECTS[1].tags.slice(0,3).map((tag, i) => (
+                    <span key={tag} className={`text-[9px] font-bold px-2 py-0.5 rounded-full border bg-[#0b1021] ${PROJECTS[1].tagColors[i] || 'text-slate-400 border-slate-500/20'}`}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <a href={PROJECTS[1].link} target="_blank" rel="noopener noreferrer" className={`w-10 h-10 flex items-center justify-center bg-gradient-to-r ${PROJECTS[1].accent} text-white rounded-full transition-all shadow-lg hover:scale-110 active:scale-95`}>
+                  <ExternalLink size={14} />
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+          {/* ---------------- PROJECT 3 (AI Images) - Half Width ---------------- */}
+          <div className="col-span-1 rounded-[2rem] bg-[#0d1426] border border-white/5 overflow-hidden group relative flex flex-col min-h-[500px] shadow-2xl">
+            {/* Top Slider (50%) */}
+            <div className="h-[250px] w-full bg-[#080d1a] border-b border-white/5 overflow-hidden relative select-none">
+              <div className="bg-[#0e172e] px-4 py-2 flex items-center justify-between border-b border-white/5 absolute top-0 w-full z-30 shadow-md">
+                <div className="flex gap-1.5">
+                  <div className="w-2 h-2 rounded-full bg-slate-600" />
+                  <div className="w-2 h-2 rounded-full bg-slate-600" />
+                </div>
+                <div className="text-[9px] text-slate-400 font-medium">Interactive Before / After</div>
+              </div>
+              
+              <div className="w-full h-full pt-[33px] relative overflow-hidden bg-[#0d1426] group/slider">
+                {/* Before Image */}
+                <div className="absolute inset-0 pt-[33px]">
+                  <img src={PROJECTS[2].beforeImage} alt="Before" className="w-full h-full object-cover" />
+                  <div className="absolute bottom-3 left-3 bg-black/75 text-white text-[9px] font-bold px-2 py-0.5 rounded border border-white/10 uppercase tracking-wider backdrop-blur-sm z-10">
+                    Camera
+                  </div>
+                </div>
+
+                {/* After Image */}
+                <div className="absolute inset-0 pt-[33px] z-10" style={{ clipPath: `polygon(0 0, ${sliderPosition}% 0, ${sliderPosition}% 100%, 0 100%)` }}>
+                  <img src={PROJECTS[2].afterImage} alt="After" className="w-full h-full object-cover" />
+                  <div className="absolute bottom-3 right-3 bg-purple-600/90 text-white text-[9px] font-bold px-2 py-0.5 rounded border border-purple-500/20 uppercase tracking-wider shadow-lg backdrop-blur-sm">
+                    AI Gen
+                  </div>
+                </div>
+
+                {/* Slider bar */}
+                <div className="absolute inset-y-0 w-[2px] bg-white/80 cursor-ew-resize flex items-center justify-center pointer-events-none z-20 pt-[33px]" style={{ left: `${sliderPosition}%` }}>
+                  <div className="w-7 h-7 bg-slate-900 rounded-full shadow-xl border-2 border-white/80 flex items-center justify-center -ml-[14px] pointer-events-auto">
+                    <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
+                    </svg>
+                  </div>
+                </div>
+
+                <input type="range" min="0" max="100" value={sliderPosition} onChange={(e) => setSliderPosition(Number(e.target.value))} className="absolute inset-0 pt-[33px] w-full h-full opacity-0 cursor-ew-resize z-30" />
+              </div>
+            </div>
+
+            {/* Bottom Content (50%) */}
+            <div className="p-8 relative z-10 flex flex-col flex-1 justify-between bg-gradient-to-t from-[#0a0f1e] to-[#0d1426]">
+              <div>
+                <div className="flex justify-between items-start mb-2">
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-1">{PROJECTS[2].title}</h3>
+                    <p className="text-pink-400 font-bold text-[9px] uppercase tracking-widest">{PROJECTS[2].platform}</p>
+                  </div>
+                  <span className={`text-4xl font-black bg-gradient-to-br ${PROJECTS[2].accent} bg-clip-text text-transparent opacity-30 leading-none`}>
+                    {PROJECTS[2].number}
+                  </span>
+                </div>
+                
+                <p className="text-slate-300 text-xs leading-relaxed mb-4">{PROJECTS[2].description}</p>
+                
+                <div className="bg-[#0b1021] p-3 rounded-xl border border-white/5 mb-6">
+                  <span className="text-[9px] font-bold text-slate-500 uppercase block mb-1">Outcome:</span>
+                  <p className="text-xs text-slate-300">{PROJECTS[2].outcome}</p>
+                </div>
+              </div>
+              
+              <div className="flex justify-between items-end">
+                <div className="flex flex-wrap gap-1.5 max-w-[60%]">
+                  {PROJECTS[2].tags.slice(0,3).map((tag, i) => (
+                    <span key={tag} className={`text-[9px] font-bold px-2 py-0.5 rounded-full border bg-[#0b1021] ${PROJECTS[2].tagColors[i] || 'text-slate-400 border-slate-500/20'}`}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <a href={PROJECTS[2].link} target="_blank" rel="noopener noreferrer" className={`w-10 h-10 flex items-center justify-center bg-gradient-to-r ${PROJECTS[2].accent} text-white rounded-full transition-all shadow-lg hover:scale-110 active:scale-95`}>
+                  <ExternalLink size={14} />
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         {/* ========================================================== */}
