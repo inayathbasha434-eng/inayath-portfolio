@@ -3,14 +3,32 @@ import { ArrowLeft, ExternalLink } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import SEO from '../components/SEO'
 
 export default function AIProjectPage() {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
+  const pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "AI Image Generation | Stable Diffusion & Midjourney Project by Inayath Basha",
+    "description": "Created high-fidelity commercial product visualizations and marketing assets from raw camera captures using generative AI workflows (Stable Diffusion, Midjourney).",
+    "url": "https://inayathbasha.vercel.app/projects/ai-image-generation",
+    "publisher": {
+      "@id": "https://inayathbasha.vercel.app/#person"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100 selection:bg-blue-500/30 selection:text-white">
+      <SEO 
+        title="AI Image Generation Project | Generative AI"
+        description="Created high-fidelity commercial product visualizations and marketing assets from raw camera captures using generative AI workflows (Stable Diffusion, Midjourney)."
+        canonical="/projects/ai-image-generation"
+        schema={pageSchema}
+      />
       <Navbar />
       
       <main className="pt-24 lg:pt-32 pb-20">

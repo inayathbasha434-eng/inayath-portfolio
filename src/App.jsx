@@ -20,12 +20,47 @@ import BusinessServicePage from './pages/BusinessServicePage'
 import MorPanthalProjectPage from './pages/MorPanthalProjectPage'
 import PortfolioProjectPage from './pages/PortfolioProjectPage'
 import AIProjectPage from './pages/AIProjectPage'
+import SEO from './components/SEO'
 
 const WHATSAPP_NUM = '919345704295'
 
 function PortfolioLayout() {
+  const homeSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://inayathbasha.vercel.app/#person",
+        "name": "Inayath Basha",
+        "jobTitle": "Shopify Developer",
+        "url": "https://inayathbasha.vercel.app",
+        "sameAs": [
+          "https://linkedin.com/in/inayathbasha",
+          "https://github.com/inayathbasha",
+          "https://instagram.com/inayathbasha_a"
+        ],
+        "description": "Creative Shopify Developer, UI/UX Designer, Brand Designer, and Business Development Professional helping businesses grow."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://inayathbasha.vercel.app/#website",
+        "url": "https://inayathbasha.vercel.app",
+        "name": "Inayath Basha Portfolio",
+        "publisher": {
+          "@id": "https://inayathbasha.vercel.app/#person"
+        }
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100 selection:bg-blue-500/30 selection:text-white">
+      <SEO 
+        title="Freelance Shopify Developer & Web Designer"
+        description="Inayath Basha is a professional Freelance Shopify Developer & Web Designer. Specializing in high-converting Shopify stores, custom theme development, and UI/UX design."
+        canonical="/"
+        schema={homeSchema}
+      />
       <Navbar />
       <main>
         <Hero />

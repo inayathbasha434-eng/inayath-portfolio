@@ -198,10 +198,10 @@ export default function Projects() {
                   {proj.beforeImage && proj.afterImage ? (
                     <div className="relative w-full h-full select-none">
                       <div className="absolute inset-0">
-                        <img src={proj.beforeImage} alt="Before AI" className="w-full h-full object-cover" />
+                        <img src={proj.beforeImage} alt="Before AI" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                       </div>
                       <div className="absolute inset-0" style={{ clipPath: `polygon(0 0, ${mobileSliderPositions[index] ?? 50}% 0, ${mobileSliderPositions[index] ?? 50}% 100%, 0 100%)` }}>
-                        <img src={proj.afterImage} alt="After AI" className="w-full h-full object-cover" />
+                        <img src={proj.afterImage} alt="After AI" loading="lazy" decoding="async" className="w-full h-full object-cover" />
                       </div>
                       <div className="absolute inset-y-0 w-[3px] bg-white cursor-ew-resize flex items-center justify-center pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.5)]" style={{ left: `${mobileSliderPositions[index] ?? 50}%` }}>
                         <div className="w-6 h-6 bg-slate-900 rounded-full shadow-lg border-2 border-white flex items-center justify-center -ml-[12px] pointer-events-auto">
@@ -214,7 +214,7 @@ export default function Projects() {
                     </div>
                   ) : (
                     <div className="absolute inset-0 w-full h-full">
-                      <img src={proj.image} alt={`${proj.title} Preview`} className="block w-full h-full object-cover object-center" />
+                      <img src={proj.image} alt={`${proj.title} Preview`} loading="lazy" decoding="async" className="block w-full h-full object-cover object-center" />
                     </div>
                   )}
                 </div>

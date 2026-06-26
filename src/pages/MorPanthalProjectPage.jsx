@@ -3,14 +3,32 @@ import { ArrowLeft, ExternalLink } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import SEO from '../components/SEO'
 
 export default function MorPanthalProjectPage() {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
+  const pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Mor Panthal | WordPress & UI/UX Design Project by Inayath Basha",
+    "description": "A modern WordPress website for a traditional drink brand showcasing culture, health, and natural flavors. Designed and developed by Inayath Basha.",
+    "url": "https://inayathbasha.vercel.app/projects/mor-panthal",
+    "publisher": {
+      "@id": "https://inayathbasha.vercel.app/#person"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100 selection:bg-blue-500/30 selection:text-white">
+      <SEO 
+        title="Mor Panthal Project | WordPress & UI/UX"
+        description="A modern WordPress website for a traditional drink brand showcasing culture, health, and natural flavors. Designed and developed by Inayath Basha."
+        canonical="/projects/mor-panthal"
+        schema={pageSchema}
+      />
       <Navbar />
       
       <main className="pt-24 lg:pt-32 pb-20">

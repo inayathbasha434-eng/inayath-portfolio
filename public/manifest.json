@@ -1,6 +1,8 @@
 {
-  "short_name": "IB Portfolio",
-  "name": "Inayath Basha Portfolio",
+  "short_name": "Inayath Basha",
+  "name": "Inayath Basha | Shopify Developer & Web Designer",
+  "description": "Professional portfolio of Inayath Basha, specialized in Shopify Development, React, and UI/UX Design.",
+  "categories": ["portfolio", "design", "development", "ecommerce"],
   "icons": [
     {
       "src": "/favicon.svg",

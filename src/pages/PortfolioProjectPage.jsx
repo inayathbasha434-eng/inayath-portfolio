@@ -3,14 +3,32 @@ import { ArrowLeft, ExternalLink } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import SEO from '../components/SEO'
 
 export default function PortfolioProjectPage() {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
 
+  const pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Personal Portfolio | React & Tailwind CSS Project by Inayath Basha",
+    "description": "A premium developer portfolio with high-performance animations, collapsible timeline cards, and single-card team display. Built with React and Tailwind CSS by Inayath Basha.",
+    "url": "https://inayathbasha.vercel.app/projects/portfolio",
+    "publisher": {
+      "@id": "https://inayathbasha.vercel.app/#person"
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100 selection:bg-blue-500/30 selection:text-white">
+      <SEO 
+        title="Personal Portfolio Project | React & Tailwind CSS"
+        description="A premium developer portfolio with high-performance animations, collapsible timeline cards, and single-card team display. Built with React and Tailwind CSS by Inayath Basha."
+        canonical="/projects/portfolio"
+        schema={pageSchema}
+      />
       <Navbar />
       
       <main className="pt-24 lg:pt-32 pb-20">

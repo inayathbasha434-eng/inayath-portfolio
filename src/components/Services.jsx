@@ -358,6 +358,8 @@ export default function Services() {
                         <img
                           src={item.image}
                           alt={item.category}
+                          loading="lazy"
+                          decoding="async"
                           className={`w-full h-full object-cover object-center absolute inset-0 transition-transform duration-500 ${item.pageRoute ? 'group-hover/imgpanel:scale-105' : ''}`}
                         />
                         {item.pageRoute && (

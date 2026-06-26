@@ -7,27 +7,57 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://inayathbasha.vercel.app/about</loc>
+    <loc>https://inayathbasha.vercel.app/services/shopify</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://inayathbasha.vercel.app/projects</loc>
+    <loc>https://inayathbasha.vercel.app/services/wordpress</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://inayathbasha.vercel.app/services</loc>
+    <loc>https://inayathbasha.vercel.app/services/erp</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://inayathbasha.vercel.app/contact</loc>
+    <loc>https://inayathbasha.vercel.app/services/ai</loc>
     <lastmod>2026-06-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inayathbasha.vercel.app/services/portfolio</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inayathbasha.vercel.app/services/business</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://inayathbasha.vercel.app/projects/mor-panthal</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://inayathbasha.vercel.app/projects/portfolio</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://inayathbasha.vercel.app/projects/ai-image-generation</loc>
+    <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 </urlset>

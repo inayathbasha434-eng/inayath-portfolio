@@ -57,7 +57,7 @@ export default function Navbar() {
   }
 
   return (
-    <>
+    <header>
       {/* 
         ========================================
         MOBILE NAVBAR (Traditional Top Bar)
@@ -84,6 +84,7 @@ export default function Navbar() {
           <button
             onClick={() => setOpen(!open)}
             className="w-10 h-10 flex items-center justify-center rounded-lg text-slate-300 hover:text-white hover:bg-white/10"
+            aria-label="Toggle menu"
           >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -144,6 +145,7 @@ export default function Navbar() {
         <button
           onClick={() => scrollTo('#contact')}
           className="group px-5 py-2.5 bg-white/10 hover:bg-blue-600 border border-white/20 hover:border-blue-500 text-white font-bold rounded-xl transition-all duration-300 shadow-lg backdrop-blur-md flex items-center gap-2 text-xs uppercase tracking-widest"
+          aria-label="Contact Inayath"
         >
           <MessageSquare size={14} className="group-hover:animate-bounce" />
           <span>Let's Talk</span>
@@ -151,10 +153,11 @@ export default function Navbar() {
       </div>
 
       {/* Bottom Floating Dock Navigation (Fixed) */}
-      <div 
+      <nav 
         className={`hidden md:flex fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${
           isDockVisible ? 'translate-y-0 opacity-100' : 'translate-y-[150%] opacity-0 pointer-events-none'
         }`}
+        aria-label="Desktop navigation"
       >
         <div className="glass px-2 py-2 rounded-2xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] flex items-center gap-1.5 backdrop-blur-xl bg-[#0a0f1e]/80">
           {NAV_LINKS.map(({ label, href, icon: Icon }) => {
@@ -192,7 +195,7 @@ export default function Navbar() {
             )
           })}
         </div>
-      </div>
-    </>
+      </nav>
+    </header>
   )
 }
