@@ -11,6 +11,8 @@ const NAV_LINKS = [
   { label: 'Team', href: '#team', icon: Users },
 ]
 
+const PHOTO = "/ChatGPT_Image_Jun_16,_2026,_03_11_34_PM.png"
+
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -73,10 +75,15 @@ export default function Navbar() {
         <div className="px-4 flex items-center justify-between h-16">
           <button
             onClick={() => scrollTo('#home')}
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-2.5 group"
+            aria-label="Go to top"
           >
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold text-xs shadow-lg shadow-blue-500/30">
-              IB
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 p-[1px] shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300 overflow-hidden">
+              <img 
+                src={PHOTO} 
+                alt="Inayath Basha Logo" 
+                className="w-full h-full rounded-full object-cover object-top bg-[#0d1426]" 
+              />
             </div>
             <span className="font-bold text-white text-sm">Inayath</span>
           </button>
@@ -128,11 +135,15 @@ export default function Navbar() {
       <div className="hidden md:block fixed top-6 left-6 z-[100]">
         <button
           onClick={() => scrollTo('#home')}
-          className="flex items-center gap-3 group"
+          className="flex items-center gap-3.5 group"
           aria-label="Go to top"
         >
-          <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-black shadow-lg shadow-blue-500/40 group-hover:shadow-blue-500/60 transition-all group-hover:scale-105">
-            IB
+          <div className="w-11 h-11 rounded-full bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-600 p-[1.5px] shadow-[0_0_15px_rgba(99,102,241,0.25)] group-hover:shadow-[0_0_20px_rgba(99,102,241,0.4)] group-hover:scale-105 transition-all duration-300 overflow-hidden">
+            <img 
+              src={PHOTO} 
+              alt="Inayath Basha Logo" 
+              className="w-full h-full rounded-full object-cover object-top bg-[#0d1426] border border-slate-950/20" 
+            />
           </div>
           <span className="font-bold text-white text-[15px] tracking-wide opacity-80 group-hover:opacity-100 transition-opacity drop-shadow-md">
             Inayath Basha
