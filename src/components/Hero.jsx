@@ -73,38 +73,26 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Glowing Role Header (The "Best Idea") */}
-            <div className="relative inline-block mb-6 w-full md:w-auto">
-              {/* Outer pulsing glow */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-400 rounded-xl blur-[10px] opacity-50 animate-pulse"></div>
-              
-              {/* Glass container */}
-              <div className="relative px-6 py-3 sm:py-4 bg-[#0d1426]/90 border border-white/10 rounded-xl backdrop-blur-md shadow-xl text-center md:text-left">
-                <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-wide text-white">
-                  Shopify Expert & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Digital Architect</span>
-                </h2>
-              </div>
-            </div>
 
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center md:justify-start gap-4 mb-10 w-full sm:w-auto px-4 sm:px-0">
+            <div className="flex flex-row justify-center md:justify-start gap-3 mb-10 w-full px-4 sm:px-0">
               <button
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                 aria-label="View My Work"
-                className="w-full sm:w-auto justify-center shine group min-h-[52px] px-8 py-3.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] hover:-translate-y-0.5 active:translate-y-0 text-sm tracking-wider flex items-center gap-2.5"
+                className="flex-1 sm:flex-none justify-center shine group min-h-[48px] px-2 sm:px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] active:scale-95 text-xs sm:text-sm tracking-wider flex items-center gap-1.5 sm:gap-2.5"
               >
-                <span>View My Work</span>
+                <span>Work</span>
                 <ArrowRight size={14} className="text-blue-200 group-hover:translate-x-1 transition-transform" />
               </button>
 
               <button
                 onClick={scrollToContact}
                 aria-label="Let's Connect"
-                className="w-full sm:w-auto justify-center group min-h-[52px] px-8 py-3.5 bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20 font-bold rounded-xl transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 text-sm tracking-wider flex items-center gap-2.5"
+                className="flex-1 sm:flex-none justify-center group min-h-[48px] px-2 sm:px-8 py-3 bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20 font-bold rounded-xl transition-all duration-300 active:scale-95 text-xs sm:text-sm tracking-wider flex items-center gap-1.5 sm:gap-2.5"
               >
-                <MessageSquare size={16} className="text-slate-300 group-hover:scale-110 transition-transform" />
-                <span>Let's Connect</span>
+                <MessageSquare size={14} className="text-slate-300 group-hover:scale-110 transition-transform" />
+                <span>Connect</span>
               </button>
             </div>
 
