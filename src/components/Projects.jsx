@@ -201,10 +201,22 @@ export default function Projects() {
                 </div>
 
                 {/* Browser-like window wrapper */}
-                <div className="rounded-xl overflow-hidden border border-white/10 bg-[#080d1a] relative mb-4 shadow-inner">
+                <div className="rounded-xl overflow-hidden border border-white/10 bg-[#080d1a] relative mb-4 shadow-2xl group/mockup">
+                  {/* Browser Chrome Header */}
+                  <div className="bg-[#0a0f1e] px-3 py-2 flex items-center gap-1.5 border-b border-white/5">
+                    <div className="w-2 h-2 rounded-full bg-red-500/80" />
+                    <div className="w-2 h-2 rounded-full bg-yellow-500/80" />
+                    <div className="w-2 h-2 rounded-full bg-green-500/80" />
+                    {proj.link && (
+                      <div className="ml-auto text-[8px] text-slate-500 bg-white/5 px-2 py-0.5 rounded border border-white/5 font-medium tracking-wider hidden sm:block">
+                        {proj.link.replace('https://', '')}
+                      </div>
+                    )}
+                  </div>
+
                   {/* Before/After AI Image Slider OR Scroll preview */}
                   {proj.beforeImage && proj.afterImage ? (
-                    <div className="relative h-[180px] overflow-hidden bg-[#0d1426] select-none">
+                    <div className="relative h-[200px] sm:h-[220px] lg:h-[240px] xl:h-[260px] overflow-hidden bg-[#0d1426] select-none">
                       <div className="absolute inset-0">
                         <img src={proj.beforeImage} alt="Before AI" className="w-full h-full object-cover" />
                       </div>
@@ -221,8 +233,9 @@ export default function Projects() {
                       <input type="range" min="0" max="100" value={mobileSliderPositions[index] ?? 50} onChange={(e) => setMobileSliderPositions(prev => ({ ...prev, [index]: Number(e.target.value) }))} className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20" />
                     </div>
                   ) : (
-                    <div className="relative h-[180px] overflow-hidden bg-[#0d1426]">
-                      <img src={proj.image} alt={`${proj.title} Preview`} className="w-full h-full object-cover object-top" />
+                    <div className="relative h-[200px] sm:h-[220px] lg:h-[240px] xl:h-[260px] overflow-hidden bg-[#0d1426]">
+                      <img src={proj.image} alt={`${proj.title} Preview`} className="w-full h-full object-cover object-top transition-all duration-[6s] ease-in-out group-hover/mockup:object-bottom" />
+                      <div className="absolute inset-0 shadow-[inset_0_0_20px_rgba(0,0,0,0.3)] pointer-events-none" />
                     </div>
                   )}
                 </div>
