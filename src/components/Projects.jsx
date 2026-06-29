@@ -86,6 +86,33 @@ const PROJECTS = [
     accent: 'from-purple-500 to-pink-600',
     accentColor: '#a855f7',
   },
+  {
+    number: '04',
+    title: 'SmartCrop AI',
+    platform: 'React + Node.js + ML',
+    description:
+      'An AI-powered Agritech platform providing smart crop recommendations based on soil nutrients and weather conditions.',
+    tags: ['React', 'Machine Learning', 'Node.js'],
+    link: 'https://smartcrop-ai.vercel.app',
+    detailPage: '/projects/smartcrop-ai',
+    image: '/smartcrop_mockup.png',
+    problem: 'Students and researchers needed an easy, interactive way to test soil metrics and run predictions without complex installations.',
+    solution: 'Designed a React frontend with dynamic metric sliders and drag-and-drop report analysis, connected to an ML model backend.',
+    outcome: 'Delivered an intuitive, high-performance platform that accurately predicts crop suggestions in under a second.',
+    tagColors: [
+      'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+      'bg-blue-500/10 text-blue-400 border-blue-500/20',
+      'bg-purple-500/10 text-purple-400 border-purple-500/20',
+    ],
+    checklist: [
+      'Interactive metrics & sliders',
+      'CSV/PDF report upload & parser',
+      'ML model pipeline & API integration',
+      'Responsive full-stack dashboard',
+    ],
+    accent: 'from-emerald-400 to-green-500',
+    accentColor: '#10b981',
+  },
 ]
 
 export default function Projects() {

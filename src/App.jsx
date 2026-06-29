@@ -20,6 +20,7 @@ import BusinessServicePage from './pages/BusinessServicePage'
 import MorPanthalProjectPage from './pages/MorPanthalProjectPage'
 import PortfolioProjectPage from './pages/PortfolioProjectPage'
 import AIProjectPage from './pages/AIProjectPage'
+import SmartCropProjectPage from './pages/SmartCropProjectPage'
 import SEO from './components/SEO'
 
 const WHATSAPP_NUM = '919345704295'
@@ -106,6 +107,7 @@ export default function App() {
       <Route path="/projects/mor-panthal" element={<MorPanthalProjectPage />} />
       <Route path="/projects/portfolio" element={<PortfolioProjectPage />} />
       <Route path="/projects/ai-image-generation" element={<AIProjectPage />} />
+      <Route path="/projects/smartcrop-ai" element={<SmartCropProjectPage />} />
     </Routes>
   )
 }

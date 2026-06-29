@@ -21,6 +21,7 @@ Creative Shopify Developer, UI/UX Designer, and Business Development Professiona
 - **Mor Panthal:** A modern WordPress website for a traditional drink brand showcasing culture, health, and natural flavors.
 - **Personal Portfolio:** A premium developer portfolio built with React and Tailwind CSS with high-performance animations and custom UI/UX.
 - **AI Image Generation:** Commercial product visualizations and marketing assets created from raw camera captures using generative AI workflows (Stable Diffusion, Midjourney).
+- **SmartCrop AI:** An AI-powered Agritech platform providing smart crop recommendations using a trained machine learning model, built with React and FastAPI/Python.
 
 ## Professional Offerings
 Available for freelance projects and full-time opportunities. Focuses on delivering premium, performance-optimized, and aesthetically superior digital experiences.
