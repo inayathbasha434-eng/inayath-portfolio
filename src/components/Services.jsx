@@ -348,7 +348,36 @@ export default function Services() {
                     {/* Desktop body */}
                     <div className="flex flex-row min-h-[320px]">
 
-
+                      {/* Image panel */}
+                      <div
+                        className={`w-[42%] relative overflow-hidden bg-slate-900 group/imgpanel ${
+                          isImageLeft ? 'order-first border-r' : 'order-last border-l'
+                        } border-black/5 dark:border-white/5 ${item.pageRoute ? 'cursor-pointer' : ''}`}
+                        onClick={() => item.pageRoute && goToPage(item)}
+                      >
+                        <img
+                          src={item.image}
+                          alt={item.category}
+                          loading="lazy"
+                          decoding="async"
+                          className={`w-full h-full object-cover object-center absolute inset-0 transition-transform duration-500 ${item.pageRoute ? 'group-hover/imgpanel:scale-105' : ''}`}
+                        />
+                        {item.pageRoute && (
+                          <div className="absolute inset-0 bg-black/0 group-hover/imgpanel:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                            <div className="opacity-0 group-hover/imgpanel:opacity-100 transition-all duration-300 scale-90 group-hover/imgpanel:scale-100 bg-white text-slate-900 text-xs font-extrabold px-5 py-2.5 rounded-full shadow-xl flex items-center gap-2">
+                              View Full Details <ArrowRight size={13} />
+                            </div>
+                          </div>
+                        )}
+                        <div className="absolute top-3.5 left-3.5 bg-white/95 text-slate-800 text-[10px] font-bold px-2.5 py-1 rounded-full shadow-sm flex items-center gap-1.5 border border-slate-100">
+                          <span className={`w-1.5 h-1.5 rounded-full ${item.badgeDot}`} />
+                          {item.badge}
+                        </div>
+                        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/85 via-black/40 to-transparent pt-12 text-left">
+                          <p className="text-white font-black text-sm leading-none">{item.title}</p>
+                          <p className="text-slate-300 text-[10px] mt-0.5 font-medium">{item.subtitle}</p>
+                        </div>
+                      </div>
 
                       {/* Content panel */}
                       <div className={`flex-1 p-7 flex flex-col justify-between text-left space-y-4 ${isImageLeft ? 'order-last' : 'order-first'}`}>

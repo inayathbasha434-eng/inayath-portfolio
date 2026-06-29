@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { Users, TrendingUp } from 'lucide-react'
 
 const TEAM = [
   {
@@ -130,11 +129,10 @@ export default function Team() {
 
             <div className="relative z-10 p-8 sm:p-10">
 
+              {/* Top row: Core Team badge + success ratio */}
               <div className="flex flex-wrap items-center justify-between gap-4 mb-10">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0">
-                    <Users className="text-blue-400 w-5 h-5" />
-                  </div>
+                  <span className="text-2xl" role="img" aria-label="Core Team">👥</span>
                   <div>
                     <p className="text-white font-bold text-base">Core Team</p>
                     <p className="text-slate-500 text-xs">5 specialists · 1 mission</p>
@@ -143,7 +141,7 @@ export default function Team() {
 
                 {/* Success badge */}
                 <div className="flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold px-4 py-2 rounded-full shadow-[0_0_15px_rgba(16,185,129,0.1)]">
-                  <TrendingUp className="text-emerald-400 w-4 h-4" />
+                  <span className="text-orange-400" role="img" aria-label="Success">🔥</span>
                   100% Success Ratio
                 </div>
               </div>
