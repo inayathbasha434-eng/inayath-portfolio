@@ -135,10 +135,10 @@ export default function Skills() {
             Skills Graph
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2 mb-3">
-            My Skill <span className="text-gradient">Constellation</span>
+            Skills & <span className="text-gradient">Expertise</span>
           </h2>
           <p className="text-slate-400 max-w-md mx-auto text-sm sm:text-base">
-            Hover or tap on any glowing star to discover details about my technical and business skillset
+            Hover or tap on any glowing node to discover details about my technical and business skillset
           </p>
         </div>
 
