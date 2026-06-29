@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { ShoppingBag, ArrowDown, MessageSquare, ArrowRight, BadgeCheck } from 'lucide-react'
 
 const PHOTO = "/ChatGPT_Image_Jun_16,_2026,_03_11_34_PM.png"
@@ -7,6 +7,7 @@ export default function Hero() {
   const [revealStep, setRevealStep] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
   const [terminalLines, setTerminalLines] = useState(0)
+  const tiltRafRef = useRef(null)
 
   // Sequence terminal lines appearing after flip
   useEffect(() => {
@@ -27,7 +28,12 @@ export default function Hero() {
     timers.push(setTimeout(() => setRevealStep(4), 700))  // Subheading
     timers.push(setTimeout(() => setRevealStep(5), 900))  // Buttons & Stats
     timers.push(setTimeout(() => setRevealStep(6), 1100)) // Photo
-    return () => timers.forEach(clearTimeout)
+    return () => {
+      timers.forEach(clearTimeout)
+      if (tiltRafRef.current) {
+        cancelAnimationFrame(tiltRafRef.current)
+      }
+    }
   }, [])
 
   const scrollToContact = () => {
@@ -117,13 +123,25 @@ export default function Hero() {
                 const rect = card.getBoundingClientRect()
                 const x = e.clientX - rect.left
                 const y = e.clientY - rect.top
-                const rotateX = -((y - rect.height / 2) / rect.height) * 16
-                const rotateY = ((x - rect.width / 2) / rect.width) * 16
-                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`
-                const shine = card.querySelector('.specs-glow')
-                if (shine) shine.style.background = `radial-gradient(circle 80px at ${x}px ${y}px, rgba(255,255,255,0.15), transparent 80%)`
+
+                if (tiltRafRef.current) {
+                  cancelAnimationFrame(tiltRafRef.current)
+                }
+
+                tiltRafRef.current = requestAnimationFrame(() => {
+                  const rotateX = -((y - rect.height / 2) / rect.height) * 16
+                  const rotateY = ((x - rect.width / 2) / rect.width) * 16
+                  card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`
+                  const shine = card.querySelector('.specs-glow')
+                  if (shine) {
+                    shine.style.background = `radial-gradient(circle 80px at ${x}px ${y}px, rgba(255,255,255,0.15), transparent 80%)`
+                  }
+                })
               }}
               onMouseLeave={(e) => {
+                if (tiltRafRef.current) {
+                  cancelAnimationFrame(tiltRafRef.current)
+                }
                 const card = e.currentTarget
                 card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)'
                 card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)'
