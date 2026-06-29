@@ -208,12 +208,12 @@ export default function Projects() {
         {/* ========================================================== */}
         <div className="w-full overflow-hidden">
           {/* Swiper / Grid track */}
-          <div className="flex lg:grid lg:grid-cols-3 overflow-x-auto lg:overflow-visible snap-x lg:snap-none snap-mandatory no-scrollbar gap-5 lg:gap-6 pb-8 pt-6 px-4 lg:px-6 max-w-6xl mx-auto">
+          <div className="flex lg:flex lg:flex-wrap lg:justify-center overflow-x-auto lg:overflow-visible snap-x lg:snap-none snap-mandatory no-scrollbar gap-5 lg:gap-6 pb-8 pt-6 px-4 lg:px-6 max-w-6xl mx-auto">
             {PROJECTS.map((proj, index) => {
               return (
               <div 
                 key={proj.title}
-                className="min-w-[88vw] sm:min-w-[70vw] lg:min-w-0 lg:w-full snap-center lg:snap-align-none bg-[#111623] border border-white/5 rounded-2xl flex flex-col relative transition-transform duration-300 hover:-translate-y-2 mt-4"
+                className="min-w-[88vw] sm:min-w-[70vw] lg:min-w-0 lg:w-[calc((100%-3rem)/3)] snap-center lg:snap-align-none bg-[#111623] border border-white/5 rounded-2xl flex flex-col relative transition-transform duration-300 hover:-translate-y-2 mt-4"
               >
                 {/* Numbered Badge */}
                 <div className={`absolute -top-3.5 -right-2 w-9 h-9 rounded-full bg-gradient-to-br ${proj.accent} flex items-center justify-center text-white font-black text-sm shadow-[0_4px_15px_rgba(0,0,0,0.5)] z-30`}>
