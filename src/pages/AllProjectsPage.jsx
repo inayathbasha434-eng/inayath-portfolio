@@ -155,24 +155,24 @@ export default function AllProjectsPage() {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex items-center gap-3 mt-auto">
-                      <Link
-                        to={proj.detailPage}
-                        className="flex-1 min-w-0 py-2.5 px-3 rounded-xl border border-white/10 hover:bg-white/5 transition-colors text-white font-bold text-xs flex items-center justify-center gap-1.5 group whitespace-nowrap"
-                      >
-                        Project Overview
-                        <span className="group-hover:translate-x-1 transition-transform text-sm leading-none">&rarr;</span>
-                      </Link>
-                      
+                    <div className="flex flex-col sm:flex-row gap-2.5 mt-auto">
                       <a
                         href={proj.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`flex-1 min-w-0 py-2.5 px-3 rounded-xl bg-gradient-to-r ${proj.accent} text-white font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 hover:-translate-y-0.5 transition-all whitespace-nowrap`}
+                        className={`w-full sm:flex-1 py-2.5 px-3 rounded-xl bg-gradient-to-r ${proj.accent} text-white font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 hover:shadow-lg transition-all whitespace-nowrap order-1 sm:order-2`}
                       >
                         Live Project
                         <ExternalLink size={13} className="opacity-90 shrink-0" />
                       </a>
+                      
+                      <Link
+                        to={proj.detailPage}
+                        className="w-full sm:flex-1 py-2.5 px-3 rounded-xl border border-white/10 hover:bg-white/5 transition-all text-white font-bold text-xs flex items-center justify-center gap-1.5 group whitespace-nowrap order-2 sm:order-1"
+                      >
+                        Project Overview
+                        <span className="group-hover:translate-x-1 transition-transform text-sm leading-none">&rarr;</span>
+                      </Link>
                     </div>
                   </div>
                 </div>
