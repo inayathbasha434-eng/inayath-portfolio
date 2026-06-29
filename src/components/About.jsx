@@ -43,9 +43,9 @@ export default function About() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 max-w-5xl mx-auto">
           
           {/* Tile 1: Main Bio (Spans full width on mobile, 2 cols on desktop) */}
-          <div className="fade-in col-span-2 row-span-2 group relative overflow-hidden bg-[#0d1426]/80 backdrop-blur-md border border-white/5 rounded-[20px] sm:rounded-3xl p-6 sm:p-10 hover:border-blue-500/30 transition-colors duration-500 shadow-2xl">
+          <div className="fade-in col-span-2 row-span-2 group relative overflow-hidden bg-[#0d1426]/80 backdrop-blur-md border border-white/5 rounded-[20px] sm:rounded-3xl p-6 sm:p-10 hover:border-blue-500/30 transition-colors duration-500 shadow-2xl flex flex-col md:flex-row gap-8 items-center justify-between">
             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-all duration-700 pointer-events-none" />
-            <div className="relative z-10">
+            <div className="relative z-10 flex-1">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4 sm:mb-6">
                 <Code className="text-blue-400" size={20} />
               </div>
@@ -57,6 +57,15 @@ export default function About() {
               <p className="hidden sm:block text-slate-400 text-base leading-relaxed mt-4">
                 With a passion for innovation and attention to detail, he helps businesses stand out, connect with their audience, and achieve meaningful results in the digital world.
               </p>
+            </div>
+            
+            {/* Visual Graphic Representation */}
+            <div className="w-full md:w-44 lg:w-52 aspect-square relative z-10 shrink-0 overflow-hidden rounded-2xl border border-white/5 bg-[#0a0d14]/60 p-1 flex items-center justify-center shadow-lg group-hover:border-blue-500/20 transition-all duration-500">
+              <img 
+                src="/tech_stack_visual.png" 
+                alt="Tech Stack 3D Visual Graphic" 
+                className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-700"
+              />
             </div>
           </div>
 
