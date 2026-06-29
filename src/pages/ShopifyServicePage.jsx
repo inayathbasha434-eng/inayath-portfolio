@@ -57,30 +57,25 @@ export default function ShopifyServicePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div
-          className="h-[340px] sm:h-[420px] md:h-[500px] w-full bg-cover bg-center relative"
-          style={{ backgroundImage: 'url(/shopify-hero.png)' }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e]/70 to-transparent" />
-
-          <div className="relative z-10 h-full flex flex-col justify-end pb-12 px-6 max-w-5xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-green-500/15 border border-green-500/30 text-green-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 w-fit">
-              <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-              Shopify Expert
-            </div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4">
-              Launch a{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
-                High-Converting
-              </span>
-              <br />Shopify Store
-            </h1>
-            <p className="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed">
-              From setup to launch — we build Shopify stores that look stunning, load fast, and drive real sales for your business.
-            </p>
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0c162d] to-[#080d1a] border-b border-white/5 py-20 sm:py-28">
+        {/* Ambient background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-500/10 rounded-full blur-[100px] pointer-events-none" />
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-6">
+          <div className="inline-flex items-center gap-2 bg-green-500/15 border border-green-500/30 text-green-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 w-fit">
+            <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+            Shopify Expert
           </div>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-white">
+            Launch a{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
+              High-Converting
+            </span>
+            <br />Shopify Store
+          </h1>
+          <p className="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed">
+            From setup to launch — we build Shopify stores that look stunning, load fast, and drive real sales for your business.
+          </p>
         </div>
       </section>
 
