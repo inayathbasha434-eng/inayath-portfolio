@@ -209,57 +209,59 @@ export default function Hero() {
                     background: 'linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%)',
                   }}
                 >
-                  <div className="w-full h-full rounded-full bg-[#0a0f1e] flex flex-col justify-center px-5 sm:px-7 overflow-hidden" style={{ fontFamily: "'Courier New', monospace" }}>
+                  <div className="w-full h-full rounded-full bg-[#0a0f1e] flex items-center justify-center overflow-hidden">
+                    <div className="w-[78%] h-[78%] sm:w-[82%] sm:h-[82%] flex flex-col justify-center text-left" style={{ fontFamily: "'Courier New', monospace" }}>
 
-                    {/* Terminal title bar */}
-                    <div className="flex items-center gap-1.5 mb-3 pb-2 border-b border-blue-500/20">
-                      <div className="w-2 h-2 rounded-full bg-red-500/80" />
-                      <div className="w-2 h-2 rounded-full bg-yellow-500/80" />
-                      <div className="w-2 h-2 rounded-full bg-blue-500/80" />
-                      <span className="text-[9px] font-bold ml-1 tracking-widest" style={{ background: 'linear-gradient(90deg,#60a5fa,#a78bfa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>inayath@portfolio ~</span>
+                      {/* Terminal title bar */}
+                      <div className="flex items-center gap-1 mb-2.5 pb-1.5 border-b border-blue-500/20">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500/80" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-yellow-500/80" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-blue-500/80" />
+                        <span className="text-[7.5px] sm:text-[9px] font-bold ml-1 tracking-widest" style={{ background: 'linear-gradient(90deg,#60a5fa,#a78bfa)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>inayath@portfolio ~</span>
+                      </div>
+
+                      {/* Prompt line */}
+                      <div className="text-[8.5px] sm:text-[10px] mb-2 font-bold" style={{ color: '#60a5fa' }}>$ whoami --roles</div>
+
+                      {/* Line 1 */}
+                      <div className={`flex items-center gap-1.5 mb-1 transition-all duration-300 ${terminalLines >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
+                        <span className="text-[8px] sm:text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
+                        <span className="text-[8px] sm:text-[9.5px] font-black shrink-0" style={{ color: '#93c5fd' }}>Identity:</span>
+                        <span className="text-[8px] sm:text-[9.5px] text-white font-bold whitespace-nowrap">Digital Entrepreneur</span>
+                        <span className="text-[8px] sm:text-[10px] ml-auto font-black shrink-0" style={{ color: '#34d399' }}>✓</span>
+                      </div>
+
+                      {/* Line 2 */}
+                      <div className={`flex items-center gap-1.5 mb-1 transition-all duration-300 ${terminalLines >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
+                        <span className="text-[8px] sm:text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
+                        <span className="text-[8px] sm:text-[9.5px] font-black shrink-0" style={{ color: '#93c5fd' }}>Service:</span>
+                        <span className="text-[8px] sm:text-[9.5px] text-white font-bold whitespace-nowrap">Digital Service Provider</span>
+                        <span className="text-[8px] sm:text-[10px] ml-auto font-black shrink-0" style={{ color: '#34d399' }}>✓</span>
+                      </div>
+
+                      {/* Line 3 */}
+                      <div className={`flex items-center gap-1.5 mb-1 transition-all duration-300 ${terminalLines >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
+                        <span className="text-[8px] sm:text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
+                        <span className="text-[8px] sm:text-[9.5px] font-black shrink-0" style={{ color: '#93c5fd' }}>Expertise:</span>
+                        <span className="text-[8px] sm:text-[9.5px] text-white font-bold whitespace-nowrap">Online Business Solutions</span>
+                        <span className="text-[8px] sm:text-[10px] ml-auto font-black shrink-0" style={{ color: '#34d399' }}>✓</span>
+                      </div>
+
+                      {/* Line 4 */}
+                      <div className={`flex items-center gap-1.5 mb-2 transition-all duration-300 ${terminalLines >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
+                        <span className="text-[8px] sm:text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
+                        <span className="text-[8px] sm:text-[9.5px] font-black shrink-0" style={{ color: '#93c5fd' }}>Mission:</span>
+                        <span className="text-[8px] sm:text-[9.5px] text-white font-bold whitespace-nowrap">Scaling Brands Online</span>
+                        <span className="text-[8px] sm:text-[10px] ml-auto font-black shrink-0" style={{ color: '#34d399' }}>✓</span>
+                      </div>
+
+                      {/* Blinking cursor */}
+                      <div className={`flex items-center gap-1 transition-opacity duration-300 ${terminalLines >= 4 ? 'opacity-100' : 'opacity-0'}`}>
+                        <span className="text-[8.5px] sm:text-[10px] font-bold" style={{ color: '#60a5fa' }}>$</span>
+                        <span className="w-1.5 h-3 rounded-sm animate-pulse" style={{ backgroundColor: '#60a5fa', animationDuration: '0.8s' }} />
+                      </div>
+
                     </div>
-
-                    {/* Prompt line */}
-                    <div className="text-[10px] sm:text-[11px] mb-2 font-bold" style={{ color: '#60a5fa' }}>$ whoami --roles</div>
-
-                    {/* Line 1 */}
-                    <div className={`flex items-center gap-2 mb-1.5 transition-all duration-300 ${terminalLines >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
-                      <span className="text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
-                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Identity:</span>
-                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Digital Entrepreneur</span>
-                      <span className="text-[10px] ml-auto font-black" style={{ color: '#34d399' }}>✓</span>
-                    </div>
-
-                    {/* Line 2 */}
-                    <div className={`flex items-center gap-2 mb-1.5 transition-all duration-300 ${terminalLines >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
-                      <span className="text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
-                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Service:</span>
-                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Digital Service Provider</span>
-                      <span className="text-[10px] ml-auto font-black" style={{ color: '#34d399' }}>✓</span>
-                    </div>
-
-                    {/* Line 3 */}
-                    <div className={`flex items-center gap-2 mb-1.5 transition-all duration-300 ${terminalLines >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
-                      <span className="text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
-                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Expertise:</span>
-                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Online Business Solutions</span>
-                      <span className="text-[10px] ml-auto font-black" style={{ color: '#34d399' }}>✓</span>
-                    </div>
-
-                    {/* Line 4 */}
-                    <div className={`flex items-center gap-2 mb-3 transition-all duration-300 ${terminalLines >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
-                      <span className="text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
-                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Mission:</span>
-                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Scaling Brands Online</span>
-                      <span className="text-[10px] ml-auto font-black" style={{ color: '#34d399' }}>✓</span>
-                    </div>
-
-                    {/* Blinking cursor */}
-                    <div className={`flex items-center gap-1 transition-opacity duration-300 ${terminalLines >= 4 ? 'opacity-100' : 'opacity-0'}`}>
-                      <span className="text-[10px] font-bold" style={{ color: '#60a5fa' }}>$</span>
-                      <span className="w-2 h-3.5 rounded-sm animate-pulse" style={{ backgroundColor: '#60a5fa', animationDuration: '0.8s' }} />
-                    </div>
-
                   </div>
                 </div>
               </div>
