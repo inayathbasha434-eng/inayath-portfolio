@@ -225,32 +225,32 @@ export default function Hero() {
                     {/* Line 1 */}
                     <div className={`flex items-center gap-2 mb-1.5 transition-all duration-300 ${terminalLines >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
                       <span className="text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
-                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Role:</span>
-                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Shopify Expert</span>
+                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Identity:</span>
+                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Digital Entrepreneur</span>
                       <span className="text-[10px] ml-auto font-black" style={{ color: '#34d399' }}>✓</span>
                     </div>
 
                     {/* Line 2 */}
                     <div className={`flex items-center gap-2 mb-1.5 transition-all duration-300 ${terminalLines >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
                       <span className="text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
-                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Stack:</span>
-                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Web Developer</span>
+                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Service:</span>
+                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Digital Service Provider</span>
                       <span className="text-[10px] ml-auto font-black" style={{ color: '#34d399' }}>✓</span>
                     </div>
 
                     {/* Line 3 */}
                     <div className={`flex items-center gap-2 mb-1.5 transition-all duration-300 ${terminalLines >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
                       <span className="text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
-                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Skill:</span>
-                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Designer</span>
+                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Expertise:</span>
+                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Online Business Solutions</span>
                       <span className="text-[10px] ml-auto font-black" style={{ color: '#34d399' }}>✓</span>
                     </div>
 
                     {/* Line 4 */}
                     <div className={`flex items-center gap-2 mb-3 transition-all duration-300 ${terminalLines >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
                       <span className="text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
-                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Mode:</span>
-                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Digital Creative</span>
+                      <span className="text-[10px] sm:text-[11px] font-bold" style={{ color: '#93c5fd' }}>Mission:</span>
+                      <span className="text-[10px] sm:text-[11px] text-white font-bold">Scaling Brands Online</span>
                       <span className="text-[10px] ml-auto font-black" style={{ color: '#34d399' }}>✓</span>
                     </div>
 
