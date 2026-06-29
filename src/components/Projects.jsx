@@ -125,6 +125,76 @@ export default function Projects() {
   const [expandedMobileProject, setExpandedMobileProject] = useState(null)
   const timerRef = useRef(null)
 
+  const [isMobile, setIsMobile] = useState(false)
+  const touchStartX = useRef(0)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024)
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = (e) => {
+    const touchEndX = e.changedTouches[0].clientX
+    const diff = touchStartX.current - touchEndX
+    if (diff > 50) {
+      setCurrentIndex((prev) => (prev + 1) % 3)
+    } else if (diff < -50) {
+      setCurrentIndex((prev) => (prev - 1 + 3) % 3)
+    }
+  }
+
+  const getCardStyles = (index) => {
+    let offset = index - currentIndex
+    if (offset < -1) offset += 3
+    if (offset > 1) offset -= 3
+
+    const isActive = offset === 0
+    const isLeft = offset === -1
+    const isRight = offset === 1
+
+    let zIndex = 10
+    let scale = 0.8
+    let opacity = 0
+    let rotateY = 0
+    let translateX = '0px'
+
+    if (isActive) {
+      zIndex = 30
+      scale = 1
+      opacity = 1
+      rotateY = 0
+      translateX = '0%'
+    } else if (isLeft) {
+      zIndex = 20
+      scale = 0.82
+      opacity = 0.65
+      rotateY = 22
+      translateX = '-52%'
+    } else if (isRight) {
+      zIndex = 20
+      scale = 0.82
+      opacity = 0.65
+      rotateY = -22
+      translateX = '52%'
+    }
+
+    return {
+      zIndex,
+      opacity,
+      transform: `translateX(calc(-50% + ${translateX})) scale(${scale}) rotateY(${rotateY}deg)`,
+      pointerEvents: isActive ? 'auto' : 'none',
+      transition: 'all 0.5s cubic-bezier(0.25, 1, 0.5, 1)',
+    }
+  }
+
   // Trigger state transition when changing project
   const changeProject = (index) => {
     setFadeState('opacity-0 translate-y-1')
@@ -188,6 +258,14 @@ export default function Projects() {
           -ms-overflow-style: none;  /* IE and Edge */
           scrollbar-width: none;  /* Firefox */
         }
+        .coverflow-perspective {
+          perspective: 1200px;
+          transform-style: preserve-3d;
+        }
+        .coverflow-card {
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
       `}</style>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
@@ -207,92 +285,189 @@ export default function Projects() {
         {/* UNIFIED RESPONSIVE SWIPE/CARD VIEW */}
         {/* ========================================================== */}
         <div className="w-full overflow-hidden">
-          {/* Swiper / Grid track */}
-          <div className="flex lg:flex lg:flex-wrap lg:justify-center overflow-x-auto lg:overflow-visible snap-x lg:snap-none snap-mandatory no-scrollbar gap-5 lg:gap-6 pb-8 pt-6 px-4 lg:px-6 max-w-6xl mx-auto">
-            {PROJECTS.slice(0, 3).map((proj, index) => {
-              return (
-              <div 
-                key={proj.title}
-                className="min-w-[88vw] sm:min-w-[70vw] lg:min-w-0 lg:w-[calc((100%-3rem)/3)] snap-center lg:snap-align-none bg-[#111623] border border-white/5 rounded-2xl flex flex-col relative transition-transform duration-300 hover:-translate-y-2 mt-4"
-              >
-                {/* Numbered Badge */}
-                <div className={`absolute -top-3.5 -right-2 w-9 h-9 rounded-full bg-gradient-to-br ${proj.accent} flex items-center justify-center text-white font-black text-sm shadow-[0_4px_15px_rgba(0,0,0,0.5)] z-30`}>
-                  {parseInt(proj.number)}
-                </div>
+          {isMobile ? (
+            /* Mobile 3D Coverflow View */
+            <div 
+              className="relative w-full h-[470px] coverflow-perspective flex items-center justify-center overflow-hidden py-4 select-none"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              {PROJECTS.slice(0, 3).map((proj, index) => {
+                const cardStyle = getCardStyles(index);
+                return (
+                  <div
+                    key={proj.title}
+                    style={cardStyle}
+                    className="absolute top-0 left-1/2 w-[82vw] sm:w-[55vw] h-full bg-[#111623] border border-white/5 rounded-2xl flex flex-col coverflow-card shadow-2xl shadow-black/50"
+                  >
+                    {/* Numbered Badge */}
+                    <div className={`absolute -top-3.5 -right-2 w-9 h-9 rounded-full bg-gradient-to-br ${proj.accent} flex items-center justify-center text-white font-black text-sm shadow-[0_4px_15px_rgba(0,0,0,0.5)] z-30`}>
+                      {parseInt(proj.number)}
+                    </div>
 
-                {/* Top Image Area */}
-                <div className="relative aspect-[16/10] w-full rounded-t-2xl overflow-hidden bg-[#0a0d14]">
-                  {proj.beforeImage && proj.afterImage ? (
-                    <div className="relative w-full h-full select-none">
-                      <div className="absolute inset-0">
-                        <img src={proj.beforeImage} alt="Before AI" loading="lazy" decoding="async" className="w-full h-full object-cover" />
-                      </div>
-                      <div className="absolute inset-0" style={{ clipPath: `polygon(0 0, ${mobileSliderPositions[index] ?? 50}% 0, ${mobileSliderPositions[index] ?? 50}% 100%, 0 100%)` }}>
-                        <img src={proj.afterImage} alt="After AI" loading="lazy" decoding="async" className="w-full h-full object-cover" />
-                      </div>
-                      <div className="absolute inset-y-0 w-[3px] bg-white cursor-ew-resize flex items-center justify-center pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.5)]" style={{ left: `${mobileSliderPositions[index] ?? 50}%` }}>
-                        <div className="w-6 h-6 bg-slate-900 rounded-full shadow-lg border-2 border-white flex items-center justify-center -ml-[12px] pointer-events-auto">
-                          <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
-                          </svg>
+                    {/* Top Image Area */}
+                    <div className="relative aspect-[16/10] w-full rounded-t-2xl overflow-hidden bg-[#0a0d14]">
+                      {proj.beforeImage && proj.afterImage ? (
+                        <div className="relative w-full h-full select-none">
+                          <div className="absolute inset-0">
+                            <img src={proj.beforeImage} alt="Before AI" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                          </div>
+                          <div className="absolute inset-0" style={{ clipPath: `polygon(0 0, ${mobileSliderPositions[index] ?? 50}% 0, ${mobileSliderPositions[index] ?? 50}% 100%, 0 100%)` }}>
+                            <img src={proj.afterImage} alt="After AI" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                          </div>
+                          <div className="absolute inset-y-0 w-[3px] bg-white cursor-ew-resize flex items-center justify-center pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.5)]" style={{ left: `${mobileSliderPositions[index] ?? 50}%` }}>
+                            <div className="w-6 h-6 bg-slate-900 rounded-full shadow-lg border-2 border-white flex items-center justify-center -ml-[12px] pointer-events-auto">
+                              <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
+                              </svg>
+                            </div>
+                          </div>
+                          <input type="range" min="0" max="100" value={mobileSliderPositions[index] ?? 50} onChange={(e) => setMobileSliderPositions(prev => ({ ...prev, [index]: Number(e.target.value) }))} className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20" />
                         </div>
+                      ) : (
+                        <div className="absolute inset-0 w-full h-full">
+                          <img src={proj.image} alt={`${proj.title} Preview`} loading="lazy" decoding="async" className="block w-full h-full object-cover object-center" />
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Bottom Content Area */}
+                    <div className="p-5 flex flex-col flex-grow">
+                      <h3 className="text-xl font-black text-white mb-1.5">{proj.title}</h3>
+                      <p className="text-[13px] text-slate-400 mb-4 leading-relaxed flex-grow">
+                        {proj.description}
+                      </p>
+
+                      {/* Tag pills */}
+                      <div className="flex flex-wrap gap-1.5 mb-5">
+                        {proj.tags.slice(0, 3).map((tag, i) => (
+                          <span key={tag} className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${proj.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}>
+                            {tag}
+                          </span>
+                        ))}
                       </div>
-                      <input type="range" min="0" max="100" value={mobileSliderPositions[index] ?? 50} onChange={(e) => setMobileSliderPositions(prev => ({ ...prev, [index]: Number(e.target.value) }))} className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20" />
-                    </div>
-                  ) : (
-                    <div className="absolute inset-0 w-full h-full">
-                      <img src={proj.image} alt={`${proj.title} Preview`} loading="lazy" decoding="async" className="block w-full h-full object-cover object-center" />
-                    </div>
-                  )}
-                </div>
 
-                {/* Bottom Content Area */}
-                <div className="p-5 flex flex-col flex-grow">
-                  <h3 className="text-xl font-black text-white mb-1.5">{proj.title}</h3>
-                  <p className="text-[13px] text-slate-400 mb-4 leading-relaxed flex-grow">
-                    {proj.description}
-                  </p>
-
-                  {/* Tag pills */}
-                  <div className="flex flex-wrap gap-1.5 mb-5">
-                    {proj.tags.slice(0, 3).map((tag, i) => (
-                      <span key={tag} className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${proj.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}>
-                        {tag}
-                      </span>
-                    ))}
+                      {/* Action Buttons */}
+                      <div className="flex items-center gap-3 mt-auto">
+                        <Link
+                          to={proj.detailPage}
+                          className="flex-1 min-w-0 py-2.5 px-3 rounded-xl border border-white/10 hover:bg-white/5 transition-colors text-white font-bold text-xs flex items-center justify-center gap-1.5 group whitespace-nowrap"
+                        >
+                          Overview &rarr;
+                        </Link>
+                        
+                        <a
+                          href={proj.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`flex-1 min-w-0 py-2.5 px-3 rounded-xl bg-gradient-to-r ${proj.accent} text-white font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 hover:-translate-y-0.5 transition-all whitespace-nowrap`}
+                        >
+                          Live
+                          <ExternalLink size={13} className="opacity-90 shrink-0" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+            /* Desktop Grid View */
+            <div className="flex lg:flex lg:flex-wrap lg:justify-center overflow-x-auto lg:overflow-visible snap-x lg:snap-none snap-mandatory no-scrollbar gap-5 lg:gap-6 pb-8 pt-6 px-4 lg:px-6 max-w-6xl mx-auto">
+              {PROJECTS.slice(0, 3).map((proj, index) => {
+                return (
+                <div 
+                  key={proj.title}
+                  className="min-w-[88vw] sm:min-w-[70vw] lg:min-w-0 lg:w-[calc((100%-3rem)/3)] snap-center lg:snap-align-none bg-[#111623] border border-white/5 rounded-2xl flex flex-col relative transition-transform duration-300 hover:-translate-y-2 mt-4"
+                >
+                  {/* Numbered Badge */}
+                  <div className={`absolute -top-3.5 -right-2 w-9 h-9 rounded-full bg-gradient-to-br ${proj.accent} flex items-center justify-center text-white font-black text-sm shadow-[0_4px_15px_rgba(0,0,0,0.5)] z-30`}>
+                    {parseInt(proj.number)}
                   </div>
 
-                  {/* Action Buttons — always side by side */}
-                  <div className="flex items-center gap-3 mt-auto">
-                    <Link
-                      to={proj.detailPage}
-                      className="flex-1 min-w-0 py-2.5 px-3 rounded-xl border border-white/10 hover:bg-white/5 transition-colors text-white font-bold text-xs flex items-center justify-center gap-1.5 group whitespace-nowrap"
-                    >
-                      Project Overview
-                      <span className="group-hover:translate-x-1 transition-transform text-sm leading-none">&rarr;</span>
-                    </Link>
-                    
-                    <a
-                      href={proj.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex-1 min-w-0 py-2.5 px-3 rounded-xl bg-gradient-to-r ${proj.accent} text-white font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 hover:-translate-y-0.5 transition-all whitespace-nowrap`}
-                    >
-                      Live Project
-                      <ExternalLink size={13} className="opacity-90 shrink-0" />
-                    </a>
+                  {/* Top Image Area */}
+                  <div className="relative aspect-[16/10] w-full rounded-t-2xl overflow-hidden bg-[#0a0d14]">
+                    {proj.beforeImage && proj.afterImage ? (
+                      <div className="relative w-full h-full select-none">
+                        <div className="absolute inset-0">
+                          <img src={proj.beforeImage} alt="Before AI" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                        </div>
+                        <div className="absolute inset-0" style={{ clipPath: `polygon(0 0, ${mobileSliderPositions[index] ?? 50}% 0, ${mobileSliderPositions[index] ?? 50}% 100%, 0 100%)` }}>
+                          <img src={proj.afterImage} alt="After AI" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                        </div>
+                        <div className="absolute inset-y-0 w-[3px] bg-white cursor-ew-resize flex items-center justify-center pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.5)]" style={{ left: `${mobileSliderPositions[index] ?? 50}%` }}>
+                          <div className="w-6 h-6 bg-slate-900 rounded-full shadow-lg border-2 border-white flex items-center justify-center -ml-[12px] pointer-events-auto">
+                            <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M8 9l-4 4 4 4m8-8l4 4-4 4" />
+                            </svg>
+                          </div>
+                        </div>
+                        <input type="range" min="0" max="100" value={mobileSliderPositions[index] ?? 50} onChange={(e) => setMobileSliderPositions(prev => ({ ...prev, [index]: Number(e.target.value) }))} className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20" />
+                      </div>
+                    ) : (
+                      <div className="absolute inset-0 w-full h-full">
+                        <img src={proj.image} alt={`${proj.title} Preview`} loading="lazy" decoding="async" className="block w-full h-full object-cover object-center" />
+                      </div>
+                    )}
                   </div>
+
+                  {/* Bottom Content Area */}
+                  <div className="p-5 flex flex-col flex-grow">
+                    <h3 className="text-xl font-black text-white mb-1.5">{proj.title}</h3>
+                    <p className="text-[13px] text-slate-400 mb-4 leading-relaxed flex-grow">
+                      {proj.description}
+                    </p>
+
+                    {/* Tag pills */}
+                    <div className="flex flex-wrap gap-1.5 mb-5">
+                      {proj.tags.slice(0, 3).map((tag, i) => (
+                        <span key={tag} className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${proj.tagColors[i] || 'bg-slate-500/10 text-slate-400 border-slate-500/20'}`}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Action Buttons — always side by side */}
+                    <div className="flex items-center gap-3 mt-auto">
+                      <Link
+                        to={proj.detailPage}
+                        className="flex-1 min-w-0 py-2.5 px-3 rounded-xl border border-white/10 hover:bg-white/5 transition-colors text-white font-bold text-xs flex items-center justify-center gap-1.5 group whitespace-nowrap"
+                      >
+                        Project Overview
+                        <span className="group-hover:translate-x-1 transition-transform text-sm leading-none">&rarr;</span>
+                      </Link>
+                      
+                      <a
+                        href={proj.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex-1 min-w-0 py-2.5 px-3 rounded-xl bg-gradient-to-r ${proj.accent} text-white font-bold text-xs flex items-center justify-center gap-1.5 active:scale-95 hover:-translate-y-0.5 transition-all whitespace-nowrap`}
+                      >
+                        Live Project
+                        <ExternalLink size={13} className="opacity-90 shrink-0" />
+                      </a>
+                    </div>
+                  </div>
+
                 </div>
+                );
+              })}
+            </div>
+          )}
 
-              </div>
-            );
-            })}
-          </div>
-
-          {/* Bottom global touch indicator */}
-          <div className="flex lg:hidden items-center justify-center gap-2 mt-2 opacity-50 pb-4">
-            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Scroll horizontally for more</span>
-          </div>
+          {/* Coverflow Indicators for Mobile */}
+          {isMobile && (
+            <div className="flex items-center justify-center gap-2 mt-4 pb-4">
+              {PROJECTS.slice(0, 3).map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-blue-500 scale-125 shadow-[0_0_8px_rgba(59,130,246,0.8)]' : 'bg-white/20 hover:bg-white/45'}`}
+                  aria-label={`Go to project slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          )}
 
           {/* View More Projects Button */}
           <div className="flex justify-center mt-6">
