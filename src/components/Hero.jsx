@@ -67,7 +67,7 @@ export default function Hero() {
 
             {/* Greeting */}
             <div className={`text-slate-300 text-lg md:text-xl font-medium mb-1 transition-all duration-700 ease-out ${revealStep >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              Hello, World! 👋 I'm
+              Hello, World! I'm
             </div>
 
             {/* Name */}
