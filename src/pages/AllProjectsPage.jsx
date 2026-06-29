@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ArrowLeft, ExternalLink } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -12,6 +12,26 @@ export default function AllProjectsPage() {
   }, [])
 
   const [mobileSliderPositions, setMobileSliderPositions] = useState({})
+  const [activeFilter, setActiveFilter] = useState('All')
+
+  const FILTERS = ['All', 'React & Node.js', 'Shopify & WordPress', 'Generative AI & ML']
+
+  const filteredProjects = PROJECTS.filter(proj => {
+    if (activeFilter === 'All') return true
+    const tagsLower = proj.tags.map(t => t.toLowerCase())
+    const platformLower = proj.platform.toLowerCase()
+    
+    if (activeFilter === 'React & Node.js') {
+      return tagsLower.includes('react') || tagsLower.includes('react.js') || tagsLower.includes('node.js') || platformLower.includes('react')
+    }
+    if (activeFilter === 'Shopify & WordPress') {
+      return tagsLower.includes('wordpress') || tagsLower.includes('shopify') || platformLower.includes('wordpress') || platformLower.includes('shopify')
+    }
+    if (activeFilter === 'Generative AI & ML') {
+      return tagsLower.includes('generative ai') || tagsLower.includes('machine learning') || tagsLower.includes('stable diffusion') || tagsLower.includes('midjourney')
+    }
+    return true
+  })
 
   const pageSchema = {
     "@context": "https://schema.org",
@@ -25,7 +45,11 @@ export default function AllProjectsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0f1e] text-slate-100 selection:bg-blue-500/30 selection:text-white">
+    <div className="min-h-screen bg-[#0a0f1e] text-slate-100 selection:bg-blue-500/30 selection:text-white relative overflow-hidden">
+      {/* Decorative background glow orbs */}
+      <div className="absolute top-1/4 -left-48 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-2/3 -right-48 w-96 h-96 bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none" />
+
       <SEO 
         title="Projects Gallery | Web Developer & Shopify Expert"
         description="Browse all frontend, backend, Shopify, WordPress, and Machine Learning projects delivered by Inayath Basha."
@@ -34,7 +58,7 @@ export default function AllProjectsPage() {
       />
       <Navbar />
       
-      <main className="pt-24 lg:pt-32 pb-20">
+      <main className="pt-24 lg:pt-32 pb-20 relative z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <Link to="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-white mb-8 transition-colors text-sm font-semibold">
@@ -42,8 +66,11 @@ export default function AllProjectsPage() {
           </Link>
 
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest">Gallery</span>
+          <div className="text-center mb-10">
+            <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest flex items-center justify-center gap-1.5">
+              <Sparkles size={14} className="text-blue-400 animate-pulse" />
+              Gallery Catalog
+            </span>
             <h1 className="text-4xl md:text-5xl font-black text-white mt-2 mb-4">
               All <span className="text-gradient">Projects</span>
             </h1>
@@ -52,13 +79,33 @@ export default function AllProjectsPage() {
             </p>
           </div>
 
+          {/* Filters Bar */}
+          <div className="flex flex-wrap justify-center gap-2 mb-12 max-w-2xl mx-auto p-1.5 bg-[#111623]/60 border border-white/5 rounded-2xl backdrop-blur-md">
+            {FILTERS.map((filter) => {
+              const isActive = activeFilter === filter
+              return (
+                <button
+                  key={filter}
+                  onClick={() => setActiveFilter(filter)}
+                  className={`px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 ${
+                    isActive
+                      ? 'bg-gradient-to-r from-blue-500 to-indigo-600 text-white shadow-[0_4px_15px_rgba(59,130,246,0.25)]'
+                      : 'text-slate-400 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  {filter}
+                </button>
+              )
+            })}
+          </div>
+
           {/* Grid Layout of All Projects */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {PROJECTS.map((proj, index) => {
+          <div key={activeFilter} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 animate-fade-in">
+            {filteredProjects.map((proj, index) => {
               return (
                 <div 
                   key={proj.title}
-                  className="bg-[#111623] border border-white/5 rounded-2xl flex flex-col relative transition-transform duration-300 hover:-translate-y-2"
+                  className="bg-[#111623] border border-white/5 rounded-2xl flex flex-col relative transition-all duration-300 hover:-translate-y-2 hover:border-white/10 group shadow-lg hover:shadow-2xl hover:shadow-blue-500/5"
                 >
                   {/* Numbered Badge */}
                   <div className={`absolute -top-3.5 -right-2 w-9 h-9 rounded-full bg-gradient-to-br ${proj.accent} flex items-center justify-center text-white font-black text-sm shadow-[0_4px_15px_rgba(0,0,0,0.5)] z-30`}>
@@ -86,7 +133,7 @@ export default function AllProjectsPage() {
                       </div>
                     ) : (
                       <div className="absolute inset-0 w-full h-full">
-                        <img src={proj.image} alt={`${proj.title} Preview`} loading="lazy" decoding="async" className="block w-full h-full object-cover object-center" />
+                        <img src={proj.image} alt={`${proj.title} Preview`} loading="lazy" decoding="async" className="block w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105" />
                       </div>
                     )}
                   </div>
@@ -129,9 +176,16 @@ export default function AllProjectsPage() {
                     </div>
                   </div>
                 </div>
-              );
+              )
             })}
           </div>
+
+          {/* Empty State */}
+          {filteredProjects.length === 0 && (
+            <div className="text-center py-20 bg-[#111623]/20 border border-white/5 rounded-3xl backdrop-blur-sm">
+              <p className="text-slate-400 text-base font-semibold">No projects found in this category.</p>
+            </div>
+          )}
 
         </div>
       </main>
