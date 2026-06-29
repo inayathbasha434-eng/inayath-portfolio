@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { ArrowLeft, ExternalLink } from 'lucide-react'
+import { ArrowLeft, ExternalLink, Quote } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -114,13 +114,20 @@ export default function AIProjectPage() {
           </div>
 
           {/* Impact Banner */}
-          <div className="rounded-3xl bg-gradient-to-br from-purple-500 to-pink-600 p-1 mb-20">
-            <div className="bg-[#0d1426]/95 backdrop-blur-xl rounded-[23px] p-8 md:p-12">
-              <h2 className="text-xs font-bold text-purple-400 mb-4 uppercase tracking-widest">The Impact</h2>
-              <p className="text-xl md:text-2xl font-medium text-white leading-relaxed">
-                "Reduced commercial photo production costs by 80% while delivering studio-grade high-res marketing graphics, accelerating time-to-market dramatically."
-              </p>
-            </div>
+          <div className="relative rounded-3xl bg-gradient-to-br from-[#111623]/80 to-[#0a0f1e]/80 border border-purple-500/20 p-6 sm:p-8 md:p-12 mb-16 overflow-hidden backdrop-blur-md shadow-2xl shadow-black/40 group hover:border-purple-500/30 transition-all duration-300">
+            {/* Ambient Background Glow */}
+            <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-purple-500/5 blur-3xl pointer-events-none" />
+            
+            {/* Floating Quote Icon */}
+            <Quote className="absolute top-6 right-8 text-purple-500/5 w-20 h-20 sm:w-24 sm:h-24 rotate-180 pointer-events-none" />
+            
+            <h2 className="text-xs font-bold text-purple-400 mb-4 uppercase tracking-widest flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+              The Impact
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl font-medium text-slate-100 leading-relaxed italic relative z-10">
+              "Reduced commercial photo production costs by 80% while delivering studio-grade high-res marketing graphics, accelerating time-to-market dramatically."
+            </p>
           </div>
 
           {/* Bottom CTA */}
@@ -129,9 +136,10 @@ export default function AIProjectPage() {
               href="https://tintandshade.in/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold rounded-xl hover:scale-105 active:scale-95 transition-all shadow-[0_0_30px_rgba(168,85,247,0.3)] text-lg"
+              className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-bold rounded-xl hover:scale-[1.02] active:scale-95 transition-all shadow-[0_4px_20px_rgba(168,85,247,0.25)] hover:shadow-[0_4px_30px_rgba(168,85,247,0.4)] text-sm sm:text-base group"
             >
-              Visit Live Project <ExternalLink size={20} />
+              Visit Live Project 
+              <ExternalLink size={16} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </a>
           </div>
 
