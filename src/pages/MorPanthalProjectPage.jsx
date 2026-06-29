@@ -81,22 +81,27 @@ export default function MorPanthalProjectPage() {
           </div>
 
           {/* Project Details Grid */}
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 mb-20">
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center text-red-400">1</span>
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-20">
+            {/* Card 1: The Challenge */}
+            <div className="bg-[#111623]/40 border border-red-500/10 hover:border-red-500/20 rounded-2xl p-6 sm:p-8 backdrop-blur-sm relative overflow-hidden transition-all duration-300">
+              <div className="absolute -top-10 -left-10 w-24 h-24 rounded-full bg-red-500/5 blur-2xl pointer-events-none" />
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-full bg-red-500/15 text-red-400 flex items-center justify-center font-bold text-sm shrink-0 border border-red-500/20">1</span>
                 The Challenge
               </h2>
-              <p className="text-slate-400 leading-relaxed text-lg">
+              <p className="text-slate-450 leading-relaxed text-sm sm:text-base">
                 Client lacked a professional online presence to showcase food and beverage offerings and process digital payments. They needed a fast, reliable, and aesthetically pleasing storefront that reflected their traditional brand values while offering modern e-commerce capabilities.
               </p>
             </div>
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-400">2</span>
+
+            {/* Card 2: The Solution */}
+            <div className="bg-[#111623]/40 border border-blue-500/10 hover:border-blue-500/20 rounded-2xl p-6 sm:p-8 backdrop-blur-sm relative overflow-hidden transition-all duration-300">
+              <div className="absolute -top-10 -left-10 w-24 h-24 rounded-full bg-blue-500/5 blur-2xl pointer-events-none" />
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-full bg-blue-500/15 text-blue-400 flex items-center justify-center font-bold text-sm shrink-0 border border-blue-500/20">2</span>
                 The Solution
               </h2>
-              <p className="text-slate-400 leading-relaxed text-lg">
+              <p className="text-slate-450 leading-relaxed text-sm sm:text-base">
                 Built a mobile-first WordPress storefront, integrating a custom fast-loading yellow visual identity. We utilized Razorpay for seamless payment processing and optimized the entire shopping flow for maximum conversions on mobile devices.
               </p>
             </div>

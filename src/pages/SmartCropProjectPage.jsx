@@ -81,22 +81,27 @@ export default function SmartCropProjectPage() {
           </div>
 
           {/* Project Details Grid */}
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 mb-20">
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center text-red-400">1</span>
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-20">
+            {/* Card 1: The Challenge */}
+            <div className="bg-[#111623]/40 border border-red-500/10 hover:border-red-500/20 rounded-2xl p-6 sm:p-8 backdrop-blur-sm relative overflow-hidden transition-all duration-300">
+              <div className="absolute -top-10 -left-10 w-24 h-24 rounded-full bg-red-500/5 blur-2xl pointer-events-none" />
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-full bg-red-500/15 text-red-400 flex items-center justify-center font-bold text-sm shrink-0 border border-red-500/20">1</span>
                 The Challenge
               </h2>
-              <p className="text-slate-400 leading-relaxed text-lg">
+              <p className="text-slate-455 leading-relaxed text-sm sm:text-base">
                 Students and researchers needed an easy, interactive way to test soil metrics (Nitrogen, Phosphorus, Potassium, pH, etc.) and run predictions. The goal was to build a full-stack ML tool with an intuitive frontend and a fast backend capable of parsing PDF/CSV data and running classification algorithms.
               </p>
             </div>
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400">2</span>
+
+            {/* Card 2: The Solution */}
+            <div className="bg-[#111623]/40 border border-emerald-500/10 hover:border-emerald-500/20 rounded-2xl p-6 sm:p-8 backdrop-blur-sm relative overflow-hidden transition-all duration-300">
+              <div className="absolute -top-10 -left-10 w-24 h-24 rounded-full bg-emerald-500/5 blur-2xl pointer-events-none" />
+              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-3">
+                <span className="w-8 h-8 rounded-full bg-emerald-500/15 text-emerald-400 flex items-center justify-center font-bold text-sm shrink-0 border border-emerald-500/20">2</span>
                 The Solution
               </h2>
-              <p className="text-slate-400 leading-relaxed text-lg">
+              <p className="text-slate-455 leading-relaxed text-sm sm:text-base">
                 Engineered a complete React frontend stacked with interactive metric sliders and drag-and-drop report uploads. Built a Python + FastAPI backend to host the machine learning models (trained on agritech datasets) to return real-time crop suggestions based on input characteristics.
               </p>
             </div>
