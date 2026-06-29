@@ -221,7 +221,7 @@ export default function Projects() {
                 </div>
 
                 {/* Top Image Area */}
-                <div className="relative h-[200px] w-full rounded-t-2xl overflow-hidden bg-[#0a0d14]">
+                <div className="relative aspect-[16/10] w-full rounded-t-2xl overflow-hidden bg-[#0a0d14]">
                   {proj.beforeImage && proj.afterImage ? (
                     <div className="relative w-full h-full select-none">
                       <div className="absolute inset-0">
