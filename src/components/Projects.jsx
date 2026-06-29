@@ -67,7 +67,7 @@ export const PROJECTS = [
     link: 'https://tintandshade.in/',
     detailPage: '/projects/ai-image-generation',
     image: '/tint_shade_after.jpg',
-    beforeImage: '/tint_shade_before.jpg',
+    beforeImage: '/tint_shade_before.png',
     afterImage: '/tint_shade_after.jpg',
     problem: 'Commercial advertising photography setups usually require expensive props, studios, lighting, and cameras.',
     solution: 'Built a generative AI pipeline utilizing Stable Diffusion, Midjourney, and Photoshop to convert raw capture mockups.',

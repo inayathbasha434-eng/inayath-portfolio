@@ -43,7 +43,7 @@ export default function AIProjectPage() {
             
             <div className="w-full md:w-1/2 relative h-[300px] md:h-[500px]">
               <img 
-                src="/tint_shade_before.jpg" 
+                src="/tint_shade_before.png" 
                 alt="Before AI" 
                 className="w-full h-full object-cover"
               />
