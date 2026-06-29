@@ -116,11 +116,9 @@ export default function AllProjectsPage() {
                   <div className="relative aspect-[16/10] w-full rounded-t-2xl overflow-hidden bg-[#0a0d14]">
                     {proj.beforeImage && proj.afterImage ? (
                       <div className="relative w-full h-full select-none">
-                        <div className="absolute inset-0">
-                          <img src={proj.beforeImage} alt="Before AI" loading="lazy" decoding="async" className="w-full h-full object-cover" />
-                        </div>
-                        <div className="absolute inset-0" style={{ clipPath: `polygon(0 0, ${mobileSliderPositions[index] ?? 50}% 0, ${mobileSliderPositions[index] ?? 50}% 100%, 0 100%)` }}>
-                          <img src={proj.afterImage} alt="After AI" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                        <img src={proj.beforeImage} alt="Before AI" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
+                        <div className="absolute inset-0 animate-fade-in" style={{ clipPath: `polygon(0 0, ${mobileSliderPositions[index] ?? 50}% 0, ${mobileSliderPositions[index] ?? 50}% 100%, 0 100%)` }}>
+                          <img src={proj.afterImage} alt="After AI" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" />
                         </div>
                         <div className="absolute inset-y-0 w-[3px] bg-white cursor-ew-resize flex items-center justify-center pointer-events-none shadow-[0_0_10px_rgba(0,0,0,0.5)]" style={{ left: `${mobileSliderPositions[index] ?? 50}%` }}>
                           <div className="w-6 h-6 bg-slate-900 rounded-full shadow-lg border-2 border-white flex items-center justify-center -ml-[12px] pointer-events-auto">

@@ -277,49 +277,56 @@ export default function Services() {
                   {/* ══════════════════════════════════════════
                       MOBILE LAYOUT (hidden on md+)
                   ══════════════════════════════════════════ */}
-                  <div className="md:hidden flex flex-col h-[380px] relative overflow-hidden">
+                  <div className="md:hidden flex flex-col h-[400px] relative overflow-hidden">
 
                     {/* Full background image */}
                     <div
                       className="absolute inset-0 bg-cover bg-center z-0"
                       style={{ backgroundImage: `url(${item.image})` }}
                     />
-                    {/* Gradient — lighter now that text is removed */}
-                    <div className="absolute inset-0 z-0" style={{
-                      background: 'linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.7) 100%)'
-                    }} />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 z-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/40 to-black/20" />
 
                     {/* Top bar — logo + badge only */}
                     <div className="relative z-10 flex items-center justify-between px-4 pt-4">
                       {renderLogo(item)}
-                      <div className="flex items-center gap-1.5 bg-white/15 backdrop-blur-sm border border-white/20 rounded-full px-3 py-1">
+                      <div className="flex items-center gap-1.5 bg-white/10 backdrop-blur border border-white/10 rounded-full px-2.5 py-0.5 text-[9px] font-bold">
                         <span className={`w-1.5 h-1.5 rounded-full ${item.badgeDot}`} />
-                        <span className="text-white text-[10px] font-bold">{item.badge}</span>
+                        <span className="text-slate-200">{item.badge}</span>
                       </div>
                     </div>
 
                     {/* Spacer to push content down */}
                     <div className="flex-1" />
 
-                    {/* Bottom content block - button only */}
-                    <div className="relative z-10 px-5 pb-6 w-full flex justify-center">
-                      {/* Single CTA button */}
+                    {/* Bottom content block - Glass Card */}
+                    <div className="relative z-10 p-4 mx-3 mb-3 bg-[#0d1426]/90 backdrop-blur-md border border-white/5 rounded-2xl shadow-xl flex flex-col gap-3">
+                      <div>
+                        <h4 className="text-sm font-extrabold tracking-tight text-white">
+                          {item.heading}
+                        </h4>
+                        <p className="text-[10.5px] text-slate-400 mt-1 leading-relaxed">
+                          {item.subheading}
+                        </p>
+                      </div>
+                      
+                      {/* CTA Button */}
                       {item.pageRoute ? (
                         <button
                           onClick={() => goToPage(item)}
-                          className="w-auto px-6 py-2.5 rounded-full font-extrabold text-[12px] flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 shadow-xl shadow-black/40 border border-white/10"
+                          className="w-full py-2.5 rounded-xl font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-md border border-white/5"
                           style={{ backgroundColor: item.accentColor, color: '#fff' }}
                         >
                           See Full Details
-                          <ArrowRight size={14} />
+                          <ArrowRight size={12} />
                         </button>
                       ) : (
                         <button
-                          className="w-auto px-6 py-2.5 rounded-full font-extrabold text-[12px] flex items-center justify-center gap-2 shadow-xl shadow-black/40 border border-white/10"
+                          className="w-full py-2.5 rounded-xl font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-md border border-white/5"
                           style={{ backgroundColor: item.accentColor, color: '#fff' }}
                         >
                           Let's Talk
-                          <ArrowRight size={14} />
+                          <ArrowRight size={12} />
                         </button>
                       )}
                     </div>
