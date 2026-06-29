@@ -14,7 +14,8 @@ const routes = [
   { path: '/projects/mor-panthal', priority: '0.9' },
   { path: '/projects/portfolio', priority: '0.9' },
   { path: '/projects/ai-image-generation', priority: '0.9' },
-  { path: '/projects/smartcrop-ai', priority: '0.9' }
+  { path: '/projects/smartcrop-ai', priority: '0.9' },
+  { path: '/projects', priority: '0.9' }
 ];
 
 const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>

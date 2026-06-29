@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { CheckCircle, ExternalLink, Play, Pause } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-const PROJECTS = [
+export const PROJECTS = [
   {
     number: '01',
     title: 'Mor Panthal',
@@ -209,7 +209,7 @@ export default function Projects() {
         <div className="w-full overflow-hidden">
           {/* Swiper / Grid track */}
           <div className="flex lg:flex lg:flex-wrap lg:justify-center overflow-x-auto lg:overflow-visible snap-x lg:snap-none snap-mandatory no-scrollbar gap-5 lg:gap-6 pb-8 pt-6 px-4 lg:px-6 max-w-6xl mx-auto">
-            {PROJECTS.map((proj, index) => {
+            {PROJECTS.slice(0, 3).map((proj, index) => {
               return (
               <div 
                 key={proj.title}
@@ -292,6 +292,17 @@ export default function Projects() {
           {/* Bottom global touch indicator */}
           <div className="flex lg:hidden items-center justify-center gap-2 mt-2 opacity-50 pb-4">
             <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Scroll horizontally for more</span>
+          </div>
+
+          {/* View More Projects Button */}
+          <div className="flex justify-center mt-6">
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#111623] hover:bg-[#151c2e] text-blue-400 hover:text-white font-bold rounded-xl border border-white/5 hover:border-blue-500/30 transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(59,130,246,0.05)] text-sm group"
+            >
+              View More Projects
+              <span className="group-hover:translate-x-1 transition-transform text-sm leading-none">&rarr;</span>
+            </Link>
           </div>
         </div>
 
