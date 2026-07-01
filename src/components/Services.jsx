@@ -277,14 +277,14 @@ export default function Services() {
                 <div
                   key={item.id}
                   onClick={() => !isActive && setActiveIndex(idx)}
-                  className={`absolute w-[88vw] sm:w-[480px] md:w-[720px] md:h-auto rounded-[32px] border transition-all duration-500 ease-in-out overflow-hidden ${item.cardBg} ${isActive ? 'cursor-default pointer-events-auto' : 'cursor-pointer pointer-events-none'}`}
+                  className={`absolute w-[88vw] sm:w-[480px] md:w-[720px] md:h-auto rounded-[32px] border-0 md:border transition-all duration-500 ease-in-out overflow-hidden ${item.cardBg} ${isActive ? 'cursor-default pointer-events-auto' : 'cursor-pointer pointer-events-none'}`}
                   style={{ ...transformStyles, boxShadow: isActive ? `0 25px 60px -15px ${item.glowColor}` : 'none', perspective: '1200px' }}
                 >
 
                   {/* ══════════════════════════════════════════
                       MOBILE LAYOUT (hidden on md+)
                   ══════════════════════════════════════════ */}
-                  <div className="md:hidden flex flex-col h-[440px] relative overflow-hidden">
+                  <div className="md:hidden flex flex-col h-[370px] relative overflow-hidden">
 
                     {/* Full background image */}
                     <div
