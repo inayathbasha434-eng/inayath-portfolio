@@ -311,14 +311,14 @@ export default function Services() {
                       {item.pageRoute ? (
                         <button
                           onClick={() => goToPage(item)}
-                          className={`w-full max-w-[240px] py-3 rounded-full font-bold text-[12px] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-xl hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
+                          className={`w-[70%] max-w-[300px] py-3 rounded-full font-bold text-[12px] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-xl hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
                         >
                           See Full Details
                           <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-0.5" />
                         </button>
                       ) : (
                         <button
-                          className={`w-full max-w-[240px] py-3 rounded-full font-bold text-[12px] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-xl hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
+                          className={`w-[70%] max-w-[300px] py-3 rounded-full font-bold text-[12px] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-xl hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
                         >
                           Let's Talk
                           <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-0.5" />
