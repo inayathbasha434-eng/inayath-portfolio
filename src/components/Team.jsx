@@ -122,7 +122,7 @@ export default function Team() {
         <div className="fade-in relative max-w-3xl mx-auto">
           
           {/* Card Container */}
-          <div className="relative bg-gradient-to-br from-[#0d1426] via-[#0f1730] to-[#080d1a] border border-white/8 rounded-3xl overflow-hidden shadow-2xl">
+          <div className="relative bg-[#0d1426]/70 backdrop-blur-xl border border-white/5 rounded-3xl overflow-hidden shadow-2xl">
 
             {/* Shimmer top line */}
             <div className="absolute top-0 left-0 right-0 h-[2px] shimmer-line" />
