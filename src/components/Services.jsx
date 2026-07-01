@@ -266,6 +266,16 @@ export default function Services() {
 
               const isImageLeft = item.imagePosition === 'left'
 
+              const shadowMap = {
+                shopify: 'hover:shadow-green-500/35 shadow-green-600/10',
+                wordpress: 'hover:shadow-blue-500/35 shadow-blue-600/10',
+                ai: 'hover:shadow-pink-500/35 shadow-pink-600/10',
+                portfolio: 'hover:shadow-purple-500/35 shadow-purple-600/10',
+                business: 'hover:shadow-cyan-500/35 shadow-cyan-600/10',
+                erp: 'hover:shadow-orange-500/35 shadow-orange-600/10',
+              }
+              const shadowClass = shadowMap[item.id] || ''
+
               return (
                 <div
                   key={item.id}
@@ -309,19 +319,17 @@ export default function Services() {
                       {item.pageRoute ? (
                         <button
                           onClick={() => goToPage(item)}
-                          className="w-full py-2.5 rounded-xl font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-md border border-white/5"
-                          style={{ backgroundColor: item.accentColor, color: '#fff' }}
+                          className={`w-full py-2.5 rounded-xl font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-lg border border-white/10 hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
                         >
                           See Full Details
-                          <ArrowRight size={12} />
+                          <ArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5" />
                         </button>
                       ) : (
                         <button
-                          className="w-full py-2.5 rounded-xl font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-md border border-white/5"
-                          style={{ backgroundColor: item.accentColor, color: '#fff' }}
+                          className={`w-full py-2.5 rounded-xl font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-lg border border-white/10 hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
                         >
                           Let's Talk
-                          <ArrowRight size={12} />
+                          <ArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5" />
                         </button>
                       )}
                     </div>
@@ -401,10 +409,10 @@ export default function Services() {
                         <div className="flex items-center gap-3">
                           <button
                             onClick={() => item.pageRoute && goToPage(item)}
-                            className={`px-5 py-2 rounded-lg text-xs font-extrabold transition-all duration-300 flex items-center gap-2 ${item.accentClass}`}
+                            className={`px-5 py-2.5 rounded-xl text-xs font-extrabold transition-all duration-300 flex items-center gap-2 hover:scale-[1.03] active:scale-95 shadow-lg border border-white/10 group ${item.accentClass} ${shadowClass}`}
                           >
                             {item.btn1}
-                            {item.pageRoute && <ArrowRight size={12} />}
+                            {item.pageRoute && <ArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5" />}
                           </button>
                         </div>
                         <div className="flex pt-3 border-t border-black/5 dark:border-white/5 items-center justify-between text-[10px]">
@@ -425,14 +433,14 @@ export default function Services() {
           </div>
 
           {/* Carousel Controls */}
-          <div className="flex items-center gap-3 sm:gap-6 mt-6 relative z-40">
+          <div className="flex items-center gap-3 sm:gap-6 mt-10 relative z-40">
             <button
               onClick={prevSlide}
               disabled={activeIndex === 0}
               className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                 activeIndex === 0 
-                  ? 'bg-[#0d1426]/40 border border-white/5 text-slate-600 opacity-40 cursor-not-allowed pointer-events-none' 
-                  : 'bg-[#0d1426] border border-white/10 text-slate-300 hover:text-white hover:bg-blue-600 hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:scale-110 active:scale-90 cursor-pointer'
+                  ? 'bg-white/5 border border-white/10 text-white/20 opacity-40 cursor-not-allowed pointer-events-none' 
+                  : 'bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:text-white hover:bg-blue-600 hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:scale-110 active:scale-90 cursor-pointer'
               }`}
               aria-label="Previous"
             >
@@ -455,8 +463,8 @@ export default function Services() {
               disabled={activeIndex === SERVICES.length - 1}
               className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
                 activeIndex === SERVICES.length - 1 
-                  ? 'bg-[#0d1426]/40 border border-white/5 text-slate-600 opacity-40 cursor-not-allowed pointer-events-none' 
-                  : 'bg-[#0d1426] border border-white/10 text-slate-300 hover:text-white hover:bg-blue-600 hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:scale-110 active:scale-90 cursor-pointer'
+                  ? 'bg-white/5 border border-white/10 text-white/20 opacity-40 cursor-not-allowed pointer-events-none' 
+                  : 'bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:text-white hover:bg-blue-600 hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:scale-110 active:scale-90 cursor-pointer'
               }`}
               aria-label="Next"
             >
