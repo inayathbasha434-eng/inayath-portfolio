@@ -7,7 +7,6 @@ import EducationExperience from './components/EducationExperience'
 import Projects from './components/Projects'
 import Services from './components/Services'
 import Team from './components/Team'
-import FAQ from './components/FAQ'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ShopifyServicePage from './pages/ShopifyServicePage'
@@ -73,7 +72,6 @@ function PortfolioLayout() {
         <EducationExperience />
         <Team />
         <Contact />
-        <FAQ />
       </main>
       <Footer />
 
