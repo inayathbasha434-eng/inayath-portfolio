@@ -141,11 +141,29 @@ const INNER = [
 export default function Skills() {
   const sectionRef = useRef(null)
   const [hoveredId, setHoveredId] = useState(null)
+  const [activeSkillId, setActiveSkillId] = useState(OUTER[0].id)
   const outerAngle = useRef(0)
   const innerAngle = useRef(0)
   const rafRef = useRef(null)
   const [, setTick] = useState(0)
   const [size, setSize] = useState(420)
+
+  /* Auto-cycle active skill when not hovering */
+  useEffect(() => {
+    if (hoveredId !== null) {
+      setActiveSkillId(hoveredId)
+      return
+    }
+
+    const interval = setInterval(() => {
+      const allSkills = [...OUTER, ...INNER]
+      const currentIndex = allSkills.findIndex(s => s.id === activeSkillId)
+      const nextIndex = (currentIndex + 1) % allSkills.length
+      setActiveSkillId(allSkills[nextIndex].id)
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [hoveredId, activeSkillId])
 
   /* Responsive sizing */
   const updateSize = useCallback(() => {
@@ -190,7 +208,7 @@ export default function Skills() {
   const OUTER_NODE = size * 0.125
   const INNER_NODE = size * 0.098
 
-  const activeSkill = OUTER.find(s => s.id === hoveredId) || INNER.find(s => s.id === hoveredId)
+  const activeSkill = OUTER.find(s => s.id === activeSkillId) || INNER.find(s => s.id === activeSkillId)
 
   const renderRing = (skills, radius, nodeSize, angleRef) =>
     skills.map((skill, i) => {
@@ -330,49 +348,40 @@ export default function Skills() {
 
           {/* Right Column: Mini Expertise Details Card (Glass finished UI/UX - Hidden on Mobile) */}
           <div className="hidden md:flex md:col-span-5 w-full flex-col justify-center fade-in px-4 sm:px-0">
-            {activeSkill ? (
-              <div
-                className="bg-[#0d1426]/60 backdrop-blur-xl rounded-3xl p-6 sm:p-8 transition-all duration-300 shadow-2xl relative overflow-hidden text-left"
-                style={{ border: `1px solid ${activeSkill.color}25` }}
-              >
-                {/* Visual accent top-right corner glow */}
-                <div 
-                  className="absolute -top-12 -right-12 w-24 h-24 rounded-full blur-xl opacity-40 pointer-events-none"
-                  style={{ background: activeSkill.color }}
-                />
-                
-                {/* Glowing status line */}
-                <div className="absolute bottom-0 left-0 right-0 h-[2.5px]" style={{ background: activeSkill.color }} />
+            <div
+              className="bg-[#0d1426]/60 backdrop-blur-xl rounded-3xl p-6 sm:p-8 transition-all duration-300 shadow-2xl relative overflow-hidden text-left w-full"
+              style={{ border: `1px solid ${activeSkill.color}25` }}
+            >
+              {/* Visual accent top-right corner glow */}
+              <div 
+                className="absolute -top-12 -right-12 w-24 h-24 rounded-full blur-xl opacity-40 pointer-events-none"
+                style={{ background: activeSkill.color }}
+              />
+              
+              {/* Glowing status line */}
+              <div className="absolute bottom-0 left-0 right-0 h-[2.5px]" style={{ background: activeSkill.color }} />
 
-                <div className="flex items-center gap-4 mb-4">
-                  <div
-                    className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
-                    style={{ background: activeSkill.bg, border: `1px solid ${activeSkill.color}35` }}
-                  >
-                    <div className="w-7 h-7 flex items-center justify-center">
-                      {activeSkill.icon}
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-extrabold text-lg sm:text-xl leading-snug">{activeSkill.name}</h4>
-                    <span className="text-[10px] uppercase font-bold tracking-wider opacity-60" style={{ color: activeSkill.color }}>
-                      Technical Skill
-                    </span>
+              <div className="flex items-center gap-4 mb-4">
+                <div
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
+                  style={{ background: activeSkill.bg, border: `1px solid ${activeSkill.color}35` }}
+                >
+                  <div className="w-7 h-7 flex items-center justify-center">
+                    {activeSkill.icon}
                   </div>
                 </div>
+                <div>
+                  <h4 className="text-white font-extrabold text-lg sm:text-xl leading-snug">{activeSkill.name}</h4>
+                  <span className="text-[10px] uppercase font-bold tracking-wider opacity-60" style={{ color: activeSkill.color }}>
+                    Technical Skill
+                  </span>
+                </div>
+              </div>
 
-                <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
-                  {activeSkill.desc}
-                </p>
-              </div>
-            ) : (
-              <div className="bg-[#0d1426]/40 backdrop-blur-xl border border-white/5 rounded-3xl p-6 sm:p-8 text-center text-slate-500 shadow-xl flex flex-col items-center justify-center min-h-[160px]">
-                <Info size={28} className="text-blue-500/50 mb-3 animate-pulse" />
-                <p className="text-sm leading-relaxed max-w-xs">
-                  Hover or tap any skill node in the orbit graph to reveal detailed expertise.
-                </p>
-              </div>
-            )}
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                {activeSkill.desc}
+              </p>
+            </div>
           </div>
 
         </div>
