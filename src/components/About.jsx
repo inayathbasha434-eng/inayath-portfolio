@@ -57,13 +57,12 @@ export default function About() {
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4 sm:mb-6">
                 <Code className="text-blue-400" size={20} />
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-4">The Architect</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-4">Who I Am</h3>
               <p className="text-slate-300 text-sm sm:text-lg leading-relaxed font-medium">
-                Inayath Basha A crafts high-impact digital experiences that seamlessly blend creativity, strategy, and business growth. Specializing in Shopify development, brand identity design, and conversion-focused digital solutions.
+                Inayath Basha is passionate about turning ideas into engaging digital experiences. He enjoys creating solutions that are simple, intuitive, and purpose-driven, helping businesses connect with their audience in meaningful ways.
               </p>
-              {/* Extra paragraph only visible on tablet/desktop to save vertical space on mobile */}
-              <p className="hidden sm:block text-slate-400 text-base leading-relaxed mt-4">
-                With a passion for innovation and attention to detail, he helps businesses stand out, connect with their audience, and achieve meaningful results in the digital world.
+              <p className="text-slate-400 text-sm sm:text-base leading-relaxed mt-4">
+                By combining creativity with technical expertise, he builds experiences that leave a lasting impression and support long-term growth.
               </p>
             </div>
           </div>
