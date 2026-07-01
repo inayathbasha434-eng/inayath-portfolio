@@ -57,39 +57,46 @@ export default function ShopifyServicePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden pt-8 pb-12 md:py-20 px-4 sm:px-6">
         {/* Glow ambient background lights */}
         <div className="absolute top-1/4 left-10 w-72 h-72 rounded-full bg-green-500/10 blur-[80px] pointer-events-none" />
         <div className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-emerald-500/10 blur-[100px] pointer-events-none" />
 
-        <div
-          className="h-[340px] sm:h-[420px] md:h-[500px] w-full bg-cover bg-center relative"
-          style={{ backgroundImage: 'url(/shopify-hero.png)' }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e]/70 to-transparent" />
-
-          <div className="relative z-10 h-full flex flex-col justify-end pb-16 px-6 max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center relative z-10">
+          {/* Left Text Column */}
+          <div className="md:col-span-7 flex flex-col justify-center order-2 md:order-1 text-left">
             <div className="inline-flex items-center gap-2 bg-green-500/15 border border-green-500/30 text-green-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 w-fit shadow-[0_0_15px_rgba(34,197,94,0.15)] animate-fade-in">
               <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
               Shopify Expert
             </div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-white">
               Launch a{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-300 to-teal-300">
                 High-Converting
               </span>
               <br />Shopify Store
             </h1>
-            <p className="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed">
+            <p className="text-slate-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl">
               From setup to launch — we build Shopify stores that look stunning, load fast, and drive real sales for your business.
             </p>
+          </div>
+
+          {/* Right Image Column */}
+          <div className="md:col-span-5 order-1 md:order-2">
+            <div className="rounded-2xl sm:rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] aspect-[4/3] relative group">
+              <img 
+                src="/shopify-hero.png" 
+                alt="Shopify Showcase" 
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Stats Bar - Floating Overlap Glass Panel */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 -mt-10 relative z-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 mt-4 md:-mt-14 relative z-20">
         <div className="bg-[#0d1424]/90 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] grid grid-cols-3 gap-4 text-center divide-x divide-white/5">
           {[
             { value: '20+', label: 'Stores Launched' },

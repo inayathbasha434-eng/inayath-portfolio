@@ -54,41 +54,46 @@ export default function ERPServicePage() {
           <ArrowLeft size={16} />
           Back to Portfolio
         </button>
-      </div>
-
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      </div>      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-8 pb-12 md:py-20 px-4 sm:px-6">
         {/* Glow ambient background lights */}
         <div className="absolute top-1/4 left-10 w-72 h-72 rounded-full bg-orange-500/10 blur-[80px] pointer-events-none" />
         <div className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-amber-500/10 blur-[100px] pointer-events-none" />
 
-        <div
-          className="h-[340px] sm:h-[420px] md:h-[500px] w-full bg-cover bg-center relative"
-          style={{ backgroundImage: 'url(/erp-hero.png)' }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e]/70 to-transparent" />
-
-          <div className="relative z-10 h-full flex flex-col justify-end pb-16 px-6 max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center relative z-10">
+          {/* Left Text Column */}
+          <div className="md:col-span-7 flex flex-col justify-center order-2 md:order-1 text-left">
             <div className="inline-flex items-center gap-2 bg-orange-500/15 border border-orange-500/30 text-orange-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 w-fit shadow-[0_0_15px_rgba(249,115,22,0.15)] animate-fade-in">
               <span className="w-1.5 h-1.5 bg-orange-400 rounded-full animate-pulse" />
               ERP System
             </div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-white">
               Streamline Your Business with{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-300">
                 Custom ERP
               </span>
             </h1>
-            <p className="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed">
+            <p className="text-slate-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl">
               We implement, customize, and deploy Enterprise Resource Planning systems that automate your operations, eliminate manual errors, and give you complete business visibility.
             </p>
+          </div>
+
+          {/* Right Image Column */}
+          <div className="md:col-span-5 order-1 md:order-2">
+            <div className="rounded-2xl sm:rounded-[2.5rem] overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] aspect-[4/3] relative group">
+              <img 
+                src="/erp-hero.png" 
+                alt="ERP Showcase" 
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Stats Bar - Floating Overlap Glass Panel */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 -mt-10 relative z-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 mt-4 md:-mt-14 relative z-20">
         <div className="bg-[#0d1424]/90 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] grid grid-cols-3 gap-4 text-center divide-x divide-white/5">
           {[
             { value: '10+', label: 'ERP Deployments' },
