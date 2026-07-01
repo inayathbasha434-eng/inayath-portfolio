@@ -328,8 +328,8 @@ export default function Skills() {
             </p>
           </div>
 
-          {/* Right Column: Mini Expertise Details Card (Glass finished UI/UX) */}
-          <div className="md:col-span-5 w-full flex flex-col justify-center fade-in px-4 sm:px-0">
+          {/* Right Column: Mini Expertise Details Card (Glass finished UI/UX - Hidden on Mobile) */}
+          <div className="hidden md:flex md:col-span-5 w-full flex-col justify-center fade-in px-4 sm:px-0">
             {activeSkill ? (
               <div
                 className="bg-[#0d1426]/60 backdrop-blur-xl rounded-3xl p-6 sm:p-8 transition-all duration-300 shadow-2xl relative overflow-hidden text-left"
