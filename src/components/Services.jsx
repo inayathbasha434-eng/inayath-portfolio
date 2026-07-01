@@ -300,15 +300,10 @@ export default function Services() {
                     <div className="flex-1" />
 
                     {/* Bottom content block - Glass Card */}
-                    <div className="relative z-10 p-4 mx-3 mb-3 bg-[#0d1426]/90 backdrop-blur-md border border-white/5 rounded-2xl shadow-xl flex flex-col gap-3">
-                      <div>
-                        <h4 className="text-sm font-extrabold tracking-tight text-white">
-                          {item.heading}
-                        </h4>
-                        <p className="text-[10.5px] text-slate-400 mt-1 leading-relaxed">
-                          {item.subheading}
-                        </p>
-                      </div>
+                    <div className="relative z-10 p-4 mx-4 mb-4 bg-[#0d1426]/90 backdrop-blur-md border border-white/5 rounded-2xl shadow-xl flex flex-col gap-3">
+                      <h4 className="text-sm font-extrabold tracking-tight text-white text-center leading-snug">
+                        {item.heading}
+                      </h4>
                       
                       {/* CTA Button */}
                       {item.pageRoute ? (
