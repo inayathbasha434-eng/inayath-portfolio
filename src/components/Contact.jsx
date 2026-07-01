@@ -180,12 +180,11 @@ export default function Contact() {
                   aria-label="Send an Email"
                   className="transition-all duration-300 transform hover:scale-115 active:scale-90 hover:filter hover:drop-shadow-[0_0_15px_rgba(234,67,53,0.5)]"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-9 h-9 sm:w-10 sm:h-10">
-                    <path fill="#4285F4" d="M20 4H16v12h4c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/>
-                    <path fill="#34A853" d="M4 16h4V4H4c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2z"/>
-                    <path fill="#EA4335" d="M20 4H4c-1.1 0-2 .9-2 2v2l10 6.5L22 8V6c0-1.1-.9-2-2-2z"/>
-                    <path fill="#FBBC05" d="M4 4h4v12H4V4zm12 0h4v12h-4V4z"/>
-                  </svg>
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white flex items-center justify-center shadow-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-[58%] h-[58%]">
+                      <path fill="#EA4335" d="M22 5.455v13.091c0 .909-.727 1.636-1.636 1.636h-3.273v-9.818L12 14.545 6.91 10.364v9.818H3.636A1.636 1.636 0 0 1 2 18.545V5.455c0-1.636 1.855-2.545 3.091-1.573L12 9.145l6.909-5.263C20.145 2.91 22 3.818 22 5.455z"/>
+                    </svg>
+                  </div>
                 </a>
 
                 {/* WhatsApp */}
