@@ -146,48 +146,18 @@ export default function Contact() {
                 Prefer direct communication? Click any of the channels below to reach me instantly.
               </p>
               
-              <div className="flex flex-wrap gap-4 mt-2">
-                {/* WhatsApp */}
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUM}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Contact on WhatsApp"
-                  className="w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-[#0f0] bg-opacity-[0.06] border border-green-500/30 text-green-400 shadow-md shadow-green-500/5 hover:shadow-green-500/30 hover:bg-green-500 hover:text-white transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 active:scale-95"
-                >
-                  {/* WhatsApp SVG */}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-5.5 h-5.5 sm:w-6 sm:h-6"
-                  >
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.886 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                  </svg>
-                </a>
-
+              <div className="grid grid-cols-3 gap-y-7 gap-x-8 max-w-[260px] mx-auto sm:mx-0 sm:flex sm:grid-cols-none sm:gap-7 sm:max-w-none items-center mt-4">
                 {/* LinkedIn */}
                 <a
                   href={LINKEDIN}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Connect on LinkedIn"
-                  className="w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-[#0a66c2] bg-opacity-[0.06] border border-[#0a66c2]/40 text-blue-400 shadow-md shadow-blue-500/5 hover:shadow-blue-500/30 hover:bg-[#0a66c2] hover:text-white transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 active:scale-95"
+                  className="transition-all duration-300 transform hover:scale-115 active:scale-90 hover:filter hover:drop-shadow-[0_0_15px_rgba(10,102,194,0.6)]"
                 >
-                  <Linkedin size={22} className="w-5.5 h-5.5 sm:w-6 sm:h-6" />
-                </a>
-
-                {/* Instagram */}
-                <a
-                  href="https://instagram.com/inayathbasha_a"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Connect on Instagram"
-                  className="w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-[#e1306c] bg-opacity-[0.06] border border-[#e1306c]/40 text-pink-400 shadow-md shadow-pink-500/5 hover:shadow-pink-500/30 hover:bg-[#e1306c] hover:text-white transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 active:scale-95"
-                >
-                  <Instagram size={22} className="w-5.5 h-5.5 sm:w-6 sm:h-6" />
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#0a66c2" className="w-9 h-9 sm:w-10 sm:h-10">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/>
+                  </svg>
                 </a>
 
                 {/* GitHub */}
@@ -196,18 +166,61 @@ export default function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Connect on GitHub"
-                  className="w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-white bg-opacity-[0.04] border border-white/20 text-slate-300 shadow-md hover:shadow-slate-500/10 hover:bg-white hover:text-slate-900 transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 active:scale-95"
+                  className="transition-all duration-300 transform hover:scale-115 active:scale-90 hover:filter hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
                 >
-                  <Github size={22} className="w-5.5 h-5.5 sm:w-6 sm:h-6" />
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-9 h-9 sm:w-10 sm:h-10">
+                    <circle cx="12" cy="12" r="11.5" fill="#ffffff" />
+                    <path fill="#000000" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.44 22 12.017 22 6.484 17.522 2 12 2z"/>
+                  </svg>
                 </a>
 
-                {/* Email */}
+                {/* Email (Gmail) */}
                 <a
                   href={`mailto:${EMAIL}`}
                   aria-label="Send an Email"
-                  className="w-13 h-13 sm:w-14 sm:h-14 rounded-full flex items-center justify-center bg-blue-500 bg-opacity-[0.06] border border-blue-500/30 text-blue-300 shadow-md shadow-blue-500/5 hover:shadow-blue-500/30 hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:-translate-y-1 active:translate-y-0 active:scale-95"
+                  className="transition-all duration-300 transform hover:scale-115 active:scale-90 hover:filter hover:drop-shadow-[0_0_15px_rgba(234,67,53,0.5)]"
                 >
-                  <Mail size={22} className="w-5.5 h-5.5 sm:w-6 sm:h-6" />
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-9 h-9 sm:w-10 sm:h-10">
+                    <path fill="#4285F4" d="M20 4H16v12h4c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z"/>
+                    <path fill="#34A853" d="M4 16h4V4H4c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2z"/>
+                    <path fill="#EA4335" d="M20 4H4c-1.1 0-2 .9-2 2v2l10 6.5L22 8V6c0-1.1-.9-2-2-2z"/>
+                    <path fill="#FBBC05" d="M4 4h4v12H4V4zm12 0h4v12h-4V4z"/>
+                  </svg>
+                </a>
+
+                {/* WhatsApp */}
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUM}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Contact on WhatsApp"
+                  className="transition-all duration-300 transform hover:scale-115 active:scale-90 hover:filter hover:drop-shadow-[0_0_15px_rgba(37,211,102,0.6)]"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-9 h-9 sm:w-10 sm:h-10">
+                    <path fill="#25D366" d="M12.004 2c-5.517 0-9.993 4.476-9.993 9.993 0 1.763.459 3.486 1.33 5.003L2 22l5.161-1.355a9.948 9.948 0 004.843 1.258c5.518 0 9.993-4.476 9.993-9.993 0-5.517-4.475-9.993-9.993-9.993zm5.828 14.156c-.249.702-1.442 1.344-2.02 1.43-.518.077-1.196.11-3.693-.889-3.193-1.278-5.234-4.526-5.393-4.739-.16-.213-1.277-1.702-1.277-3.247 0-1.545.807-2.302 1.093-2.607.286-.305.623-.381.831-.381.208 0 .416.002.597.01.19.008.444-.073.694.53.256.618.874 2.128.95 2.279.076.15.127.325.026.529-.101.204-.152.33-.304.505-.152.176-.32.393-.456.526-.151.147-.31.309-.133.613.176.304.784 1.291 1.684 2.092.709.63 1.312.983 1.615 1.135.304.152.481.127.66-.076.179-.204.783-.911.993-1.22.21-.309.42-.259.709-.153.289.106 1.834.865 2.148 1.022.314.157.523.235.598.363.076.128.076.732-.173 1.434z"/>
+                  </svg>
+                </a>
+
+                {/* Instagram */}
+                <a
+                  href="https://instagram.com/inayathbasha_a"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Connect on Instagram"
+                  className="transition-all duration-300 transform hover:scale-115 active:scale-90 hover:filter hover:drop-shadow-[0_0_15px_rgba(225,48,108,0.6)]"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-9 h-9 sm:w-10 sm:h-10">
+                    <defs>
+                      <radialGradient id="instagram-grad-contact" cx="30%" cy="100%" r="150%" fx="30%" fy="100%">
+                        <stop offset="0%" stop-color="#fdf497" />
+                        <stop offset="5%" stop-color="#fdf497" />
+                        <stop offset="45%" stop-color="#fd5949" />
+                        <stop offset="60%" stop-color="#d6249f" />
+                        <stop offset="90%" stop-color="#285AEB" />
+                      </radialGradient>
+                    </defs>
+                    <path fill="url(#instagram-grad-contact)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051C.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+                  </svg>
                 </a>
               </div>
             </div>
