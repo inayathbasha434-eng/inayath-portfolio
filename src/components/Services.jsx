@@ -306,24 +306,21 @@ export default function Services() {
                     {/* Spacer to push content down */}
                     <div className="flex-1" />
 
-                    {/* Bottom content block - Glass Card */}
-                    <div className="relative z-10 p-3.5 mx-4 mb-4 bg-[#0d1426]/90 backdrop-blur-md border border-white/5 rounded-2xl shadow-xl flex flex-col gap-2.5">
-                      <h4 className="text-sm font-extrabold tracking-tight text-white text-center leading-snug">
-                        {item.heading}
-                      </h4>
+                     {/* Bottom content block - Glass Card */}
+                    <div className="relative z-10 p-3 mx-4 mb-3.5 bg-[#0d1426]/90 backdrop-blur-md border border-white/5 rounded-2xl shadow-xl flex flex-col gap-2">
                       
                       {/* CTA Button */}
                       {item.pageRoute ? (
                         <button
                           onClick={() => goToPage(item)}
-                          className={`w-fit px-5.5 py-2.5 rounded-xl font-bold text-[11px] flex items-center justify-center gap-1.5 mx-auto transition-all duration-300 active:scale-95 shadow-lg border border-white/10 hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
+                          className={`w-full py-2.5 rounded-xl font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-lg border border-white/10 hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
                         >
                           See Full Details
                           <ArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5" />
                         </button>
                       ) : (
                         <button
-                          className={`w-fit px-5.5 py-2.5 rounded-xl font-bold text-[11px] flex items-center justify-center gap-1.5 mx-auto transition-all duration-300 active:scale-95 shadow-lg border border-white/10 hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
+                          className={`w-full py-2.5 rounded-xl font-bold text-[11px] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-lg border border-white/10 hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
                         >
                           Let's Talk
                           <ArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5" />
