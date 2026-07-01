@@ -277,14 +277,14 @@ export default function Services() {
                 <div
                   key={item.id}
                   onClick={() => !isActive && setActiveIndex(idx)}
-                  className={`absolute w-[88vw] sm:w-[480px] md:w-[720px] md:h-auto rounded-2xl border transition-all duration-500 ease-in-out overflow-hidden ${item.cardBg} ${isActive ? 'cursor-default pointer-events-auto' : 'cursor-pointer pointer-events-none'}`}
+                  className={`absolute w-[88vw] sm:w-[480px] md:w-[720px] md:h-auto rounded-[32px] border transition-all duration-500 ease-in-out overflow-hidden ${item.cardBg} ${isActive ? 'cursor-default pointer-events-auto' : 'cursor-pointer pointer-events-none'}`}
                   style={{ ...transformStyles, boxShadow: isActive ? `0 25px 60px -15px ${item.glowColor}` : 'none', perspective: '1200px' }}
                 >
 
                   {/* ══════════════════════════════════════════
                       MOBILE LAYOUT (hidden on md+)
                   ══════════════════════════════════════════ */}
-                  <div className="md:hidden flex flex-col h-[400px] relative overflow-hidden">
+                  <div className="md:hidden flex flex-col h-[440px] relative overflow-hidden">
 
                     {/* Full background image */}
                     <div
@@ -311,14 +311,14 @@ export default function Services() {
                       {item.pageRoute ? (
                         <button
                           onClick={() => goToPage(item)}
-                          className={`w-[70%] max-w-[300px] py-3 rounded-full font-bold text-[12px] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-xl hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
+                          className={`w-[78%] max-w-[280px] py-3 rounded-full font-bold text-[13px] tracking-wide flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 shadow-xl hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
                         >
                           See Full Details
                           <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-0.5" />
                         </button>
                       ) : (
                         <button
-                          className={`w-[70%] max-w-[300px] py-3 rounded-full font-bold text-[12px] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-xl hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
+                          className={`w-[78%] max-w-[280px] py-3 rounded-full font-bold text-[13px] tracking-wide flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 shadow-xl hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
                         >
                           Let's Talk
                           <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -429,22 +429,22 @@ export default function Services() {
             <button
               onClick={prevSlide}
               disabled={activeIndex === 0}
-              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+              className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all duration-300 ${
                 activeIndex === 0 
-                  ? 'bg-white/5 border border-white/10 text-white/20 opacity-40 cursor-not-allowed pointer-events-none' 
-                  : 'bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:text-white hover:bg-blue-600 hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:scale-110 active:scale-90 cursor-pointer'
+                  ? 'bg-white/10 text-white/20 border border-white/5 opacity-40 cursor-not-allowed pointer-events-none' 
+                  : 'bg-white text-[#0a0f1e] shadow-lg hover:scale-110 active:scale-90 cursor-pointer'
               }`}
               aria-label="Previous"
             >
-              <ChevronLeft size={18} className="stroke-[2.5]" />
+              <ChevronLeft size={20} className="stroke-[2.5]" />
             </button>
 
-            <div className="flex items-center gap-1.5 sm:gap-2 bg-[#0c1324] px-3 sm:px-4 py-2 rounded-full border border-white/5 shadow-inner">
+            <div className="flex items-center gap-1.5 sm:gap-2 bg-[#0c1324] px-3.5 sm:px-4.5 py-2.5 rounded-full border border-white/5 shadow-inner">
               {SERVICES.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setActiveIndex(idx)}
-                  className={`rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-4 h-1.5 sm:w-5 sm:h-2 bg-blue-500 shadow-sm shadow-blue-500/50' : 'w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white/20 hover:bg-white/40'}`}
+                  className={`rounded-full transition-all duration-300 ${activeIndex === idx ? 'w-4 h-1.5 sm:w-5 sm:h-2 bg-blue-400' : 'w-1.5 h-1.5 sm:w-2 sm:h-2 bg-slate-700/60'}`}
                   aria-label={`Slide ${idx + 1}`}
                 />
               ))}
@@ -453,14 +453,14 @@ export default function Services() {
             <button
               onClick={nextSlide}
               disabled={activeIndex === SERVICES.length - 1}
-              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+              className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all duration-300 ${
                 activeIndex === SERVICES.length - 1 
-                  ? 'bg-white/5 border border-white/10 text-white/20 opacity-40 cursor-not-allowed pointer-events-none' 
-                  : 'bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:text-white hover:bg-blue-600 hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:scale-110 active:scale-90 cursor-pointer'
+                  ? 'bg-white/10 text-white/20 border border-white/5 opacity-40 cursor-not-allowed pointer-events-none' 
+                  : 'bg-white text-[#0a0f1e] shadow-lg hover:scale-110 active:scale-90 cursor-pointer'
               }`}
               aria-label="Next"
             >
-              <ChevronRight size={18} className="stroke-[2.5]" />
+              <ChevronRight size={20} className="stroke-[2.5]" />
             </button>
           </div>
 
