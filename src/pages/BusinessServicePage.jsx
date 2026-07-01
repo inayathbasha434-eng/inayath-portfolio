@@ -99,14 +99,14 @@ export default function BusinessServicePage() {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-24">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-16 space-y-16 md:space-y-24">
 
         {/* What We Do - Two Column Layout */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <section className="hidden md:grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-7 space-y-4">
             <span className="text-cyan-400 text-xs font-bold uppercase tracking-widest block">What We Do</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-              Websites Built Entirely<br />Around You
+              Bespoke Solutions Built<br />For Your Scale
             </h2>
             <p className="text-slate-400 leading-relaxed text-sm sm:text-base">
               Every business is unique, and your website should be too. Off-the-shelf themes often force you to compromise on your vision or functionality. We take a different approach. We start by understanding exactly what your business needs to succeed online, and then we build it from the ground up.
@@ -141,7 +141,7 @@ export default function BusinessServicePage() {
         {/* Offerings */}
         <section>
           <span className="text-cyan-400 text-xs font-bold uppercase tracking-widest">What We Offer</span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-10">Our Custom Web Services</h2>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-8 md:mb-10">Our Custom Web Services</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {OFFERINGS.map(({ icon: Icon, title, desc }) => (
               <div key={title} className="bg-[#0d1424] border border-white/5 rounded-2xl p-6 hover:border-cyan-500/30 hover:bg-[#0c1622] transition-all duration-300 group">
@@ -156,7 +156,7 @@ export default function BusinessServicePage() {
         </section>
 
         {/* Checklist */}
-        <section className="bg-gradient-to-br from-cyan-950/30 to-sky-950/20 border border-cyan-500/15 rounded-3xl p-8 sm:p-12">
+        <section className="hidden md:block bg-gradient-to-br from-cyan-950/30 to-sky-950/20 border border-cyan-500/15 rounded-3xl p-8 sm:p-12">
           <span className="text-cyan-400 text-xs font-bold uppercase tracking-widest">Everything Included</span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-8">Included in Every Custom Project</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -170,7 +170,7 @@ export default function BusinessServicePage() {
         </section>
 
         {/* Process */}
-        <section>
+        <section className="hidden md:block">
           <span className="text-cyan-400 text-xs font-bold uppercase tracking-widest">How It Works</span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-10">Our 4-Step Customization Process</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -185,7 +185,7 @@ export default function BusinessServicePage() {
         </section>
 
         {/* Testimonial */}
-        <section className="bg-[#0d1424] border border-white/5 rounded-3xl p-8 sm:p-12">
+        <section className="hidden md:block bg-[#0d1424] border border-white/5 rounded-3xl p-8 sm:p-12">
           <div className="flex gap-1 mb-4">{[1,2,3,4,5].map(i => <Star key={i} size={16} className="text-yellow-400 fill-yellow-400" />)}</div>
           <blockquote className="text-slate-200 text-lg sm:text-xl font-medium leading-relaxed mb-6 italic">
             "We had very specific requirements for our corporate site that standard templates couldn't handle. Inayath's team listened carefully and delivered a fully customized solution that exceeded our expectations. The new site perfectly represents our brand and functions flawlessly."

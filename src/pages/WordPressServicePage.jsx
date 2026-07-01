@@ -111,10 +111,10 @@ export default function WordPressServicePage() {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-24">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-16 space-y-16 md:space-y-24">
 
         {/* What We Do - Two Column Layout */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <section className="hidden md:grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-7 space-y-4">
             <span className="text-blue-400 text-xs font-bold uppercase tracking-widest block">What We Do</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
@@ -153,7 +153,7 @@ export default function WordPressServicePage() {
         {/* What We Offer */}
         <section>
           <span className="text-blue-400 text-xs font-bold uppercase tracking-widest">What We Offer</span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-10">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-8 md:mb-10">
             Our WordPress Services
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -173,7 +173,7 @@ export default function WordPressServicePage() {
         </section>
 
         {/* Features Checklist */}
-        <section className="bg-gradient-to-br from-blue-950/30 to-indigo-950/20 border border-blue-500/15 rounded-3xl p-8 sm:p-12">
+        <section className="hidden md:block bg-gradient-to-br from-blue-950/30 to-indigo-950/20 border border-blue-500/15 rounded-3xl p-8 sm:p-12">
           <span className="text-blue-400 text-xs font-bold uppercase tracking-widest">Everything Included</span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-8">
             What's in Every WordPress Project
@@ -189,7 +189,7 @@ export default function WordPressServicePage() {
         </section>
 
         {/* Our Process */}
-        <section>
+        <section className="hidden md:block">
           <span className="text-blue-400 text-xs font-bold uppercase tracking-widest">How It Works</span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-10">
             Our 4-Step Development Process
@@ -206,7 +206,7 @@ export default function WordPressServicePage() {
         </section>
 
         {/* Testimonial */}
-        <section className="bg-[#0d1424] border border-white/5 rounded-3xl p-8 sm:p-12">
+        <section className="hidden md:block bg-[#0d1424] border border-white/5 rounded-3xl p-8 sm:p-12">
           <div className="flex gap-1 mb-4">
             {[1,2,3,4,5].map(i => <Star key={i} size={16} className="text-yellow-400 fill-yellow-400" />)}
           </div>
