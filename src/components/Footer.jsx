@@ -22,7 +22,7 @@ function scrollTo(href) {
 export default function Footer() {
   return (
     <footer className="bg-[#060b16] border-t border-white/5 relative z-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-24 sm:pb-12">
         
         {/* Desktop Layout: 3 Columns. Mobile Layout: Stacked, Centered, Minimized */}
         <div className="flex flex-col sm:flex-row justify-between items-center sm:items-start gap-8 sm:gap-10 mb-8 sm:mb-10 text-center sm:text-left">
@@ -67,19 +67,6 @@ export default function Footer() {
           <div className="flex flex-col items-center sm:items-start">
             <h4 className="text-white font-semibold text-sm mb-4 hidden sm:block">Connect</h4>
             
-            {/* Mobile Icon Row */}
-            <div className="flex sm:hidden items-center gap-4">
-              <a href={`mailto:${EMAIL}`} aria-label="Email" className="p-3 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 active:scale-95 transition-transform">
-                <Mail size={16} />
-              </a>
-              <a href={`https://wa.me/${WHATSAPP_NUM}`} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="p-3 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 active:scale-95 transition-transform">
-                <Phone size={16} />
-              </a>
-              <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="p-3 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 active:scale-95 transition-transform">
-                <Linkedin size={16} />
-              </a>
-            </div>
-
             {/* Desktop Full List */}
             <div className="hidden sm:flex flex-col space-y-3">
               <a href={`mailto:${EMAIL}`} className="flex items-center gap-2.5 text-slate-400 hover:text-blue-400 text-sm transition-colors group">

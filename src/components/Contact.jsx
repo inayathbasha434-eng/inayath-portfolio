@@ -146,7 +146,7 @@ export default function Contact() {
                 Prefer direct communication? Click any of the channels below to reach me instantly.
               </p>
               
-              <div className="grid grid-cols-3 gap-y-7 gap-x-8 max-w-[260px] mx-auto sm:mx-0 sm:flex sm:grid-cols-none sm:gap-7 sm:max-w-none items-center mt-4">
+              <div className="flex flex-wrap justify-center sm:justify-start gap-6 sm:gap-7 items-center mt-5 w-full">
                 {/* LinkedIn */}
                 <a
                   href={LINKEDIN}
