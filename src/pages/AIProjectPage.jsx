@@ -39,27 +39,15 @@ export default function AIProjectPage() {
           </Link>
 
           {/* Massive Viewport Image */}
-          <div className="rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(168,85,247,0.1)] mb-12 bg-[#0d1426] relative group flex flex-col md:flex-row">
-            
-            <div className="w-full md:w-1/2 relative h-[300px] md:h-[500px]">
+          <div className="rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(168,85,247,0.1)] mb-12 bg-[#0d1424] relative group">
+            <div className="w-full relative h-[300px] sm:h-[450px] md:h-[600px]">
               <img 
-                src="/tint_shade_raw.jpg" 
-                alt="Before AI" 
+                src="/ai_products_grid.jpg" 
+                alt="AI Product Images Grid Showcase" 
                 className="w-full h-full object-cover"
               />
-              <div className="absolute bottom-4 left-4 bg-black/80 backdrop-blur text-white text-xs font-bold px-3 py-1.5 rounded-lg border border-white/10 uppercase tracking-widest">
-                Raw Capture
-              </div>
-            </div>
-            
-            <div className="w-full md:w-1/2 relative h-[300px] md:h-[500px]">
-              <img 
-                src="/tint_shade_after.jpg" 
-                alt="After AI" 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute bottom-4 right-4 bg-purple-600/90 backdrop-blur shadow-lg text-white text-xs font-bold px-3 py-1.5 rounded-lg border border-white/20 uppercase tracking-widest">
-                AI Generated
+              <div className="absolute bottom-4 left-4 bg-purple-600/90 backdrop-blur shadow-lg text-white text-xs font-bold px-3 py-1.5 rounded-lg border border-white/20 uppercase tracking-widest">
+                AI Product Showcase
               </div>
             </div>
             
