@@ -429,7 +429,11 @@ export default function Services() {
             <button
               onClick={prevSlide}
               disabled={activeIndex === 0}
-              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-800 hover:bg-slate-50 transition-all shadow-md hover:scale-105 active:scale-95 ${activeIndex === 0 ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`}
+              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                activeIndex === 0 
+                  ? 'bg-[#0d1426]/40 border border-white/5 text-slate-600 opacity-40 cursor-not-allowed pointer-events-none' 
+                  : 'bg-[#0d1426] border border-white/10 text-slate-300 hover:text-white hover:bg-blue-600 hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:scale-110 active:scale-90 cursor-pointer'
+              }`}
               aria-label="Previous"
             >
               <ChevronLeft size={18} className="stroke-[2.5]" />
@@ -449,7 +453,11 @@ export default function Services() {
             <button
               onClick={nextSlide}
               disabled={activeIndex === SERVICES.length - 1}
-              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-800 hover:bg-slate-50 transition-all shadow-md hover:scale-105 active:scale-95 ${activeIndex === SERVICES.length - 1 ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'}`}
+              className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                activeIndex === SERVICES.length - 1 
+                  ? 'bg-[#0d1426]/40 border border-white/5 text-slate-600 opacity-40 cursor-not-allowed pointer-events-none' 
+                  : 'bg-[#0d1426] border border-white/10 text-slate-300 hover:text-white hover:bg-blue-600 hover:border-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:scale-110 active:scale-90 cursor-pointer'
+              }`}
               aria-label="Next"
             >
               <ChevronRight size={18} className="stroke-[2.5]" />
