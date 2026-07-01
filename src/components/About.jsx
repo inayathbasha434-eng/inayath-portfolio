@@ -72,37 +72,19 @@ export default function About() {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
           
           {/* Tile 1: Main Bio (Spans full width on mobile, 2 cols on desktop) */}
-          <div className="fade-in col-span-2 row-span-2 group relative overflow-hidden bg-gradient-to-br from-[#0d1426]/90 to-[#0b0f1e]/95 border border-white/5 rounded-[22px] sm:rounded-3xl p-6 sm:p-10 hover:border-blue-500/30 transition-all duration-500 shadow-2xl">
+          <div className="fade-in col-span-2 row-span-2 group relative overflow-hidden bg-gradient-to-br from-[#0d1426]/90 to-[#0b0f1e]/95 border border-white/5 rounded-[22px] sm:rounded-3xl p-6 sm:p-10 hover:border-blue-500/30 transition-all duration-500 shadow-2xl flex flex-col items-center justify-center text-center">
             <div className="absolute -top-12 -right-12 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/15 transition-all duration-700 pointer-events-none" />
-            <div className="relative z-10 flex flex-col h-full justify-between">
-              <div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4 sm:mb-6">
-                  <Code className="text-blue-400" size={20} />
-                </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-4">Who I Am</h3>
-                <p className="text-slate-300 text-sm sm:text-base md:text-lg leading-relaxed font-medium">
-                  Inayath Basha is passionate about turning ideas into engaging digital experiences. He enjoys creating solutions that are simple, intuitive, and purpose-driven, helping businesses connect with their audience in meaningful ways.
-                </p>
-                <p className="text-slate-400 text-sm sm:text-base leading-relaxed mt-4">
-                  By combining creativity with technical expertise, he builds experiences that leave a lasting impression and support long-term growth.
-                </p>
+            <div className="relative z-10 flex flex-col items-center justify-center">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4 sm:mb-6">
+                <Code className="text-blue-400" size={20} />
               </div>
-
-              {/* Modern Micro Badges Grid at the bottom */}
-              <div className="grid grid-cols-3 gap-3 border-t border-white/5 pt-6 mt-8">
-                <div className="flex flex-col">
-                  <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Specialty</span>
-                  <span className="text-xs sm:text-sm font-semibold text-blue-400 mt-1">Shopify & UX</span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Approach</span>
-                  <span className="text-xs sm:text-sm font-semibold text-emerald-400 mt-1">Conversion-First</span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Mission</span>
-                  <span className="text-xs sm:text-sm font-semibold text-purple-400 mt-1">Client Growth</span>
-                </div>
-              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-4">Who I Am</h3>
+              <p className="text-slate-300 text-sm sm:text-base md:text-lg leading-relaxed font-medium">
+                Inayath Basha is passionate about turning ideas into engaging digital experiences. He enjoys creating solutions that are simple, intuitive, and purpose-driven, helping businesses connect with their audience in meaningful ways.
+              </p>
+              <p className="text-slate-400 text-sm sm:text-base leading-relaxed mt-4">
+                By combining creativity with technical expertise, he builds experiences that leave a lasting impression and support long-term growth.
+              </p>
             </div>
           </div>
 
