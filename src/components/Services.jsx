@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ChevronLeft, ChevronRight, Star, ArrowRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Star, ArrowRight, Sparkles } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
 /* ─────────────────────────────────────────────

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { GraduationCap, Briefcase, ChevronDown } from 'lucide-react'
+import { GraduationCap, Briefcase, ChevronDown, Sparkles } from 'lucide-react'
 
 const EDUCATION = [
   {

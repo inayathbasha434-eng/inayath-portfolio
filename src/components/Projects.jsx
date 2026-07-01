@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { CheckCircle, ExternalLink, Play, Pause } from 'lucide-react'
+import { CheckCircle, ExternalLink, Play, Pause, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export const PROJECTS = [

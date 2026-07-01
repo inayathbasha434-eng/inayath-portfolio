@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { Heart, MapPin, Code, Globe } from 'lucide-react'
+import { Heart, MapPin, Code, Globe, Sparkles } from 'lucide-react'
 
 export default function About() {
   const sectionRef = useRef(null)
