@@ -54,16 +54,20 @@ export default function BusinessServicePage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
+        {/* Glow ambient background lights */}
+        <div className="absolute top-1/4 left-10 w-72 h-72 rounded-full bg-cyan-500/10 blur-[80px] pointer-events-none" />
+        <div className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-blue-500/10 blur-[100px] pointer-events-none" />
+
         <div className="h-[340px] sm:h-[420px] md:h-[500px] w-full bg-cover bg-center relative" style={{ backgroundImage: 'url(/business-hero.png)' }}>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e]/70 to-transparent" />
-          <div className="relative z-10 h-full flex flex-col justify-end pb-12 px-6 max-w-5xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 w-fit">
+          <div className="relative z-10 h-full flex flex-col justify-end pb-16 px-6 max-w-5xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 w-fit shadow-[0_0_15px_rgba(6,182,212,0.15)] animate-fade-in">
               <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse" /> Custom Web Solutions
             </div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-white">
               Whatever Your Need,<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-sky-300">We Customize Your Website</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-300">We Customize Your Website</span>
             </h1>
             <p className="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed">
               We don't just build websites; we craft tailored digital experiences that perfectly align with your unique business requirements and drive measurable growth.
@@ -72,30 +76,55 @@ export default function BusinessServicePage() {
         </div>
       </section>
 
-      {/* Stats */}
-      <div className="bg-[#0d1424] border-y border-white/5 py-6">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-3 gap-4 text-center">
+      {/* Stats - Floating Overlap Glass Panel */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 -mt-10 relative z-20">
+        <div className="bg-[#0d1424]/90 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] grid grid-cols-3 gap-4 text-center divide-x divide-white/5">
           {[{ value: '50+', label: 'Custom Sites' }, { value: '99%', label: 'Uptime' }, { value: '2x', label: 'Lead Increase' }].map(({ value, label }) => (
-            <div key={label}>
-              <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400">{value}</div>
-              <div className="text-xs text-slate-500 mt-1 font-medium uppercase tracking-wider">{label}</div>
+            <div key={label} className="first:pl-0 pl-2 group transition-all duration-300 hover:scale-105">
+              <div className="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-sky-300 drop-shadow-[0_2px_10px_rgba(34,211,238,0.25)]">{value}</div>
+              <div className="text-[9px] sm:text-xs text-slate-400 mt-1.5 font-bold uppercase tracking-widest">{label}</div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-24">
 
-        {/* What We Do */}
-        <section>
-          <span className="text-cyan-400 text-xs font-bold uppercase tracking-widest">What We Do</span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-4">Websites Built Entirely Around You</h2>
-          <p className="text-slate-400 leading-relaxed max-w-2xl">
-            Every business is unique, and your website should be too. Off-the-shelf themes often force you to compromise on your vision or functionality. We take a different approach. We start by understanding exactly what your business needs to succeed online, and then we build it from the ground up.
-          </p>
-          <p className="text-slate-400 mt-3 leading-relaxed max-w-2xl">
-            <span className="text-white font-semibold">Whatever your requirement</span> — be it a complex booking system, a unique interactive design, a custom client portal, or just a truly distinctive brand presence — we have the expertise to customize your website to perfection. We ensure it's not just a digital brochure, but a powerful tool that works for your business.
-          </p>
+        {/* What We Do - Two Column Layout */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <span className="text-cyan-400 text-xs font-bold uppercase tracking-widest block">What We Do</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              Websites Built Entirely<br />Around You
+            </h2>
+            <p className="text-slate-400 leading-relaxed text-sm sm:text-base">
+              Every business is unique, and your website should be too. Off-the-shelf themes often force you to compromise on your vision or functionality. We take a different approach. We start by understanding exactly what your business needs to succeed online, and then we build it from the ground up.
+            </p>
+            <p className="text-slate-400 leading-relaxed text-sm sm:text-base">
+              <span className="text-white font-semibold">Whatever your requirement</span> — be it a complex booking system, a unique interactive design, a custom client portal, or just a truly distinctive brand presence — we have the expertise to customize your website to perfection. We ensure it's not just a digital brochure, but a powerful tool that works for your business.
+            </p>
+          </div>
+
+          <div className="lg:col-span-5 bg-gradient-to-br from-[#0d1424] to-[#0a0f1e] border border-white/5 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden group">
+            <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-cyan-500/10 blur-[40px] group-hover:bg-cyan-500/15 transition-colors duration-500" />
+            <h3 className="font-extrabold text-white text-base mb-6 border-b border-white/5 pb-3">Why Bespoke Development?</h3>
+            <ul className="space-y-4">
+              {[
+                { title: 'Zero Limitations', desc: 'Custom tailored layouts and workflows built exactly as you imagine.' },
+                { title: 'Optimized Conversions', desc: 'Layouts structured to turn traffic into paying leads.' },
+                { title: 'Clean Architecture', desc: 'Scale-ready, hand-coded structures that prevent code bloat.' },
+                { title: 'Maximum Speed', desc: 'Optimized performance resulting in Google PageSpeed scores of 90+.' }
+              ].map(({ title, desc }) => (
+                <li key={title} className="flex gap-3">
+                  <CheckCircle2 size={18} className="text-cyan-400 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="text-xs font-extrabold text-white">{title}</h4>
+                    <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">{desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
         {/* Offerings */}
