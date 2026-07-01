@@ -32,14 +32,19 @@ export default function About() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
-        <div className="text-center mb-10 sm:mb-16 fade-in">
-          <span className="text-blue-400 text-[10px] sm:text-sm font-bold uppercase tracking-[0.2em]">Know Me Better</span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-white mt-2 sm:mt-3 mb-3 sm:mb-4 tracking-tight">
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Me</span>
+        <div className="text-center mb-10 sm:mb-16 fade-in flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider text-blue-400 uppercase shadow-[0_0_15px_rgba(59,130,246,0.08)] mb-3 select-none">
+            <Sparkles size={12} className="animate-pulse" />
+            <span>About Me</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+            Know Me <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">Better</span>
           </h2>
-          <p className="text-slate-400 max-w-lg mx-auto text-xs sm:text-base font-medium">
-            Get to know my core values and driving forces
-          </p>
+          <div className="flex items-center justify-center gap-1 mt-4">
+            <div className="w-8 h-[1.5px] bg-gradient-to-r from-transparent to-blue-500/50" />
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shadow-[0_0_8px_#60a5fa] animate-pulse" />
+            <div className="w-8 h-[1.5px] bg-gradient-to-l from-transparent to-blue-500/50" />
+          </div>
         </div>
 
         {/* Bento Grid (2 cols on mobile, 3 on desktop) */}

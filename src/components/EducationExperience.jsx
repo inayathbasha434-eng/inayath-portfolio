@@ -115,11 +115,19 @@ export default function EducationExperience() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-10 fade-in">
-          <span className="text-blue-400 text-sm font-semibold uppercase tracking-widest">My Timeline</span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
+        <div className="text-center mb-10 fade-in flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider text-blue-400 uppercase shadow-[0_0_15px_rgba(59,130,246,0.08)] mb-3 select-none">
+            <Sparkles size={12} className="animate-pulse" />
+            <span>My Timeline</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white">
             My <span className="text-gradient">Journey</span>
           </h2>
+          <div className="flex items-center justify-center gap-1 mt-4">
+            <div className="w-8 h-[1.5px] bg-gradient-to-r from-transparent to-blue-500/50" />
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shadow-[0_0_8px_#60a5fa] animate-pulse" />
+            <div className="w-8 h-[1.5px] bg-gradient-to-l from-transparent to-blue-500/50" />
+          </div>
         </div>
 
         {/* Sliding Toggle Switch (Visible on all screens) */}
