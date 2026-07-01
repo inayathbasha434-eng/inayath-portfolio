@@ -6,6 +6,7 @@ const TEAM = [
     name: 'Roshan',
     role: 'Tech Lead',
     initials: 'R',
+    image: '/roshan.jpg',
     emoji: '⚡',
     color: 'from-blue-500 to-indigo-600',
     shadowColor: 'rgba(59,130,246,0.5)',
@@ -24,6 +25,7 @@ const TEAM = [
     name: 'Azmeer',
     role: 'Graphic Designer',
     initials: 'A',
+    image: '/azmeer.jpg',
     emoji: '🎨',
     color: 'from-pink-500 to-rose-600',
     shadowColor: 'rgba(244,63,94,0.5)',
@@ -241,12 +243,16 @@ function FlipCoin({ member, isActive, onClick }) {
         className={`w-full h-full transition-transform duration-700 [transform-style:preserve-3d] ${isActive ? '[transform:rotateY(180deg)]' : 'group-hover:scale-105'}`}
       >
         
-        {/* Front of coin: Initials */}
+        {/* Front of coin: Initials or Image */}
         <div 
-          className={`absolute inset-0 [backface-visibility:hidden] rounded-full ${member.bg} border-2 border-[#0d1426] flex items-center justify-center text-white font-black text-2xl sm:text-3xl`}
+          className={`absolute inset-0 [backface-visibility:hidden] rounded-full ${member.image ? 'bg-[#0d1426]' : member.bg} border-2 border-[#0d1426] flex items-center justify-center text-white font-black text-2xl sm:text-3xl overflow-hidden`}
           style={{ boxShadow: `0 4px 15px ${member.shadowColor}` }}
         >
-          {member.initials}
+          {member.image ? (
+            <img src={member.image} alt={member.name} className="w-full h-full object-cover rounded-full" />
+          ) : (
+            member.initials
+          )}
         </div>
 
         {/* Back of coin: Name & Circular Graph */}
