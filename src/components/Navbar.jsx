@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, MessageSquare, Home, User, Briefcase, Sparkles, LayoutGrid, GraduationCap, Users } from 'lucide-react'
+import { Menu, X, MessageSquare, Home, User, Briefcase, Sparkles, LayoutGrid, Compass, Users } from 'lucide-react'
 
 const NAV_LINKS = [
   { label: 'Home', href: '#home', icon: Home },
@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { label: 'Services', href: '#services', icon: Briefcase },
   { label: 'Skills', href: '#skills', icon: Sparkles },
   { label: 'Projects', href: '#projects', icon: LayoutGrid },
-  { label: 'Education', href: '#education-experience', icon: GraduationCap },
+  { label: 'Journey', href: '#education-experience', icon: Compass },
   { label: 'Team', href: '#team', icon: Users },
 ]
 
