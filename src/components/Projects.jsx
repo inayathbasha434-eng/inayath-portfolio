@@ -198,14 +198,11 @@ export default function Projects() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center mb-10 fade-in-section">
+        <div className="text-center mb-8 fade-in-section">
           <span className="text-blue-400 text-xs font-semibold uppercase tracking-widest">Portfolio</span>
-          <h2 className="text-3xl sm:text-4xl font-black text-white mt-1.5 mb-3.5">
+          <h2 className="text-3xl sm:text-4xl font-black text-white mt-1.5">
             Featured <span className="text-gradient">Projects</span>
           </h2>
-          <p className="text-slate-400 max-w-sm mx-auto text-xs sm:text-sm">
-            Discover real-world projects and design solutions built for global clients.
-          </p>
         </div>
 
         {/* ========================================================== */}

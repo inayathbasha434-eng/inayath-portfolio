@@ -85,14 +85,11 @@ export default function EducationExperience() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-14 fade-in">
+        <div className="text-center mb-10 fade-in">
           <span className="text-blue-400 text-sm font-semibold uppercase tracking-widest">My Timeline</span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2 mb-3">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
             Education & <span className="text-gradient">Experience</span>
           </h2>
-          <p className="text-slate-400 max-w-md mx-auto text-sm sm:text-base">
-            A comprehensive look at my academic foundation and professional background
-          </p>
         </div>
 
         {/* Mobile Toggle Navigation */}

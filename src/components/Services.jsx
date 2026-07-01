@@ -230,14 +230,11 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
 
         {/* Section Header */}
-        <div className="text-center mb-16 fade-in">
+        <div className="text-center mb-12 fade-in">
           <span className="text-blue-400 text-sm font-semibold uppercase tracking-widest">What I Offer</span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2 mb-3">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
             My <span className="text-gradient">Services</span>
           </h2>
-          <p className="text-slate-400 max-w-md mx-auto text-sm sm:text-base">
-            Premium custom services engineered to expand your brand and grow your digital footprint
-          </p>
         </div>
 
         {/* Carousel */}

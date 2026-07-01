@@ -111,14 +111,11 @@ export default function Team() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
 
         {/* Section Header */}
-        <div className="text-center mb-12 fade-in">
+        <div className="text-center mb-8 fade-in">
           <span className="text-blue-400 text-sm font-semibold uppercase tracking-widest">Dream Team</span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2 mb-3">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mt-2">
             We Work <span className="text-gradient">Together</span>
           </h2>
-          <p className="text-slate-400 max-w-sm mx-auto text-sm">
-            One vision. Multiple talents. Every project delivered with excellence.
-          </p>
         </div>
 
         {/* Single Unified Team Card */}
