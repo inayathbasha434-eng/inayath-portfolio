@@ -311,17 +311,17 @@ export default function Services() {
                       {item.pageRoute ? (
                         <button
                           onClick={() => goToPage(item)}
-                          className={`w-[78%] max-w-[280px] py-3 rounded-full font-bold text-[13px] tracking-wide flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 shadow-xl hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
+                          className={`w-[62%] max-w-[210px] py-2.5 rounded-full font-bold text-[12px] tracking-wide flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-xl hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
                         >
                           See Full Details
-                          <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-0.5" />
+                          <ArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5" />
                         </button>
                       ) : (
                         <button
-                          className={`w-[78%] max-w-[280px] py-3 rounded-full font-bold text-[13px] tracking-wide flex items-center justify-center gap-2 transition-all duration-300 active:scale-95 shadow-xl hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
+                          className={`w-[62%] max-w-[210px] py-2.5 rounded-full font-bold text-[12px] tracking-wide flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-95 shadow-xl hover:scale-[1.03] group ${item.accentClass} ${shadowClass}`}
                         >
                           Let's Talk
-                          <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-0.5" />
+                          <ArrowRight size={12} className="transition-transform duration-300 group-hover:translate-x-0.5" />
                         </button>
                       )}
                     </div>
