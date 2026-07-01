@@ -58,21 +58,25 @@ export default function ERPServicePage() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden">
+        {/* Glow ambient background lights */}
+        <div className="absolute top-1/4 left-10 w-72 h-72 rounded-full bg-orange-500/10 blur-[80px] pointer-events-none" />
+        <div className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-amber-500/10 blur-[100px] pointer-events-none" />
+
         <div
           className="h-[340px] sm:h-[420px] md:h-[500px] w-full bg-cover bg-center relative"
           style={{ backgroundImage: 'url(/erp-hero.png)' }}
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e]/70 to-transparent" />
 
-          <div className="relative z-10 h-full flex flex-col justify-end pb-12 px-6 max-w-5xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-orange-500/15 border border-orange-500/30 text-orange-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 w-fit">
+          <div className="relative z-10 h-full flex flex-col justify-end pb-16 px-6 max-w-5xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-orange-500/15 border border-orange-500/30 text-orange-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 w-fit shadow-[0_0_15px_rgba(249,115,22,0.15)] animate-fade-in">
               <span className="w-1.5 h-1.5 bg-orange-400 rounded-full animate-pulse" />
               ERP System
             </div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-white">
               Streamline Your Business with{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-300">
                 Custom ERP
               </span>
             </h1>
@@ -83,37 +87,58 @@ export default function ERPServicePage() {
         </div>
       </section>
 
-      {/* Stats Bar */}
-      <div className="bg-[#0d1424] border-y border-white/5 py-6">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-3 gap-4 text-center">
+      {/* Stats Bar - Floating Overlap Glass Panel */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 -mt-10 relative z-20">
+        <div className="bg-[#0d1424]/90 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] grid grid-cols-3 gap-4 text-center divide-x divide-white/5">
           {[
             { value: '10+', label: 'ERP Deployments' },
             { value: '5.0★', label: 'Client Rating' },
             { value: '30%', label: 'Avg Cost Saved' },
           ].map(({ value, label }) => (
-            <div key={label}>
-              <div className="text-2xl sm:text-3xl font-extrabold text-orange-400">{value}</div>
-              <div className="text-xs text-slate-500 mt-1 font-medium uppercase tracking-wider">{label}</div>
+            <div key={label} className="first:pl-0 pl-2 group transition-all duration-300 hover:scale-105">
+              <div className="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300 drop-shadow-[0_2px_10px_rgba(251,146,60,0.25)]">{value}</div>
+              <div className="text-[9px] sm:text-xs text-slate-400 mt-1.5 font-bold uppercase tracking-widest">{label}</div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-24">
 
-        {/* What We Do */}
-        <section>
-          <div className="mb-10">
-            <span className="text-orange-400 text-xs font-bold uppercase tracking-widest">What We Do</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2">
-              End-to-End ERP Implementation
+        {/* What We Do - Two Column Layout */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <span className="text-orange-400 text-xs font-bold uppercase tracking-widest block">What We Do</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              End-to-End ERP<br />Implementation
             </h2>
-            <p className="text-slate-400 mt-3 leading-relaxed max-w-2xl">
+            <p className="text-slate-400 leading-relaxed text-sm sm:text-base">
               Managing a growing business with spreadsheets and disconnected tools is a recipe for chaos. An ERP system connects all your business functions — inventory, finance, HR, sales, and operations — into one intelligent platform that gives you real control.
             </p>
-            <p className="text-slate-400 mt-3 leading-relaxed max-w-2xl">
+            <p className="text-slate-400 leading-relaxed text-sm sm:text-base">
               We specialize in <span className="text-white font-semibold">Odoo ERP</span> implementation and customization for small and medium businesses. We don't just install software — we study your business, model your workflows, and configure a system that feels built exactly for you.
             </p>
+          </div>
+
+          <div className="lg:col-span-5 bg-gradient-to-br from-[#0d1424] to-[#0a0f1e] border border-white/5 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden group">
+            <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-orange-500/10 blur-[40px] group-hover:bg-orange-500/15 transition-colors duration-500" />
+            <h3 className="font-extrabold text-white text-base mb-6 border-b border-white/5 pb-3">Why Work With Us?</h3>
+            <ul className="space-y-4">
+              {[
+                { title: 'Workflow Analysis', desc: 'Thorough mapping of your actual business pipelines before implementation.' },
+                { title: 'Odoo Customization', desc: 'Custom built Odoo dynamic dashboard components, reports, and models.' },
+                { title: 'System Migrations', desc: 'Secure database migrations from spreadsheets or older legacy softwares.' },
+                { title: 'Continuous Support', desc: 'Post-launch training sessions and software updates support.' }
+              ].map(({ title, desc }) => (
+                <li key={title} className="flex gap-3">
+                  <CheckCircle2 size={18} className="text-orange-400 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="text-xs font-extrabold text-white">{title}</h4>
+                    <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">{desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

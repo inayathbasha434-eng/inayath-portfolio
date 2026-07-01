@@ -58,21 +58,25 @@ export default function ShopifyServicePage() {
 
       {/* Hero Section */}
       <section className="relative overflow-hidden">
+        {/* Glow ambient background lights */}
+        <div className="absolute top-1/4 left-10 w-72 h-72 rounded-full bg-green-500/10 blur-[80px] pointer-events-none" />
+        <div className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-emerald-500/10 blur-[100px] pointer-events-none" />
+
         <div
           className="h-[340px] sm:h-[420px] md:h-[500px] w-full bg-cover bg-center relative"
           style={{ backgroundImage: 'url(/shopify-hero.png)' }}
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e]/70 to-transparent" />
 
-          <div className="relative z-10 h-full flex flex-col justify-end pb-12 px-6 max-w-5xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-green-500/15 border border-green-500/30 text-green-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 w-fit">
+          <div className="relative z-10 h-full flex flex-col justify-end pb-16 px-6 max-w-5xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-green-500/15 border border-green-500/30 text-green-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 w-fit shadow-[0_0_15px_rgba(34,197,94,0.15)] animate-fade-in">
               <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
               Shopify Expert
             </div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-white">
               Launch a{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-emerald-300 to-teal-300">
                 High-Converting
               </span>
               <br />Shopify Store
@@ -84,37 +88,58 @@ export default function ShopifyServicePage() {
         </div>
       </section>
 
-      {/* Stats Bar */}
-      <div className="bg-[#0d1424] border-y border-white/5 py-6">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-3 gap-4 text-center">
+      {/* Stats Bar - Floating Overlap Glass Panel */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 -mt-10 relative z-20">
+        <div className="bg-[#0d1424]/90 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] grid grid-cols-3 gap-4 text-center divide-x divide-white/5">
           {[
             { value: '20+', label: 'Stores Launched' },
             { value: '4.9★', label: 'Client Rating' },
             { value: '100%', label: 'On-Time Delivery' },
           ].map(({ value, label }) => (
-            <div key={label}>
-              <div className="text-2xl sm:text-3xl font-extrabold text-green-400">{value}</div>
-              <div className="text-xs text-slate-500 mt-1 font-medium uppercase tracking-wider">{label}</div>
+            <div key={label} className="first:pl-0 pl-2 group transition-all duration-300 hover:scale-105">
+              <div className="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-300 drop-shadow-[0_2px_10px_rgba(52,211,153,0.25)]">{value}</div>
+              <div className="text-[9px] sm:text-xs text-slate-400 mt-1.5 font-bold uppercase tracking-widest">{label}</div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-24">
 
-        {/* What We Do */}
-        <section>
-          <div className="mb-10">
-            <span className="text-green-400 text-xs font-bold uppercase tracking-widest">What We Do</span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2">
-              End-to-End Shopify Development
+        {/* What We Do - Two Column Layout */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <span className="text-green-400 text-xs font-bold uppercase tracking-widest block">What We Do</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              End-to-End Shopify<br />Development
             </h2>
-            <p className="text-slate-400 mt-3 leading-relaxed max-w-2xl">
+            <p className="text-slate-400 leading-relaxed text-sm sm:text-base">
               We build complete, production-ready Shopify stores from the ground up. Whether you're a first-time entrepreneur launching your first product or an established brand looking to migrate and scale — we handle everything so you can focus on your business.
             </p>
-            <p className="text-slate-400 mt-3 leading-relaxed max-w-2xl">
+            <p className="text-slate-400 leading-relaxed text-sm sm:text-base">
               Our approach is simple: <span className="text-white font-semibold">your brand first</span>. We don't use cookie-cutter templates. Every store we build is crafted around your products, your customers, and your growth goals.
             </p>
+          </div>
+
+          <div className="lg:col-span-5 bg-gradient-to-br from-[#0d1424] to-[#0a0f1e] border border-white/5 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden group">
+            <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-green-500/10 blur-[40px] group-hover:bg-green-500/15 transition-colors duration-500" />
+            <h3 className="font-extrabold text-white text-base mb-6 border-b border-white/5 pb-3">Why Work With Us?</h3>
+            <ul className="space-y-4">
+              {[
+                { title: 'Shopify Expert Status', desc: 'Deep expertise in custom Liquid templates and store initialization.' },
+                { title: 'Tailored Branding', desc: 'Custom storefront designs crafted specifically to elevate your brand.' },
+                { title: 'Payment Gateways', desc: 'Secure configurations for credit cards, local gateways, and checkout flows.' },
+                { title: 'Blazing Fast Speed', desc: 'Google PageSpeed score optimization for search rankings.' }
+              ].map(({ title, desc }) => (
+                <li key={title} className="flex gap-3">
+                  <CheckCircle2 size={18} className="text-green-400 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="text-xs font-extrabold text-white">{title}</h4>
+                    <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">{desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

@@ -51,16 +51,20 @@ export default function AIServicePage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
+        {/* Glow ambient background lights */}
+        <div className="absolute top-1/4 left-10 w-72 h-72 rounded-full bg-pink-500/10 blur-[80px] pointer-events-none" />
+        <div className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-rose-500/10 blur-[100px] pointer-events-none" />
+
         <div className="h-[340px] sm:h-[420px] md:h-[500px] w-full bg-cover bg-center relative" style={{ backgroundImage: 'url(/ai-gemini-hero.png)' }}>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/40 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e]/70 to-transparent" />
-          <div className="relative z-10 h-full flex flex-col justify-end pb-12 px-6 max-w-5xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-pink-500/15 border border-pink-500/30 text-pink-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 w-fit">
+          <div className="relative z-10 h-full flex flex-col justify-end pb-16 px-6 max-w-5xl mx-auto">
+            <div className="inline-flex items-center gap-2 bg-pink-500/15 border border-pink-500/30 text-pink-400 text-xs font-bold px-3 py-1.5 rounded-full mb-4 w-fit shadow-[0_0_15px_rgba(244,63,94,0.15)] animate-fade-in">
               <span className="w-1.5 h-1.5 bg-pink-400 rounded-full animate-pulse" /> Powered by Gemini AI
             </div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-white">
               Studio-Quality{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-300">AI Product Images</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-rose-300 to-amber-300">AI Product Images</span>
               <br />Without a Photoshoot
             </h1>
             <p className="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed">
@@ -70,30 +74,55 @@ export default function AIServicePage() {
         </div>
       </section>
 
-      {/* Stats */}
-      <div className="bg-[#0d1424] border-y border-white/5 py-6">
-        <div className="max-w-5xl mx-auto px-6 grid grid-cols-3 gap-4 text-center">
+      {/* Stats - Floating Overlap Glass Panel */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 -mt-10 relative z-20">
+        <div className="bg-[#0d1424]/90 backdrop-blur-md border border-white/10 rounded-2xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)] grid grid-cols-3 gap-4 text-center divide-x divide-white/5">
           {[{ value: '500+', label: 'Images Created' }, { value: '24hr', label: 'Avg Delivery' }, { value: '10x', label: 'Cost vs Studio' }].map(({ value, label }) => (
-            <div key={label}>
-              <div className="text-2xl sm:text-3xl font-extrabold text-pink-400">{value}</div>
-              <div className="text-xs text-slate-500 mt-1 font-medium uppercase tracking-wider">{label}</div>
+            <div key={label} className="first:pl-0 pl-2 group transition-all duration-300 hover:scale-105">
+              <div className="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-rose-300 drop-shadow-[0_2px_10px_rgba(244,63,94,0.25)]">{value}</div>
+              <div className="text-[9px] sm:text-xs text-slate-400 mt-1.5 font-bold uppercase tracking-widest">{label}</div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-20">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-24">
 
-        {/* What We Do */}
-        <section>
-          <span className="text-pink-400 text-xs font-bold uppercase tracking-widest">What We Do</span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-white mt-2 mb-4">Eliminate Expensive Product Photography</h2>
-          <p className="text-slate-400 leading-relaxed max-w-2xl">
-            Professional product photography costs thousands of rupees per session — studio rental, photographer fees, props, editing time. AI changes everything. With Google Gemini AI, we generate <span className="text-white font-semibold">photorealistic product images</span> indistinguishable from real photos, at a fraction of the cost and in a fraction of the time.
-          </p>
-          <p className="text-slate-400 mt-3 leading-relaxed max-w-2xl">
-            From Shopify stores to Amazon listings to Instagram ads — our AI-generated product photos help you launch faster, look more professional, and sell more.
-          </p>
+        {/* What We Do - Two Column Layout */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <span className="text-pink-400 text-xs font-bold uppercase tracking-widest block">What We Do</span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              Eliminate Expensive Product<br />Photography
+            </h2>
+            <p className="text-slate-400 leading-relaxed text-sm sm:text-base">
+              Professional product photography costs thousands of rupees per session — studio rental, photographer fees, props, editing time. AI changes everything. With Google Gemini AI, we generate <span className="text-white font-semibold">photorealistic product images</span> indistinguishable from real photos, at a fraction of the cost and in a fraction of the time.
+            </p>
+            <p className="text-slate-400 leading-relaxed text-sm sm:text-base">
+              From Shopify stores to Amazon listings to Instagram ads — our AI-generated product photos help you launch faster, look more professional, and sell more.
+            </p>
+          </div>
+
+          <div className="lg:col-span-5 bg-gradient-to-br from-[#0d1424] to-[#0a0f1e] border border-white/5 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden group">
+            <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-pink-500/10 blur-[40px] group-hover:bg-pink-500/15 transition-colors duration-500" />
+            <h3 className="font-extrabold text-white text-base mb-6 border-b border-white/5 pb-3">Why Generative AI?</h3>
+            <ul className="space-y-4">
+              {[
+                { title: 'Incredible Cost Savings', desc: 'Saves 90% of traditional commercial product photography budgets.' },
+                { title: 'Super Fast Turnaround', desc: 'Delivery of commercial product mockups in under 24 hours.' },
+                { title: 'Infinite Sceneries', desc: 'Display products on wooden easel stands, marble slabs, or beaches.' },
+                { title: 'Social & Ad Templates', desc: 'Generate visual assets configured for Instagram, Google, and Amazon.' }
+              ].map(({ title, desc }) => (
+                <li key={title} className="flex gap-3">
+                  <CheckCircle2 size={18} className="text-pink-400 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="text-xs font-extrabold text-white">{title}</h4>
+                    <p className="text-[11px] text-slate-400 mt-0.5 leading-relaxed">{desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
         </section>
 
         {/* Offerings */}
