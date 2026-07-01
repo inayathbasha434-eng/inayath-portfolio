@@ -66,48 +66,48 @@ export default function AIProjectPage() {
           </div>
 
           {/* Hero Section */}
-          <div className="mb-20 text-center flex flex-col items-center">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="px-4 py-1.5 bg-pink-500/10 text-pink-400 text-xs font-bold rounded-full border border-pink-500/20 uppercase tracking-wider">
+          <div className="mb-10 sm:mb-16 text-center flex flex-col items-center">
+            <div className="flex items-center gap-3.5 mb-5">
+              <span className="px-3.5 py-1 bg-pink-500/10 text-pink-400 text-[10px] sm:text-xs font-bold rounded-full border border-pink-500/20 uppercase tracking-wider">
                 Stable Diffusion
               </span>
-              <span className="px-4 py-1.5 bg-purple-500/10 text-purple-400 text-xs font-bold rounded-full border border-purple-500/20 uppercase tracking-wider">
+              <span className="px-3.5 py-1 bg-purple-500/10 text-purple-400 text-[10px] sm:text-xs font-bold rounded-full border border-purple-500/20 uppercase tracking-wider">
                 Midjourney
               </span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white mb-4 leading-tight px-2">
               AI Image Generation <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-600">
                 Commercial Visuals
               </span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed px-4">
               Created high-fidelity commercial product visualizations and marketing assets from raw camera captures using generative AI workflows.
             </p>
           </div>
 
           {/* Project Details Grid */}
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-20">
+          <div className="grid md:grid-cols-2 gap-5 sm:gap-6 mb-12 sm:mb-16 px-2 sm:px-0">
             {/* Card 1: The Challenge */}
-            <div className="bg-[#111623]/40 border border-red-500/10 hover:border-red-500/20 rounded-2xl p-6 sm:p-8 backdrop-blur-sm relative overflow-hidden transition-all duration-300">
+            <div className="bg-[#111623]/40 border border-red-500/10 hover:border-red-500/20 rounded-2xl p-5 sm:p-7 backdrop-blur-sm relative overflow-hidden transition-all duration-300">
               <div className="absolute -top-10 -left-10 w-24 h-24 rounded-full bg-red-500/5 blur-2xl pointer-events-none" />
-              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-red-500/15 text-red-400 flex items-center justify-center font-bold text-sm shrink-0 border border-red-500/20">1</span>
+              <h2 className="text-lg sm:text-xl font-bold text-white mb-3 flex items-center gap-2.5">
+                <span className="w-7 h-7 rounded-full bg-red-500/15 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 border border-red-500/20">1</span>
                 The Challenge
               </h2>
-              <p className="text-slate-455 leading-relaxed text-sm sm:text-base">
+              <p className="text-slate-300 leading-relaxed text-xs sm:text-sm">
                 Commercial advertising photography setups usually require expensive props, studios, lighting, and cameras. Producing high-quality marketing materials at scale is both time-consuming and cost-prohibitive for many brands.
               </p>
             </div>
 
             {/* Card 2: The Solution */}
-            <div className="bg-[#111623]/40 border border-purple-500/10 hover:border-purple-500/20 rounded-2xl p-6 sm:p-8 backdrop-blur-sm relative overflow-hidden transition-all duration-300">
+            <div className="bg-[#111623]/40 border border-purple-500/10 hover:border-purple-500/20 rounded-2xl p-5 sm:p-7 backdrop-blur-sm relative overflow-hidden transition-all duration-300">
               <div className="absolute -top-10 -left-10 w-24 h-24 rounded-full bg-purple-500/5 blur-2xl pointer-events-none" />
-              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-purple-500/15 text-purple-450 flex items-center justify-center font-bold text-sm shrink-0 border border-purple-500/20">2</span>
+              <h2 className="text-lg sm:text-xl font-bold text-white mb-3 flex items-center gap-2.5">
+                <span className="w-7 h-7 rounded-full bg-purple-500/15 text-purple-400 flex items-center justify-center font-bold text-xs shrink-0 border border-purple-500/20">2</span>
                 The Solution
               </h2>
-              <p className="text-slate-455 leading-relaxed text-sm sm:text-base">
+              <p className="text-slate-300 leading-relaxed text-xs sm:text-sm">
                 Built a generative AI pipeline utilizing Stable Diffusion, Midjourney, and Photoshop to convert raw, low-budget capture mockups into stunning, hyper-realistic commercial visuals tailored precisely to brand aesthetics.
               </p>
             </div>

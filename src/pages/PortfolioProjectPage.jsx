@@ -60,48 +60,48 @@ export default function PortfolioProjectPage() {
           </div>
 
           {/* Hero Section */}
-          <div className="mb-20 text-center flex flex-col items-center">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="px-4 py-1.5 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full border border-blue-500/20 uppercase tracking-wider">
+          <div className="mb-10 sm:mb-16 text-center flex flex-col items-center">
+            <div className="flex items-center gap-3.5 mb-5">
+              <span className="px-3.5 py-1 bg-blue-500/10 text-blue-400 text-[10px] sm:text-xs font-bold rounded-full border border-blue-500/20 uppercase tracking-wider">
                 React
               </span>
-              <span className="px-4 py-1.5 bg-purple-500/10 text-purple-400 text-xs font-bold rounded-full border border-purple-500/20 uppercase tracking-wider">
+              <span className="px-3.5 py-1 bg-purple-500/10 text-purple-400 text-[10px] sm:text-xs font-bold rounded-full border border-purple-500/20 uppercase tracking-wider">
                 Tailwind CSS
               </span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white mb-4 leading-tight px-2">
               Personal Portfolio <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-600">
                 Premium Web Experience
               </span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-300 max-w-3xl leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl leading-relaxed px-4">
               A premium developer portfolio with high-performance animations, collapsible timeline cards, and single-card team display.
             </p>
           </div>
 
           {/* Project Details Grid */}
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-20">
+          <div className="grid md:grid-cols-2 gap-5 sm:gap-6 mb-12 sm:mb-16 px-2 sm:px-0">
             {/* Card 1: The Challenge */}
-            <div className="bg-[#111623]/40 border border-red-500/10 hover:border-red-500/20 rounded-2xl p-6 sm:p-8 backdrop-blur-sm relative overflow-hidden transition-all duration-300">
+            <div className="bg-[#111623]/40 border border-red-500/10 hover:border-red-500/20 rounded-2xl p-5 sm:p-7 backdrop-blur-sm relative overflow-hidden transition-all duration-300">
               <div className="absolute -top-10 -left-10 w-24 h-24 rounded-full bg-red-500/5 blur-2xl pointer-events-none" />
-              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-red-500/15 text-red-400 flex items-center justify-center font-bold text-sm shrink-0 border border-red-500/20">1</span>
+              <h2 className="text-lg sm:text-xl font-bold text-white mb-3 flex items-center gap-2.5">
+                <span className="w-7 h-7 rounded-full bg-red-500/15 text-red-400 flex items-center justify-center font-bold text-xs shrink-0 border border-red-500/20">1</span>
                 The Challenge
               </h2>
-              <p className="text-slate-455 leading-relaxed text-sm sm:text-base">
+              <p className="text-slate-300 leading-relaxed text-xs sm:text-sm">
                 Needed a premium, accessible, and fast developer portfolio that displays skills, projects, and services dynamically without feeling like a generic template. Performance and smooth animations were absolute must-haves.
               </p>
             </div>
 
             {/* Card 2: The Solution */}
-            <div className="bg-[#111623]/40 border border-blue-500/10 hover:border-blue-500/20 rounded-2xl p-6 sm:p-8 backdrop-blur-sm relative overflow-hidden transition-all duration-300">
+            <div className="bg-[#111623]/40 border border-blue-500/10 hover:border-blue-500/20 rounded-2xl p-5 sm:p-7 backdrop-blur-sm relative overflow-hidden transition-all duration-300">
               <div className="absolute -top-10 -left-10 w-24 h-24 rounded-full bg-blue-500/5 blur-2xl pointer-events-none" />
-              <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-3">
-                <span className="w-8 h-8 rounded-full bg-blue-500/15 text-blue-400 flex items-center justify-center font-bold text-sm shrink-0 border border-blue-500/20">2</span>
+              <h2 className="text-lg sm:text-xl font-bold text-white mb-3 flex items-center gap-2.5">
+                <span className="w-7 h-7 rounded-full bg-blue-500/15 text-blue-400 flex items-center justify-center font-bold text-xs shrink-0 border border-blue-500/20">2</span>
                 The Solution
               </h2>
-              <p className="text-slate-455 leading-relaxed text-sm sm:text-base">
+              <p className="text-slate-300 leading-relaxed text-xs sm:text-sm">
                 Created a React + Vite single-page application built entirely on Tailwind CSS. I styled it with fluid Framer Motion animations to guide the user's eye and create an incredibly immersive, app-like experience.
               </p>
             </div>
