@@ -124,7 +124,7 @@ export default function EducationExperience() {
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
           
           {/* Education Timeline */}
-          <div className={`fade-in transition-opacity duration-300 ${activeTab === 'education' ? 'block' : 'hidden'} md:block`}>
+          <div className={`transition-opacity duration-300 ${activeTab === 'education' ? 'block' : 'hidden'} md:block`}>
             <div className="flex items-center gap-2 mb-5">
               <div className="p-2 rounded-lg bg-blue-500/10 border border-blue-500/20">
                 <GraduationCap size={18} className="text-blue-400" />
@@ -178,7 +178,7 @@ export default function EducationExperience() {
           </div>
 
           {/* Experience Timeline */}
-          <div className={`fade-in transition-opacity duration-300 ${activeTab === 'experience' ? 'block' : 'hidden'} md:block`}>
+          <div className={`transition-opacity duration-300 ${activeTab === 'experience' ? 'block' : 'hidden'} md:block`}>
             <div className="flex items-center gap-2 mb-5">
               <div className="p-2 rounded-lg bg-amber-500/10 border border-amber-500/20">
                 <Briefcase size={18} className="text-amber-400" />
