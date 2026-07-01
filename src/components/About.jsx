@@ -59,11 +59,11 @@ export default function About() {
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-4">Who I Am</h3>
               <p className="text-slate-300 text-sm sm:text-lg leading-relaxed font-medium">
-                Hi, I'm Inayath Basha! I'm a passionate Shopify Developer and Brand Designer dedicated to turning creative ideas into high-converting digital storefronts. I build clean, user-friendly experiences that help brand owners connect with their audience and grow their business.
+                Inayath Basha is passionate about turning ideas into engaging digital experiences. He enjoys creating solutions that are simple, intuitive, and purpose-driven, helping businesses connect with their audience in meaningful ways.
               </p>
               {/* Extra paragraph only visible on tablet/desktop to save vertical space on mobile */}
               <p className="hidden sm:block text-slate-400 text-base leading-relaxed mt-4">
-                Whether you're looking to launch a brand new store, customize your Liquid theme, or optimize your conversion rates, I'm here to help you succeed. Let's collaborate and make your digital vision a reality!
+                By combining creativity with technical expertise, he builds experiences that leave a lasting impression and support long-term growth.
               </p>
             </div>
           </div>
