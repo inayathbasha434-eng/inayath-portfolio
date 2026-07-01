@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Sparkles } from 'lucide-react'
 
-/* ─── Skill data ─────────────────────────────────────────────── */
-const SKILLS = [
+/* ─── Outer ring skills ─────────────────────────────────────── */
+const OUTER = [
   {
     id: 'javascript', name: 'JavaScript', color: '#f7df1e', bg: '#1a1800',
     icon: (
@@ -16,21 +16,18 @@ const SKILLS = [
     id: 'react', name: 'React', color: '#61dafb', bg: '#0a1a24',
     icon: (
       <svg viewBox="0 0 24 24" fill="#61dafb" className="w-6 h-6">
-        <circle cx="12" cy="11.998" r="2.14"/>
-        <path d="M12 5.854c3.564 0 6.862.892 9.255 2.374C23.85 9.807 25.5 11.858 25.5 11.998c0 .14-1.65 2.19-4.245 3.77C18.862 17.25 15.564 18.142 12 18.142S5.138 17.25 2.745 15.768C.15 14.188-1.5 12.138-1.5 11.998s1.65-2.19 4.245-3.77C5.138 6.746 8.436 5.854 12 5.854zm0-1.5c-3.915 0-7.5.988-10.175 2.65C-.4 8.8-3 10.778-3 11.998s2.6 3.198 4.825 5.007C4.5 18.667 8.085 19.642 12 19.642s7.5-.975 10.175-2.637C24.4 15.196 27 13.218 27 11.998s-2.6-3.2-4.825-4.994C19.5 5.342 15.915 4.354 12 4.354z" transform="scale(0.48) translate(0,0)" fill="#61dafb"/>
-        <path d="M12 5.854c1.782 5.438 1.782 12.852 0 12.288-1.783 0-1.783-6.85 0-12.288z" fill="#61dafb" opacity="0"/>
-        <ellipse cx="12" cy="12" rx="11" ry="4.5" fill="none" stroke="#61dafb" strokeWidth="1.3"/>
-        <ellipse cx="12" cy="12" rx="11" ry="4.5" fill="none" stroke="#61dafb" strokeWidth="1.3" transform="rotate(60 12 12)"/>
-        <ellipse cx="12" cy="12" rx="11" ry="4.5" fill="none" stroke="#61dafb" strokeWidth="1.3" transform="rotate(120 12 12)"/>
+        <circle cx="12" cy="12" r="2.05"/>
+        <ellipse cx="12" cy="12" rx="10.5" ry="4.2" fill="none" stroke="#61dafb" strokeWidth="1.2"/>
+        <ellipse cx="12" cy="12" rx="10.5" ry="4.2" fill="none" stroke="#61dafb" strokeWidth="1.2" transform="rotate(60 12 12)"/>
+        <ellipse cx="12" cy="12" rx="10.5" ry="4.2" fill="none" stroke="#61dafb" strokeWidth="1.2" transform="rotate(120 12 12)"/>
       </svg>
     ),
   },
   {
     id: 'shopify', name: 'Shopify', color: '#96bf48', bg: '#0d1f0d',
     icon: (
-      <svg viewBox="0 0 48 54" className="w-6 h-6">
-        <path fill="#96bf48" d="M42.5 8.3c0-.2-.2-.3-.3-.3l-5.5-.8c-.1 0-.3-.1-.3-.1l-2.9-5.5c-.1-.1-.2-.2-.3-.2L30 2.1c-.5-1.2-1.3-1.9-2.2-2.1-2.4-.5-4.8.6-6.8 3.2-.8-.2-1.6-.3-2.3-.3-2.3 0-3.4 1.4-3.8 3.5l-9.7 2.9C4.8 9.4 4.8 9.4 4.8 9.5L2 52l31 5.5L48 53 42.5 8.3zm-16.7-6.4c.6.2 1.1.8 1.4 1.8l-4.4.8c.8-2.2 2.1-2.8 3-2.6zM24 4.5c.6 0 1.2.1 1.7.3l-.1.2-5.5 1c.5-1.1 1.9-1.5 3.9-1.5zM14 7.8c.3-1.4.9-2.3 2.1-2.6l-1.5.3c.2-.7.4-1.3.8-1.6l-1.4.2v3.7z"/>
-        <path fill="#5e8e3e" d="M38.7 8l-5.5-.8-2.9-5.5-3.3.8s-1.3-3.4-4.4-2.7c-1.2.3-2 1.4-2.5 3l-2.3.4c-.4 1.6-1 2.3-1.5 2.4l-1.7.3L4.8 9.5 2 52l31 5.5L48 53 38.7 8zm-12.4 4.5l-5.2.8.8 8.3c.7.3 1.5.5 2.4.5 2.7 0 5-1.8 5-4 0-3.1-3-5.6-3-5.6z"/>
+      <svg viewBox="0 0 24 24" fill="#96bf48" className="w-6 h-6">
+        <path d="M15.337 23.979l7.216-1.561s-2.604-17.613-2.625-17.73c-.018-.116-.114-.192-.211-.192-.097 0-1.904-.036-1.904-.036s-1.261-1.24-1.4-1.378v-.002L15.337 23.98zM12.34 4.052s-.636-.192-1.672-.192c-1.652 0-2.454 1.017-2.454 2.013 0 1.105.866 1.64 1.653 2.088.754.424 1.037.73 1.037 1.178 0 .577-.462.866-1.15.866-.954 0-1.768-.5-1.768-.5l-.308 1.479s.81.558 2.04.558c1.846 0 3.02-.97 3.02-2.38 0-1.19-.866-1.903-1.807-2.34-.597-.289-1.037-.52-1.037-1.017 0-.5.423-.81 1.017-.81.788 0 1.498.308 1.498.308l.33-1.25h.001zm2.684-.135l-1.073 3.207-.19-.057-.54-3.15h-1.77l1.578 7.073h1.44l2.604-7.073h-2.05zm5.596.02h-1.29l-2.4 7.073h1.905l.443-1.29h2.243l.25 1.29h1.79L20.62 3.937zm-1.097 2.07l.52 2.592h-1.442l.922-2.593z"/>
       </svg>
     ),
   },
@@ -136,16 +133,69 @@ const SKILLS = [
   },
 ]
 
-const RADIUS = 155
-const SIZE = 420
+/* ─── Inner ring skills (counter-rotate) ───────────────────── */
+const INNER = [
+  {
+    id: 'nextjs', name: 'Next.js', color: '#ffffff', bg: '#111111',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="#ffffff" className="w-4 h-4">
+        <path d="M11.572 0c-.176 0-.31.001-.358.007a19.76 19.76 0 0 1-.364.033C7.443.346 4.25 2.185 2.228 5.012a11.875 11.875 0 0 0-2.119 5.243c-.096.659-.108.854-.108 1.747s.012 1.089.108 1.748c.652 4.506 3.86 8.292 8.209 9.695.779.25 1.6.422 2.534.525.363.04 1.935.04 2.299 0 1.611-.178 2.977-.577 4.323-1.264.207-.106.247-.134.219-.158-.02-.013-.9-1.193-1.955-2.62l-1.919-2.592-2.404-3.558a338.739 338.739 0 0 0-2.422-3.556c-.009-.002-.018 1.579-.023 3.51-.007 3.38-.01 3.515-.052 3.595a.426.426 0 0 1-.206.214c-.075.037-.14.044-.495.044H7.81l-.108-.068a.438.438 0 0 1-.157-.171l-.05-.106.006-4.703.007-4.705.072-.092a.645.645 0 0 1 .174-.143c.096-.047.134-.051.54-.051.478 0 .558.018.682.154.035.038 1.337 1.999 2.895 4.361a10760.433 10760.433 0 0 0 4.735 7.17l1.9 2.879.096-.063a12.317 12.317 0 0 0 2.466-2.163 11.944 11.944 0 0 0 2.824-6.134c.096-.66.108-.854.108-1.748 0-.893-.012-1.088-.108-1.747-.652-4.506-3.859-8.292-8.208-9.695a12.597 12.597 0 0 0-2.499-.523A33.119 33.119 0 0 0 11.573 0z"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'tailwind', name: 'Tailwind CSS', color: '#38bdf8', bg: '#0c1d2b',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="#38bdf8" className="w-4 h-4">
+        <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'nodejs', name: 'Node.js', color: '#68a063', bg: '#0d1a10',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="#68a063" className="w-4 h-4">
+        <path d="M11.998 24c-.321 0-.641-.084-.922-.247l-2.936-1.737c-.438-.245-.224-.332-.08-.383.585-.203.703-.249 1.328-.603.065-.037.151-.023.218.017l2.256 1.339c.082.045.198.045.275 0l8.795-5.076c.082-.047.134-.141.134-.238V6.921c0-.099-.052-.19-.137-.242l-8.791-5.072c-.081-.047-.189-.047-.271 0L3.075 6.68c-.087.05-.141.144-.141.242v10.15c0 .097.054.189.139.235l2.409 1.392c1.307.654 2.108-.116 2.108-.891V7.787c0-.142.114-.253.256-.253h1.115c.139 0 .255.111.255.253v10.021c0 1.745-.95 2.745-2.604 2.745-.508 0-.909 0-2.026-.551L2.28 18.675a1.85 1.85 0 0 1-.919-1.604V6.921c0-.662.354-1.278.922-1.606l8.795-5.082c.554-.315 1.291-.315 1.841 0l8.794 5.082c.568.328.923.944.923 1.606v10.15c0 .661-.355 1.275-.923 1.601l-8.794 5.078c-.282.162-.6.245-.921.245z"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'ai', name: 'AI / ChatGPT', color: '#10a37f', bg: '#07201a',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="#10a37f" className="w-4 h-4">
+        <path d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.77.77 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0L4.1 14.518A4.5 4.5 0 0 1 2.34 7.896zm16.597 3.855l-5.843-3.369 2.02-1.168a.076.076 0 0 1 .071 0l4.724 2.727a4.5 4.5 0 0 1-.676 8.115v-5.678a.79.79 0 0 0-.396-.627zm2.01-3.023l-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.717-2.722a4.5 4.5 0 0 1 6.791 4.618zm-12.64 4.135l-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365l2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'emailmkt', name: 'Email Marketing', color: '#f59e0b', bg: '#1a1200',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="#f59e0b" className="w-4 h-4">
+        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+      </svg>
+    ),
+  },
+  {
+    id: 'seo', name: 'SEO', color: '#34d399', bg: '#062018',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="#34d399" className="w-4 h-4">
+        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+      </svg>
+    ),
+  },
+]
+
+const OUTER_R = 160
+const INNER_R = 82
+const SIZE = 430
 
 export default function Skills() {
   const sectionRef = useRef(null)
   const [hoveredId, setHoveredId] = useState(null)
-  const [rotAngle, setRotAngle] = useState(0)
-  const [paused, setPaused] = useState(false)
-  const angleRef = useRef(0)
+  const outerAngleRef = useRef(0)
+  const innerAngleRef = useRef(0)
   const rafRef = useRef(null)
+  const [, forceUpdate] = useState(0)
 
   useEffect(() => {
     const section = sectionRef.current
@@ -158,30 +208,87 @@ export default function Skills() {
     return () => obs.disconnect()
   }, [])
 
-  /* Slow auto-rotation */
+  /* Always-running dual rotation */
   useEffect(() => {
-    const speed = 0.12
     const tick = () => {
-      if (!paused) {
-        angleRef.current = (angleRef.current + speed) % 360
-        setRotAngle(angleRef.current)
-      }
+      outerAngleRef.current = (outerAngleRef.current + 0.10) % 360  // outer: clockwise
+      innerAngleRef.current = (innerAngleRef.current - 0.18) % 360  // inner: counter-clockwise
+      forceUpdate(n => n + 1)
       rafRef.current = requestAnimationFrame(tick)
     }
     rafRef.current = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(rafRef.current)
-  }, [paused])
+  }, [])
 
   const cx = SIZE / 2
   const cy = SIZE / 2
-  const total = SKILLS.length
+
+  const renderRing = (skills, radius, nodeSize, iconScale, angleRef) =>
+    skills.map((skill, i) => {
+      const stepDeg = 360 / skills.length
+      const deg = ((angleRef.current + stepDeg * i) % 360) * (Math.PI / 180)
+      const x = cx + radius * Math.cos(deg)
+      const y = cy + radius * Math.sin(deg)
+      const isHovered = hoveredId === skill.id
+
+      return (
+        <button
+          key={skill.id}
+          className="absolute -translate-x-1/2 -translate-y-1/2 z-20 focus:outline-none"
+          style={{ left: x, top: y }}
+          onMouseEnter={() => setHoveredId(skill.id)}
+          onMouseLeave={() => setHoveredId(null)}
+          title={skill.name}
+        >
+          {/* Hover name label */}
+          <div
+            className="absolute bottom-full left-1/2 pointer-events-none whitespace-nowrap"
+            style={{
+              transform: `translateX(-50%) translateY(${isHovered ? -2 : 2}px)`,
+              opacity: isHovered ? 1 : 0,
+              transition: 'opacity 0.2s ease, transform 0.2s ease',
+              marginBottom: 6,
+            }}
+          >
+            <span
+              className="text-[10px] font-bold px-2 py-0.5 rounded-md text-white"
+              style={{
+                background: '#111827',
+                border: `1px solid ${skill.color}60`,
+                boxShadow: `0 0 10px ${skill.color}50`,
+              }}
+            >
+              {skill.name}
+            </span>
+          </div>
+
+          {/* Icon bubble */}
+          <div
+            className="flex items-center justify-center rounded-full transition-all duration-200"
+            style={{
+              width: isHovered ? nodeSize + 10 : nodeSize,
+              height: isHovered ? nodeSize + 10 : nodeSize,
+              background: skill.bg,
+              boxShadow: isHovered
+                ? `0 0 0 2px ${skill.color}, 0 0 16px ${skill.color}70`
+                : `0 0 0 1.5px ${skill.color}35`,
+            }}
+          >
+            <div style={{ transform: `scale(${iconScale})` }}>
+              {skill.icon}
+            </div>
+          </div>
+        </button>
+      )
+    })
 
   return (
     <section id="skills" ref={sectionRef} className="py-20 bg-[#080d1a] scroll-mt-16 overflow-hidden">
       <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes glowPulse { 0%,100%{opacity:.5} 50%{opacity:.9} }
+        @keyframes glowPulse { 0%,100%{opacity:.45} 50%{opacity:.85} }
         .center-glow { animation: glowPulse 3s ease-in-out infinite; }
-        .orbit-ring { animation: glowPulse 4s ease-in-out infinite; }
+        .orbit-outer { animation: glowPulse 4.5s ease-in-out infinite; }
+        .orbit-inner { animation: glowPulse 3.5s ease-in-out infinite 0.5s; }
       `}} />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -196,108 +303,66 @@ export default function Skills() {
           </h2>
         </div>
 
-        {/* Orbital Wheel */}
+        {/* Dual Orbital Wheel */}
         <div className="fade-in flex justify-center">
           <div
             className="relative"
             style={{ width: SIZE, height: SIZE, maxWidth: '95vw', maxHeight: '95vw' }}
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => { setPaused(false); setHoveredId(null) }}
           >
-
-            {/* Orbit dashed ring */}
+            {/* Outer dashed orbit ring */}
             <div
-              className="orbit-ring absolute rounded-full border border-dashed border-purple-500/20"
+              className="orbit-outer absolute rounded-full"
               style={{
-                width: RADIUS * 2,
-                height: RADIUS * 2,
-                left: cx - RADIUS,
-                top: cy - RADIUS,
+                width: OUTER_R * 2, height: OUTER_R * 2,
+                left: cx - OUTER_R, top: cy - OUTER_R,
+                border: '1.5px dashed rgba(139,92,246,0.22)',
               }}
             />
 
-            {/* Center glow blob */}
+            {/* Inner dashed orbit ring */}
+            <div
+              className="orbit-inner absolute rounded-full"
+              style={{
+                width: INNER_R * 2, height: INNER_R * 2,
+                left: cx - INNER_R, top: cy - INNER_R,
+                border: '1px dashed rgba(96,165,250,0.18)',
+              }}
+            />
+
+            {/* Purple center glow */}
             <div
               className="center-glow absolute rounded-full pointer-events-none"
               style={{
-                width: 160, height: 160,
-                left: cx - 80, top: cy - 80,
-                background: 'radial-gradient(circle, rgba(139,92,246,0.5) 0%, rgba(88,28,220,0.15) 55%, transparent 75%)',
+                width: 150, height: 150,
+                left: cx - 75, top: cy - 75,
+                background: 'radial-gradient(circle, rgba(139,92,246,0.55) 0%, rgba(88,28,220,0.15) 55%, transparent 75%)',
               }}
             />
 
             {/* Center code node */}
             <div
-              className="absolute -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center font-mono font-black text-purple-300 text-xl rounded-full select-none"
+              className="absolute -translate-x-1/2 -translate-y-1/2 z-30 flex items-center justify-center font-mono font-black text-purple-200 text-lg rounded-full select-none"
               style={{
                 left: cx, top: cy,
-                width: 72, height: 72,
+                width: 68, height: 68,
                 background: 'radial-gradient(circle at 40% 35%, #2d1b5e, #0e0820)',
-                boxShadow: '0 0 0 2px rgba(139,92,246,0.5), 0 0 32px rgba(139,92,246,0.4)',
+                boxShadow: '0 0 0 2px rgba(139,92,246,0.6), 0 0 30px rgba(139,92,246,0.45)',
               }}
             >
               {'</>'}
             </div>
 
-            {/* Orbiting skill icons */}
-            {SKILLS.map((skill, i) => {
-              const stepDeg = 360 / total
-              const deg = ((rotAngle + stepDeg * i) % 360) * (Math.PI / 180)
-              const x = cx + RADIUS * Math.cos(deg)
-              const y = cy + RADIUS * Math.sin(deg)
-              const isHovered = hoveredId === skill.id
+            {/* Inner ring icons (counter-clockwise, smaller) */}
+            {renderRing(INNER, INNER_R, 38, 0.9, innerAngleRef)}
 
-              return (
-                <button
-                  key={skill.id}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 z-20 focus:outline-none"
-                  style={{ left: x, top: y }}
-                  onMouseEnter={() => setHoveredId(skill.id)}
-                  onMouseLeave={() => setHoveredId(null)}
-                  title={skill.name}
-                >
-                  {/* Name label — appears on hover */}
-                  <div
-                    className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 pointer-events-none whitespace-nowrap transition-all duration-200"
-                    style={{ opacity: isHovered ? 1 : 0, transform: `translateX(-50%) translateY(${isHovered ? 0 : 4}px)` }}
-                  >
-                    <span
-                      className="text-[11px] font-bold px-2.5 py-1 rounded-lg text-white"
-                      style={{
-                        background: '#111827',
-                        border: `1px solid ${skill.color}55`,
-                        boxShadow: `0 0 8px ${skill.color}44`,
-                      }}
-                    >
-                      {skill.name}
-                    </span>
-                  </div>
-
-                  {/* Icon bubble */}
-                  <div
-                    className="flex items-center justify-center rounded-full transition-all duration-300"
-                    style={{
-                      width: isHovered ? 60 : 50,
-                      height: isHovered ? 60 : 50,
-                      background: skill.bg,
-                      boxShadow: isHovered
-                        ? `0 0 0 2.5px ${skill.color}, 0 0 20px ${skill.color}66`
-                        : `0 0 0 1.5px ${skill.color}33`,
-                    }}
-                  >
-                    {skill.icon}
-                  </div>
-                </button>
-              )
-            })}
+            {/* Outer ring icons (clockwise, larger) */}
+            {renderRing(OUTER, OUTER_R, 50, 1, outerAngleRef)}
           </div>
         </div>
 
-        {/* Hint */}
-        <p className="text-center text-slate-600 text-xs mt-4">
+        <p className="text-center text-slate-600 text-xs mt-3">
           Hover any icon to reveal the skill name
         </p>
-
       </div>
     </section>
   )
