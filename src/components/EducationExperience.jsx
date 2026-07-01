@@ -121,7 +121,7 @@ export default function EducationExperience() {
           </button>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
+        <div className="grid md:grid-cols-2 gap-y-0 md:gap-y-10 gap-x-10 lg:gap-x-16">
           
           {/* Education Timeline */}
           <div className={`transition-all duration-500 ease-in-out ${
