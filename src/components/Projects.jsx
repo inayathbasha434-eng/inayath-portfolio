@@ -32,6 +32,33 @@ export const PROJECTS = [
   },
   {
     number: '02',
+    title: 'Sandy Makeover',
+    platform: 'React + Tailwind CSS',
+    description:
+      'A luxury bridal makeover & studio website showcasing bridal portfolios, service packages, and bookings.',
+    tags: ['React', 'Tailwind CSS', 'Vite'],
+    link: 'https://sandymakeover.vercel.app/',
+    detailPage: '/projects/sandy-makeover',
+    image: '/sandy_makeover.png',
+    problem: 'Client needed a premium, elegant online presence to display luxury bridal packages and process client bookings.',
+    solution: 'Designed a cinematic dark-themed React web app featuring polaroid photo galleries and interactive reservation modals.',
+    outcome: 'Delivered a high-end luxury digital studio website that elevates brand trust and streamlines appointment requests.',
+    tagColors: [
+      'bg-amber-500/10 text-amber-400 border-amber-500/20',
+      'bg-pink-500/10 text-pink-400 border-pink-500/20',
+      'bg-purple-500/10 text-purple-400 border-purple-500/20',
+    ],
+    checklist: [
+      'Cinematic dark UI/UX design',
+      'Polaroid gallery showcase',
+      'Appointment booking modal',
+      'Responsive mobile optimization',
+    ],
+    accent: 'from-amber-400 to-rose-500',
+    accentColor: '#f59e0b',
+  },
+  {
+    number: '03',
     title: 'SmartCrop AI',
     platform: 'React + Node.js + ML',
     description:
@@ -58,7 +85,7 @@ export const PROJECTS = [
     accentColor: '#10b981',
   },
   {
-    number: '03',
+    number: '04',
     title: 'AI Image Generation',
     platform: 'Stable Diffusion + Midjourney',
     description:
@@ -85,7 +112,7 @@ export const PROJECTS = [
     accentColor: '#a855f7',
   },
   {
-    number: '04',
+    number: '05',
     title: 'Personal Portfolio',
     platform: 'React + Tailwind CSS',
     description:
