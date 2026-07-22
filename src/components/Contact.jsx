@@ -37,13 +37,15 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault()
     setStatus('sending')
-    // Simulate API submission
-    setTimeout(() => {
-      setStatus('success')
-      setFormData({ name: '', email: '', message: '' })
-      // Reset success status after a delay
-      setTimeout(() => setStatus('idle'), 5000)
-    }, 1500)
+    
+    const text = `Hii Inayath basha,\n\nName: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(text)}`
+
+    window.open(whatsappUrl, '_blank')
+
+    setStatus('success')
+    setFormData({ name: '', email: '', message: '' })
+    setTimeout(() => setStatus('idle'), 5000)
   }
 
   return (
@@ -82,9 +84,9 @@ export default function Contact() {
                 <div className="w-16 h-16 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center text-green-400 mb-4 animate-bounce">
                   <Check size={32} />
                 </div>
-                <h3 className="text-white font-bold text-lg mb-2">Message Sent!</h3>
+                <h3 className="text-white font-bold text-lg mb-2">Opening WhatsApp...</h3>
                 <p className="text-slate-400 text-sm max-w-xs">
-                  Thank you for reaching out. I'll get back to you as soon as possible.
+                  Thank you for reaching out! Your message has been prepared for WhatsApp.
                 </p>
               </div>
             ) : (
