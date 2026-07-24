@@ -35,7 +35,7 @@ export default function Footer() {
               </div>
               <div className="text-left">
                 <p className="text-white font-bold text-sm sm:text-base">Inayath Basha A</p>
-                <p className="text-blue-400 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Shopify Developer</p>
+                <p className="text-blue-400 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Web Designer &amp; Digital Solutions Specialist</p>
               </div>
             </div>
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 hidden sm:block">

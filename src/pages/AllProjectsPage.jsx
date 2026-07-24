@@ -51,8 +51,8 @@ export default function AllProjectsPage() {
       <div className="absolute top-2/3 -right-48 w-96 h-96 bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none" />
 
       <SEO 
-        title="Projects Gallery | Web Developer & Shopify Expert"
-        description="Browse all frontend, backend, Shopify, WordPress, and Machine Learning projects delivered by Inayath Basha."
+        title="Projects Gallery | Web Designer & Digital Solutions Specialist"
+        description="Browse all custom websites, user interfaces, Shopify stores, WordPress setups, and digital products designed and developed by Inayath Basha."
         canonical="/projects"
         schema={pageSchema}
       />

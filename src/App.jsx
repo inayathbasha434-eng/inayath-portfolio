@@ -35,20 +35,20 @@ function PortfolioLayout() {
         "@type": "Person",
         "@id": "https://inayathbasha.vercel.app/#person",
         "name": "Inayath Basha",
-        "jobTitle": "Shopify Developer",
+        "jobTitle": "Web Designer & Digital Solutions Specialist",
         "url": "https://inayathbasha.vercel.app",
         "sameAs": [
           "https://www.linkedin.com/in/inayath-basha-a-53051824a/",
           "https://github.com/inayathbasha",
           "https://instagram.com/inayathbasha_a"
         ],
-        "description": "Creative Shopify Developer, UI/UX Designer, Brand Designer, and Business Development Professional helping businesses grow."
+        "description": "Inayath Basha is a Web Designer & Digital Solutions Specialist helping businesses build premium websites, high-converting landing pages, Shopify stores, WordPress websites, custom digital experiences, website redesigns, e-commerce solutions, and performance-focused web experiences."
       },
       {
         "@type": "WebSite",
         "@id": "https://inayathbasha.vercel.app/#website",
         "url": "https://inayathbasha.vercel.app",
-        "name": "Inayath Basha Portfolio",
+        "name": "Inayath Basha | Web Designer & Digital Solutions Specialist",
         "publisher": {
           "@id": "https://inayathbasha.vercel.app/#person"
         }
@@ -59,8 +59,8 @@ function PortfolioLayout() {
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100 selection:bg-blue-500/30 selection:text-white">
       <SEO 
-        title="Freelance Shopify Developer & Web Designer"
-        description="Inayath Basha is a professional Freelance Shopify Developer & Web Designer. Specializing in high-converting Shopify stores, custom theme development, and UI/UX design."
+        title="Web Designer & Digital Solutions Specialist"
+        description="Inayath Basha is a Web Designer & Digital Solutions Specialist helping businesses build premium websites, high-converting landing pages, Shopify stores, WordPress websites, custom digital experiences, website redesigns, e-commerce solutions, and performance-focused web experiences."
         canonical="/"
         schema={homeSchema}
       />

@@ -2,13 +2,13 @@
 
 ## Identity
 - **Name:** Inayath Basha A
-- **Roles:** Frontend Developer, Shopify Developer, UI/UX Designer, Brand Designer, Business Development Professional
+- **Roles:** Web Designer & Digital Solutions Specialist, UI/UX Designer, Brand Designer, Business Development Professional
 - **Location:** Erode, Tamil Nadu, India
 - **Contact:** Inayathbasha434@gmail.com
 - **Website:** https://inayathbasha.vercel.app
 
 ## Bio & Mission
-Creative Shopify Developer, UI/UX Designer, and Business Development Professional helping businesses grow through modern websites and digital solutions. Specializing in high-converting Shopify stores, custom theme development, speed optimization, and premium UI/UX design.
+Inayath Basha is a Web Designer & Digital Solutions Specialist helping businesses build premium websites, high-converting landing pages, Shopify stores, WordPress websites, custom digital experiences, website redesigns, e-commerce solutions, and performance-focused web experiences.
 
 ## Technical Skills
 - **Frontend Core:** HTML5, CSS3, JavaScript (ES6+), React.js, Next.js, Vite
@@ -24,4 +24,4 @@ Creative Shopify Developer, UI/UX Designer, and Business Development Professiona
 - **SmartCrop AI:** An AI-powered Agritech platform providing smart crop recommendations using a trained machine learning model, built with React and FastAPI/Python.
 
 ## Professional Offerings
-Available for freelance projects and full-time opportunities. Focuses on delivering premium, performance-optimized, and aesthetically superior digital experiences.
+Available for contract projects and full-time opportunities. Focuses on delivering premium, performance-optimized, and aesthetically superior digital experiences.

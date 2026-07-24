@@ -4,6 +4,7 @@ import {
   ArrowLeft, CheckCircle2, Star, Zap, ArrowRight,
   Globe, Layout, Code2, Rocket, ShieldCheck, PenTool
 } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const WHATSAPP_NUM = '919345704295'
 
@@ -39,11 +40,27 @@ export default function BusinessServicePage() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    document.title = 'Custom Business Websites | Inayath Basha'
   }, [])
+
+  const businessSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Custom Business Websites | Inayath Basha",
+    "description": "Establish a powerful online presence with custom UI/UX design, custom frontend development, and high-converting landing pages.",
+    "url": "https://inayathbasha.vercel.app/services/business",
+    "publisher": {
+      "@id": "https://inayathbasha.vercel.app/#person"
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100">
+      <SEO 
+        title="Custom Business Websites | Digital Solutions"
+        description="Establish a powerful online presence with premium custom UI/UX design, custom web development, and performance-optimized business growth websites."
+        canonical="/services/business"
+        schema={businessSchema}
+      />
 
       {/* Back Nav */}
       <div className="sticky top-0 z-50 bg-[#0a0f1e]/95 backdrop-blur border-b border-white/5 px-4 py-3">

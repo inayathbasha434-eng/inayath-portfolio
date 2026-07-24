@@ -8,7 +8,7 @@ export default function SEO({
   schema 
 }) {
   const siteUrl = 'https://inayathbasha.vercel.app';
-  const fullTitle = `${title} | Inayath Basha`;
+  const fullTitle = title.includes('Inayath Basha') ? title : `Inayath Basha | ${title}`;
 
   return (
     <Helmet>

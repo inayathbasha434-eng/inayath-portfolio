@@ -66,7 +66,7 @@ export default function FAQ() {
             Got Questions? <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">I've Got Answers</span>
           </h2>
           <p className="mt-4 text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Find answers to common questions about working with a freelance Shopify developer, pricing, timelines, and SEO optimizations.
+            Find answers to common questions about working with a web designer &amp; digital solutions specialist, pricing, timelines, and SEO optimizations.
           </p>
         </div>
 

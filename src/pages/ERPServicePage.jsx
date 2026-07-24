@@ -4,6 +4,7 @@ import {
   ArrowLeft, CheckCircle2, Star, Zap, ArrowRight,
   BarChart2, Users, Package, DollarSign, ClipboardList, HeartHandshake
 } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const WHATSAPP_NUM = '919345704295'
 
@@ -39,11 +40,27 @@ export default function ERPServicePage() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    document.title = 'ERP Solutions | Inayath Basha'
   }, [])
+
+  const erpSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "ERP Software Solutions | Inayath Basha",
+    "description": "Streamline business operations with custom ERP software modules covering Inventory, HR, Finance, and Analytics.",
+    "url": "https://inayathbasha.vercel.app/services/erp",
+    "publisher": {
+      "@id": "https://inayathbasha.vercel.app/#person"
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100">
+      <SEO 
+        title="ERP Software Solutions | Digital Solutions"
+        description="Streamline business operations with secure, scalable custom ERP systems covering inventory tracking, HR payroll, financial accounting, and CRM modules."
+        canonical="/services/erp"
+        schema={erpSchema}
+      />
 
       {/* Back Nav */}
       <div className="sticky top-0 z-50 bg-[#0a0f1e]/95 backdrop-blur border-b border-white/5 px-4 py-3">

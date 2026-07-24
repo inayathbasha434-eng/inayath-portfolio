@@ -4,6 +4,7 @@ import {
   ArrowLeft, ShoppingBag, CheckCircle2, Star, Zap,
   Palette, Globe, CreditCard, BarChart2, Headphones, ArrowRight
 } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const WHATSAPP_NUM = '919345704295'
 
@@ -39,11 +40,27 @@ export default function ShopifyServicePage() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    document.title = 'Shopify Store Development | Inayath Basha'
   }, [])
+
+  const shopifySchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Shopify Store Development | Inayath Basha",
+    "description": "High-converting Shopify stores, custom Liquid theme customization, payment setup, speed optimization, and e-commerce design.",
+    "url": "https://inayathbasha.vercel.app/services/shopify",
+    "publisher": {
+      "@id": "https://inayathbasha.vercel.app/#person"
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100">
+      <SEO 
+        title="Shopify Store Development | Digital Solutions"
+        description="Launch a high-converting online store with Shopify. Custom theme customizations, payment integrations, speed optimizations, and robust product listings."
+        canonical="/services/shopify"
+        schema={shopifySchema}
+      />
 
       {/* Back Nav */}
       <div className="sticky top-0 z-50 bg-[#0a0f1e]/95 backdrop-blur border-b border-white/5 px-4 py-3">

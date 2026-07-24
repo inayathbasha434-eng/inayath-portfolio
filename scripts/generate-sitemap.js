@@ -15,6 +15,8 @@ const routes = [
   { path: '/projects/portfolio', priority: '0.9' },
   { path: '/projects/ai-image-generation', priority: '0.9' },
   { path: '/projects/smartcrop-ai', priority: '0.9' },
+  { path: '/projects/sandy-makeover', priority: '0.9' },
+  { path: '/projects/roshan-portfolio', priority: '0.9' },
   { path: '/projects', priority: '0.9' }
 ];
 

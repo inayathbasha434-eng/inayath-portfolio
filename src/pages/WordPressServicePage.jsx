@@ -4,6 +4,7 @@ import {
   ArrowLeft, Globe, CheckCircle2, Star, Zap,
   Layout, Gauge, ShoppingCart, Search, Settings, ArrowRight, Code2
 } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const WHATSAPP_NUM = '919345704295'
 
@@ -39,11 +40,27 @@ export default function WordPressServicePage() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    document.title = 'WordPress Development | Inayath Basha'
   }, [])
+
+  const wordpressSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "WordPress Custom Website Development | Inayath Basha",
+    "description": "Custom WordPress theme development, WooCommerce configurations, speed optimizations, and on-page SEO setups.",
+    "url": "https://inayathbasha.vercel.app/services/wordpress",
+    "publisher": {
+      "@id": "https://inayathbasha.vercel.app/#person"
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100">
+      <SEO 
+        title="WordPress Website Development | Digital Solutions"
+        description="Fast, modern, and SEO-optimized WordPress websites. Custom theme developments, WooCommerce integrations, speed tunings, and plugin setups."
+        canonical="/services/wordpress"
+        schema={wordpressSchema}
+      />
 
       {/* Back Nav */}
       <div className="sticky top-0 z-50 bg-[#0a0f1e]/95 backdrop-blur border-b border-white/5 px-4 py-3">

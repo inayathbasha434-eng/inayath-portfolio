@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft, CheckCircle2, Star, ArrowRight, Zap, Monitor, Smartphone, Search, Palette, Award, Share2 } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const WHATSAPP_NUM = '919345704295'
 
@@ -36,11 +37,27 @@ export default function PortfolioServicePage() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    document.title = 'Portfolio Website Design | Inayath Basha'
   }, [])
+
+  const portfolioSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Portfolio Website Design | Inayath Basha",
+    "description": "Premium personal and creative portfolio websites showcasing skills, academic projects, case studies, and achievements.",
+    "url": "https://inayathbasha.vercel.app/services/portfolio",
+    "publisher": {
+      "@id": "https://inayathbasha.vercel.app/#person"
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100">
+      <SEO 
+        title="Portfolio Website Design | Digital Solutions"
+        description="Get a premium personal portfolio website designed to showcase your skills, case studies, and achievements with smooth animations and robust SEO optimization."
+        canonical="/services/portfolio"
+        schema={portfolioSchema}
+      />
 
       {/* Back Nav */}
       <div className="sticky top-0 z-50 bg-[#0a0f1e]/95 backdrop-blur border-b border-white/5 px-4 py-3">

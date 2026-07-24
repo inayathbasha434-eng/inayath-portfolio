@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ArrowLeft, Sparkles, CheckCircle2, Star, ArrowRight, ImageIcon, Zap, Clock, Layers, RefreshCw, Download } from 'lucide-react'
+import SEO from '../components/SEO'
 
 const WHATSAPP_NUM = '919345704295'
 
@@ -36,11 +37,27 @@ export default function AIServicePage() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    document.title = 'AI Product Image Generation | Inayath Basha'
   }, [])
+
+  const aiSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "AI Product Image Generation | Inayath Basha",
+    "description": "Generate high-quality, photorealistic product lifestyle scenes and studio backgrounds using Gemini AI.",
+    "url": "https://inayathbasha.vercel.app/services/ai",
+    "publisher": {
+      "@id": "https://inayathbasha.vercel.app/#person"
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100">
+      <SEO 
+        title="AI Product Image Generation | Digital Solutions"
+        description="Generate high-quality, photorealistic product lifestyle scenes and studio backgrounds using Gemini AI, designed for modern e-commerce stores."
+        canonical="/services/ai"
+        schema={aiSchema}
+      />
 
       {/* Back Nav */}
       <div className="sticky top-0 z-50 bg-[#0a0f1e]/95 backdrop-blur border-b border-white/5 px-4 py-3">
