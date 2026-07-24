@@ -20,6 +20,8 @@ import MorPanthalProjectPage from './pages/MorPanthalProjectPage'
 import PortfolioProjectPage from './pages/PortfolioProjectPage'
 import AIProjectPage from './pages/AIProjectPage'
 import SmartCropProjectPage from './pages/SmartCropProjectPage'
+import SandyMakeoverProjectPage from './pages/SandyMakeoverProjectPage'
+import RoshanPortfolioProjectPage from './pages/RoshanPortfolioProjectPage'
 import AllProjectsPage from './pages/AllProjectsPage'
 import SEO from './components/SEO'
 
@@ -108,6 +110,8 @@ export default function App() {
       <Route path="/projects/portfolio" element={<PortfolioProjectPage />} />
       <Route path="/projects/ai-image-generation" element={<AIProjectPage />} />
       <Route path="/projects/smartcrop-ai" element={<SmartCropProjectPage />} />
+      <Route path="/projects/sandy-makeover" element={<SandyMakeoverProjectPage />} />
+      <Route path="/projects/roshan-portfolio" element={<RoshanPortfolioProjectPage />} />
     </Routes>
   )
 }
