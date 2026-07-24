@@ -91,7 +91,7 @@ export const PROJECTS = [
     description:
       'A premium, modern portfolio website developed for full-stack developer Roshan Asraf to showcase digital products and services.',
     tags: ['React', 'Tailwind CSS', 'Vite'],
-    link: '#',
+    link: 'https://roshanasraf.vercel.app/',
     detailPage: '/projects/roshan-portfolio',
     image: '/roshan_portfolio.png',
     problem: 'Roshan needed an ultra-premium, interactive portfolio to highlight his Shopify, WordPress, and Full Stack development expertise.',

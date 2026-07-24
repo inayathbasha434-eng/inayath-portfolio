@@ -145,6 +145,14 @@ export default function RoshanPortfolioProjectPage() {
 
           {/* Project Action Links */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a 
+              href="https://roshanasraf.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="px-8 py-3.5 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-blue-500/10 hover:shadow-blue-500/20 hover:-translate-y-0.5 transition-all flex items-center gap-2 text-sm w-full sm:w-auto justify-center"
+            >
+              <ExternalLink size={16} /> Visit Live Website
+            </a>
             <Link 
               to="/" 
               className="px-8 py-3.5 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl transition-all border border-white/10 text-sm w-full sm:w-auto justify-center text-center"
