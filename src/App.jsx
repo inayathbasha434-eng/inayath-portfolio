@@ -40,7 +40,7 @@ function PortfolioLayout() {
         "sameAs": [
           "https://www.linkedin.com/in/inayath-basha-a-53051824a/",
           "https://github.com/inayathbasha",
-          "https://instagram.com/inayathbasha_a"
+          "https://instagram.com/i_ibasha_2o"
         ],
         "description": "Inayath Basha is a Web Designer & Digital Solutions Specialist helping businesses build premium websites, high-converting landing pages, Shopify stores, WordPress websites, custom digital experiences, website redesigns, e-commerce solutions, and performance-focused web experiences."
       },

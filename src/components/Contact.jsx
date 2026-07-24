@@ -212,7 +212,7 @@ export default function Contact() {
 
                 {/* Instagram */}
                 <a
-                  href="https://instagram.com/inayathbasha_a"
+                  href="https://instagram.com/i_ibasha_2o"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Connect on Instagram"
