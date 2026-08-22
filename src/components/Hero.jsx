@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { ShoppingBag, ArrowDown, MessageSquare, ArrowRight, BadgeCheck } from 'lucide-react'
+import { ShoppingBag, ArrowDown, MessageSquare, ArrowRight, BadgeCheck, Sparkles } from 'lucide-react'
 
 const PHOTO = "/ChatGPT_Image_Jun_16,_2026,_03_11_34_PM.png"
 
@@ -61,12 +61,13 @@ export default function Hero() {
 
 
             {/* Greeting */}
-            <div className={`text-slate-400 text-lg md:text-xl font-medium mb-2 transition-all duration-700 ease-out ${revealStep >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              Hello, World! I'm
+            <div className={`inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider text-blue-400 uppercase shadow-[0_0_15px_rgba(59,130,246,0.08)] mb-4 md:mb-6 transition-all duration-700 ease-out select-none ${revealStep >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <BadgeCheck size={14} className="text-blue-400" />
+              <span>Hello, World! I'm</span>
             </div>
 
             {/* Name */}
-            <h1 className="text-[3.5rem] sm:text-6xl md:text-[4rem] lg:text-[4.5rem] xl:text-[5.5rem] font-extrabold leading-[1.1] mb-4 tracking-tight overflow-hidden pb-2 text-center md:text-left whitespace-nowrap">
+            <h1 className="text-[3.5rem] sm:text-6xl md:text-[4rem] lg:text-[4.5rem] xl:text-[5.5rem] font-extrabold leading-[1.1] mb-4 tracking-tighter overflow-hidden pb-2 text-center md:text-left whitespace-nowrap drop-shadow-sm">
               <span className={`block md:inline-block text-white transition-transform duration-700 ease-out ${revealStep >= 2 ? 'translate-y-0' : 'translate-y-[120%]'}`}>
                 Inayath
               </span>
@@ -79,9 +80,9 @@ export default function Hero() {
             </h1>
 
             {/* Professional Title Subheading */}
-            <div className={`text-blue-300 text-[11px] sm:text-sm md:text-base font-bold uppercase tracking-wider text-center md:text-left mb-5 transition-all duration-700 ease-out ${revealStep >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className={`text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 text-[11px] sm:text-sm md:text-base font-bold uppercase tracking-widest text-center md:text-left mb-5 transition-all duration-700 ease-out ${revealStep >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <span className="block sm:inline">Technology &amp; Digital Creator</span>
-              <span className="hidden sm:inline mx-3 text-blue-500/50">&middot;</span>
+              <span className="hidden sm:inline mx-3 text-white/20">&middot;</span>
               <span className="block sm:inline mt-1.5 sm:mt-0">Founder of HAIKUE</span>
             </div>
 
@@ -276,7 +277,10 @@ export default function Hero() {
               <div className={`absolute -top-1 -right-1 flex items-center gap-1 bg-blue-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg shadow-blue-500/40 z-30 transition-all duration-500 ${isFlipped ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 group-hover:translate-x-1 group-hover:-translate-y-1'}`}>
                 <span>Founder @ HAIKUE</span>
               </div>
-              <div className={`absolute -bottom-1 -left-2 flex items-center gap-1.5 bg-[#0d1426] border border-white/10 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-full shadow-lg z-30 transition-all duration-500 ${isFlipped ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 group-hover:-translate-x-1 group-hover:translate-y-1'}`}>
+              <div className={`absolute -bottom-2 -left-4 flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.3)] z-30 transition-all duration-500 ${isFlipped ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 group-hover:-translate-x-2 group-hover:translate-y-2'}`}>
+                <div className="w-5 h-5 rounded-full bg-blue-500/30 flex items-center justify-center">
+                  <Sparkles size={12} className="text-blue-200" />
+                </div>
                 Digital Creator
               </div>
             </div>

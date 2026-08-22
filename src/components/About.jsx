@@ -59,11 +59,7 @@ export default function About() {
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-4">Who I Am</h3>
               <p className="text-slate-300 text-sm sm:text-lg leading-relaxed font-medium">
-                Inayath Basha is a technology creator, builder, and the Founder of HAIKUE. His professional journey is driven by a deep fascination with digital products, clean software interfaces, and high-performance web systems. Over the years, he has designed and developed tailored online platforms, e-commerce architectures, and visual brand identities for diverse clients globally.
-              </p>
-              {/* Extra paragraph only visible on tablet/desktop to save vertical space on mobile */}
-              <p className="hidden sm:block text-slate-400 text-base leading-relaxed mt-4">
-                His passion for combining design aesthetics with robust technical architectures eventually led him to establish HAIKUE—an independent technology company focused on delivering premium digital solutions and next-generation web products.
+                I'm a technology creator, builder, and the Founder of HAIKUE. I specialize in designing and developing high-performance web platforms, premium digital solutions, and clean software interfaces for diverse clients globally.
               </p>
             </div>
           </div>
