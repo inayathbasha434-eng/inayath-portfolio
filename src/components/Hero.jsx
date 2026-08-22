@@ -66,12 +66,13 @@ export default function Hero() {
             </div>
 
             {/* Name */}
-            <h1 className="text-[3.5rem] sm:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.1] mb-3 tracking-tight overflow-hidden pb-2 text-center md:text-left">
-              <span className={`block text-white transition-transform duration-700 ease-out ${revealStep >= 2 ? 'translate-y-0' : 'translate-y-[120%]'}`}>
+            <h1 className="text-[3.5rem] sm:text-6xl md:text-[4rem] lg:text-[4.5rem] xl:text-[5.5rem] font-extrabold leading-[1.1] mb-3 tracking-tight overflow-hidden pb-2 text-center md:text-left whitespace-nowrap">
+              <span className={`block md:inline-block text-white transition-transform duration-700 ease-out ${revealStep >= 2 ? 'translate-y-0' : 'translate-y-[120%]'}`}>
                 Inayath
               </span>
+              <span className="hidden md:inline-block w-3 md:w-4 lg:w-5"></span>
               <span
-                className={`block text-[#60a5fa] transition-transform duration-700 ease-out ${revealStep >= 3 ? 'translate-y-0' : 'translate-y-[120%]'}`}
+                className={`block md:inline-block text-[#60a5fa] transition-transform duration-700 ease-out ${revealStep >= 3 ? 'translate-y-0' : 'translate-y-[120%]'}`}
               >
                 Basha A
               </span>
