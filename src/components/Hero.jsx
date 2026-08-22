@@ -89,8 +89,10 @@ export default function Hero() {
             </h1>
 
             {/* Professional Title Subheading */}
-            <div className={`text-[#60a5fa] text-xs sm:text-sm md:text-base font-bold uppercase tracking-widest text-center md:text-left mb-4 transition-all duration-700 ease-out ${revealStep >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              Technology &amp; Digital Creator &middot; Founder of HAIKUE
+            <div className={`text-[#60a5fa] text-[11px] sm:text-sm md:text-base font-bold uppercase tracking-wider text-center md:text-left mb-4 transition-all duration-700 ease-out ${revealStep >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <span className="block sm:inline">Technology &amp; Digital Creator</span>
+              <span className="hidden sm:inline mx-2">&middot;</span>
+              <span className="block sm:inline mt-1.5 sm:mt-0">Founder of HAIKUE</span>
             </div>
 
             {/* Slogan */}
