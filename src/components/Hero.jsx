@@ -58,18 +58,7 @@ export default function Hero() {
 
           {/* ── Text content ── */}
           <div className="flex-1 text-center md:text-left flex flex-col items-center md:items-start">
-            {/* Top Badges */}
-            <div className={`flex flex-col sm:flex-row items-center gap-3 mb-5 transition-all duration-700 ease-out ${revealStep >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <div className="inline-flex items-center gap-2 bg-[#121c2d] border border-white/5 text-blue-400 text-[11px] font-semibold px-4 py-1.5 rounded-full shadow-sm">
-                <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" />
-                Founder of HAIKUE
-              </div>
-              
-              <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 text-amber-300 text-[11px] font-semibold px-4 py-1.5 rounded-full shadow-sm shadow-amber-950/5">
-                <BadgeCheck size={13} className="text-amber-400 animate-pulse" />
-                Technology &amp; Digital Creator
-              </div>
-            </div>
+
 
             {/* Greeting */}
             <div className={`text-slate-300 text-lg md:text-xl font-medium mb-1 transition-all duration-700 ease-out ${revealStep >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
