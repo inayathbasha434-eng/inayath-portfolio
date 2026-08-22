@@ -277,10 +277,7 @@ export default function Hero() {
               <div className={`absolute -top-1 -right-1 flex items-center gap-1 bg-blue-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg shadow-blue-500/40 z-30 transition-all duration-500 ${isFlipped ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 group-hover:translate-x-1 group-hover:-translate-y-1'}`}>
                 <span>Founder @ HAIKUE</span>
               </div>
-              <div className={`absolute -bottom-2 -left-4 flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-semibold px-4 py-2.5 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.3)] z-30 transition-all duration-500 ${isFlipped ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 group-hover:-translate-x-2 group-hover:translate-y-2'}`}>
-                <div className="w-5 h-5 rounded-full bg-blue-500/30 flex items-center justify-center">
-                  <Sparkles size={12} className="text-blue-200" />
-                </div>
+              <div className={`absolute -bottom-1 -left-2 flex items-center gap-1.5 bg-[#0d1426] border border-white/10 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-full shadow-lg z-30 transition-all duration-500 ${isFlipped ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 group-hover:-translate-x-1 group-hover:translate-y-1'}`}>
                 Digital Creator
               </div>
             </div>
