@@ -61,33 +61,33 @@ export default function Hero() {
 
 
             {/* Greeting */}
-            <div className={`text-slate-300 text-lg md:text-xl font-medium mb-1 transition-all duration-700 ease-out ${revealStep >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className={`text-slate-400 text-lg md:text-xl font-medium mb-2 transition-all duration-700 ease-out ${revealStep >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Hello, World! I'm
             </div>
 
             {/* Name */}
-            <h1 className="text-[3.5rem] sm:text-6xl md:text-[4rem] lg:text-[4.5rem] xl:text-[5.5rem] font-extrabold leading-[1.1] mb-3 tracking-tight overflow-hidden pb-2 text-center md:text-left whitespace-nowrap">
+            <h1 className="text-[3.5rem] sm:text-6xl md:text-[4rem] lg:text-[4.5rem] xl:text-[5.5rem] font-extrabold leading-[1.1] mb-4 tracking-tight overflow-hidden pb-2 text-center md:text-left whitespace-nowrap">
               <span className={`block md:inline-block text-white transition-transform duration-700 ease-out ${revealStep >= 2 ? 'translate-y-0' : 'translate-y-[120%]'}`}>
                 Inayath
               </span>
               <span className="hidden md:inline-block w-3 md:w-4 lg:w-5"></span>
               <span
-                className={`block md:inline-block text-[#60a5fa] transition-transform duration-700 ease-out ${revealStep >= 3 ? 'translate-y-0' : 'translate-y-[120%]'}`}
+                className={`block md:inline-block text-white transition-transform duration-700 ease-out ${revealStep >= 3 ? 'translate-y-0' : 'translate-y-[120%]'}`}
               >
-                Basha A
+                Basha
               </span>
             </h1>
 
             {/* Professional Title Subheading */}
-            <div className={`text-[#60a5fa] text-[11px] sm:text-sm md:text-base font-bold uppercase tracking-wider text-center md:text-left mb-4 transition-all duration-700 ease-out ${revealStep >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className={`text-blue-300 text-[11px] sm:text-sm md:text-base font-bold uppercase tracking-wider text-center md:text-left mb-5 transition-all duration-700 ease-out ${revealStep >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <span className="block sm:inline">Technology &amp; Digital Creator</span>
-              <span className="hidden sm:inline mx-2">&middot;</span>
+              <span className="hidden sm:inline mx-3 text-blue-500/50">&middot;</span>
               <span className="block sm:inline mt-1.5 sm:mt-0">Founder of HAIKUE</span>
             </div>
 
             {/* Slogan */}
-            <p className={`text-slate-300 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl text-center md:text-left mx-auto md:mx-0 mb-8 mt-2 px-4 md:px-0 transition-all duration-700 ease-out ${revealStep >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              Your ideas. <span className="text-[#60a5fa]">My execution.</span> Real results.
+            <p className={`text-slate-400 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl text-center md:text-left mx-auto md:mx-0 mb-8 px-4 md:px-0 transition-all duration-700 ease-out ${revealStep >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              Your ideas. <span className="text-white font-semibold">My execution.</span> Real results.
             </p>
 
             {/* CTA Button */}
