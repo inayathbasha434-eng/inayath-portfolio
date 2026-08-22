@@ -28,7 +28,7 @@ export default function About() {
   return (
     <section id="about" ref={sectionRef} className="py-24 bg-[#080d1a] scroll-mt-16 relative overflow-hidden">
       {/* Subtle background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none transform-gpu" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Header */}
@@ -52,7 +52,7 @@ export default function About() {
           
           {/* Tile 1: Main Bio (Spans full width on mobile, 2 cols on desktop) */}
           <div className="fade-in col-span-2 row-span-2 group relative overflow-hidden bg-[#0d1426]/80 backdrop-blur-md border border-white/5 rounded-[20px] sm:rounded-3xl p-6 sm:p-10 hover:border-blue-500/30 transition-colors duration-500 shadow-2xl">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-all duration-700 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl group-hover:bg-blue-500/20 transition-colors duration-700 pointer-events-none transform-gpu" />
             <div className="relative z-10">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4 sm:mb-6">
                 <Code className="text-blue-400" size={20} />
@@ -84,7 +84,7 @@ export default function About() {
           <div className="fade-in col-span-1 group relative overflow-hidden bg-[#0d1426]/80 backdrop-blur-md border border-white/5 rounded-[20px] sm:rounded-3xl p-4 sm:p-8 hover:border-emerald-500/30 transition-colors duration-500 flex flex-col items-center justify-center text-center shadow-2xl min-h-[130px] sm:min-h-[220px]">
              {/* Abstract Radar Background */}
              <div className="absolute inset-0 flex items-center justify-center opacity-20 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none">
-               <div className="w-full h-full border border-emerald-500/30 rounded-full animate-ping" style={{ animationDuration: '3s' }} />
+               <div className="w-full h-full border border-emerald-500/30 rounded-full animate-ping transform-gpu will-change-transform" style={{ animationDuration: '3s' }} />
                <div className="absolute w-3/4 h-3/4 border border-emerald-500/20 rounded-full" />
                <div className="absolute w-1/2 h-1/2 border border-emerald-500/10 rounded-full" />
              </div>
@@ -112,7 +112,7 @@ export default function About() {
                   {['Digital Products', 'UI/UX Design', 'Software Engineering', 'Brand Strategy', 'E-Commerce', 'Web Architecture'].map((tag, j) => (
                     <span
                       key={`${i}-${j}`}
-                      className="text-xs sm:text-base font-bold text-slate-300 bg-white/5 border border-white/10 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl whitespace-nowrap backdrop-blur-sm shadow-sm hover:bg-white/10 hover:-translate-y-1 transition-all cursor-default"
+                      className="text-xs sm:text-base font-bold text-slate-300 bg-[#1e293b] border border-white/10 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl whitespace-nowrap shadow-sm hover:bg-[#334155] hover:-translate-y-1 transition-all cursor-default"
                     >
                       {tag}
                     </span>

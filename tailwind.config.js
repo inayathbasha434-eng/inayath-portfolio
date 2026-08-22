@@ -36,8 +36,8 @@ export default {
           '50%': { transform: 'translateY(-10px)' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 20px rgba(59,130,246,0.3)' },
-          '100%': { boxShadow: '0 0 40px rgba(59,130,246,0.6)' },
+          '0%': { opacity: '0.5' },
+          '100%': { opacity: '1' },
         },
         fadeInUp: {
           '0%': { opacity: '0', transform: 'translateY(30px)' },

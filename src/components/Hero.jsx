@@ -49,9 +49,9 @@ export default function Hero() {
       <div className="absolute inset-0 dot-grid opacity-40 pointer-events-none" />
 
       {/* Glowing blobs */}
-      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl pointer-events-none animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none animate-pulse" style={{ animationDelay: '1s' }} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-400/8 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl pointer-events-none animate-pulse transform-gpu will-change-[opacity]" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none animate-pulse transform-gpu will-change-[opacity]" style={{ animationDelay: '1s' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-400/8 rounded-full blur-3xl pointer-events-none transform-gpu" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-24 w-full">
         <div className="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16">
@@ -112,7 +112,7 @@ export default function Hero() {
           >
             {/* Tilt wrapper — mouse tilt on desktop only */}
             <div
-              className="relative cursor-pointer group select-none"
+              className="relative cursor-pointer group select-none will-change-transform"
               style={{ perspective: '1200px' }}
               onMouseMove={(e) => {
                 if (window.innerWidth < 768) return
@@ -149,16 +149,10 @@ export default function Hero() {
               onClick={() => setIsFlipped(f => !f)}
             >
               {/* Outer glow */}
-              <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-blue-500/30 to-blue-700/20 blur-2xl pointer-events-none animate-glow group-hover:scale-110 transition-transform duration-300" />
-
-              {/* Pulsing ring */}
-              <div className="absolute -inset-6 rounded-full border border-blue-500/20 pointer-events-none animate-pulse shadow-[0_0_15px_rgba(59,130,246,0.15)]" style={{ animationDuration: '3s' }} />
+              <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-blue-500/30 to-blue-700/20 blur-2xl pointer-events-none animate-glow group-hover:scale-110 transition-transform duration-300 transform-gpu will-change-[opacity]" />
 
               {/* Slow reverse dashed ring */}
-              <div className="absolute -inset-5 rounded-full border border-dashed border-blue-500/15 pointer-events-none animate-spin" style={{ animationDuration: '35s', animationDirection: 'reverse' }} />
-
-              {/* Fast dashed ring */}
-              <div className="absolute -inset-3 rounded-full border-2 border-dashed border-blue-500/20 pointer-events-none animate-spin" style={{ animationDuration: '20s' }} />
+              <div className="absolute -inset-5 rounded-full border border-dashed border-blue-500/15 pointer-events-none animate-spin transform-gpu will-change-transform" style={{ animationDuration: '35s', animationDirection: 'reverse' }} />
 
               {/* ── COIN (flip container — completely separate from tilt) ── */}
               <div
