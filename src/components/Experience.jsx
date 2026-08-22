@@ -3,6 +3,18 @@ import { Briefcase, Calendar, MapPin, Building2 } from 'lucide-react'
 
 const EXPERIENCE = [
   {
+    role: 'Founder',
+    company: 'HAIKUE',
+    location: 'Erode, Tamil Nadu',
+    period: 'Jun 2026 – Present',
+    type: 'Founder',
+    points: [
+      'Founded and building HAIKUE, an independent technology company focused on premium digital solutions and next-generation web products.',
+      'Directing technology strategy, product design, and architectural decisions for clients globally.',
+      'Overseeing end-to-end design and engineering processes, ensuring high-performance web systems and digital experiences.'
+    ],
+  },
+  {
     role: 'Email Marketing Specialist',
     company: 'Apsensys Media',
     location: 'Bengaluru, Karnataka',
@@ -97,7 +109,18 @@ export default function Experience() {
                     {/* Company */}
                     <div className="flex items-center gap-1.5 text-slate-300 font-semibold text-sm sm:text-base mt-1">
                       <Building2 size={14} className="text-amber-400/80" />
-                      <span>{exp.company}</span>
+                      <span>
+                        {exp.company === 'HAIKUE' ? (
+                          <a 
+                            href="https://haikue.com" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="text-blue-400 hover:text-blue-300 hover:underline transition-colors"
+                          >
+                            HAIKUE
+                          </a>
+                        ) : exp.company}
+                      </span>
                     </div>
                   </div>
 

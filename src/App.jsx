@@ -35,20 +35,25 @@ function PortfolioLayout() {
         "@type": "Person",
         "@id": "https://inayathbasha.vercel.app/#person",
         "name": "Inayath Basha",
-        "jobTitle": "Web Designer & Digital Solutions Specialist",
+        "jobTitle": "Technology & Digital Creator",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "HAIKUE",
+          "url": "https://haikue.com"
+        },
         "url": "https://inayathbasha.vercel.app",
         "sameAs": [
           "https://www.linkedin.com/in/inayath-basha-a-53051824a/",
           "https://github.com/inayathbasha",
-          "https://instagram.com/i_ibasha_2o"
+          "https://instagram.com/inayathbasha_a"
         ],
-        "description": "Inayath Basha is a Web Designer & Digital Solutions Specialist helping businesses build premium websites, high-converting landing pages, Shopify stores, WordPress websites, custom digital experiences, website redesigns, e-commerce solutions, and performance-focused web experiences."
+        "description": "Inayath Basha is a technology and digital creator and the Founder of HAIKUE. Explore his professional journey, experience, projects, skills and work in technology and digital products."
       },
       {
         "@type": "WebSite",
         "@id": "https://inayathbasha.vercel.app/#website",
         "url": "https://inayathbasha.vercel.app",
-        "name": "Inayath Basha | Web Designer & Digital Solutions Specialist",
+        "name": "Inayath Basha | Technology & Digital Creator | Founder of HAIKUE",
         "publisher": {
           "@id": "https://inayathbasha.vercel.app/#person"
         }
@@ -59,8 +64,8 @@ function PortfolioLayout() {
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-100 selection:bg-blue-500/30 selection:text-white">
       <SEO 
-        title="Web Designer & Digital Solutions Specialist"
-        description="Inayath Basha is a Web Designer & Digital Solutions Specialist helping businesses build premium websites, high-converting landing pages, Shopify stores, WordPress websites, custom digital experiences, website redesigns, e-commerce solutions, and performance-focused web experiences."
+        title="Technology &amp; Digital Creator | Founder of HAIKUE"
+        description="Inayath Basha is a technology and digital creator and the Founder of HAIKUE. Explore his professional journey, experience, projects, skills and work in technology and digital products."
         canonical="/"
         schema={homeSchema}
       />

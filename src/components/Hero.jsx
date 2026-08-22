@@ -60,14 +60,14 @@ export default function Hero() {
           <div className="flex-1 text-center md:text-left flex flex-col items-center md:items-start">
             {/* Top Badges */}
             <div className={`flex flex-col sm:flex-row items-center gap-3 mb-5 transition-all duration-700 ease-out ${revealStep >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <div className="inline-flex items-center gap-2 bg-[#121c2d] border border-white/5 text-green-400 text-[11px] font-semibold px-4 py-1.5 rounded-full shadow-sm">
-                <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-                Available for Projects
+              <div className="inline-flex items-center gap-2 bg-[#121c2d] border border-white/5 text-blue-400 text-[11px] font-semibold px-4 py-1.5 rounded-full shadow-sm">
+                <span className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" />
+                Founder of HAIKUE
               </div>
               
               <div className="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 text-amber-300 text-[11px] font-semibold px-4 py-1.5 rounded-full shadow-sm shadow-amber-950/5">
                 <BadgeCheck size={13} className="text-amber-400 animate-pulse" />
-                100% Client Satisfaction &amp; Trust
+                Technology &amp; Digital Creator
               </div>
             </div>
 
@@ -77,7 +77,7 @@ export default function Hero() {
             </div>
 
             {/* Name */}
-            <h1 className="text-[3.5rem] sm:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.1] mb-5 tracking-tight overflow-hidden pb-2 text-center md:text-left">
+            <h1 className="text-[3.5rem] sm:text-6xl lg:text-[5.5rem] font-extrabold leading-[1.1] mb-3 tracking-tight overflow-hidden pb-2 text-center md:text-left">
               <span className={`block text-white transition-transform duration-700 ease-out ${revealStep >= 2 ? 'translate-y-0' : 'translate-y-[120%]'}`}>
                 Inayath
               </span>
@@ -88,7 +88,12 @@ export default function Hero() {
               </span>
             </h1>
 
-            {/* Subheading */}
+            {/* Professional Title Subheading */}
+            <div className={`text-[#60a5fa] text-xs sm:text-sm md:text-base font-bold uppercase tracking-widest text-center md:text-left mb-4 transition-all duration-700 ease-out ${revealStep >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              Technology &amp; Digital Creator &middot; Founder of HAIKUE
+            </div>
+
+            {/* Slogan */}
             <p className={`text-slate-300 text-sm sm:text-base md:text-lg font-medium leading-relaxed max-w-xl text-center md:text-left mx-auto md:mx-0 mb-8 mt-2 px-4 md:px-0 transition-all duration-700 ease-out ${revealStep >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Your ideas. <span className="text-[#60a5fa]">My execution.</span> Real results.
             </p>
@@ -227,15 +232,15 @@ export default function Hero() {
                       <div className={`flex items-center gap-1.5 mb-1 transition-all duration-300 ${terminalLines >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
                         <span className="text-[8px] sm:text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
                         <span className="text-[8px] sm:text-[9.5px] font-black shrink-0" style={{ color: '#93c5fd' }}>Identity:</span>
-                        <span className="text-[8px] sm:text-[9.5px] text-white font-bold whitespace-nowrap">Digital Entrepreneur</span>
+                        <span className="text-[8px] sm:text-[9.5px] text-white font-bold whitespace-nowrap">Technology Creator</span>
                         <span className="text-[8px] sm:text-[10px] ml-auto font-black shrink-0" style={{ color: '#34d399' }}>✓</span>
                       </div>
 
                       {/* Line 2 */}
                       <div className={`flex items-center gap-1.5 mb-1 transition-all duration-300 ${terminalLines >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
                         <span className="text-[8px] sm:text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
-                        <span className="text-[8px] sm:text-[9.5px] font-black shrink-0" style={{ color: '#93c5fd' }}>Service:</span>
-                        <span className="text-[8px] sm:text-[9.5px] text-white font-bold whitespace-nowrap">Digital Service Provider</span>
+                        <span className="text-[8px] sm:text-[9.5px] font-black shrink-0" style={{ color: '#93c5fd' }}>Role:</span>
+                        <span className="text-[8px] sm:text-[9.5px] text-white font-bold whitespace-nowrap">Founder of HAIKUE</span>
                         <span className="text-[8px] sm:text-[10px] ml-auto font-black shrink-0" style={{ color: '#34d399' }}>✓</span>
                       </div>
 
@@ -243,7 +248,7 @@ export default function Hero() {
                       <div className={`flex items-center gap-1.5 mb-1 transition-all duration-300 ${terminalLines >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
                         <span className="text-[8px] sm:text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
                         <span className="text-[8px] sm:text-[9.5px] font-black shrink-0" style={{ color: '#93c5fd' }}>Expertise:</span>
-                        <span className="text-[8px] sm:text-[9.5px] text-white font-bold whitespace-nowrap">Online Business Solutions</span>
+                        <span className="text-[8px] sm:text-[9.5px] text-white font-bold whitespace-nowrap">Digital Products</span>
                         <span className="text-[8px] sm:text-[10px] ml-auto font-black shrink-0" style={{ color: '#34d399' }}>✓</span>
                       </div>
 
@@ -251,7 +256,7 @@ export default function Hero() {
                       <div className={`flex items-center gap-1.5 mb-2 transition-all duration-300 ${terminalLines >= 4 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'}`}>
                         <span className="text-[8px] sm:text-[10px] font-bold shrink-0" style={{ color: '#818cf8' }}>▶</span>
                         <span className="text-[8px] sm:text-[9.5px] font-black shrink-0" style={{ color: '#93c5fd' }}>Mission:</span>
-                        <span className="text-[8px] sm:text-[9.5px] text-white font-bold whitespace-nowrap">Scaling Brands Online</span>
+                        <span className="text-[8px] sm:text-[9.5px] text-white font-bold whitespace-nowrap">Innovation &amp; Growth</span>
                         <span className="text-[8px] sm:text-[10px] ml-auto font-black shrink-0" style={{ color: '#34d399' }}>✓</span>
                       </div>
 
@@ -283,7 +288,7 @@ export default function Hero() {
 
               {/* Accent badges (fade out when flipped) */}
               <div className={`absolute -top-1 -right-1 flex items-center gap-1 bg-blue-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg shadow-blue-500/40 z-30 transition-all duration-500 ${isFlipped ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 group-hover:translate-x-1 group-hover:-translate-y-1'}`}>
-                <span>Founder & Dev</span>
+                <span>Founder @ HAIKUE</span>
               </div>
               <div className={`absolute -bottom-1 -left-2 flex items-center gap-1.5 bg-[#0d1426] border border-white/10 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-full shadow-lg z-30 transition-all duration-500 ${isFlipped ? 'opacity-0 scale-90 pointer-events-none' : 'opacity-100 scale-100 group-hover:-translate-x-1 group-hover:translate-y-1'}`}>
                 <svg viewBox="0 0 256 292" className="w-3.5 h-3.5 flex-shrink-0">
@@ -291,7 +296,7 @@ export default function Hero() {
                   <path fill="#5E8E3E" d="M221.237 54.983c-1.055-.088-23.383-1.743-23.383-1.743s-15.507-15.395-17.209-17.099c-.637-.634-1.496-.959-2.394-1.099L197.118 292l58.882-13.925-33.228-220.66c-.201-1.461-1.48-2.269-2.535-2.432z"/>
                   <path fill="#FFF" d="M128.315 103.172l-7.274 27.215s-8.036-3.61-17.814-3.016c-14.154.93-14.307 9.799-14.154 12.025.826 13.075 35.194 15.913 37.162 46.585 1.553 24.098-12.78 40.562-33.363 41.827-24.616 1.54-38.171-12.997-38.171-12.997l5.217-22.19s13.648 10.305 24.547 9.619c7.133-.447 9.701-6.25 9.434-10.359-1.078-17.072-29.057-16.072-30.87-44.138-1.54-23.615 14.01-47.513 48.193-49.62 13.16-.824 19.093 2.049 19.093 5.049z"/>
                 </svg>
-                Shopify Expert
+                Digital Creator
               </div>
             </div>
           </div>

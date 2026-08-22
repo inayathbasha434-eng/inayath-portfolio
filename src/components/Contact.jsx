@@ -70,7 +70,7 @@ export default function Contact() {
             <div className="w-8 h-[1.5px] bg-gradient-to-l from-transparent to-blue-500/50" />
           </div>
           <p className="text-slate-400 max-w-sm mx-auto text-sm sm:text-base">
-            Have a project in mind? I'd love to hear about it and help you build it.
+            Have a project, idea, or collaboration in mind? I'd love to hear about it.
           </p>
         </div>
 
@@ -132,7 +132,7 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     rows="4"
-                    placeholder="Tell me about your project..."
+                    placeholder="Share your thoughts, projects, or inquiries..."
                     className="w-full bg-[#080d1a] border border-white/10 focus:border-blue-500/50 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none transition-colors resize-none"
                   />
                 </div>
@@ -212,7 +212,7 @@ export default function Contact() {
 
                 {/* Instagram */}
                 <a
-                  href="https://instagram.com/i_ibasha_2o"
+                  href="https://instagram.com/inayathbasha_a"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Connect on Instagram"

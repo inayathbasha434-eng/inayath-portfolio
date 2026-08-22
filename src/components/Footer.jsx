@@ -35,11 +35,11 @@ export default function Footer() {
               </div>
               <div className="text-left">
                 <p className="text-white font-bold text-sm sm:text-base">Inayath Basha A</p>
-                <p className="text-blue-400 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Web Designer &amp; Digital Solutions Specialist</p>
+                <p className="text-blue-400 font-semibold text-[10px] sm:text-xs uppercase tracking-wider">Technology &amp; Digital Creator &middot; Founder of HAIKUE</p>
               </div>
             </div>
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 hidden sm:block">
-              Turning ideas into beautiful digital experiences. Let's build something amazing together.
+              Technology &amp; Digital Creator. Explore his professional journey, experience, projects, and work in technology.
             </p>
             <div className="flex items-center justify-center sm:justify-start gap-1.5 text-slate-500 text-[10px] sm:text-xs font-medium uppercase tracking-widest">
               <MapPin size={12} className="text-blue-400" />

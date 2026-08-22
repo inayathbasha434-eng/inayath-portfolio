@@ -59,11 +59,11 @@ export default function About() {
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-4">Who I Am</h3>
               <p className="text-slate-300 text-sm sm:text-lg leading-relaxed font-medium">
-                Inayath Basha is passionate about turning ideas into engaging digital experiences. He enjoys creating solutions that are simple, intuitive, and purpose-driven, helping businesses connect with their audience in meaningful ways.
+                Inayath Basha is a technology creator, builder, and the Founder of HAIKUE. His professional journey is driven by a deep fascination with digital products, clean software interfaces, and high-performance web systems. Over the years, he has designed and developed tailored online platforms, e-commerce architectures, and visual brand identities for diverse clients globally.
               </p>
               {/* Extra paragraph only visible on tablet/desktop to save vertical space on mobile */}
               <p className="hidden sm:block text-slate-400 text-base leading-relaxed mt-4">
-                By combining creativity with technical expertise, he builds experiences that leave a lasting impression and support long-term growth.
+                His passion for combining design aesthetics with robust technical architectures eventually led him to establish HAIKUE—an independent technology company focused on delivering premium digital solutions and next-generation web products.
               </p>
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function About() {
             <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
               {[...Array(3)].map((_, i) => (
                 <div key={i} className="flex gap-3 sm:gap-8 px-3 sm:px-8">
-                  {['Shopify Development', 'Brand Identity', 'Digital Solutions', 'Business Growth', 'UI/UX Design', 'E-Commerce'].map((tag, j) => (
+                  {['Digital Products', 'UI/UX Design', 'Software Engineering', 'Brand Strategy', 'E-Commerce', 'Web Architecture'].map((tag, j) => (
                     <span
                       key={`${i}-${j}`}
                       className="text-xs sm:text-base font-bold text-slate-300 bg-white/5 border border-white/10 px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl whitespace-nowrap backdrop-blur-sm shadow-sm hover:bg-white/10 hover:-translate-y-1 transition-all cursor-default"

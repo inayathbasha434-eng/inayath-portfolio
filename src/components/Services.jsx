@@ -233,10 +233,10 @@ export default function Services() {
         <div className="text-center mb-12 fade-in flex flex-col items-center">
           <div className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider text-blue-400 uppercase shadow-[0_0_15px_rgba(59,130,246,0.08)] mb-3 select-none">
             <Sparkles size={12} className="animate-pulse" />
-            <span>What I Offer</span>
+            <span>Areas of Expertise</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white">
-            My <span className="text-gradient">Services</span>
+            Digital <span className="text-gradient">Solutions</span>
           </h2>
           <div className="flex items-center justify-center gap-1 mt-4">
             <div className="w-8 h-[1.5px] bg-gradient-to-r from-transparent to-blue-500/50" />

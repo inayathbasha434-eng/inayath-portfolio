@@ -22,6 +22,18 @@ const EDUCATION = [
 
 const EXPERIENCE = [
   {
+    role: 'Founder',
+    company: 'HAIKUE',
+    location: 'Erode, Tamil Nadu',
+    period: 'Jun 2026 – Present',
+    type: 'Founder',
+    points: [
+      'Founded and building HAIKUE, an independent technology company focused on premium digital solutions and next-generation web products.',
+      'Directing technology strategy, product design, and architectural decisions for clients globally.',
+      'Overseeing end-to-end design and engineering processes, ensuring high-performance web systems and digital experiences.'
+    ],
+  },
+  {
     role: 'Email Marketing Specialist',
     company: 'Apsensys Media',
     location: 'Bengaluru, Karnataka (Hybrid)',
@@ -250,7 +262,19 @@ export default function EducationExperience() {
                         <div className="flex items-center justify-between gap-3">
                           <div className="flex flex-col">
                             <h4 className="text-white font-bold text-sm sm:text-base">{exp.role}</h4>
-                            <p className="text-slate-400 text-xs sm:text-sm mt-0.5">{exp.company}</p>
+                            <p className="text-slate-400 text-xs sm:text-sm mt-0.5">
+                              {exp.company === 'HAIKUE' ? (
+                                <a 
+                                  href="https://haikue.com" 
+                                  target="_blank" 
+                                  rel="noopener noreferrer" 
+                                  onClick={(e) => e.stopPropagation()} 
+                                  className="text-blue-400 hover:text-blue-300 hover:underline transition-colors"
+                                >
+                                  HAIKUE
+                                </a>
+                              ) : exp.company}
+                            </p>
                           </div>
                           <div className="flex items-center gap-2.5 flex-shrink-0">
                             <span className="text-amber-400 font-bold text-xs bg-amber-500/10 px-2.5 py-0.5 rounded-full border border-amber-500/20">

@@ -2,20 +2,20 @@
 
 ## Identity
 - **Name:** Inayath Basha A
-- **Roles:** Web Designer & Digital Solutions Specialist, UI/UX Designer, Brand Designer, Business Development Professional
+- **Roles:** Technology &amp; Digital Creator, Founder of HAIKUE, UI/UX Designer, Brand Designer, Business Development Professional
 - **Location:** Erode, Tamil Nadu, India
 - **Contact:** Inayathbasha434@gmail.com
 - **Website:** https://inayathbasha.vercel.app
 
-## Bio & Mission
-Inayath Basha is a Web Designer & Digital Solutions Specialist helping businesses build premium websites, high-converting landing pages, Shopify stores, WordPress websites, custom digital experiences, website redesigns, e-commerce solutions, and performance-focused web experiences.
+## Bio &amp; Mission
+Inayath Basha is a technology and digital creator and the Founder of HAIKUE. Explore his professional journey, experience, projects, skills and work in technology and digital products.
 
 ## Technical Skills
 - **Frontend Core:** HTML5, CSS3, JavaScript (ES6+), React.js, Next.js, Vite
-- **Styling & Animation:** Tailwind CSS, Framer Motion, GSAP
+- **Styling &amp; Animation:** Tailwind CSS, Framer Motion, GSAP
 - **Shopify Ecosystem:** Liquid, Shopify Theme Development, Store Setup, Optimization
 - **Design:** UI/UX Design, Figma, Brand Design
-- **AI & Emerging:** Generative AI, Midjourney, Stable Diffusion
+- **AI &amp; Emerging:** Generative AI, Midjourney, Stable Diffusion
 
 ## Key Projects
 - **Mor Panthal:** A modern WordPress website for a traditional drink brand showcasing culture, health, and natural flavors.
@@ -24,4 +24,4 @@ Inayath Basha is a Web Designer & Digital Solutions Specialist helping businesse
 - **SmartCrop AI:** An AI-powered Agritech platform providing smart crop recommendations using a trained machine learning model, built with React and FastAPI/Python.
 
 ## Professional Offerings
-Available for contract projects and full-time opportunities. Focuses on delivering premium, performance-optimized, and aesthetically superior digital experiences.
+Focuses on personal research, product design, engineering, and digital initiatives through HAIKUE. Available for strategic collaborations and professional inquiries.
